@@ -17,11 +17,13 @@ class _My_TripState extends State<My_Trip> {
         padding: const EdgeInsets.only(
           left: 10,
           right: 10,
-          top: 20,
+          top: 10,
         ),
         children: <Widget>[
           Card(
-            // padding: const EdgeInsets.all(0),
+            margin: const EdgeInsets.only(
+              top: 20,
+            ),
             elevation: 10,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15.0),
@@ -83,7 +85,7 @@ class _My_TripState extends State<My_Trip> {
                   child: Row(
                     children: <Widget>[
                       Container(
-                        width: 285,
+                        width: 293,
                         padding: const EdgeInsets.all(15),
                         child: Column(
                           children: <Widget>[
@@ -232,7 +234,9 @@ class _My_TripState extends State<My_Trip> {
             ),
           ),
           Card(
-            // padding: const EdgeInsets.all(0),
+            margin: const EdgeInsets.only(
+              top: 20,
+            ),
             elevation: 10,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15.0),
@@ -294,7 +298,7 @@ class _My_TripState extends State<My_Trip> {
                   child: Row(
                     children: <Widget>[
                       Container(
-                        width: 285,
+                        width: 293,
                         padding: const EdgeInsets.all(15),
                         child: Column(
                           children: <Widget>[

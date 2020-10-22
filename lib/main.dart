@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       home: Slash_Screen(),
       // home: Watch_Empty(),
+      // home: My_Trip_Empty(),
     );
   }
 }
