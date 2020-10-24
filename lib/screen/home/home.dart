@@ -1,18 +1,62 @@
+import 'dart:math';
 import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:lywing/home/explore.dart';
-import 'package:lywing/home/tabbar-my-trip.dart';
+import 'package:lywing/common/constants.dart';
 import 'package:lywing/sizes_helpers.dart';
-import 'profile.dart';
 
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeState extends State<Home> with TickerProviderStateMixin {
+  final destination_from = TextEditingController();
+  final destination_to = TextEditingController();
+
+  Animation _arrowAnimation;
+  AnimationController _arrowAnimationController;
+
+  @override
+  void initState() {
+    super.initState();
+    _arrowAnimationController =
+        AnimationController(vsync: this, duration: Duration(seconds: 1));
+    _arrowAnimation =
+        Tween(begin: 0.0, end: pi).animate(_arrowAnimationController);
+  }
+
+  @override
+  Widget firstChild() {
+    return RaisedButton(
+      color: kWhite,
+      hoverElevation: 0.0,
+      highlightElevation: 0.0,
+      elevation: 0,
+      shape: Border.all(
+        width: 0.0,
+        color: kWhite,
+      ),
+      child: AnimatedBuilder(
+        animation: _arrowAnimation,
+        builder: (context, child) => Transform.rotate(
+          angle: _arrowAnimation.value,
+          child: Image(
+            image: AssetImage('assets/icons/Invert-button.png'),
+          ),
+        ),
+      ),
+      onPressed: () {
+        _arrowAnimationController.isCompleted
+            ? _arrowAnimationController.reverse()
+            : _arrowAnimationController.forward();
+        setState(() {
+          // destination_to.text = destination_from.text;
+          destination_from.text = destination_to.text;
+        });
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +81,7 @@ class _HomeState extends State<Home> {
                   'Travel the world made simple',
                   style: TextStyle(
                     fontSize: 28,
-                    color: Colors.grey,
+                    color: kGrey300,
                   ),
                 ),
               ),
@@ -49,7 +93,7 @@ class _HomeState extends State<Home> {
                 ),
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: kWhite,
                   borderRadius: BorderRadiusDirectional.circular(10.0),
                 ),
                 child: Row(
@@ -68,11 +112,10 @@ class _HomeState extends State<Home> {
                                   padding: const EdgeInsets.only(
                                     left: 20,
                                   ),
-                                  child: Text(
-                                    'Singapore (SIN)',
-                                    style: TextStyle(
-                                      fontSize: 17,
-                                      color: Colors.black,
+                                  child: Container(
+                                    width: 120,
+                                    child: TextField(
+                                      controller: destination_to,
                                     ),
                                   ),
                                 ),
@@ -103,11 +146,10 @@ class _HomeState extends State<Home> {
                                   padding: const EdgeInsets.only(
                                     left: 20,
                                   ),
-                                  child: Text(
-                                    'Where you go to?',
-                                    style: TextStyle(
-                                      fontSize: 17,
-                                      color: Colors.black,
+                                  child: Container(
+                                    width: 120,
+                                    child: TextField(
+                                      controller: destination_from,
                                     ),
                                   ),
                                 ),
@@ -118,9 +160,7 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                     Container(
-                      child: Image(
-                        image: AssetImage('assets/icons/Invert-button.png'),
-                      ),
+                      child: firstChild(),
                     ),
                   ],
                 ),
@@ -146,7 +186,7 @@ class _HomeState extends State<Home> {
                             Container(
                               child: Image(
                                 image: AssetImage('assets/icons/return.png'),
-                                color: Colors.black26,
+                                color: kGrey300,
                               ),
                             ),
                             Container(
@@ -157,7 +197,7 @@ class _HomeState extends State<Home> {
                                 'Return',
                                 style: TextStyle(
                                   fontSize: 15,
-                                  color: Colors.black26,
+                                  color: kGrey300,
                                 ),
                               ),
                             ),
@@ -192,7 +232,7 @@ class _HomeState extends State<Home> {
                                       '2',
                                       style: TextStyle(
                                         fontSize: 15,
-                                        color: Colors.black26,
+                                        color: kGrey300,
                                       ),
                                     ),
                                   ),
@@ -215,7 +255,7 @@ class _HomeState extends State<Home> {
                                       '0',
                                       style: TextStyle(
                                         fontSize: 15,
-                                        color: Colors.black26,
+                                        color: kGrey300,
                                       ),
                                     ),
                                   ),
@@ -238,7 +278,7 @@ class _HomeState extends State<Home> {
                                       '0',
                                       style: TextStyle(
                                         fontSize: 15,
-                                        color: Colors.black26,
+                                        color: kGrey300,
                                       ),
                                     ),
                                   ),
@@ -255,7 +295,6 @@ class _HomeState extends State<Home> {
             ],
           ),
         ),
-
       ),
     );
   }

@@ -1,8 +1,8 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import '../../sizes_helpers.dart';
+import 'package:lywing/common/constants.dart';
+import '../../../sizes_helpers.dart';
 import 'login.dart';
 
 class Slash_Screen extends StatefulWidget {
@@ -15,7 +15,7 @@ class _Slash_ScreenState extends State<Slash_Screen> {
   Widget build(BuildContext context) {
     return Material(
       child: Container(
-        color: Colors.white,
+        color: kWhite,
         child: Column(
           children: <Widget>[
             Container(
@@ -40,7 +40,7 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                       child: Text(
                         'SKIP',
                         style: TextStyle(
-                          color: Colors.white,
+                          color: kWhite,
                           fontSize: 17,
                         ),
                       ),
@@ -59,7 +59,7 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 22,
-                              color: Colors.white,
+                              color: kWhite,
                             ),
                           ),
                         ),
@@ -69,7 +69,7 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 15,
-                              color: Colors.white,
+                              color: kWhite,
                               // decoration: TextDecoration.underline,
                             ),
                           ),
@@ -89,18 +89,18 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                 children: <Widget>[
                   Material(
                     elevation: 10,
-                    shadowColor: Colors.white70,
+                    shadowColor: kWhite,
                     borderRadius: BorderRadius.circular(15),
                     child: TextField(
                       decoration: InputDecoration(
                         labelText: 'Enter your Email',
                         enabledBorder: OutlineInputBorder(
                           borderSide:
-                              BorderSide(color: Colors.white, width: 0.0),
+                              BorderSide(color: kWhite, width: 0.0),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderSide:
-                              BorderSide(color: Colors.white, width: 0.0),
+                              BorderSide(color: kWhite, width: 0.0),
                         ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30.0),
@@ -131,7 +131,7 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 15,
-                            color: Colors.white,
+                            color: kWhite,
                           ),
                         ),
                       ),
@@ -148,7 +148,7 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                       child: RaisedButton(
                         elevation: 0,
                         onPressed: () {},
-                        color: Colors.white,
+                        color: kWhite,
                         shape: new RoundedRectangleBorder(
                           borderRadius: new BorderRadius.circular(10.0),
                           side: BorderSide(
@@ -160,7 +160,7 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 15,
-                            color: Colors.black,
+                            color: kBlack,
                           ),
                         ),
                       ),
@@ -177,7 +177,7 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                       child: RaisedButton(
                         elevation: 0,
                         onPressed: () {},
-                        color: Colors.white,
+                        color: kWhite,
                         shape: new RoundedRectangleBorder(
                           borderRadius: new BorderRadius.circular(10.0),
                           side: BorderSide(
@@ -197,7 +197,7 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                                 'Sign up with Google',
                                 style: TextStyle(
                                   fontSize: 15,
-                                  color: Colors.black,
+                                  color: kBlack,
                                 ),
                               ),
                             ),
@@ -217,7 +217,7 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                       child: RaisedButton(
                         elevation: 0,
                         onPressed: () {},
-                        color: Colors.white,
+                        color: kWhite,
                         shape: new RoundedRectangleBorder(
                           borderRadius: new BorderRadius.circular(10.0),
                           side: BorderSide(
@@ -237,7 +237,7 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                                 'Login width Facebook',
                                 style: TextStyle(
                                   fontSize: 15,
-                                  color: Colors.black,
+                                  color: kBlack,
                                 ),
                               ),
                             ),
@@ -268,7 +268,7 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                           child: Text(
                             'Login',
                             style: TextStyle(
-                              color: Colors.blueAccent,
+                              color: kBlue,
                               fontSize: 13,
                             ),
                           ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lywing/empty/watch-empty.dart';
-import 'users/login/slash-screen.dart';
+import 'screen/users/login/slash-screen.dart';
 
 void main() {
   runApp(MyApp());

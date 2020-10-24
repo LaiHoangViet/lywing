@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lywing/common/constants.dart';
 
 import 'explore.dart';
 import 'home.dart';
@@ -30,7 +31,7 @@ class _Home_ScreenState extends State<Home_Screen> {
     return Scaffold(
       body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
+        backgroundColor: kWhite,
         onTap: onTabTapped, // new
         currentIndex: _currentIndex,
         items: [
@@ -41,9 +42,9 @@ class _Home_ScreenState extends State<Home_Screen> {
             ),
             activeIcon: Image.asset(
               'assets/icons/tabs/search.png',
-              color: Colors.blue,
+              color: kBlue,
             ),
-            // backgroundColor: Colors.blue,
+            // backgroundColor: kBlue,
             title: Text(''),
           ),
           BottomNavigationBarItem(
@@ -53,7 +54,7 @@ class _Home_ScreenState extends State<Home_Screen> {
             ),
             activeIcon: Image.asset(
               'assets/icons/tabs/binoculars.png',
-              color: Colors.blue,
+              color: kBlue,
             ),
             title: Text(''),
             // backgroundColor: Colors.orange,
@@ -65,7 +66,7 @@ class _Home_ScreenState extends State<Home_Screen> {
             ),
             activeIcon: Image.asset(
               'assets/icons/tabs/backpack.png',
-              color: Colors.blue,
+              color: kBlue,
             ),
             title: Text(''),
             // backgroundColor: Colors.yellow,
@@ -77,7 +78,7 @@ class _Home_ScreenState extends State<Home_Screen> {
             ),
             activeIcon: Image.asset(
               'assets/icons/tabs/profile.png',
-              color: Colors.blue,
+              color: kBlue,
             ),
             title: Text(''),
             // backgroundColor: Colors.green,

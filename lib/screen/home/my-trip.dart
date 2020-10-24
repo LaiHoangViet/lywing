@@ -1,8 +1,9 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:lywing/common/constants.dart';
 import 'package:lywing/sizes_helpers.dart';
-
+import '';
 class My_Trip extends StatefulWidget {
   @override
   _My_TripState createState() => _My_TripState();
@@ -39,7 +40,7 @@ class _My_TripState extends State<My_Trip> {
                       topLeft: Radius.circular(15.0),
                       topRight: Radius.circular(15.0),
                     ),
-                    color: Colors.blue[600],
+                    color: kBlue,
                   ),
                   child: Row(
                     children: <Widget>[
@@ -48,7 +49,7 @@ class _My_TripState extends State<My_Trip> {
                           'Hanoi',
                           style: TextStyle(
                             fontSize: 17,
-                            color: Colors.white,
+                            color: kWhite,
                           ),
                         ),
                       ),
@@ -67,7 +68,7 @@ class _My_TripState extends State<My_Trip> {
                           'Singapore',
                           style: TextStyle(
                             fontSize: 17,
-                            color: Colors.white,
+                            color: kWhite,
                           ),
                         ),
                       ),
@@ -80,7 +81,7 @@ class _My_TripState extends State<My_Trip> {
                       bottomLeft: Radius.circular(15.0),
                       bottomRight: Radius.circular(15.0),
                     ),
-                    color: Colors.white,
+                    color: kWhite,
                   ),
                   child: Row(
                     children: <Widget>[
@@ -112,7 +113,7 @@ class _My_TripState extends State<My_Trip> {
                                             'Vietjet Air',
                                             style: TextStyle(
                                               fontSize: 15,
-                                              color: Colors.grey,
+                                              color: kGrey300,
                                             ),
                                           ),
                                         ),
@@ -121,7 +122,7 @@ class _My_TripState extends State<My_Trip> {
                                             'VJ 177',
                                             style: TextStyle(
                                               fontSize: 11,
-                                              color: Colors.grey[400],
+                                              color: kGrey900,
                                             ),
                                           ),
                                         ),
@@ -133,7 +134,7 @@ class _My_TripState extends State<My_Trip> {
                                       'Economy',
                                       style: TextStyle(
                                         fontSize: 11,
-                                        color: Colors.grey[400],
+                                        color: kGrey900,
                                       ),
                                     ),
                                   ),
@@ -154,7 +155,7 @@ class _My_TripState extends State<My_Trip> {
                                       '9:35',
                                       style: TextStyle(
                                         fontSize: 20,
-                                        color: Colors.black,
+                                        color: kBlack,
                                       ),
                                     ),
                                   ),
@@ -163,7 +164,7 @@ class _My_TripState extends State<My_Trip> {
                                       'direct - 12h30',
                                       style: TextStyle(
                                         fontSize: 11,
-                                        color: Colors.grey[400],
+                                        color: kGrey900,
                                       ),
                                     ),
                                   ),
@@ -172,7 +173,7 @@ class _My_TripState extends State<My_Trip> {
                                       '17:35',
                                       style: TextStyle(
                                         fontSize: 20,
-                                        color: Colors.black,
+                                        color: kBlack,
                                       ),
                                     ),
                                   ),
@@ -189,7 +190,7 @@ class _My_TripState extends State<My_Trip> {
                                       'Hanoi Noi Bai',
                                       style: TextStyle(
                                         fontSize: 11,
-                                        color: Colors.grey[400],
+                                        color: kGrey300,
                                       ),
                                     ),
                                   ),
@@ -198,7 +199,7 @@ class _My_TripState extends State<My_Trip> {
                                       'Singapore Changi',
                                       style: TextStyle(
                                         fontSize: 11,
-                                        color: Colors.grey[400],
+                                        color: kGrey900,
                                       ),
                                     ),
                                   ),
@@ -215,7 +216,7 @@ class _My_TripState extends State<My_Trip> {
                           bottom: 50,
                         ),
                         decoration: BoxDecoration(
-                          color: Colors.green,
+                          color: kGreenLight,
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Text(
@@ -223,7 +224,7 @@ class _My_TripState extends State<My_Trip> {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 15,
-                            color: Colors.white,
+                            color: kWhite,
                           ),
                         ),
                       ),
@@ -252,7 +253,7 @@ class _My_TripState extends State<My_Trip> {
                       topLeft: Radius.circular(15.0),
                       topRight: Radius.circular(15.0),
                     ),
-                    color: Colors.blue[600],
+                    color: kBlue,
                   ),
                   child: Row(
                     children: <Widget>[
@@ -261,7 +262,7 @@ class _My_TripState extends State<My_Trip> {
                           'Hanoi',
                           style: TextStyle(
                             fontSize: 17,
-                            color: Colors.white,
+                            color: kWhite,
                           ),
                         ),
                       ),
@@ -280,7 +281,7 @@ class _My_TripState extends State<My_Trip> {
                           'Singapore',
                           style: TextStyle(
                             fontSize: 17,
-                            color: Colors.white,
+                            color: kWhite,
                           ),
                         ),
                       ),
@@ -293,7 +294,7 @@ class _My_TripState extends State<My_Trip> {
                       bottomLeft: Radius.circular(15.0),
                       bottomRight: Radius.circular(15.0),
                     ),
-                    color: Colors.white,
+                    color: kWhite,
                   ),
                   child: Row(
                     children: <Widget>[
@@ -325,7 +326,7 @@ class _My_TripState extends State<My_Trip> {
                                             'Vietjet Air',
                                             style: TextStyle(
                                               fontSize: 15,
-                                              color: Colors.grey,
+                                              color: kGrey300,
                                             ),
                                           ),
                                         ),
@@ -334,7 +335,7 @@ class _My_TripState extends State<My_Trip> {
                                             'VJ 177',
                                             style: TextStyle(
                                               fontSize: 11,
-                                              color: Colors.grey[400],
+                                              color: kGrey900,
                                             ),
                                           ),
                                         ),
@@ -346,7 +347,7 @@ class _My_TripState extends State<My_Trip> {
                                       'Economy',
                                       style: TextStyle(
                                         fontSize: 11,
-                                        color: Colors.grey[400],
+                                        color: kGrey900,
                                       ),
                                     ),
                                   ),
@@ -367,7 +368,7 @@ class _My_TripState extends State<My_Trip> {
                                       '9:35',
                                       style: TextStyle(
                                         fontSize: 20,
-                                        color: Colors.black,
+                                        color: kBlack,
                                       ),
                                     ),
                                   ),
@@ -376,7 +377,7 @@ class _My_TripState extends State<My_Trip> {
                                       'direct - 12h30',
                                       style: TextStyle(
                                         fontSize: 11,
-                                        color: Colors.grey[400],
+                                        color: kGrey900,
                                       ),
                                     ),
                                   ),
@@ -385,7 +386,7 @@ class _My_TripState extends State<My_Trip> {
                                       '17:35',
                                       style: TextStyle(
                                         fontSize: 20,
-                                        color: Colors.black,
+                                        color: kBlack,
                                       ),
                                     ),
                                   ),
@@ -402,7 +403,7 @@ class _My_TripState extends State<My_Trip> {
                                       'Hanoi Noi Bai',
                                       style: TextStyle(
                                         fontSize: 11,
-                                        color: Colors.grey[400],
+                                        color: kGrey900,
                                       ),
                                     ),
                                   ),
@@ -411,7 +412,7 @@ class _My_TripState extends State<My_Trip> {
                                       'Singapore Changi',
                                       style: TextStyle(
                                         fontSize: 11,
-                                        color: Colors.grey[400],
+                                        color: kGrey900,
                                       ),
                                     ),
                                   ),
@@ -428,7 +429,7 @@ class _My_TripState extends State<My_Trip> {
                           bottom: 50,
                         ),
                         decoration: BoxDecoration(
-                          color: Colors.green,
+                          color: kGreenLight,
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Text(
@@ -436,7 +437,7 @@ class _My_TripState extends State<My_Trip> {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 15,
-                            color: Colors.white,
+                            color: kWhite,
                           ),
                         ),
                       ),

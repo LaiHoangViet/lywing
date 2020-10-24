@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:lywing/home/home.dart';
-import 'package:lywing/home/home_screen.dart';
-import 'package:lywing/users/login/register.dart';
+import 'package:lywing/common/constants.dart';
+import 'package:lywing/screen/home/home_screen.dart';
+import 'package:lywing/screen/users/login/register.dart';
 
-import '../../sizes_helpers.dart';
+import '../../../sizes_helpers.dart';
+
 
 class Login extends StatefulWidget {
   @override
@@ -16,7 +17,7 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Material(
       child: Container(
-        color: Colors.white,
+        color: kWhite,
         child: Column(
           children: <Widget>[
             Container(
@@ -43,7 +44,7 @@ class _LoginState extends State<Login> {
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 36,
-                              color: Colors.white,
+                              color: kWhite,
                             ),
                           ),
                         ),
@@ -60,16 +61,16 @@ class _LoginState extends State<Login> {
               ),
               child: Material(
                 elevation: 10,
-                shadowColor: Colors.white70,
+                shadowColor: kWhite,
                 borderRadius: BorderRadius.circular(15),
                 child: TextField(
                   decoration: InputDecoration(
                     labelText: 'Enter your Email',
                     enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white, width: 0.0),
+                      borderSide: BorderSide(color: kWhite, width: 0.0),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white, width: 0.0),
+                      borderSide: BorderSide(color: kWhite, width: 0.0),
                     ),
                   ),
                 ),
@@ -83,17 +84,17 @@ class _LoginState extends State<Login> {
               ),
               child: Material(
                 elevation: 10,
-                shadowColor: Colors.white70,
+                shadowColor: kWhite,
                 borderRadius: BorderRadius.circular(15),
                 child: TextField(
                   obscureText: true,
                   decoration: InputDecoration(
                     labelText: 'Enter password',
                     enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white, width: 0.0),
+                      borderSide: BorderSide(color: kWhite, width: 0.0),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white, width: 0.0),
+                      borderSide: BorderSide(color: kWhite, width: 0.0),
                     ),
                   ),
                 ),
@@ -115,7 +116,7 @@ class _LoginState extends State<Login> {
                       MaterialPageRoute(builder: (context) => Home_Screen()),
                     );
                   },
-                  color: Color.fromRGBO(0, 120, 255, 1),
+                  color: kBlue,
                   shape: new RoundedRectangleBorder(
                       borderRadius: new BorderRadius.circular(10.0)),
                   child: Text(
@@ -123,7 +124,7 @@ class _LoginState extends State<Login> {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 15,
-                      color: Colors.white,
+                      color: kWhite,
                     ),
                   ),
                 ),
@@ -143,7 +144,7 @@ class _LoginState extends State<Login> {
                       child: RaisedButton(
                         elevation: 0,
                         onPressed: () {},
-                        color: Colors.white,
+                        color: kWhite,
                         shape: new RoundedRectangleBorder(
                           borderRadius: new BorderRadius.circular(10.0),
                           side: BorderSide(
@@ -166,7 +167,7 @@ class _LoginState extends State<Login> {
                                 'Google',
                                 style: TextStyle(
                                   fontSize: 15,
-                                  color: Colors.black,
+                                  color: kBlack,
                                 ),
                               ),
                             ),
@@ -182,7 +183,7 @@ class _LoginState extends State<Login> {
                       child: RaisedButton(
                         elevation: 0,
                         onPressed: () {},
-                        color: Colors.white,
+                        color: kWhite,
                         shape: new RoundedRectangleBorder(
                           borderRadius: new BorderRadius.circular(10.0),
                           side: BorderSide(
@@ -205,7 +206,7 @@ class _LoginState extends State<Login> {
                                 'Facebook',
                                 style: TextStyle(
                                   fontSize: 15,
-                                  color: Colors.black,
+                                  color: kBlack,
                                 ),
                               ),
                             ),
@@ -230,7 +231,7 @@ class _LoginState extends State<Login> {
                       "Don't have account?",
                       style: TextStyle(
                         fontSize: 13,
-                        color: Colors.black26,
+                        color: kGrey300,
                       ),
                     ),
                   ),
@@ -244,7 +245,7 @@ class _LoginState extends State<Login> {
                     child: Text(
                       'Register new account',
                       style: TextStyle(
-                        color: Colors.blueAccent,
+                        color: kBlue,
                         fontSize: 13,
                       ),
                     ),

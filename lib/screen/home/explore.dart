@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:lywing/common/constants.dart';
 import 'package:lywing/sizes_helpers.dart';
 
 class Explore extends StatefulWidget {
@@ -23,10 +24,10 @@ class _ExploreState extends State<Explore> {
             right: 10,
           ),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: kWhite,
             border: Border.all(
               width: 0.0,
-              color: Colors.white,
+              color: kWhite,
             ),
             boxShadow: [
               BoxShadow(
@@ -41,7 +42,7 @@ class _ExploreState extends State<Explore> {
             'Watch',
             style: TextStyle(
               fontSize: 32,
-              color: Colors.black,
+              color: kBlack,
             ),
           ),
         ),
@@ -60,14 +61,14 @@ class _ExploreState extends State<Explore> {
             ),
             child: RaisedButton(
               onPressed: () {},
-              color: Colors.white,
+              color: kWhite,
               elevation: 10,
               padding: const EdgeInsets.all(20),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
                 side: BorderSide(
                   width: 0,
-                  color: Colors.white,
+                  color: kWhite,
                 ),
               ),
               child: Column(
@@ -99,7 +100,7 @@ class _ExploreState extends State<Explore> {
                       'from Hồ Chí Minh city',
                       style: TextStyle(
                         fontSize: 11,
-                        color: Colors.black26,
+                        color: kGrey300,
                       ),
                     ),
                   ),
@@ -123,7 +124,7 @@ class _ExploreState extends State<Explore> {
                             'Web, Apri 16 - Thu Apr 18',
                             style: TextStyle(
                               fontSize: 12,
-                              color: Colors.black26,
+                              color: kGrey300,
                             ),
                           ),
                         ),
@@ -142,14 +143,14 @@ class _ExploreState extends State<Explore> {
             ),
             child: RaisedButton(
               onPressed: () {},
-              color: Colors.white,
+              color: kWhite,
               elevation: 10,
               padding: const EdgeInsets.all(20),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
                 side: BorderSide(
                   width: 0,
-                  color: Colors.white,
+                  color: kWhite,
                 ),
               ),
               child: Column(
@@ -181,7 +182,7 @@ class _ExploreState extends State<Explore> {
                       'from Hồ Chí Minh city',
                       style: TextStyle(
                         fontSize: 11,
-                        color: Colors.black26,
+                        color: kGrey300,
                       ),
                     ),
                   ),
@@ -205,7 +206,7 @@ class _ExploreState extends State<Explore> {
                             'Web, Apri 16 - Thu Apr 18',
                             style: TextStyle(
                               fontSize: 12,
-                              color: Colors.black26,
+                              color: kGrey300,
                             ),
                           ),
                         ),
@@ -224,14 +225,14 @@ class _ExploreState extends State<Explore> {
             ),
             child: RaisedButton(
               onPressed: () {},
-              color: Colors.white,
+              color: kWhite,
               elevation: 10,
               padding: const EdgeInsets.all(20),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
                 side: BorderSide(
                   width: 0,
-                  color: Colors.white,
+                  color: kWhite,
                 ),
               ),
               child: Column(
@@ -263,7 +264,7 @@ class _ExploreState extends State<Explore> {
                       'from Hồ Chí Minh city',
                       style: TextStyle(
                         fontSize: 11,
-                        color: Colors.black26,
+                        color: kGrey300,
                       ),
                     ),
                   ),
@@ -287,7 +288,7 @@ class _ExploreState extends State<Explore> {
                             'Web, Apri 16 - Thu Apr 18',
                             style: TextStyle(
                               fontSize: 12,
-                              color: Colors.black26,
+                              color: kGrey300,
                             ),
                           ),
                         ),
@@ -306,14 +307,14 @@ class _ExploreState extends State<Explore> {
             ),
             child: RaisedButton(
               onPressed: () {},
-              color: Colors.white,
+              color: kWhite,
               elevation: 10,
               padding: const EdgeInsets.all(20),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
                 side: BorderSide(
                   width: 0,
-                  color: Colors.white,
+                  color: kWhite,
                 ),
               ),
               child: Column(
@@ -345,7 +346,7 @@ class _ExploreState extends State<Explore> {
                       'from Hồ Chí Minh city',
                       style: TextStyle(
                         fontSize: 11,
-                        color: Colors.black26,
+                        color: kGrey300,
                       ),
                     ),
                   ),
@@ -369,7 +370,7 @@ class _ExploreState extends State<Explore> {
                             'Web, Apri 16 - Thu Apr 18',
                             style: TextStyle(
                               fontSize: 12,
-                              color: Colors.black26,
+                              color: kGrey300,
                             ),
                           ),
                         ),

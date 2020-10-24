@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:lywing/empty/my-trip-empty.dart';
-import 'package:lywing/home/my-trip.dart';
-
-import '../sizes_helpers.dart';
+import 'package:lywing/common/constants.dart';
+import 'package:lywing/screen/empty/my-trip-empty.dart';
+import '../../sizes_helpers.dart';
+import 'my-trip.dart';
 
 class TabbarMy_Trip extends StatefulWidget {
   @override
@@ -28,10 +28,10 @@ class _TabbarMy_TripState extends State<TabbarMy_Trip> {
               ) ,
               width: displaySize(context).width,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: kWhite,
                 border: Border.all(
                   width: 0.0,
-                  color: Colors.white,
+                  color: kWhite,
                 ),
                 boxShadow: [
                   BoxShadow(
@@ -44,13 +44,13 @@ class _TabbarMy_TripState extends State<TabbarMy_Trip> {
               ),
               child: AppBar(
                 automaticallyImplyLeading: false,
-                backgroundColor: Colors.white,
+                backgroundColor: kWhite,
                 title: Text(
                   'My Trip',
                   textAlign: TextAlign.end,
                   style: TextStyle(
                     fontSize: 34,
-                    color: Colors.black,
+                    color: kBlack,
                   ),
                 ),
                 bottom: PreferredSize(
@@ -59,8 +59,8 @@ class _TabbarMy_TripState extends State<TabbarMy_Trip> {
                     child: TabBar(
                       isScrollable: true,
                       labelPadding: EdgeInsets.only(left: 10, right: 10),
-                      indicatorColor: Colors.blue,
-                      labelColor: Colors.blue,
+                      indicatorColor: kBlue,
+                      labelColor: kBlue,
                       unselectedLabelColor: Colors.black,
                       indicatorSize: TabBarIndicatorSize.label,
                       tabs: <Widget>[

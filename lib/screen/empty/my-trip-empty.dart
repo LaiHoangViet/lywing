@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:lywing/common/constants.dart';
 
-import '../sizes_helpers.dart';
+import '../../sizes_helpers.dart';
+
 
 class My_Trip_Empty extends StatefulWidget {
   @override
@@ -24,10 +26,10 @@ class _My_Trip_EmptyState extends State<My_Trip_Empty> {
             //     right: 10,
             //   ),
             //   decoration: BoxDecoration(
-            //     color: Colors.white,
+            //     color: kWhite,
             //     border: Border.all(
             //       width: 0.0,
-            //       color: Colors.white,
+            //       color: kWhite,
             //     ),
             //     boxShadow: [
             //       BoxShadow(
@@ -63,7 +65,7 @@ class _My_Trip_EmptyState extends State<My_Trip_Empty> {
                       'No history trip',
                       style: TextStyle(
                         fontSize: 22,
-                        color: Colors.black,
+                        color: kBlack,
                       ),
                     ),
                   ),
@@ -75,7 +77,7 @@ class _My_Trip_EmptyState extends State<My_Trip_Empty> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 15,
-                        color: Colors.black26,
+                        color: kGrey300,
                       ),
                     ),
                   ),

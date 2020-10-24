@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lywing/common/constants.dart';
 import 'package:lywing/sizes_helpers.dart';
 
 class Watch_Empty extends StatefulWidget {
@@ -21,10 +22,10 @@ class _Watch_EmptyState extends State<Watch_Empty> {
             right: 10,
           ),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: kWhite,
             border: Border.all(
               width: 0.0,
-              color: Colors.white,
+              color: kWhite,
             ),
             boxShadow: [
               BoxShadow(
@@ -39,7 +40,7 @@ class _Watch_EmptyState extends State<Watch_Empty> {
             'Watch',
             style: TextStyle(
               fontSize: 32,
-              color: Colors.black,
+              color: kBlack,
             ),
           ),
         ),
@@ -57,10 +58,10 @@ class _Watch_EmptyState extends State<Watch_Empty> {
             //     right: 10,
             //   ),
             //   decoration: BoxDecoration(
-            //     color: Colors.white,
+            //     color: kWhite,
             //     border: Border.all(
             //       width: 0.0,
-            //       color: Colors.white,
+            //       color: kWhite,
             //     ),
             //     boxShadow: [
             //       BoxShadow(
@@ -96,7 +97,7 @@ class _Watch_EmptyState extends State<Watch_Empty> {
                       'No save flight',
                       style: TextStyle(
                         fontSize: 22,
-                        color: Colors.black,
+                        color: kBlack,
                       ),
                     ),
                   ),
@@ -108,7 +109,7 @@ class _Watch_EmptyState extends State<Watch_Empty> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 15,
-                        color: Colors.black26,
+                        color: kGrey300,
                       ),
                     ),
                   ),

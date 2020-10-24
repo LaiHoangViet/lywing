@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:lywing/users/login/login.dart';
+import 'package:lywing/common/constants.dart';
 
-import '../../sizes_helpers.dart';
+import '../../../sizes_helpers.dart';
+import 'login.dart';
 
 class Register extends StatefulWidget {
   @override
@@ -12,7 +13,7 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.white,
+      color: kWhite,
       child: Column(
         children: <Widget>[
           Container(
@@ -39,7 +40,7 @@ class _RegisterState extends State<Register> {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 36,
-                            color: Colors.white,
+                            color: kWhite,
                           ),
                         ),
                       ),
@@ -56,16 +57,16 @@ class _RegisterState extends State<Register> {
             ),
             child: Material(
               elevation: 10,
-              shadowColor: Colors.white70,
+              shadowColor: kWhite,
               borderRadius: BorderRadius.circular(15),
               child: TextField(
                 decoration: InputDecoration(
                   labelText: 'Enter your Email',
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white, width: 0.0),
+                    borderSide: BorderSide(color: kWhite, width: 0.0),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white, width: 0.0),
+                    borderSide: BorderSide(color: kWhite, width: 0.0),
                   ),
                 ),
               ),
@@ -79,17 +80,17 @@ class _RegisterState extends State<Register> {
             ),
             child: Material(
               elevation: 10,
-              shadowColor: Colors.white70,
+              shadowColor: kWhite,
               borderRadius: BorderRadius.circular(15),
               child: TextField(
                 obscureText: true,
                 decoration: InputDecoration(
                   labelText: 'Enter password',
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white, width: 0.0),
+                    borderSide: BorderSide(color: kWhite, width: 0.0),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white, width: 0.0),
+                    borderSide: BorderSide(color: kWhite, width: 0.0),
                   ),
                 ),
               ),
@@ -103,17 +104,17 @@ class _RegisterState extends State<Register> {
             ),
             child: Material(
               elevation: 10,
-              shadowColor: Colors.white70,
+              shadowColor: kWhite,
               borderRadius: BorderRadius.circular(15),
               child: TextField(
                 obscureText: true,
                 decoration: InputDecoration(
                   labelText: 'Enter password',
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white, width: 0.0),
+                    borderSide: BorderSide(color: kWhite, width: 0.0),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white, width: 0.0),
+                    borderSide: BorderSide(color: kWhite, width: 0.0),
                   ),
                 ),
               ),
@@ -138,7 +139,7 @@ class _RegisterState extends State<Register> {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 15,
-                    color: Colors.white,
+                    color: kWhite,
                   ),
                 ),
               ),
@@ -155,7 +156,7 @@ class _RegisterState extends State<Register> {
                   "Already have an account?",
                   style: TextStyle(
                     fontSize: 13,
-                    color: Colors.black26,
+                    color: kGrey300,
                   ),
                 ),
                 FlatButton(
@@ -168,7 +169,7 @@ class _RegisterState extends State<Register> {
                   child: Text(
                     'Login',
                     style: TextStyle(
-                      color: Colors.blueAccent,
+                      color: kBlue,
                       fontSize: 13,
                     ),
                   ),
