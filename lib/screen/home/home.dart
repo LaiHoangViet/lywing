@@ -2,8 +2,24 @@ import 'dart:math';
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter_spinbox/cupertino.dart';
+import 'package:flutter_spinbox/material.dart';
+import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:lywing/common/constants.dart';
+import 'package:lywing/screen/choose/seclect_date.dart';
 import 'package:lywing/sizes_helpers.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+
+class BackendService {
+  static Future<List> getSuggestions(String query) async {
+    await Future.delayed(Duration(seconds: 1));
+    return List.generate(3, (index) {
+      return {'name': query + index.toString(), 'price': Random().nextInt(100)};
+    });
+  }
+}
 
 class Home extends StatefulWidget {
   @override
@@ -13,6 +29,8 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> with TickerProviderStateMixin {
   final destination_from = TextEditingController();
   final destination_to = TextEditingController();
+
+  int selectedRadio = 1;
 
   Animation _arrowAnimation;
   AnimationController _arrowAnimationController;
@@ -81,7 +99,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                   'Travel the world made simple',
                   style: TextStyle(
                     fontSize: 28,
-                    color: kGrey300,
+                    color: kGrey600,
                   ),
                 ),
               ),
@@ -103,19 +121,34 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                       child: Column(
                         children: <Widget>[
                           Container(
+                            margin: const EdgeInsets.only(
+                                // left: 10,
+                                ),
                             child: Row(
                               children: <Widget>[
                                 Image(
                                   image: AssetImage('assets/icons/place.png'),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                    left: 20,
+                                Container(
+                                  width: 190,
+                                  margin: const EdgeInsets.only(
+                                    left: 5,
                                   ),
-                                  child: Container(
-                                    width: 120,
-                                    child: TextField(
-                                      controller: destination_to,
+                                  child: TextField(
+                                    controller: destination_to,
+                                    decoration: InputDecoration(
+                                      enabledBorder: const OutlineInputBorder(
+                                        borderSide: const BorderSide(
+                                          color: kWhite,
+                                          width: 0.0,
+                                        ),
+                                      ),
+                                      focusedBorder: const OutlineInputBorder(
+                                        borderSide: const BorderSide(
+                                          color: kWhite,
+                                          width: 0.0,
+                                        ),
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -123,10 +156,10 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                             ),
                           ),
                           Container(
-                            width: displayWidth(context) * 0.39,
                             margin: const EdgeInsets.only(
                               top: 10,
                               bottom: 10,
+                              right: 190,
                             ),
                             child: Row(
                               children: <Widget>[
@@ -137,19 +170,32 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                             ),
                           ),
                           Container(
+                            margin: const EdgeInsets.only(
+                              right: 40,
+                            ),
                             child: Row(
                               children: <Widget>[
                                 Image(
                                   image: AssetImage('assets/icons/flights.png'),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                    left: 20,
-                                  ),
-                                  child: Container(
-                                    width: 120,
-                                    child: TextField(
-                                      controller: destination_from,
+                                Container(
+                                  width: 150,
+                                  child: RaisedButton(
+                                    elevation: 0,
+                                    color: kWhite,
+                                    shape: Border.all(
+                                      width: 0.0,
+                                      color: kWhite,
+                                    ),
+                                    onPressed: () {
+                                      search_place();
+                                    },
+                                    child: Text(
+                                      'Where you to go?',
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        color: kGrey500,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -171,13 +217,15 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                   right: 25,
                 ),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Container(
                       width: 130,
                       color: Color.fromRGBO(112, 112, 112, 0.0),
                       child: RaisedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          type_of_flight();
+                        },
                         elevation: 0,
                         shape: new RoundedRectangleBorder(
                             borderRadius: new BorderRadius.circular(10.0)),
@@ -186,7 +234,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                             Container(
                               child: Image(
                                 image: AssetImage('assets/icons/return.png'),
-                                color: kGrey300,
+                                color: kGrey600,
                               ),
                             ),
                             Container(
@@ -197,7 +245,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                 'Return',
                                 style: TextStyle(
                                   fontSize: 15,
-                                  color: kGrey300,
+                                  color: kGrey600,
                                 ),
                               ),
                             ),
@@ -209,7 +257,9 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                       width: 130,
                       color: Color.fromRGBO(112, 112, 112, 0.0),
                       child: RaisedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          passenger_and_bags();
+                        },
                         elevation: 0,
                         shape: new RoundedRectangleBorder(
                             borderRadius: new BorderRadius.circular(10.0)),
@@ -232,7 +282,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                       '2',
                                       style: TextStyle(
                                         fontSize: 15,
-                                        color: kGrey300,
+                                        color: kGrey600,
                                       ),
                                     ),
                                   ),
@@ -255,7 +305,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                       '0',
                                       style: TextStyle(
                                         fontSize: 15,
-                                        color: kGrey300,
+                                        color: kGrey600,
                                       ),
                                     ),
                                   ),
@@ -278,7 +328,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                       '0',
                                       style: TextStyle(
                                         fontSize: 15,
-                                        color: kGrey300,
+                                        color: kGrey600,
                                       ),
                                     ),
                                   ),
@@ -294,6 +344,546 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  void search_place() {
+    showMaterialModalBottomSheet(
+      context: context,
+      expand: false,
+      backgroundColor: kWhite,
+      builder: (context, scrollController) => Container(
+        padding: const EdgeInsets.only(
+          top: 20,
+          left: 10,
+          right: 10,
+          bottom: 10,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Container(
+              alignment: Alignment.centerRight,
+              child: RaisedButton(
+                elevation: 0,
+                color: kWhite,
+                onPressed: () {},
+                child: Image(
+                  image:
+                      AssetImage('assets/icons/modal-bottom-sheet/close.png'),
+                ),
+              ),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                color: kGrey200,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: TypeAheadField(
+                textFieldConfiguration: TextFieldConfiguration(
+                  style: TextStyle(
+                    fontSize: 17,
+                    color: kGrey500,
+                  ),
+                  decoration: InputDecoration(
+                    contentPadding: const EdgeInsets.all(5.0),
+                    prefixIcon: Icon(Icons.search),
+                    hintText: 'Search',
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(
+                        color: kWhite,
+                        width: 0.0,
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(
+                        color: kWhite,
+                        width: 0.0,
+                      ),
+                    ),
+                  ),
+                ),
+                suggestionsCallback: (pattern) async {
+                  // Here you can call http call
+                  return await BackendService.getSuggestions(pattern);
+                },
+                suggestionsBoxDecoration: SuggestionsBoxDecoration(
+                  elevation: 0,
+                  color: kWhite,
+                ),
+                itemBuilder: (context, suggestion) {
+                  return Container(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Container(
+                          child: Container(
+                            child: Text(
+                              'RECENT',
+                              style: TextStyle(
+                                fontSize: 17,
+                                color: kGrey500,
+                              ),
+                            ),
+                          ),
+                        ),
+                        ListTile(
+                          title: Text(
+                            suggestion['name'],
+                            style: TextStyle(
+                              fontSize: 15,
+                              color: kGrey600,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          child: Container(
+                            child: Text(
+                              'NEAR BY HANOI',
+                              style: TextStyle(
+                                fontSize: 17,
+                                color: kGrey500,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+                onSuggestionSelected: (suggestion) {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => Seclect_Date(),
+                  ));
+                },
+
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void passenger_and_bags() {
+    showMaterialModalBottomSheet(
+      context: context,
+      expand: false,
+      backgroundColor: kWhite,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(10.0)),
+      ),
+      builder: (context, scrollController) => Container(
+        height: displaySize(context).height * 0.65,
+        padding: const EdgeInsets.all(25),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            // Passengers
+            Container(
+              child: Text(
+                'Passengers',
+                style: TextStyle(
+                  fontSize: 20,
+                  color: kBlack,
+                ),
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(
+                top: 15,
+                bottom: 15,
+              ),
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Container(
+                          child: Row(
+                            children: <Widget>[
+                              Container(
+                                child: Image(
+                                  image: AssetImage(
+                                      'assets/icons/modal-bottom-sheet/adults.png'),
+                                ),
+                              ),
+                              Container(
+                                padding: const EdgeInsets.only(
+                                  left: 15,
+                                ),
+                                child: Text(
+                                  'Adults',
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    color: kGrey600,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                            width: 150,
+                            child: CupertinoSpinBox(
+                              decoration: BoxDecoration(
+                                color: kWhite,
+                              ),
+                              textStyle: TextStyle(
+                                color: kGrey600,
+                              ),
+                              min: 1,
+                              max: 100,
+                              value: 50,
+                              onChanged: (value) => print(value),
+                            )),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Container(
+                          child: Row(
+                            children: <Widget>[
+                              Container(
+                                child: Image(
+                                  image: AssetImage(
+                                      'assets/icons/modal-bottom-sheet/infants.png'),
+                                ),
+                              ),
+                              Container(
+                                padding: const EdgeInsets.only(
+                                  left: 15,
+                                ),
+                                child: Text(
+                                  'Infants',
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    color: kGrey600,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                            width: 150,
+                            child: CupertinoSpinBox(
+                              decoration: BoxDecoration(
+                                color: kWhite,
+                              ),
+                              textStyle: TextStyle(
+                                color: kGrey600,
+                              ),
+                              min: 1,
+                              max: 100,
+                              value: 50,
+                              onChanged: (value) => print(value),
+                            )),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            // Bags
+            Container(
+              child: Text(
+                'Bags',
+                style: TextStyle(
+                  fontSize: 20,
+                  color: kBlack,
+                ),
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(
+                top: 15,
+                bottom: 15,
+              ),
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Container(
+                          child: Row(
+                            children: <Widget>[
+                              Container(
+                                child: Image(
+                                  image: AssetImage(
+                                      'assets/icons/modal-bottom-sheet/checked-bags.png'),
+                                ),
+                              ),
+                              Container(
+                                padding: const EdgeInsets.only(
+                                  left: 15,
+                                ),
+                                child: Text(
+                                  'Checked Bags',
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    color: kGrey600,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                            width: 150,
+                            child: CupertinoSpinBox(
+                              decoration: BoxDecoration(
+                                color: kWhite,
+                              ),
+                              textStyle: TextStyle(
+                                color: kGrey600,
+                              ),
+                              min: 1,
+                              max: 100,
+                              value: 50,
+                              onChanged: (value) => print(value),
+                            )),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            // Classes
+            Container(
+              child: Text(
+                'Classes',
+                style: TextStyle(
+                  fontSize: 20,
+                  color: kBlack,
+                ),
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(
+                top: 10,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                    child: Row(
+                      children: <Widget>[
+                        Container(
+                          child: Radio(
+                            value: 1,
+                            groupValue: selectedRadio,
+                            onChanged: (T) {
+                              print(T);
+                              setState(() {
+                                selectedRadio = T;
+                              });
+                            },
+                          ),
+                        ),
+                        Container(
+                          child: Text('Economy'),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    child: Row(
+                      children: <Widget>[
+                        Container(
+                          child: Radio(
+                            value: 2,
+                            groupValue: selectedRadio,
+                            onChanged: (T) {
+                              print(T);
+                              setState(() {
+                                selectedRadio = T;
+                              });
+                            },
+                          ),
+                        ),
+                        Container(
+                          child: Text('Premium Economy'),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    child: Row(
+                      children: <Widget>[
+                        Container(
+                          child: Radio(
+                            value: 3,
+                            groupValue: selectedRadio,
+                            onChanged: (T) {
+                              print(T);
+                              setState(() {
+                                selectedRadio = T;
+                              });
+                            },
+                          ),
+                        ),
+                        Container(
+                          child: Text('Business'),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void type_of_flight() {
+    showMaterialModalBottomSheet(
+      context: context,
+      expand: false,
+      backgroundColor: kWhite,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(10.0)),
+      ),
+      builder: (context, scrollController) => Container(
+        height: displaySize(context).height * 0.3,
+        padding: const EdgeInsets.only(
+          top: 25,
+          left: 10,
+          right: 10,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Container(
+              margin: const EdgeInsets.only(
+                left: 15,
+              ),
+              child: Text(
+                'Type',
+                style: TextStyle(
+                  fontSize: 20,
+                  color: kBlack,
+                ),
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(
+                top: 15,
+              ),
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    width: 150,
+                    child: RaisedButton(
+                      onPressed: () {},
+                      elevation: 0,
+                      color: kWhite,
+                      shape: Border.all(
+                        width: 0.0,
+                        color: kWhite,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Container(
+                            child: Image(
+                                image: AssetImage('assets/icons/return.png')),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(
+                              left: 15,
+                            ),
+                            child: Text(
+                              'Return',
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: kBlack,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: 150,
+                    child: RaisedButton(
+                      onPressed: () {},
+                      elevation: 0,
+                      color: kWhite,
+                      shape: Border.all(
+                        width: 0.0,
+                        color: kWhite,
+                      ),
+                      child: Row(
+                        children: <Widget>[
+                          Container(
+                            child: Image(
+                                image: AssetImage(
+                                    'assets/icons/modal-bottom-sheet/one-way.png')),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(
+                              left: 15,
+                            ),
+                            child: Text(
+                              'One Way',
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: kBlack,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: 150,
+                    child: RaisedButton(
+                      onPressed: () {},
+                      elevation: 0,
+                      color: kWhite,
+                      shape: Border.all(
+                        width: 0.0,
+                        color: kWhite,
+                      ),
+                      child: Row(
+                        children: <Widget>[
+                          Container(
+                            child: Image(
+                                image: AssetImage(
+                                    'assets/icons/modal-bottom-sheet/multi-city.png')),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(
+                              left: 15,
+                            ),
+                            child: Text(
+                              'Multi City',
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: kBlack,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );

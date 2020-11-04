@@ -77,7 +77,7 @@ class _My_Trip_EmptyState extends State<My_Trip_Empty> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 15,
-                        color: kGrey300,
+                        color: kGrey600,
                       ),
                     ),
                   ),

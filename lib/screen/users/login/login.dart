@@ -107,8 +107,8 @@ class _LoginState extends State<Login> {
                 right: 10,
               ),
               child: ButtonTheme(
-                minWidth: 350,
-                height: 40,
+                minWidth: 500,
+                height: displaySize(context).height * 0.05,
                 child: RaisedButton(
                   onPressed: () {
                     Navigator.push(
@@ -231,7 +231,7 @@ class _LoginState extends State<Login> {
                       "Don't have account?",
                       style: TextStyle(
                         fontSize: 13,
-                        color: kGrey300,
+                        color: kGrey600,
                       ),
                     ),
                   ),

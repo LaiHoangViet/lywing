@@ -156,7 +156,7 @@ class _RegisterState extends State<Register> {
                   "Already have an account?",
                   style: TextStyle(
                     fontSize: 13,
-                    color: kGrey300,
+                    color: kGrey600,
                   ),
                 ),
                 FlatButton(

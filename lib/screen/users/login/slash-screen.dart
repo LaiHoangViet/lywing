@@ -114,8 +114,8 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                       bottom: 5,
                     ),
                     child: ButtonTheme(
-                      minWidth: 350,
-                      height: 40,
+                      minWidth: 500,
+                      height: displaySize(context).height * 0.05,
                       child: RaisedButton(
                         onPressed: () {
                           Navigator.push(
@@ -143,7 +143,7 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                       bottom: 5,
                     ),
                     child: ButtonTheme(
-                      minWidth: 350,
+                      minWidth: 500,
                       height: 40,
                       child: RaisedButton(
                         elevation: 0,

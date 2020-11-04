@@ -100,7 +100,7 @@ class _ExploreState extends State<Explore> {
                       'from Hồ Chí Minh city',
                       style: TextStyle(
                         fontSize: 11,
-                        color: kGrey300,
+                        color: kGrey600,
                       ),
                     ),
                   ),
@@ -124,7 +124,7 @@ class _ExploreState extends State<Explore> {
                             'Web, Apri 16 - Thu Apr 18',
                             style: TextStyle(
                               fontSize: 12,
-                              color: kGrey300,
+                              color: kGrey600,
                             ),
                           ),
                         ),
@@ -182,7 +182,7 @@ class _ExploreState extends State<Explore> {
                       'from Hồ Chí Minh city',
                       style: TextStyle(
                         fontSize: 11,
-                        color: kGrey300,
+                        color: kGrey600,
                       ),
                     ),
                   ),
@@ -206,7 +206,7 @@ class _ExploreState extends State<Explore> {
                             'Web, Apri 16 - Thu Apr 18',
                             style: TextStyle(
                               fontSize: 12,
-                              color: kGrey300,
+                              color: kGrey600,
                             ),
                           ),
                         ),
@@ -264,7 +264,7 @@ class _ExploreState extends State<Explore> {
                       'from Hồ Chí Minh city',
                       style: TextStyle(
                         fontSize: 11,
-                        color: kGrey300,
+                        color: kGrey600,
                       ),
                     ),
                   ),
@@ -288,7 +288,7 @@ class _ExploreState extends State<Explore> {
                             'Web, Apri 16 - Thu Apr 18',
                             style: TextStyle(
                               fontSize: 12,
-                              color: kGrey300,
+                              color: kGrey600,
                             ),
                           ),
                         ),
@@ -346,7 +346,7 @@ class _ExploreState extends State<Explore> {
                       'from Hồ Chí Minh city',
                       style: TextStyle(
                         fontSize: 11,
-                        color: kGrey300,
+                        color: kGrey600,
                       ),
                     ),
                   ),
@@ -370,7 +370,7 @@ class _ExploreState extends State<Explore> {
                             'Web, Apri 16 - Thu Apr 18',
                             style: TextStyle(
                               fontSize: 12,
-                              color: kGrey300,
+                              color: kGrey600,
                             ),
                           ),
                         ),

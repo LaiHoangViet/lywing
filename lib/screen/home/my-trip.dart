@@ -113,7 +113,7 @@ class _My_TripState extends State<My_Trip> {
                                             'Vietjet Air',
                                             style: TextStyle(
                                               fontSize: 15,
-                                              color: kGrey300,
+                                              color: kGrey600,
                                             ),
                                           ),
                                         ),
@@ -122,7 +122,7 @@ class _My_TripState extends State<My_Trip> {
                                             'VJ 177',
                                             style: TextStyle(
                                               fontSize: 11,
-                                              color: kGrey900,
+                                              color: kGrey500,
                                             ),
                                           ),
                                         ),
@@ -134,7 +134,7 @@ class _My_TripState extends State<My_Trip> {
                                       'Economy',
                                       style: TextStyle(
                                         fontSize: 11,
-                                        color: kGrey900,
+                                        color: kGrey500,
                                       ),
                                     ),
                                   ),
@@ -164,7 +164,7 @@ class _My_TripState extends State<My_Trip> {
                                       'direct - 12h30',
                                       style: TextStyle(
                                         fontSize: 11,
-                                        color: kGrey900,
+                                        color: kGrey500,
                                       ),
                                     ),
                                   ),
@@ -190,7 +190,7 @@ class _My_TripState extends State<My_Trip> {
                                       'Hanoi Noi Bai',
                                       style: TextStyle(
                                         fontSize: 11,
-                                        color: kGrey300,
+                                        color: kGrey600,
                                       ),
                                     ),
                                   ),
@@ -199,7 +199,7 @@ class _My_TripState extends State<My_Trip> {
                                       'Singapore Changi',
                                       style: TextStyle(
                                         fontSize: 11,
-                                        color: kGrey900,
+                                        color: kGrey500,
                                       ),
                                     ),
                                   ),
@@ -326,7 +326,7 @@ class _My_TripState extends State<My_Trip> {
                                             'Vietjet Air',
                                             style: TextStyle(
                                               fontSize: 15,
-                                              color: kGrey300,
+                                              color: kGrey600,
                                             ),
                                           ),
                                         ),
@@ -335,7 +335,7 @@ class _My_TripState extends State<My_Trip> {
                                             'VJ 177',
                                             style: TextStyle(
                                               fontSize: 11,
-                                              color: kGrey900,
+                                              color: kGrey500,
                                             ),
                                           ),
                                         ),
@@ -347,7 +347,7 @@ class _My_TripState extends State<My_Trip> {
                                       'Economy',
                                       style: TextStyle(
                                         fontSize: 11,
-                                        color: kGrey900,
+                                        color: kGrey500,
                                       ),
                                     ),
                                   ),
@@ -377,7 +377,7 @@ class _My_TripState extends State<My_Trip> {
                                       'direct - 12h30',
                                       style: TextStyle(
                                         fontSize: 11,
-                                        color: kGrey900,
+                                        color: kGrey500,
                                       ),
                                     ),
                                   ),
@@ -403,7 +403,7 @@ class _My_TripState extends State<My_Trip> {
                                       'Hanoi Noi Bai',
                                       style: TextStyle(
                                         fontSize: 11,
-                                        color: kGrey900,
+                                        color: kGrey500,
                                       ),
                                     ),
                                   ),
@@ -412,7 +412,7 @@ class _My_TripState extends State<My_Trip> {
                                       'Singapore Changi',
                                       style: TextStyle(
                                         fontSize: 11,
-                                        color: kGrey900,
+                                        color: kGrey500,
                                       ),
                                     ),
                                   ),

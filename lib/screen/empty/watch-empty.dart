@@ -109,7 +109,7 @@ class _Watch_EmptyState extends State<Watch_Empty> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 15,
-                        color: kGrey300,
+                        color: kGrey600,
                       ),
                     ),
                   ),
