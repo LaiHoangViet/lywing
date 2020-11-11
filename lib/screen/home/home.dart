@@ -8,6 +8,7 @@ import 'package:flutter_spinbox/cupertino.dart';
 import 'package:flutter_spinbox/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:lywing/common/constants.dart';
+import 'package:lywing/screen/choose/flight-results.dart';
 import 'package:lywing/screen/choose/seclect_date.dart';
 import 'package:lywing/sizes_helpers.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
@@ -48,9 +49,9 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   Widget firstChild() {
     return RaisedButton(
       color: kWhite,
-      hoverElevation: 0.0,
       highlightElevation: 0.0,
       elevation: 0,
+      highlightColor: kWhite,
       shape: Border.all(
         width: 0.0,
         color: kWhite,
@@ -80,21 +81,25 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Material(
       child: Scaffold(
-        body: Container(
+        body:  Container(
           width: displaySize(context).width,
-          color: Color.fromRGBO(245, 247, 250, 10),
+          height: displaySize(context).height,
+          color: kGrey100,
+          padding: const EdgeInsets.only(
+            left: 10,
+            right: 10,
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
+              // Tieu de
               Container(
                 margin: const EdgeInsets.only(
-                  left: 10,
-                  right: 10,
-                  bottom: 10,
+                  bottom: 40,
                 ),
                 alignment: Alignment.bottomLeft,
                 width: 230,
-                height: 250,
+                height: displaySize(context).height * 0.2,
                 child: Text(
                   'Travel the world made simple',
                   style: TextStyle(
@@ -103,118 +108,171 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                   ),
                 ),
               ),
+
+              // Dia diem den va di
               Container(
-                margin: const EdgeInsets.only(
-                  left: 10,
-                  right: 10,
-                  bottom: 10,
-                ),
-                padding: const EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  color: kWhite,
-                  borderRadius: BorderRadiusDirectional.circular(10.0),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Container(
-                      child: Column(
-                        children: <Widget>[
-                          Container(
-                            margin: const EdgeInsets.only(
-                                // left: 10,
-                                ),
-                            child: Row(
-                              children: <Widget>[
-                                Image(
-                                  image: AssetImage('assets/icons/place.png'),
-                                ),
-                                Container(
-                                  width: 190,
-                                  margin: const EdgeInsets.only(
-                                    left: 5,
-                                  ),
-                                  child: TextField(
-                                    controller: destination_to,
-                                    decoration: InputDecoration(
-                                      enabledBorder: const OutlineInputBorder(
-                                        borderSide: const BorderSide(
-                                          color: kWhite,
-                                          width: 0.0,
+                  padding: const EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    color: kWhite,
+                    borderRadius: BorderRadiusDirectional.circular(10.0),
+                  ),
+                  child: Column(
+                    children: <Widget>[
+                      Container(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+
+                            //Tim dia diem
+                            Container(
+                              child: Row(
+                                children: <Widget>[
+                                  Container(
+                                    child: Column(
+                                      children: <Widget>[
+                                        Container(
+                                          child: Image(
+                                            image: AssetImage(
+                                                'assets/icons/place.png'),
+                                          ),
                                         ),
-                                      ),
-                                      focusedBorder: const OutlineInputBorder(
-                                        borderSide: const BorderSide(
-                                          color: kWhite,
-                                          width: 0.0,
+                                        Container(
+                                          margin: const EdgeInsets.only(
+                                            top: 5,
+                                            bottom: 5,
+                                          ),
+                                          child: Image(
+                                            image: AssetImage(
+                                                'assets/icons/Line.png'),
+                                          ),
                                         ),
-                                      ),
+                                        Container(
+                                          child: Image(
+                                            image: AssetImage(
+                                                'assets/icons/flights.png'),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.only(
-                              top: 10,
-                              bottom: 10,
-                              right: 190,
-                            ),
-                            child: Row(
-                              children: <Widget>[
-                                Image(
-                                  image: AssetImage('assets/icons/Line.png'),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.only(
-                              right: 40,
-                            ),
-                            child: Row(
-                              children: <Widget>[
-                                Image(
-                                  image: AssetImage('assets/icons/flights.png'),
-                                ),
-                                Container(
-                                  width: 150,
-                                  child: RaisedButton(
-                                    elevation: 0,
-                                    color: kWhite,
-                                    shape: Border.all(
-                                      width: 0.0,
-                                      color: kWhite,
-                                    ),
-                                    onPressed: () {
-                                      search_place();
-                                    },
-                                    child: Text(
-                                      'Where you to go?',
-                                      style: TextStyle(
-                                        fontSize: 15,
-                                        color: kGrey500,
-                                      ),
+                                  Container(
+                                    height: displaySize(context).height * 0.15,
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: <Widget>[
+                                        Container(
+                                          child: RaisedButton(
+                                            elevation: 0,
+                                            color: kWhite,
+                                            highlightColor: kWhite,
+                                            highlightElevation: 0,
+                                            shape: Border.all(
+                                              width: 0.0,
+                                              color: kWhite,
+                                            ),
+                                            onPressed: () {
+                                              search_place();
+                                            },
+                                            child: Text(
+                                              'Where you to go?',
+                                              style: TextStyle(
+                                                fontSize: 15,
+                                                color: kGrey500,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          child: RaisedButton(
+                                            elevation: 0,
+                                            color: kWhite,
+                                            highlightColor: kWhite,
+                                            highlightElevation: 0,
+                                            shape: Border.all(
+                                              width: 0.0,
+                                              color: kWhite,
+                                            ),
+                                            onPressed: () {
+                                              search_place();
+                                            },
+                                            child: Text(
+                                              'Where you to go?',
+                                              style: TextStyle(
+                                                fontSize: 15,
+                                                color: kGrey500,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
+
+                            // icon doi vi tri
+                            Container(
+                              child: firstChild(),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    Container(
-                      child: firstChild(),
-                    ),
-                  ],
-                ),
-              ),
+
+                      // Ngay di va ngay ve
+                      Container(
+                        padding: const EdgeInsets.all(15),
+                        decoration: BoxDecoration(
+                          color: kGrey100,
+                          borderRadius:
+                          BorderRadiusDirectional.circular(10.0),
+                        ),
+                        margin: const EdgeInsets.only(
+                          top: 20,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Container(
+                              child: Text(
+                                'Wed, Mar 20',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: kGrey500,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              child: Text(
+                                '-',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: kGrey500,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              child: Text(
+                                'Mon, Mar 25',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: kGrey500,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  )),
+
+              //Thong tin so luong
               Container(
                 margin: const EdgeInsets.only(
                   left: 25,
                   right: 25,
+                  bottom: 20,
+                  top: 20,
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -233,7 +291,8 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                           children: <Widget>[
                             Container(
                               child: Image(
-                                image: AssetImage('assets/icons/return.png'),
+                                image:
+                                AssetImage('assets/icons/return.png'),
                                 color: kGrey600,
                               ),
                             ),
@@ -340,6 +399,43 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                       ),
                     ),
                   ],
+                ),
+              ),
+
+
+              //nut search
+              Container(
+                width: displaySize(context).width,
+                alignment: Alignment.center,
+                child: ButtonTheme(
+                  minWidth: 500,
+                  child: RaisedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Flight_Results()),
+                      );
+                    },
+                    color: kBlue,
+                    hoverElevation: 0.0,
+                    highlightElevation: 0.0,
+                    elevation: 0,
+                    shape: new RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(10.0),
+                      side: BorderSide(
+                        width: 0.0,
+                        color: kBlue,
+                      ),
+                    ),
+                    child: Text(
+                      'Search',
+                      style: TextStyle(
+                        color: kWhite,
+                        fontSize: 15,
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ],
@@ -455,10 +551,9 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                 },
                 onSuggestionSelected: (suggestion) {
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => Seclect_Date(),
+                    builder: (context) => Seclect_Date(),
                   ));
                 },
-
               ),
             ),
           ],
@@ -785,8 +880,10 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                     width: 150,
                     child: RaisedButton(
                       onPressed: () {},
-                      elevation: 0,
                       color: kWhite,
+                      hoverElevation: 0.0,
+                      highlightElevation: 0.0,
+                      elevation: 0,
                       shape: Border.all(
                         width: 0.0,
                         color: kWhite,
@@ -818,8 +915,10 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                     width: 150,
                     child: RaisedButton(
                       onPressed: () {},
-                      elevation: 0,
                       color: kWhite,
+                      hoverElevation: 0.0,
+                      highlightElevation: 0.0,
+                      elevation: 0,
                       shape: Border.all(
                         width: 0.0,
                         color: kWhite,
@@ -851,8 +950,10 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                     width: 150,
                     child: RaisedButton(
                       onPressed: () {},
-                      elevation: 0,
                       color: kWhite,
+                      hoverElevation: 0.0,
+                      highlightElevation: 0.0,
+                      elevation: 0,
                       shape: Border.all(
                         width: 0.0,
                         color: kWhite,

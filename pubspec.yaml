@@ -31,6 +31,9 @@ dependencies:
   buttons_tabbar: ^1.0.1
   dotted_border: ^1.0.6
   flutter_neumorphic: ^3.0.3
+  badges: ^1.1.4
+  flutter_icons: ^1.1.0
+  flutter_dash: ^0.0.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -71,6 +74,7 @@ flutter:
     - assets/icons/filter-2.png
     - assets/icons/Inverse.png
     - assets/icons/linedown-flights.png
+    - assets/icons/lineright-flights.png
     - assets/icons/Oval.png
     - assets/icons/dotted-line.png
     - assets/icons/icswapright-2.png
@@ -78,11 +82,25 @@ flutter:
     - assets/icons/timelapse.png
     - assets/icons/time-2.png
     - assets/icons/star.png
+    - assets/icons/passenger.png
+    - assets/icons/bag-2.png
+    - assets/icons/close.png
+    - assets/icons/ios-person-add-2.png
+    - assets/icons/ios-person-add.png
+    - assets/icons/Toolbar.png
+    - assets/icons/iconlineedit.png
+    - assets/icons/Famale.png
+    - assets/icons/men.png
+    - assets/icons/credit-card.png
+    - assets/icons/success.png
+    - assets/icons/Accent.png
+    - assets/icons/qrcode.png
     # Icon tabs
     - assets/icons/tabs/backpack.png
     - assets/icons/tabs/binoculars.png
     - assets/icons/tabs/profile.png
     - assets/icons/tabs/search.png
+    - assets/icons/tabs/shield-3.png
     # Icon explore
     - assets/icons/explore/date-2.png
     - assets/icons/explore/more.png

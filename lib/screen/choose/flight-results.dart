@@ -116,6 +116,7 @@ class _Flight_ResultsState extends State<Flight_Results>
           body: Container(
             child: Column(
               children: <Widget>[
+                // Thong tin chuyen bay
                 Container(
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
@@ -131,6 +132,7 @@ class _Flight_ResultsState extends State<Flight_Results>
                   ),
                   child: Column(
                     children: <Widget>[
+                      //dia diem den va di
                       Container(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -213,6 +215,7 @@ class _Flight_ResultsState extends State<Flight_Results>
                           ],
                         ),
                       ),
+                      //ngay di va ngay ve
                       Container(
                         padding: const EdgeInsets.all(15),
                         decoration: BoxDecoration(
@@ -257,6 +260,7 @@ class _Flight_ResultsState extends State<Flight_Results>
                           ],
                         ),
                       ),
+                      //thong tin so luong
                       Container(
                         margin: const EdgeInsets.only(
                           top: 15,
@@ -377,6 +381,8 @@ class _Flight_ResultsState extends State<Flight_Results>
                     ],
                   ),
                 ),
+
+                //Tabbar
                 Container(
                   height: displaySize(context).height * 0.05,
                   margin: const EdgeInsets.only(
@@ -478,8 +484,10 @@ class _Flight_ResultsState extends State<Flight_Results>
                     ],
                   ),
                 ),
+
+                // View tabbar
                 Container(
-                  height: displaySize(context).height * 0.54,
+                  height: displaySize(context).height * 0.53,
                   child: TabBarView(
                     children: containers,
                   ),

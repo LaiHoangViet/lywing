@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:lywing/common/constants.dart';
+import 'package:lywing/screen/choose/booking-1.dart';
 import 'package:lywing/sizes_helpers.dart';
 
 class Flight_Details extends StatefulWidget {
@@ -42,6 +43,7 @@ class _Flight_DetailsState extends State<Flight_Details> {
       ),
       body: Container(
         child: ListView(
+          addAutomaticKeepAlives: false,
           children: <Widget>[
             // Outbound
             Container(
@@ -416,7 +418,7 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                           padding: EdgeInsets.only(
                                             top: 10,
                                             left: 10,
-                                            right: 100,
+                                            right: displaySize(context).width * 0.2,
                                             bottom: 5,
                                           ),
                                           child: Row(
@@ -547,11 +549,11 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                       ),
                                     ),
                                     DottedBorder(
-                                      padding: const EdgeInsets.only(
+                                      padding: EdgeInsets.only(
                                         top: 5,
                                         bottom: 5,
                                         left: 15,
-                                        right: 55,
+                                        right: displaySize(context).width * 0.15,
                                       ),
                                       color: kGrey200,
                                       strokeWidth: 1,
@@ -832,7 +834,7 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                           padding: EdgeInsets.only(
                                             top: 10,
                                             left: 10,
-                                            right: 100,
+                                            right: displaySize(context).width * 0.2,
                                             bottom: 5,
                                           ),
                                           child: Row(
@@ -1320,7 +1322,7 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                           padding: EdgeInsets.only(
                                             top: 10,
                                             left: 10,
-                                            right: 100,
+                                            right: displaySize(context).width * 0.2,
                                             bottom: 5,
                                           ),
                                           child: Row(
@@ -1451,11 +1453,11 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                       ),
                                     ),
                                     DottedBorder(
-                                      padding: const EdgeInsets.only(
+                                      padding: EdgeInsets.only(
                                         top: 5,
                                         bottom: 5,
                                         left: 15,
-                                        right: 55,
+                                        right: displaySize(context).width * 0.15,
                                       ),
                                       color: kGrey200,
                                       strokeWidth: 1,
@@ -1736,7 +1738,7 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                           padding: EdgeInsets.only(
                                             top: 10,
                                             left: 10,
-                                            right: 100,
+                                            right: displaySize(context).width * 0.2,
                                             bottom: 5,
                                           ),
                                           child: Row(
@@ -2087,14 +2089,6 @@ class _Flight_DetailsState extends State<Flight_Details> {
                     ),
                   ),
                   Container(
-                    // decoration: BoxDecoration(
-                    //   color: kGreenLight,
-                    //   borderRadius: BorderRadius.circular(30),
-                    //   border: Border.all(
-                    //     color: kGreenLight,
-                    //     width: 1,
-                    //   ),
-                    // ),
                     child: RaisedButton(
                       hoverElevation: 0.0,
                       highlightElevation: 0.0,
@@ -2106,7 +2100,12 @@ class _Flight_DetailsState extends State<Flight_Details> {
                           width: 0.1,
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Booking_1()),
+                        );
+                      },
                       child: Text(
                         'Book now',
                         style: TextStyle(

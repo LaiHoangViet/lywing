@@ -13,3 +13,6 @@ const kGrey100 = Color(0xFFF0F2F5);
 
 //Color for variation of product
 const kGreenLight = Color(0xFF00E676);
+const kOrangeLight = Color(0xFFFF991F);
+const kBlue1000 = Color(0xFF0052CC);
+

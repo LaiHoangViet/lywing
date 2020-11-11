@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:lywing/common/constants/colors.dart';
 import 'package:intl/intl.dart';
@@ -25,19 +27,8 @@ class _Seclect_DateState extends State<Seclect_Date> {
     _rangeCount = '';
     super.initState();
   }
+
   void _onSelectionChanged(DateRangePickerSelectionChangedArgs args) {
-    /// The argument value will return the changed date as [DateTime] when the
-    /// widget [SfDateRangeSelectionMode] set as single.
-    ///
-    /// The argument value will return the changed dates as [List<DateTime>]
-    /// when the widget [SfDateRangeSelectionMode] set as multiple.
-    ///
-    /// The argument value will return the changed range as [PickerDateRange]
-    /// when the widget [SfDateRangeSelectionMode] set as range.
-    ///
-    /// The argument value will return the changed ranges as
-    /// [List<PickerDateRange] when the widget [SfDateRangeSelectionMode] set as
-    /// multi range.
     setState(() {
       if (args.value is PickerDateRange) {
         _range =
@@ -64,7 +55,7 @@ class _Seclect_DateState extends State<Seclect_Date> {
         child: AppBar(
           leading: IconButton(
             icon: Image.asset('assets/icons/pin-left.png'),
-            onPressed: (){
+            onPressed: () {
               Navigator.pop(context);
             },
           ),
@@ -80,7 +71,7 @@ class _Seclect_DateState extends State<Seclect_Date> {
         ),
       ),
       body: Container(
-        child:  Column(
+        child: Column(
           children: <Widget>[
             Container(
               height: displaySize(context).height * 0.7,
@@ -93,6 +84,17 @@ class _Seclect_DateState extends State<Seclect_Date> {
               ),
             ),
             RaisedButton(
+              color: kBlue,
+              hoverElevation: 0.0,
+              highlightElevation: 0.0,
+              elevation: 0,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15.0),
+                side: BorderSide(
+                  width: 0.0,
+                  color: kBlue,
+                ),
+              ),
               onPressed: () {
                 Navigator.push(
                   context,
@@ -101,6 +103,10 @@ class _Seclect_DateState extends State<Seclect_Date> {
               },
               child: Text(
                 'Submit',
+                style: TextStyle(
+                  fontSize: 15,
+                  color: kWhite,
+                ),
               ),
             ),
           ],
@@ -110,6 +116,4 @@ class _Seclect_DateState extends State<Seclect_Date> {
   }
 }
 
-class DateTimeRange {
-
-}
+class DateTimeRange {}
