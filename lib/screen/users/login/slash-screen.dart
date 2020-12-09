@@ -1,6 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:lywing/common/app_localizations.dart';
 import 'package:lywing/common/constants.dart';
 import '../../../sizes_helpers.dart';
 import 'login.dart';
@@ -16,11 +18,13 @@ class _Slash_ScreenState extends State<Slash_Screen> {
     return Material(
       child: Container(
         color: kWhite,
+        height: displaySize(context).height,
+        width: displaySize(context).width,
         child: Column(
           children: <Widget>[
             Container(
               width: displaySize(context).width,
-              height: 400,
+              height: displaySize(context).height * 0.54,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/images/lywing-slash-screen.png'),
@@ -30,32 +34,39 @@ class _Slash_ScreenState extends State<Slash_Screen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.only(
-                        top: 30,
-                        left: 280,
-                    ),
-                    child: FlatButton(
-                      onPressed: () {},
-                      child: Text(
-                        'SKIP',
-                        style: TextStyle(
-                          color: kWhite,
-                          fontSize: 17,
+                  SafeArea(
+                    child: Container(
+                      margin: EdgeInsets.only(
+                        left: 10,
+                        right: 10,
+                      ),
+                      width: displaySize(context).width,
+                      alignment: Alignment.centerRight,
+                      child: ButtonTheme(
+                        // minWidth: 50,
+                        child: InkWell(
+                          onTap: () {},
+                          child: Text(
+                            'SKIP',
+                            style: TextStyle(
+                              color: kWhite,
+                              fontSize: 17,
+                            ),
+                          ),
                         ),
                       ),
                     ),
                   ),
                   Container(
-                    width: 290,
-                    margin:
-                        EdgeInsets.only(top: 180),
+                    width: displaySize(context).width * 0.7,
+                    margin: EdgeInsets.only(
+                        top: displaySize(context).height * 0.26),
                     child: Column(
                       children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.all(10),
                           child: Text(
-                            'Search, Book and Flight',
+                            AppLocalizations.of(context).translate('title1'),
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 22,
@@ -65,7 +76,7 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                         ),
                         Center(
                           child: Text(
-                            'Search billions of flights, compare to book flights at right time and travel the world with Lywing.',
+                            AppLocalizations.of(context).translate('title2'),
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 15,
@@ -82,8 +93,8 @@ class _Slash_ScreenState extends State<Slash_Screen> {
             ),
             Container(
               margin: EdgeInsets.only(
-                left: 10,
-                right: 10,
+                left: 15,
+                right: 15,
               ),
               child: Column(
                 children: <Widget>[
@@ -93,14 +104,13 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                     borderRadius: BorderRadius.circular(15),
                     child: TextField(
                       decoration: InputDecoration(
-                        labelText: 'Enter your Email',
+                        labelText: AppLocalizations.of(context)
+                            .translate('enterYourEmail'),
                         enabledBorder: OutlineInputBorder(
-                          borderSide:
-                              BorderSide(color: kWhite, width: 0.0),
+                          borderSide: BorderSide(color: kWhite, width: 0.0),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderSide:
-                              BorderSide(color: kWhite, width: 0.0),
+                          borderSide: BorderSide(color: kWhite, width: 0.0),
                         ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30.0),
@@ -127,7 +137,7 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                         shape: new RoundedRectangleBorder(
                             borderRadius: new BorderRadius.circular(10.0)),
                         child: Text(
-                          'Login',
+                          AppLocalizations.of(context).translate('login'),
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 15,
@@ -156,7 +166,8 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                           ),
                         ),
                         child: Text(
-                          'Register new account',
+                          AppLocalizations.of(context)
+                              .translate('registerNewAccount'),
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 15,
@@ -172,7 +183,7 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                       bottom: 5,
                     ),
                     child: ButtonTheme(
-                      // minWidth: displaySize(context).width,
+                      minWidth: 500,
                       height: 40,
                       child: RaisedButton(
                         elevation: 0,
@@ -186,15 +197,17 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                         ),
                         child: Row(
                           children: <Widget>[
-                            Image(
-                              image: AssetImage('assets/images/search-2.png'),
+                            SvgPicture.asset(
+                              ('assets/images/google.svg'),
                               width: 15,
                               height: 15,
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 70),
+                            Container(
+                              width: displaySize(context).width * 0.78,
+                              alignment: Alignment.center,
                               child: Text(
-                                'Sign up with Google',
+                                AppLocalizations.of(context)
+                                    .translate('signUpWithGoogle'),
                                 style: TextStyle(
                                   fontSize: 15,
                                   color: kBlack,
@@ -211,8 +224,9 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                       top: 5,
                       bottom: 5,
                     ),
+                    // width: displaySize(context).width,
                     child: ButtonTheme(
-                      // minWidth: 350,
+                      minWidth: 500,
                       height: 40,
                       child: RaisedButton(
                         elevation: 0,
@@ -226,21 +240,29 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                         ),
                         child: Row(
                           children: <Widget>[
-                            Image(
-                              image: AssetImage('assets/images/facebook.png'),
-                              width: 20,
-                              height: 20,
+                            SvgPicture.asset(
+                              ('assets/images/facebook.svg'),
+                              width: 15,
+                              height: 15,
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 60),
+                            Container(
+                              width: displaySize(context).width * 0.77,
+                              alignment: Alignment.center,
                               child: Text(
-                                'Login width Facebook',
+                                AppLocalizations.of(context)
+                                    .translate('loginWithFacebook'),
                                 style: TextStyle(
                                   fontSize: 15,
                                   color: kBlack,
                                 ),
                               ),
                             ),
+                            // Padding(
+                            //   padding: EdgeInsets.only(
+                            //     left: displaySize(context).width * 0.21,
+                            //   ),
+                            //   child:
+                            // ),
                           ],
                         ),
                       ),
@@ -256,7 +278,8 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                         FlatButton(
                           onPressed: () {},
                           child: Text(
-                            'Already have an account?',
+                            AppLocalizations.of(context)
+                                .translate('alreadyHaveAnAccount?'),
                             style: TextStyle(
                               fontSize: 13,
                               color: Colors.black54,
@@ -266,7 +289,7 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                         FlatButton(
                           onPressed: () {},
                           child: Text(
-                            'Login',
+                            AppLocalizations.of(context).translate('login'),
                             style: TextStyle(
                               color: kBlue,
                               fontSize: 13,

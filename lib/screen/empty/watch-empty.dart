@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:lywing/common/app_localizations.dart';
 import 'package:lywing/common/constants.dart';
 import 'package:lywing/sizes_helpers.dart';
 
@@ -86,15 +88,16 @@ class _Watch_EmptyState extends State<Watch_Empty> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Container(
-                    child: Image(
-                      image:
-                          AssetImage('assets/icons/empty/travel-insurance.png'),
+                    child: SvgPicture.asset(
+                      ('assets/images/image-empty/search.svg'),
+                      height: displaySize(context).height * 0.2,
+                      width: displaySize(context).width * 0.2,
                     ),
                   ),
                   Container(
                     margin: const EdgeInsets.only(top: 10),
                     child: Text(
-                      'No save flight',
+                      AppLocalizations.of(context).translate('Nosavedflight'),
                       style: TextStyle(
                         fontSize: 22,
                         color: kBlack,
@@ -105,7 +108,8 @@ class _Watch_EmptyState extends State<Watch_Empty> {
                     margin: const EdgeInsets.only(top: 5),
                     width: displaySize(context).width * 0.68,
                     child: Text(
-                      'All your saved flight will show up here',
+                      AppLocalizations.of(context)
+                          .translate('Allyoursavedflight'),
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 15,

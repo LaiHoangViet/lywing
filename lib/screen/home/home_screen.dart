@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lywing/common/constants.dart';
 
 import 'explore.dart';
@@ -36,49 +39,57 @@ class _Home_ScreenState extends State<Home_Screen> {
         currentIndex: _currentIndex,
         items: [
           BottomNavigationBarItem(
-            icon: Image.asset(
-              'assets/icons/tabs/search.png',
+            icon: Icon(
+              MaterialIcons.search,
               color: Colors.grey,
+              size: 30,
             ),
-            activeIcon: Image.asset(
-              'assets/icons/tabs/search.png',
+            activeIcon: Icon(
+              MaterialIcons.search,
               color: kBlue,
+              size: 30,
             ),
             // backgroundColor: kBlue,
             title: Text(''),
           ),
           BottomNavigationBarItem(
-            icon: Image.asset(
-              'assets/icons/tabs/binoculars.png',
+            icon: Icon(
+              MaterialIcons.explore,
               color: Colors.grey,
+              size: 30,
             ),
-            activeIcon: Image.asset(
-              'assets/icons/tabs/binoculars.png',
+            activeIcon: Icon(
+              MaterialIcons.explore,
               color: kBlue,
+              size: 30,
             ),
             title: Text(''),
             // backgroundColor: Colors.orange,
           ),
           BottomNavigationBarItem(
-            icon: Image.asset(
-              'assets/icons/tabs/backpack.png',
+            icon: Icon(
+             FontAwesomeIcons.suitcaseRolling,
               color: Colors.grey,
+              size: 30,
             ),
-            activeIcon: Image.asset(
-              'assets/icons/tabs/backpack.png',
+            activeIcon: Icon(
+             FontAwesomeIcons.suitcaseRolling,
               color: kBlue,
+              size: 30,
             ),
             title: Text(''),
             // backgroundColor: Colors.yellow,
           ),
           BottomNavigationBarItem(
-            icon: Image.asset(
-              'assets/icons/tabs/profile.png',
+            icon: Icon(
+               MaterialIcons.person,
               color: Colors.grey,
+              size: 30,
             ),
-            activeIcon: Image.asset(
-              'assets/icons/tabs/profile.png',
+            activeIcon: Icon(
+               MaterialIcons.person,
               color: kBlue,
+              size: 30,
             ),
             title: Text(''),
             // backgroundColor: Colors.green,

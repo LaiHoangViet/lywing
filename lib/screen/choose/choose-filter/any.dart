@@ -1,6 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:lywing/common/app_localizations.dart';
 import 'package:lywing/common/constants.dart';
+import 'package:lywing/sizes_helpers.dart';
 
 class Any extends StatefulWidget {
   @override
@@ -46,7 +48,7 @@ class _AnyState extends State<Any> {
               children: <Widget>[
                 Container(
                   child: Text(
-                    'Duration',
+                    AppLocalizations.of(context).translate('Duration'),
                     style: TextStyle(
                       color: kBlack,
                       fontSize: 17,
@@ -74,7 +76,8 @@ class _AnyState extends State<Any> {
                     children: <Widget>[
                       Container(
                         child: Text(
-                          'Max travel time',
+                          AppLocalizations.of(context)
+                              .translate('maxTravelTime'),
                           style: TextStyle(
                             color: kBlack,
                             fontSize: 15,
@@ -85,15 +88,41 @@ class _AnyState extends State<Any> {
                       Container(
                         child: Row(
                           children: <Widget>[
-                            Container(
-                              child: Text(
-                                'Up to 46 hours',
-                                style: TextStyle(
-                                  color: kGrey500,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.normal,
+                            Row(
+                              children: [
+                                Text(
+                                  AppLocalizations.of(context)
+                                      .translate('upTo'),
+                                  style: TextStyle(
+                                    color: kGrey500,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.normal,
+                                  ),
                                 ),
-                              ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                    left: 3,
+                                    right: 3,
+                                  ),
+                                  child: Text(
+                                    '${_currentSliderValue1.toInt()}',
+                                    style: TextStyle(
+                                      color: kGrey500,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                                  ),
+                                ),
+                                Text(
+                                  AppLocalizations.of(context)
+                                      .translate('hours'),
+                                  style: TextStyle(
+                                    color: kGrey500,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                                ),
+                              ],
                             ),
                             Container(
                               margin: const EdgeInsets.only(
@@ -117,7 +146,7 @@ class _AnyState extends State<Any> {
                           activeColor: kBlue,
                           value: _currentSliderValue1,
                           min: 0,
-                          max: 100,
+                          max: 412,
                           label: _currentSliderValue1.round().toString(),
                           onChanged: (double value) {
                             setState(() {
@@ -135,7 +164,7 @@ class _AnyState extends State<Any> {
                     children: <Widget>[
                       Container(
                         child: Text(
-                          'Stopover',
+                          AppLocalizations.of(context).translate('Stopover'),
                           style: TextStyle(
                             color: kBlack,
                             fontSize: 15,
@@ -144,13 +173,25 @@ class _AnyState extends State<Any> {
                         ),
                       ),
                       Container(
-                        child: Text(
-                          '2 - 25 hours',
-                          style: TextStyle(
-                            color: kGrey500,
-                            fontSize: 12,
-                            fontWeight: FontWeight.normal,
-                          ),
+                        child: Row(
+                          children: [
+                            Text(
+                              '${_currentSliderValue2.toInt()}',
+                              style: TextStyle(
+                                color: kGrey500,
+                                fontSize: 12,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                            Text(
+                              AppLocalizations.of(context).translate('25Hours'),
+                              style: TextStyle(
+                                color: kGrey500,
+                                fontSize: 12,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                       Container(
@@ -158,8 +199,8 @@ class _AnyState extends State<Any> {
                           inactiveColor: kGrey100,
                           activeColor: kBlue,
                           value: _currentSliderValue2,
-                          min: 0,
-                          max: 100,
+                          min: 1,
+                          max: 25,
                           label: _currentSliderValue2.round().toString(),
                           onChanged: (double value) {
                             setState(() {
@@ -201,7 +242,7 @@ class _AnyState extends State<Any> {
               children: <Widget>[
                 Container(
                   child: Text(
-                    'Price',
+                    AppLocalizations.of(context).translate('Price'),
                     style: TextStyle(
                       color: kBlack,
                       fontSize: 17,
@@ -228,13 +269,25 @@ class _AnyState extends State<Any> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Container(
-                        child: Text(
-                          '0đ - 8.000.000đ',
-                          style: TextStyle(
-                            color: kBlack,
-                            fontSize: 15,
-                            fontWeight: FontWeight.normal,
-                          ),
+                        child: Row(
+                          children: [
+                            Text(
+                              '${_currentSliderValue3.toInt()}đ',
+                              style: TextStyle(
+                                color: kBlack,
+                                fontSize: 15,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                            Text(
+                              ' - 8.000.000đ',
+                              style: TextStyle(
+                                color: kBlack,
+                                fontSize: 15,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                       Container(
@@ -242,8 +295,8 @@ class _AnyState extends State<Any> {
                           inactiveColor: kGrey100,
                           activeColor: kBlue,
                           value: _currentSliderValue3,
-                          min: 0,
-                          max: 100,
+                          min: 1,
+                          max: 8000000,
                           label: _currentSliderValue3.round().toString(),
                           onChanged: (double value) {
                             setState(() {
@@ -285,7 +338,7 @@ class _AnyState extends State<Any> {
               children: <Widget>[
                 Container(
                   child: Text(
-                    'Bags',
+                    AppLocalizations.of(context).translate('Bags'),
                     style: TextStyle(
                       color: kBlack,
                       fontSize: 17,
@@ -318,7 +371,13 @@ class _AnyState extends State<Any> {
                           });
                         },
                       ),
-                      Text("Include flights without checked baggage"),
+                      Container(
+                        width: displaySize(context).width * 0.8,
+                        child: Text(
+                          AppLocalizations.of(context)
+                              .translate('includeFlightsWithoutCheckedBaggage'),
+                        ),
+                      ),
                     ],
                   ),
                 ),

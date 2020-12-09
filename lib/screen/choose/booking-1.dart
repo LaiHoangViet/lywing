@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'dart:ui';
 
 // import 'package:badges/badges.dart';
@@ -7,10 +8,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dash/flutter_dash.dart';
+import 'package:flutter_icons/flutter_icons.dart';
+import 'package:lywing/common/app_localizations.dart';
 import 'package:lywing/common/constants.dart';
 import 'package:lywing/screen/choose/overview.dart';
 import 'package:lywing/screen/choose/passengers.dart';
 import 'package:lywing/sizes_helpers.dart';
+
+import 'add-passenger.dart';
 
 class Booking_1 extends StatefulWidget {
   @override
@@ -18,6 +23,8 @@ class Booking_1 extends StatefulWidget {
 }
 
 class _Booking_1State extends State<Booking_1> {
+  List name = ["Mr.Phong Van Tran","Mr.Nguyen Nam Long"];
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
@@ -28,17 +35,17 @@ class _Booking_1State extends State<Booking_1> {
           elevation: 0.0,
           bottomOpacity: 0.0,
           leading: IconButton(
-            icon: Image.asset(
-              'assets/icons/pin-left.png',
-              color: kWhite,
-            ),
+            icon: Icon(
+                    Icons.arrow_back_ios_rounded,
+                  color: kWhite,
+                ),
             onPressed: () {
               Navigator.pop(context);
             },
           ),
           centerTitle: true,
           title: Text(
-            'Booking',
+            AppLocalizations.of(context).translate('Booking'),
             style: TextStyle(
               color: kWhite,
               fontSize: 17,
@@ -103,10 +110,33 @@ class _Booking_1State extends State<Booking_1> {
                             ),
                           ),
                           Container(
-                            child: Image(
-                              image: AssetImage(
-                                'assets/icons/lineright-flights.png',
-                              ),
+                            child: Row(
+                              children: [
+                                Container(
+                                  width: displaySize(context).width * 0.2,
+                                  height: 1,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: kGrey200, width: 1),
+                                  ),
+                                ),
+                                Container(
+                                  child: Transform.rotate(
+                                    angle: pi / 2,
+                                    child: Icon(
+                                      Icons.flight,
+                                      color: kGrey500,
+                                      size: 20,
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  width: displaySize(context).width * 0.2,
+                                  height: 1,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: kGrey200, width: 1),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                           Container(
@@ -139,7 +169,7 @@ class _Booking_1State extends State<Booking_1> {
                               left: 30,
                             ),
                             child: Text(
-                              '1 stop',
+                              '1 ${AppLocalizations.of(context).translate('stop')}',
                               style: TextStyle(
                                 color: kGrey200,
                                 fontSize: 11,
@@ -315,10 +345,33 @@ class _Booking_1State extends State<Booking_1> {
                             ),
                           ),
                           Container(
-                            child: Image(
-                              image: AssetImage(
-                                'assets/icons/lineright-flights.png',
-                              ),
+                            child: Row(
+                              children: [
+                                Container(
+                                  width: displaySize(context).width * 0.2,
+                                  height: 1,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: kGrey200, width: 1),
+                                  ),
+                                ),
+                                Container(
+                                  child: Transform.rotate(
+                                    angle: pi / 2,
+                                    child: Icon(
+                                      Icons.flight,
+                                      color: kGrey500,
+                                      size: 20,
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  width: displaySize(context).width * 0.2,
+                                  height: 1,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: kGrey200, width: 1),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                           Container(
@@ -351,7 +404,7 @@ class _Booking_1State extends State<Booking_1> {
                               left: 30,
                             ),
                             child: Text(
-                              '1 stop',
+                              '1 ${AppLocalizations.of(context).translate('stop')}',
                               style: TextStyle(
                                 color: kGrey200,
                                 fontSize: 11,
@@ -510,72 +563,298 @@ class _Booking_1State extends State<Booking_1> {
             Container(
               margin: const EdgeInsets.all(15),
               child: Text(
-                'Passengers',
+                AppLocalizations.of(context).translate('Passengers'),
                 style: TextStyle(
                   fontSize: 17,
                   color: kBlack,
                 ),
               ),
             ),
-            Card(
-              margin: const EdgeInsets.only(
-                left: 15,
-                right: 15,
-                bottom: 15,
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child: Container(
-                child: Column(
-                  children: <Widget>[
-                    Container(
-                      padding: const EdgeInsets.all(15),
-                      child: Stack(
+            Container(
+              child: Column(
+                children: [
+                  for (var index in name ) Card(
+                    margin: const EdgeInsets.only(
+                      left: 15,
+                      right: 15,
+                      bottom: 15,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: Container(
+                      child: Column(
                         children: <Widget>[
                           Container(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            padding: const EdgeInsets.all(15),
+                            width: displaySize(context).width,
+                            height: displaySize(context).height* 0.11,
+                            child: Stack(
                               children: <Widget>[
                                 Container(
                                   child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: <Widget>[
                                       Container(
-                                        child: DottedBorder(
-                                          padding: const EdgeInsets.all(15),
-                                          color: kGrey200,
-                                          strokeWidth: 1,
-                                          borderType: BorderType.RRect,
-                                          radius: Radius.circular(12),
-                                          child: Image(
-                                            image: AssetImage(
-                                              'assets/icons/passenger.png',
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        margin: const EdgeInsets.only(
-                                          left: 10,
-                                        ),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                                        child: Row(
                                           children: <Widget>[
                                             Container(
-                                              child: Text(
-                                                'Full Name',
-                                                style: TextStyle(
-                                                  fontSize: 11,
+                                              child: DottedBorder(
+                                                padding: const EdgeInsets.all(15),
+                                                color: kGrey200,
+                                                strokeWidth: 1,
+                                                borderType: BorderType.RRect,
+                                                radius: Radius.circular(12),
+                                                child: Icon(
+                                                  Icons.person,
                                                   color: kGrey400,
+                                                  size: 30,
                                                 ),
                                               ),
                                             ),
                                             Container(
+                                              margin: const EdgeInsets.only(
+                                                left: 10,
+                                              ),
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                children: <Widget>[
+                                                  Container(
+                                                    child: Text(
+                                                      AppLocalizations.of(context).translate('FullName'),
+                                                      style: TextStyle(
+                                                        fontSize: 11,
+                                                        color: kGrey400,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    child: Text(
+                                                      '$index',
+                                                      style: TextStyle(
+                                                        fontSize: 17,
+                                                        color: kBlack,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Positioned(
+                                  bottom: displaySize(context).height * 0.03,
+                                  left: displaySize(context).width * 0.78,
+                                  child: Container(
+                                    // alignment: Alignment.topLeft,
+                                    width: displaySize(context).width * 0.07,
+                                    child: Ink(
+                                      decoration: const ShapeDecoration(
+                                        color: kGrey100,
+                                        shape: CircleBorder(),
+                                      ),
+                                      child: IconButton(
+                                        icon: Image.asset('assets/icons/close.png'),
+                                        onPressed: () {},
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            padding: const EdgeInsets.only(
+                              // top: 10,
+                              bottom: 15,
+                            ),
+                            margin: const EdgeInsets.only(left: 15, right: 15),
+                            child: Dash(
+                                length: displaySize(context).width * 0.8,
+                                dashThickness: 1,
+                                dashGap: 1,
+                                dashColor: kGrey400),
+                          ),
+                          Container(
+                            padding: const EdgeInsets.only(
+                              left: 15,
+                              right: 15,
+                              bottom: 15,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Container(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Container(
+                                        child: Text(
+                                          AppLocalizations.of(context).translate('Nationality'),
+                                          style: TextStyle(
+                                            fontSize: 11,
+                                            color: kGrey400,
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        child: Text(
+                                          'Vietnam',
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            color: kBlack,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Container(
+                                        child: Text(
+                                          AppLocalizations.of(context).translate('Dateofbirth'),
+                                          style: TextStyle(
+                                            fontSize: 11,
+                                            color: kGrey400,
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        child: Text(
+                                          '15/04/1996',
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            color: kBlack,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Container(
+                                        child: Text(
+                                          AppLocalizations.of(context).translate('Passport'),
+                                          style: TextStyle(
+                                            fontSize: 11,
+                                            color: kGrey400,
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        child: Text(
+                                          'D9641312',
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            color: kBlack,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            padding: const EdgeInsets.only(
+                              left: 15,
+                              right: 15,
+                              bottom: 15,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Container(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Container(
+                                        child: Text(
+                                          AppLocalizations.of(context).translate('Travelinsurance'),
+                                          style: TextStyle(
+                                            fontSize: 11,
+                                            color: kGrey400,
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        child: Text(
+                                          'Travel Plus',
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            color: kBlack,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Container(
+                                        child: Text(
+                                          AppLocalizations.of(context).translate('Bags'),
+                                          style: TextStyle(
+                                            fontSize: 11,
+                                            color: kGrey400,
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        child: Row(
+                                          children: <Widget>[
+                                            Container(
                                               child: Text(
-                                                'Mr.Phong Van Tran',
+                                                '1x',
                                                 style: TextStyle(
-                                                  fontSize: 17,
+                                                  fontSize: 12,
+                                                  color: kBlack,
+                                                ),
+                                              ),
+                                            ),
+                                            Container(
+                                              child: Row(
+                                                children: <Widget>[
+                                                  Container(
+                                                    margin: const EdgeInsets.only(
+                                                      left: 3,
+                                                      right: 3,
+                                                    ),
+                                                    child: Image(
+                                                      image: AssetImage(
+                                                          'assets/icons/bag-2.png'),
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    '56x32x36cm,',
+                                                    style: TextStyle(
+                                                      fontSize: 12,
+                                                      color: kBlack,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              child: Text(
+                                                '7kg',
+                                                style: TextStyle(
+                                                  fontSize: 12,
                                                   color: kBlack,
                                                 ),
                                               ),
@@ -586,527 +865,15 @@ class _Booking_1State extends State<Booking_1> {
                                     ],
                                   ),
                                 ),
-                              ],
-                            ),
-                          ),
-                          Positioned(
-                            bottom: displaySize(context).height * 0.03,
-                            left: displaySize(context).width * 0.77,
-                            child: Container(
-                              // alignment: Alignment.topLeft,
-                              width: displaySize(context).width * 0.07,
-                              child: Ink(
-                                decoration: const ShapeDecoration(
-                                  color: kGrey100,
-                                  shape: CircleBorder(),
-                                ),
-                                child: IconButton(
-                                  icon: Image.asset('assets/icons/close.png'),
-                                  onPressed: () {},
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.only(
-                        // top: 10,
-                        bottom: 15,
-                      ),
-                      margin: const EdgeInsets.only(left: 15, right: 15),
-                      child: Dash(
-                          length: displaySize(context).width * 0.8,
-                          dashThickness: 1,
-                          dashGap: 1,
-                          dashColor: kGrey400),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.only(
-                        left: 15,
-                        right: 15,
-                        bottom: 15,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Container(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Container(
-                                  child: Text(
-                                    'Nationality',
-                                    style: TextStyle(
-                                      fontSize: 11,
-                                      color: kGrey400,
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  child: Text(
-                                    'Vietnam',
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      color: kBlack,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Container(
-                                  child: Text(
-                                    'Date of birth',
-                                    style: TextStyle(
-                                      fontSize: 11,
-                                      color: kGrey400,
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  child: Text(
-                                    '15/04/1996',
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      color: kBlack,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Container(
-                                  child: Text(
-                                    'Passport',
-                                    style: TextStyle(
-                                      fontSize: 11,
-                                      color: kGrey400,
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  child: Text(
-                                    'D9641312',
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      color: kBlack,
-                                    ),
-                                  ),
-                                ),
+                                Container(),
                               ],
                             ),
                           ),
                         ],
                       ),
                     ),
-                    Container(
-                      padding: const EdgeInsets.only(
-                        left: 15,
-                        right: 15,
-                        bottom: 15,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Container(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Container(
-                                  child: Text(
-                                    'Travel insurance',
-                                    style: TextStyle(
-                                      fontSize: 11,
-                                      color: kGrey400,
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  child: Text(
-                                    'Travel Plus',
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      color: kBlack,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Container(
-                                  child: Text(
-                                    'Bags',
-                                    style: TextStyle(
-                                      fontSize: 11,
-                                      color: kGrey400,
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  child: Row(
-                                    children: <Widget>[
-                                      Container(
-                                        child: Text(
-                                          '1x',
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                            color: kBlack,
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        child: Row(
-                                          children: <Widget>[
-                                            Container(
-                                              margin: const EdgeInsets.only(
-                                                left: 3,
-                                                right: 3,
-                                              ),
-                                              child: Image(
-                                                image: AssetImage(
-                                                    'assets/icons/bag-2.png'),
-                                              ),
-                                            ),
-                                            Text(
-                                              '56x32x36cm,',
-                                              style: TextStyle(
-                                                fontSize: 12,
-                                                color: kBlack,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Container(
-                                        child: Text(
-                                          '7kg',
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                            color: kBlack,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Card(
-              margin: const EdgeInsets.only(
-                left: 15,
-                right: 15,
-                bottom: 15,
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child: Container(
-                child: Column(
-                  children: <Widget>[
-                    Container(
-                      padding: const EdgeInsets.all(15),
-                      child: Stack(
-                        children: <Widget>[
-                          Container(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Container(
-                                  child: Row(
-                                    children: <Widget>[
-                                      Container(
-                                        child: DottedBorder(
-                                          padding: const EdgeInsets.all(15),
-                                          color: kGrey200,
-                                          strokeWidth: 1,
-                                          borderType: BorderType.RRect,
-                                          radius: Radius.circular(12),
-                                          child: Image(
-                                            image: AssetImage(
-                                              'assets/icons/passenger.png',
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        margin: const EdgeInsets.only(
-                                          left: 10,
-                                        ),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: <Widget>[
-                                            Container(
-                                              child: Text(
-                                                'Full Name',
-                                                style: TextStyle(
-                                                  fontSize: 11,
-                                                  color: kGrey400,
-                                                ),
-                                              ),
-                                            ),
-                                            Container(
-                                              child: Text(
-                                                'Mr.Phong Van Tran',
-                                                style: TextStyle(
-                                                  fontSize: 17,
-                                                  color: kBlack,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Positioned(
-                            bottom: displaySize(context).height * 0.03,
-                            left: displaySize(context).width * 0.77,
-                            child: Container(
-                              width: displaySize(context).width * 0.07,
-                              child: Ink(
-                                decoration: const ShapeDecoration(
-                                  color: kGrey100,
-                                  shape: CircleBorder(),
-                                ),
-                                child: IconButton(
-                                  icon: Image.asset('assets/icons/close.png'),
-                                  onPressed: () {},
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.only(
-                        bottom: 15,
-                      ),
-                      margin: const EdgeInsets.only(left: 15, right: 15),
-                      child: Dash(
-                          length: displaySize(context).width * 0.8,
-                          dashThickness: 1,
-                          dashGap: 1,
-                          dashColor: kGrey400),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.only(
-                        left: 15,
-                        right: 15,
-                        bottom: 15,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Container(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Container(
-                                  child: Text(
-                                    'Nationality',
-                                    style: TextStyle(
-                                      fontSize: 11,
-                                      color: kGrey400,
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  child: Text(
-                                    'Vietnam',
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      color: kBlack,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Container(
-                                  child: Text(
-                                    'Date of birth',
-                                    style: TextStyle(
-                                      fontSize: 11,
-                                      color: kGrey400,
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  child: Text(
-                                    '15/04/1996',
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      color: kBlack,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Container(
-                                  child: Text(
-                                    'Passport',
-                                    style: TextStyle(
-                                      fontSize: 11,
-                                      color: kGrey400,
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  child: Text(
-                                    'D9641312',
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      color: kBlack,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.only(
-                        left: 15,
-                        right: 15,
-                        bottom: 15,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Container(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Container(
-                                  child: Text(
-                                    'Travel insurance',
-                                    style: TextStyle(
-                                      fontSize: 11,
-                                      color: kGrey400,
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  child: Text(
-                                    'Travel Plus',
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      color: kBlack,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Container(
-                                  child: Text(
-                                    'Bags',
-                                    style: TextStyle(
-                                      fontSize: 11,
-                                      color: kGrey400,
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  child: Row(
-                                    children: <Widget>[
-                                      Container(
-                                        child: Text(
-                                          '1x',
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                            color: kBlack,
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        child: Row(
-                                          children: <Widget>[
-                                            Container(
-                                              margin: const EdgeInsets.only(
-                                                left: 3,
-                                                right: 3,
-                                              ),
-                                              child: Image(
-                                                image: AssetImage(
-                                                    'assets/icons/bag-2.png'),
-                                              ),
-                                            ),
-                                            Text(
-                                              '56x32x36cm,',
-                                              style: TextStyle(
-                                                fontSize: 12,
-                                                color: kBlack,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Container(
-                                        child: Text(
-                                          '7kg',
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                            color: kBlack,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
             Container(
@@ -1148,9 +915,10 @@ class _Booking_1State extends State<Booking_1> {
                     child: Column(
                       children: <Widget>[
                         Container(
-                          child: Image(
-                            image:
-                                AssetImage('assets/icons/ios-person-add-2.png'),
+                          child: Icon(
+                            MaterialIcons.person_add,
+                            color: kGrey500,
+                            size: 60,
                           ),
                         ),
                         Container(
@@ -1158,7 +926,7 @@ class _Booking_1State extends State<Booking_1> {
                             top: 10,
                           ),
                           child: Text(
-                            'Add a Passenger',
+                            AppLocalizations.of(context).translate('AddaPassenger'),
                             style: TextStyle(
                               color: kGrey400,
                               fontSize: 15,
@@ -1189,7 +957,7 @@ class _Booking_1State extends State<Booking_1> {
                 children: <Widget>[
                   Container(
                     child: Text(
-                      'Contact details',
+                      AppLocalizations.of(context).translate('Contactdetails'),
                       style: TextStyle(
                         color: kBlack,
                         fontSize: 17,
@@ -1212,7 +980,7 @@ class _Booking_1State extends State<Booking_1> {
                       children: <Widget>[
                         Container(
                           child: Text(
-                            'Contact name',
+                            AppLocalizations.of(context).translate('Contactname'),
                             style: TextStyle(
                               fontSize: 11,
                               color: kGrey400,
@@ -1243,7 +1011,7 @@ class _Booking_1State extends State<Booking_1> {
                       children: <Widget>[
                         Container(
                           child: Text(
-                            'Phone number',
+                            AppLocalizations.of(context).translate('Phonenumber'),
                             style: TextStyle(
                               fontSize: 11,
                               color: kGrey400,
@@ -1277,7 +1045,7 @@ class _Booking_1State extends State<Booking_1> {
                                           color: kGrey500,
                                         ),
                                       ),
-                                      hintText: 'Enter phone number'),
+                                      hintText: AppLocalizations.of(context).translate('Enterphonenumber'),),
                                 ),
                               ),
                             ],
@@ -1292,7 +1060,7 @@ class _Booking_1State extends State<Booking_1> {
                       children: <Widget>[
                         Container(
                           child: Text(
-                            'Email address',
+                            AppLocalizations.of(context).translate('Emailaddress'),
                             style: TextStyle(
                               fontSize: 11,
                               color: kGrey400,
@@ -1307,7 +1075,7 @@ class _Booking_1State extends State<Booking_1> {
                                     color: kGrey500,
                                   ),
                                 ),
-                                hintText: 'Email to receive booking info'),
+                                hintText: AppLocalizations.of(context).translate('Emailtoreceivebookinginfo'),),
                           ),
                         ),
                       ],
@@ -1334,7 +1102,7 @@ class _Booking_1State extends State<Booking_1> {
                 children: <Widget>[
                   Container(
                     child: Text(
-                      'Visa requirements',
+                      AppLocalizations.of(context).translate('Visarequirements'),
                       style: TextStyle(
                         fontSize: 17,
                         color: kBlack,
@@ -1353,7 +1121,7 @@ class _Booking_1State extends State<Booking_1> {
                   ),
                   Container(
                     child: Text(
-                      'A visa or airport transit visa may be necessary for travel. Requirements found here are for reference purposes only. Contact the embassy or your foreign ministry for more information. Kiwi.com is not liable for any passenger who is denied from boarding or from entering any destination due to visa issues.',
+                      AppLocalizations.of(context).translate('textVisa'),
                       style: TextStyle(
                         fontSize: 13,
                         color: kGrey400,
@@ -1381,7 +1149,7 @@ class _Booking_1State extends State<Booking_1> {
                 children: <Widget>[
                   Container(
                     child: Text(
-                      'Add promote code',
+                      AppLocalizations.of(context).translate('Addpromotecode'),
                       style: TextStyle(
                         fontSize: 17,
                         color: kBlack,
@@ -1407,7 +1175,7 @@ class _Booking_1State extends State<Booking_1> {
                             bottom: 10,
                           ),
                           child: Text(
-                            'Promote code',
+                            AppLocalizations.of(context).translate('Promotecode'),
                             style: TextStyle(
                               fontSize: 11,
                               color: kGrey200,
@@ -1416,6 +1184,7 @@ class _Booking_1State extends State<Booking_1> {
                         ),
                         Container(
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
                               Container(
                                 width: displaySize(context).width * 0.6,
@@ -1429,13 +1198,10 @@ class _Booking_1State extends State<Booking_1> {
                                           borderSide: BorderSide(
                                             width: 1,
                                           )),
-                                      hintText: 'Enter promote code'),
+                                      hintText:  AppLocalizations.of(context).translate('Enterpromotecode'),),
                                 ),
                               ),
                               Container(
-                                margin: const EdgeInsets.only(
-                                  left: 25,
-                                ),
                                 child: RaisedButton(
                                   onPressed: () {},
                                   color: kBlue,
@@ -1451,7 +1217,7 @@ class _Booking_1State extends State<Booking_1> {
                                     ),
                                   ),
                                   child: Text(
-                                    'Add',
+                                    AppLocalizations.of(context).translate('Add'),
                                     style: TextStyle(
                                       color: kWhite,
                                       fontSize: 13,
@@ -1511,7 +1277,7 @@ class _Booking_1State extends State<Booking_1> {
                         ),
                         Container(
                           child: Text(
-                            'Total (1 adult)',
+                            '${AppLocalizations.of(context).translate('Total')} (1 ${AppLocalizations.of(context).translate('adult')})',
                             style: TextStyle(
                               fontSize: 12,
                               color: kGrey400,
@@ -1540,7 +1306,7 @@ class _Booking_1State extends State<Booking_1> {
                         );
                       },
                       child: Text(
-                        'Book now',
+                        AppLocalizations.of(context).translate('Confirm'),
                         style: TextStyle(
                           fontSize: 15,
                           color: kWhite,

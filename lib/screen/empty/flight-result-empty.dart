@@ -1,6 +1,10 @@
 import 'dart:math';
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:lywing/common/app_localizations.dart';
 import 'package:lywing/common/constants.dart';
 import 'package:lywing/sizes_helpers.dart';
 
@@ -41,8 +45,10 @@ class _Flight_Result_EmptyState extends State<Flight_Result_Empty>
         animation: _arrowAnimation,
         builder: (context, child) => Transform.rotate(
           angle: _arrowAnimation.value,
-          child: Image(
-            image: AssetImage('assets/icons/Inverse.png'),
+          child: Icon(
+            Icons.autorenew_rounded,
+            color: kGrey400,
+            size: 30,
           ),
         ),
       ),
@@ -67,7 +73,10 @@ class _Flight_Result_EmptyState extends State<Flight_Result_Empty>
           elevation: 0.0,
           bottomOpacity: 0.0,
           leading: IconButton(
-            icon: Image.asset('assets/icons/pin-left.png'),
+            icon: Icon(
+              Icons.arrow_back_ios_rounded,
+              color: kBlack,
+            ),
             onPressed: () {
               Navigator.pop(context);
             },
@@ -83,7 +92,10 @@ class _Flight_Result_EmptyState extends State<Flight_Result_Empty>
           actions: <Widget>[
             Container(
               child: IconButton(
-                icon: Image.asset('assets/icons/filter-2.png'),
+                icon: Icon(
+                  FontAwesomeIcons.filter,
+                  color: kBlack,
+                ),
                 onPressed: () {},
               ),
             ),
@@ -122,9 +134,9 @@ class _Flight_Result_EmptyState extends State<Flight_Result_Empty>
                               Container(
                                 child: Row(
                                   children: <Widget>[
-                                    Image(
-                                      image:
-                                          AssetImage('assets/icons/place.png'),
+                                    Icon(
+                                      MaterialIcons.location_on,
+                                      color: kGrey400,
                                     ),
                                     Container(
                                       margin: const EdgeInsets.only(
@@ -160,9 +172,12 @@ class _Flight_Result_EmptyState extends State<Flight_Result_Empty>
                               Container(
                                 child: Row(
                                   children: <Widget>[
-                                    Image(
-                                      image: AssetImage(
-                                          'assets/icons/flights.png'),
+                                    Transform.rotate(
+                                      angle: pi / 2,
+                                      child: Icon(
+                                        Icons.flight,
+                                        color: kGrey400,
+                                      ),
                                     ),
                                     Container(
                                       margin: const EdgeInsets.only(
@@ -247,9 +262,10 @@ class _Flight_Result_EmptyState extends State<Flight_Result_Empty>
                           child: Row(
                             children: <Widget>[
                               Container(
-                                child: Image(
-                                  image: AssetImage('assets/icons/return.png'),
-                                  color: kGrey500,
+                                child: Icon(
+                                  FontAwesomeIcons.exchangeAlt,
+                                  size: 20,
+                                  color: kGrey600,
                                 ),
                               ),
                               Container(
@@ -280,9 +296,11 @@ class _Flight_Result_EmptyState extends State<Flight_Result_Empty>
                                       padding: const EdgeInsets.only(
                                         right: 5,
                                       ),
-                                      child: Image(
-                                          image: AssetImage(
-                                              'assets/icons/peoples.png')),
+                                      child: Icon(
+                                        MaterialIcons.supervisor_account,
+                                        size: 20,
+                                        color: kGrey600,
+                                      ),
                                     ),
                                     Container(
                                       child: Text(
@@ -303,9 +321,11 @@ class _Flight_Result_EmptyState extends State<Flight_Result_Empty>
                                       padding: const EdgeInsets.only(
                                         right: 5,
                                       ),
-                                      child: Image(
-                                          image: AssetImage(
-                                              'assets/icons/childfriendly.png')),
+                                      child: Icon(
+                                        Icons.child_friendly_sharp,
+                                        size: 20,
+                                        color: kGrey600,
+                                      ),
                                     ),
                                     Container(
                                       child: Text(
@@ -326,9 +346,11 @@ class _Flight_Result_EmptyState extends State<Flight_Result_Empty>
                                       padding: const EdgeInsets.only(
                                         right: 5,
                                       ),
-                                      child: Image(
-                                          image: AssetImage(
-                                              'assets/icons/bag_fill.png')),
+                                      child: Icon(
+                                        FontAwesomeIcons.suitcase,
+                                        size: 15,
+                                        color: kGrey600,
+                                      ),
                                     ),
                                     Container(
                                       child: Text(
@@ -357,15 +379,17 @@ class _Flight_Result_EmptyState extends State<Flight_Result_Empty>
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Container(
-                    child: Image(
-                      image:
-                      AssetImage('assets/icons/empty/plane.png'),
+                    child: SvgPicture.asset(
+                      ('assets/images/image-empty/no-flight.svg'),
+                      height: displaySize(context).height * 0.2,
+                      width: displaySize(context).width * 0.2,
                     ),
                   ),
                   Container(
                     margin: const EdgeInsets.only(top: 10),
                     child: Text(
-                      'No flights were found',
+                      AppLocalizations.of(context)
+                          .translate('Noflightswerefound'),
                       style: TextStyle(
                         fontSize: 22,
                         color: kBlack,
@@ -376,7 +400,7 @@ class _Flight_Result_EmptyState extends State<Flight_Result_Empty>
                     margin: const EdgeInsets.only(top: 5),
                     width: displaySize(context).width * 0.55,
                     child: Text(
-                      'We have not found any flights that match your search.',
+                      AppLocalizations.of(context).translate('Wehavenot'),
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 15,

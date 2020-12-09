@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:lywing/common/app_localizations.dart';
 import 'package:lywing/common/constants.dart';
 import 'package:lywing/screen/home/home_screen.dart';
 import 'package:lywing/screen/users/login/register.dart';
 
 import '../../../sizes_helpers.dart';
-
 
 class Login extends StatefulWidget {
   @override
@@ -18,11 +19,12 @@ class _LoginState extends State<Login> {
     return Material(
       child: Container(
         color: kWhite,
+        height: displaySize(context).height,
         child: Column(
           children: <Widget>[
             Container(
               width: displaySize(context).width,
-              height: displaySize(context).height * 0.5,
+              height: displaySize(context).height * 0.55,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/images/lywing-slash-screen.png'),
@@ -34,13 +36,14 @@ class _LoginState extends State<Login> {
                 children: <Widget>[
                   Container(
                     margin: EdgeInsets.only(
-                        top: 270),
+                        top: displaySize(context).height * 0.38),
                     child: Column(
                       children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.all(10),
                           child: Text(
-                            'Login',
+                            AppLocalizations.of(context)
+                                .translate('login'),
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 36,
@@ -65,7 +68,8 @@ class _LoginState extends State<Login> {
                 borderRadius: BorderRadius.circular(15),
                 child: TextField(
                   decoration: InputDecoration(
-                    labelText: 'Enter your Email',
+                    labelText: AppLocalizations.of(context)
+                        .translate('enterYourEmail'),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: kWhite, width: 0.0),
                     ),
@@ -89,7 +93,8 @@ class _LoginState extends State<Login> {
                 child: TextField(
                   obscureText: true,
                   decoration: InputDecoration(
-                    labelText: 'Enter password',
+                    labelText: AppLocalizations.of(context)
+                        .translate('enterPassword?'),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: kWhite, width: 0.0),
                     ),
@@ -120,7 +125,8 @@ class _LoginState extends State<Login> {
                   shape: new RoundedRectangleBorder(
                       borderRadius: new BorderRadius.circular(10.0)),
                   child: Text(
-                    'Login',
+                    AppLocalizations.of(context)
+                        .translate('login'),
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 15,
@@ -131,16 +137,20 @@ class _LoginState extends State<Login> {
               ),
             ),
             SizedBox(
-              height: 50,
+              height: displaySize(context).height * 0.05,
             ),
             Container(
+              margin: const EdgeInsets.only(
+                left: 10,
+                right: 10,
+              ),
+              width: displaySize(context).width,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Container(
-                    child: ButtonTheme(
-                      padding: const EdgeInsets.only(
-                          top: 10, bottom: 10, left: 15, right: 15),
+                    width: displaySize(context).width * 0.45,
+                    child:ButtonTheme(
                       child: RaisedButton(
                         elevation: 0,
                         onPressed: () {},
@@ -152,23 +162,24 @@ class _LoginState extends State<Login> {
                           ),
                         ),
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: <Widget>[
-                            Image(
-                              image: AssetImage('assets/images/search-2.png'),
-                              width: 15,
-                              height: 15,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                left: 30,
-                                right: 30,
+                            Container(
+                              padding: EdgeInsets.only(
+                                right: displaySize(context).width * 0.1,
                               ),
-                              child: Text(
-                                'Google',
-                                style: TextStyle(
-                                  fontSize: 15,
-                                  color: kBlack,
-                                ),
+                              child: SvgPicture.asset(
+                                ('assets/images/google.svg'),
+                                width: 15,
+                                height: 15,
+                              ),
+                            ),
+                            Text(
+                              'Google',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: kBlack,
                               ),
                             ),
                           ],
@@ -177,9 +188,8 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                   Container(
+                    width: displaySize(context).width * 0.45,
                     child: ButtonTheme(
-                      padding: const EdgeInsets.only(
-                          top: 10, bottom: 10, left: 15, right: 15),
                       child: RaisedButton(
                         elevation: 0,
                         onPressed: () {},
@@ -191,23 +201,23 @@ class _LoginState extends State<Login> {
                           ),
                         ),
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: <Widget>[
-                            Image(
-                              image: AssetImage('assets/images/facebook.png'),
-                              width: 15,
-                              height: 15,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                left: 30,
-                                right: 30,
+                            Container(
+                              padding: EdgeInsets.only(
+                                  right: displaySize(context).width * 0.1,
                               ),
-                              child: Text(
-                                'Facebook',
-                                style: TextStyle(
-                                  fontSize: 15,
-                                  color: kBlack,
-                                ),
+                              child: SvgPicture.asset(
+                                ('assets/images/facebook.svg'),
+                                width: 15,
+                                height: 15,
+                              ),
+                            ),
+                            Text(
+                              'Facebook',
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: kBlack,
                               ),
                             ),
                           ],
@@ -225,25 +235,27 @@ class _LoginState extends State<Login> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  FlatButton(
-                    onPressed: () {},
+                  InkWell(
+                    onTap: () {},
                     child: Text(
-                      "Don't have account?",
+                      AppLocalizations.of(context)
+                          .translate('don\'tHaveAccount?'),
                       style: TextStyle(
                         fontSize: 13,
                         color: kGrey600,
                       ),
                     ),
                   ),
-                  FlatButton(
-                    onPressed: () {
+                  InkWell(
+                    onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Register()),
+                        MaterialPageRoute(builder: (context) => registerNewAccount()),
                       );
                     },
                     child: Text(
-                      'Register new account',
+                      AppLocalizations.of(context)
+                          .translate('registerNewAccount'),
                       style: TextStyle(
                         color: kBlue,
                         fontSize: 13,

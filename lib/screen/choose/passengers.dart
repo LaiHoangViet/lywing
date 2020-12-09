@@ -1,7 +1,11 @@
+import 'package:circular_check_box/circular_check_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter_icons/flutter_icons.dart';
+import 'package:lywing/common/app_localizations.dart';
 import 'package:lywing/common/constants.dart';
 import 'package:lywing/screen/choose/add-passenger.dart';
+import 'package:lywing/sizes_helpers.dart';
 
 class Passengers extends StatefulWidget {
   @override
@@ -9,6 +13,15 @@ class Passengers extends StatefulWidget {
 }
 
 class _PassengersState extends State<Passengers> {
+  bool _checked = false;
+  bool _checked1 = false;
+  bool _checked2 = false;
+  bool _checked3 = false;
+  bool _checked4 = false;
+  bool _checked5 = false;
+
+  List name = ["Ms.May Thao Nguyen","Mr.Nguyen Nam Long","Ms.Linh Thi Hoang","Mr.Viet Quoc Hoang","Mr.Dao Hung Than","Ms.Dieu Quang Ly"];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,14 +30,17 @@ class _PassengersState extends State<Passengers> {
         child: AppBar(
           elevation: 3.0,
           leading: IconButton(
-            icon: Image.asset('assets/icons/pin-left.png'),
+            icon: Icon(
+                    Icons.arrow_back_ios_rounded,
+                  color: kBlack,
+                ),
             onPressed: () {
               Navigator.pop(context);
             },
           ),
           centerTitle: true,
           title: Text(
-            'Passengers',
+            AppLocalizations.of(context).translate('Passengers'),
             style: TextStyle(
               color: kBlack,
               fontSize: 17,
@@ -42,7 +58,7 @@ class _PassengersState extends State<Passengers> {
                   color: kWhite,
                   highlightColor: kWhite,
                   child: Text(
-                    'Done',
+                    AppLocalizations.of(context).translate('Done'),
                     style: TextStyle(
                       fontSize: 17,
                       color: kBlack,
@@ -55,8 +71,8 @@ class _PassengersState extends State<Passengers> {
       ),
       body: Container(
         margin: const EdgeInsets.only(
-          left: 15,
-          right: 15,
+          left: 10,
+          right: 10,
         ),
         child: ListView(
           children: <Widget>[
@@ -81,15 +97,16 @@ class _PassengersState extends State<Passengers> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Image(
-                      image: AssetImage('assets/icons/ios-person-add.png'),
+                    Icon(
+                      MaterialIcons.person_add,
+                      color: kWhite,
                     ),
                     Container(
                       margin: const EdgeInsets.only(
                         left: 15,
                       ),
                       child: Text(
-                        'Add a Passenger',
+                        AppLocalizations.of(context).translate('AddaPassenger'),
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 13,
@@ -102,528 +119,61 @@ class _PassengersState extends State<Passengers> {
               ),
             ),
             Container(
-              margin: const EdgeInsets.only(
-                bottom: 15,
-              ),
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: kWhite,
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    color: kGrey200,
-                    // spreadRadius: 6,
-                    blurRadius: 15,
-                    offset: Offset(0, 5),
-                  ),
-                ],
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Container(
-                    child: Icon(
-                      Icons.check_circle,
-                      color: kBlue,
+              child: Column(
+                children: [
+                  for (var index in name ) Container(
+                    margin: const EdgeInsets.only(
+                      bottom: 15,
                     ),
-                  ),
-                  Container(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Container(
-                          child: Text(
-                            'Mr.Phong Van Tran',
-                            style: TextStyle(
-                              fontSize: 15,
-                              color: kBlack,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          child: Row(
-                            children: <Widget>[
-                              Container(
-                                child: Text(
-                                  '15/04/1996',
-                                  style: TextStyle(
-                                    fontSize: 11,
-                                    color: kGrey400,
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                margin: const EdgeInsets.only(
-                                  left: 5,
-                                  right: 5,
-                                ),
-                                child: Text(
-                                  '|',
-                                  style: TextStyle(
-                                    fontSize: 11,
-                                    color: kGrey400,
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                child: Text(
-                                  'Passport or ID: 104710',
-                                  style: TextStyle(
-                                    fontSize: 11,
-                                    color: kGrey400,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
+                    decoration: BoxDecoration(
+                      color: kWhite,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: kGrey200,
+                          // spreadRadius: 6,
+                          blurRadius: 15,
+                          offset: Offset(0, 5),
                         ),
                       ],
                     ),
-                  ),
-                  Container(
-                    child: IconButton(
-                      icon: Image.asset('assets/icons/iconlineedit.png'),
-                      onPressed: () {},
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.only(
-                bottom: 15,
-              ),
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: kWhite,
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    color: kGrey200,
-                    // spreadRadius: 6,
-                    blurRadius: 15,
-                    offset: Offset(0, 5),
-                  ),
-                ],
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Container(
-                    child: Icon(
-                      Icons.check_circle,
-                      color: kBlue,
-                    ),
-                  ),
-                  Container(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Container(
-                          child: Text(
-                            'Ms.May Thao Nguyen',
-                            style: TextStyle(
-                              fontSize: 15,
-                              color: kBlack,
+                    child: CheckboxListTile(
+                      title: Container(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Container(
+                              child: Text(
+                                '$index',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: kBlack,
+                                ),
+                              ),
                             ),
-                          ),
-                        ),
-                        Container(
-                          child: Row(
-                            children: <Widget>[
-                              Container(
-                                child: Text(
-                                  '15/04/1996',
-                                  style: TextStyle(
-                                    fontSize: 11,
-                                    color: kGrey400,
-                                  ),
+                            Container(
+                              child: Text(
+                                '15/04/1996 | ${AppLocalizations.of(context).translate('Passportor')} ID: 104710',
+                                style: TextStyle(
+                                  fontSize: 11,
+                                  color: kGrey400,
                                 ),
                               ),
-                              Container(
-                                margin: const EdgeInsets.only(
-                                  left: 5,
-                                  right: 5,
-                                ),
-                                child: Text(
-                                  '|',
-                                  style: TextStyle(
-                                    fontSize: 11,
-                                    color: kGrey400,
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                child: Text(
-                                  'Passport or ID: 104710',
-                                  style: TextStyle(
-                                    fontSize: 11,
-                                    color: kGrey400,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    child: IconButton(
-                      icon: Image.asset('assets/icons/iconlineedit.png'),
-                      onPressed: () {},
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.only(
-                bottom: 15,
-              ),
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: kWhite,
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    color: kGrey200,
-                    // spreadRadius: 6,
-                    blurRadius: 15,
-                    offset: Offset(0, 5),
-                  ),
-                ],
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Container(
-                    child: Icon(
-                      Icons.check_circle,
-                      color: kGrey500,
-                    ),
-                  ),
-                  Container(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Container(
-                          child: Text(
-                            'Ms.Linh Thi Hoang',
-                            style: TextStyle(
-                              fontSize: 15,
-                              color: kBlack,
                             ),
-                          ),
+                          ],
                         ),
-                        Container(
-                          child: Row(
-                            children: <Widget>[
-                              Container(
-                                child: Text(
-                                  '15/04/1996',
-                                  style: TextStyle(
-                                    fontSize: 11,
-                                    color: kGrey400,
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                margin: const EdgeInsets.only(
-                                  left: 5,
-                                  right: 5,
-                                ),
-                                child: Text(
-                                  '|',
-                                  style: TextStyle(
-                                    fontSize: 11,
-                                    color: kGrey400,
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                child: Text(
-                                  'Passport or ID: 104710',
-                                  style: TextStyle(
-                                    fontSize: 11,
-                                    color: kGrey400,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    child: IconButton(
-                      icon: Image.asset('assets/icons/iconlineedit.png'),
-                      onPressed: () {},
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.only(
-                bottom: 15,
-              ),
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: kWhite,
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    color: kGrey200,
-                    // spreadRadius: 6,
-                    blurRadius: 15,
-                    offset: Offset(0, 5),
-                  ),
-                ],
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Container(
-                    child: Icon(
-                      Icons.check_circle,
-                      color: kGrey500,
-                    ),
-                  ),
-                  Container(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Container(
-                          child: Text(
-                            'Mr.Viet Quoc Hoang',
-                            style: TextStyle(
-                              fontSize: 15,
-                              color: kBlack,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          child: Row(
-                            children: <Widget>[
-                              Container(
-                                child: Text(
-                                  '15/04/1996',
-                                  style: TextStyle(
-                                    fontSize: 11,
-                                    color: kGrey400,
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                margin: const EdgeInsets.only(
-                                  left: 5,
-                                  right: 5,
-                                ),
-                                child: Text(
-                                  '|',
-                                  style: TextStyle(
-                                    fontSize: 11,
-                                    color: kGrey400,
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                child: Text(
-                                  'Passport or ID: 104710',
-                                  style: TextStyle(
-                                    fontSize: 11,
-                                    color: kGrey400,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    child: IconButton(
-                      icon: Image.asset('assets/icons/iconlineedit.png'),
-                      onPressed: () {},
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.only(
-                bottom: 15,
-              ),
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: kWhite,
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    color: kGrey200,
-                    // spreadRadius: 6,
-                    blurRadius: 15,
-                    offset: Offset(0, 5),
-                  ),
-                ],
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Container(
-                    child: Icon(
-                      Icons.check_circle,
-                      color: kGrey500,
-                    ),
-                  ),
-                  Container(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Container(
-                          child: Text(
-                            'Mr.Dao Hung Tan',
-                            style: TextStyle(
-                              fontSize: 15,
-                              color: kBlack,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          child: Row(
-                            children: <Widget>[
-                              Container(
-                                child: Text(
-                                  '15/04/1996',
-                                  style: TextStyle(
-                                    fontSize: 11,
-                                    color: kGrey400,
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                margin: const EdgeInsets.only(
-                                  left: 5,
-                                  right: 5,
-                                ),
-                                child: Text(
-                                  '|',
-                                  style: TextStyle(
-                                    fontSize: 11,
-                                    color: kGrey400,
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                child: Text(
-                                  'Passport or ID: 104710',
-                                  style: TextStyle(
-                                    fontSize: 11,
-                                    color: kGrey400,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    child: IconButton(
-                      icon: Image.asset('assets/icons/iconlineedit.png'),
-                      onPressed: () {},
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.only(
-                bottom: 15,
-              ),
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: kWhite,
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    color: kGrey200,
-                    // spreadRadius: 6,
-                    blurRadius: 15,
-                    offset: Offset(0, 5),
-                  ),
-                ],
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Container(
-                    child: Icon(
-                      Icons.check_circle,
-                      color: kGrey500,
-                    ),
-                  ),
-                  Container(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Container(
-                          child: Text(
-                            'Ms.Dieu Quang Ly',
-                            style: TextStyle(
-                              fontSize: 15,
-                              color: kBlack,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          child: Row(
-                            children: <Widget>[
-                              Container(
-                                child: Text(
-                                  '15/04/1996',
-                                  style: TextStyle(
-                                    fontSize: 11,
-                                    color: kGrey400,
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                margin: const EdgeInsets.only(
-                                  left: 5,
-                                  right: 5,
-                                ),
-                                child: Text(
-                                  '|',
-                                  style: TextStyle(
-                                    fontSize: 11,
-                                    color: kGrey400,
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                child: Text(
-                                  'Passport or ID: 104710',
-                                  style: TextStyle(
-                                    fontSize: 11,
-                                    color: kGrey400,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    child: IconButton(
-                      icon: Image.asset('assets/icons/iconlineedit.png'),
-                      onPressed: () {},
+                      ),
+                      secondary: IconButton(
+                        icon: Icon(MaterialIcons.create,color: kGrey400,),
+                        onPressed: () {},
+                      ),
+                      controlAffinity: ListTileControlAffinity.leading,
+                      value: _checked,
+                      onChanged: (bool value){
+                        setState(() {
+                          _checked = value;
+                        });
+                      },
                     ),
                   ),
                 ],

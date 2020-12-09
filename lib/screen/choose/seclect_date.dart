@@ -54,7 +54,10 @@ class _Seclect_DateState extends State<Seclect_Date> {
         preferredSize: Size.fromHeight(50.0),
         child: AppBar(
           leading: IconButton(
-            icon: Image.asset('assets/icons/pin-left.png'),
+            icon: Icon(
+                    Icons.arrow_back_ios_rounded,
+                  color: kBlack,
+                ),
             onPressed: () {
               Navigator.pop(context);
             },

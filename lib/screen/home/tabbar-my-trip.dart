@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lywing/common/app_localizations.dart';
 import 'package:lywing/common/constants.dart';
 import 'package:lywing/screen/empty/my-trip-empty.dart';
 import '../../sizes_helpers.dart';
@@ -30,23 +31,23 @@ class _TabbarMy_TripState extends State<TabbarMy_Trip> {
               decoration: BoxDecoration(
                 color: kWhite,
                 border: Border.all(
-                  width: 0.0,
+                  width: 0,
                   color: kWhite,
                 ),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black12,
-                    // spreadRadius: 6,
-                    blurRadius: 15,
-                    offset: Offset(0, 10),
+                    blurRadius: 10,
+                    offset: Offset(0, 0),
                   ),
                 ],
               ),
               child: AppBar(
                 automaticallyImplyLeading: false,
                 backgroundColor: kWhite,
+                elevation: 0,
                 title: Text(
-                  'My Trip',
+                  AppLocalizations.of(context).translate('MyTrip'),
                   textAlign: TextAlign.end,
                   style: TextStyle(
                     fontSize: 34,
@@ -66,7 +67,7 @@ class _TabbarMy_TripState extends State<TabbarMy_Trip> {
                       tabs: <Widget>[
                         Tab(
                           child: Text(
-                            'Upcoming',
+                            AppLocalizations.of(context).translate('Upcoming'),
                             style: TextStyle(
                               fontSize: 15,
                             ),
@@ -74,7 +75,7 @@ class _TabbarMy_TripState extends State<TabbarMy_Trip> {
                         ),
                         Tab(
                           child: Text(
-                            'History',
+                            AppLocalizations.of(context).translate('History'),
                             style: TextStyle(
                               fontSize: 15,
                             ),

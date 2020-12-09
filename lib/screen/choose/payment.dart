@@ -1,8 +1,10 @@
+import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_dash/flutter_dash.dart';
+import 'package:lywing/common/app_localizations.dart';
 import 'package:lywing/common/constants.dart';
 import 'package:lywing/screen/choose/confirm.dart';
 import 'package:lywing/sizes_helpers.dart';
@@ -22,8 +24,8 @@ class _PaymentState extends State<Payment> {
           elevation: 0.0,
           bottomOpacity: 0.0,
           leading: IconButton(
-            icon: Image.asset(
-              'assets/icons/pin-left.png',
+            icon: Icon(
+              Icons.arrow_back_ios_rounded,
               color: kWhite,
             ),
             onPressed: () {
@@ -32,7 +34,7 @@ class _PaymentState extends State<Payment> {
           ),
           centerTitle: true,
           title: Text(
-            'Payment',
+            AppLocalizations.of(context).translate('Payment'),
             style: TextStyle(
               color: kWhite,
               fontSize: 17,
@@ -95,10 +97,33 @@ class _PaymentState extends State<Payment> {
                             ),
                           ),
                           Container(
-                            child: Image(
-                              image: AssetImage(
-                                'assets/icons/lineright-flights.png',
-                              ),
+                            child: Row(
+                              children: [
+                                Container(
+                                  width: displaySize(context).width * 0.2,
+                                  height: 1,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: kGrey200, width: 1),
+                                  ),
+                                ),
+                                Container(
+                                  child: Transform.rotate(
+                                    angle: pi / 2,
+                                    child: Icon(
+                                      Icons.flight,
+                                      color: kGrey500,
+                                      size: 20,
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  width: displaySize(context).width * 0.2,
+                                  height: 1,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: kGrey200, width: 1),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                           Container(
@@ -131,7 +156,7 @@ class _PaymentState extends State<Payment> {
                               left: 30,
                             ),
                             child: Text(
-                              '1 stop',
+                              '1 ${AppLocalizations.of(context).translate('stop')}',
                               style: TextStyle(
                                 color: kGrey200,
                                 fontSize: 11,
@@ -226,10 +251,10 @@ class _PaymentState extends State<Payment> {
                         bottom: 10,
                       ),
                       child: Dash(
-                          length: displaySize(context).width * 0.8,
-                          dashThickness: 1,
-                          dashGap:1,
-                          dashColor: kGrey200,
+                        length: displaySize(context).width * 0.8,
+                        dashThickness: 1,
+                        dashGap: 1,
+                        dashColor: kGrey200,
                       ),
                     ),
                     Container(
@@ -307,10 +332,33 @@ class _PaymentState extends State<Payment> {
                             ),
                           ),
                           Container(
-                            child: Image(
-                              image: AssetImage(
-                                'assets/icons/lineright-flights.png',
-                              ),
+                            child: Row(
+                              children: [
+                                Container(
+                                  width: displaySize(context).width * 0.2,
+                                  height: 1,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: kGrey200, width: 1),
+                                  ),
+                                ),
+                                Container(
+                                  child: Transform.rotate(
+                                    angle: pi / 2,
+                                    child: Icon(
+                                      Icons.flight,
+                                      color: kGrey500,
+                                      size: 20,
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  width: displaySize(context).width * 0.2,
+                                  height: 1,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: kGrey200, width: 1),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                           Container(
@@ -343,7 +391,7 @@ class _PaymentState extends State<Payment> {
                               left: 30,
                             ),
                             child: Text(
-                              '1 stop',
+                              '1 ${AppLocalizations.of(context).translate('stop')}',
                               style: TextStyle(
                                 color: kGrey200,
                                 fontSize: 11,
@@ -438,10 +486,10 @@ class _PaymentState extends State<Payment> {
                         bottom: 10,
                       ),
                       child: Dash(
-                          length: displaySize(context).width * 0.8,
-                          dashThickness: 1,
-                          dashGap:1,
-                          dashColor: kGrey200,
+                        length: displaySize(context).width * 0.8,
+                        dashThickness: 1,
+                        dashGap: 1,
+                        dashColor: kGrey200,
                       ),
                     ),
                     Container(
@@ -528,7 +576,7 @@ class _PaymentState extends State<Payment> {
                   child: Row(
                     children: <Widget>[
                       Text(
-                        'Total:',
+                        '${AppLocalizations.of(context).translate('Total')}:',
                         style: TextStyle(fontSize: 12, color: kGrey400),
                       ),
                       Container(
@@ -554,7 +602,7 @@ class _PaymentState extends State<Payment> {
                       children: <Widget>[
                         Container(
                           child: Text(
-                            '1 x Passenger',
+                            '1 x ${AppLocalizations.of(context).translate('Passengers')}',
                             style: TextStyle(
                               color: kGrey400,
                               fontSize: 12,
@@ -586,7 +634,7 @@ class _PaymentState extends State<Payment> {
                       children: <Widget>[
                         Container(
                           child: Text(
-                            '1 x Cabin baggage',
+                            '1 x ${AppLocalizations.of(context).translate('Cabinbaggage')}',
                             style: TextStyle(
                               color: kGrey400,
                               fontSize: 12,
@@ -618,7 +666,7 @@ class _PaymentState extends State<Payment> {
                       children: <Widget>[
                         Container(
                           child: Text(
-                            '1 x Checked baggage',
+                            '1 x ${AppLocalizations.of(context).translate('Checkedbaggage')}',
                             style: TextStyle(
                               color: kGrey400,
                               fontSize: 12,
@@ -650,7 +698,7 @@ class _PaymentState extends State<Payment> {
                       children: <Widget>[
                         Container(
                           child: Text(
-                            '1 x Travel insurance',
+                            '1 x ${AppLocalizations.of(context).translate('Travelinsurance')}',
                             style: TextStyle(
                               color: kGrey400,
                               fontSize: 12,
@@ -682,7 +730,7 @@ class _PaymentState extends State<Payment> {
                       children: <Widget>[
                         Container(
                           child: Text(
-                            '1 x AirHelp+',
+                            '1 x ${AppLocalizations.of(context).translate('AirHelp+')}',
                             style: TextStyle(
                               color: kGrey400,
                               fontSize: 12,
@@ -714,7 +762,7 @@ class _PaymentState extends State<Payment> {
                       children: <Widget>[
                         Container(
                           child: Text(
-                            '1 x  Plus service package',
+                            '1 x ${AppLocalizations.of(context).translate('Plusservicepackage')}',
                             style: TextStyle(
                               color: kGrey400,
                               fontSize: 12,
@@ -746,7 +794,7 @@ class _PaymentState extends State<Payment> {
                       children: <Widget>[
                         Container(
                           child: Text(
-                            '1 x Passenger',
+                            '1 x ${AppLocalizations.of(context).translate('Passengers')}',
                             style: TextStyle(
                               color: kGrey400,
                               fontSize: 12,
@@ -785,7 +833,7 @@ class _PaymentState extends State<Payment> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: <Widget>[
                         Text(
-                          'Total:',
+                          '${AppLocalizations.of(context).translate('Total')}:',
                           style: TextStyle(fontSize: 12, color: kGrey400),
                         ),
                         Container(
@@ -822,7 +870,7 @@ class _PaymentState extends State<Payment> {
                 children: <Widget>[
                   Container(
                     child: Text(
-                      'Credit card',
+                      AppLocalizations.of(context).translate('Creditcard'),
                       style: TextStyle(
                         color: kBlack,
                         fontSize: 17,
@@ -846,7 +894,8 @@ class _PaymentState extends State<Payment> {
                       children: <Widget>[
                         Container(
                           child: Text(
-                            'Card Holder',
+                            AppLocalizations.of(context)
+                                .translate('CardHolder'),
                             style: TextStyle(
                               fontSize: 11,
                               color: kGrey400,
@@ -877,7 +926,8 @@ class _PaymentState extends State<Payment> {
                       children: <Widget>[
                         Container(
                           child: Text(
-                            'Card Number',
+                            AppLocalizations.of(context)
+                                .translate('CardNumber'),
                             style: TextStyle(
                               fontSize: 11,
                               color: kGrey400,
@@ -927,7 +977,8 @@ class _PaymentState extends State<Payment> {
                               children: <Widget>[
                                 Container(
                                   child: Text(
-                                    'Expiry date',
+                                    AppLocalizations.of(context)
+                                        .translate('Expirydate'),
                                     style: TextStyle(
                                       fontSize: 11,
                                       color: kGrey400,
@@ -1034,7 +1085,7 @@ class _PaymentState extends State<Payment> {
                       left: 10,
                     ),
                     child: Text(
-                      'Your card is secured by Stripe. We do not store your credit card infomation.',
+                      AppLocalizations.of(context).translate('Yourcard'),
                       style: TextStyle(
                         fontSize: 12,
                         color: kGrey600,
@@ -1083,7 +1134,7 @@ class _PaymentState extends State<Payment> {
                         ),
                         Container(
                           child: Text(
-                            'Total (1 adult)',
+                            '${AppLocalizations.of(context).translate('Total')} (1 ${AppLocalizations.of(context).translate('adult')})',
                             style: TextStyle(
                               fontSize: 12,
                               color: kGrey400,
@@ -1112,7 +1163,7 @@ class _PaymentState extends State<Payment> {
                         );
                       },
                       child: Text(
-                        'Pay now',
+                        AppLocalizations.of(context).translate('Paynow'),
                         style: TextStyle(
                           fontSize: 15,
                           color: kWhite,

@@ -1,7 +1,12 @@
 import 'dart:ui';
 
 import 'package:dotted_border/dotted_border.dart';
+import 'package:expansion_card/expansion_card.dart';
+import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:lywing/common/app_localizations.dart';
 import 'package:lywing/common/constants.dart';
 import 'package:lywing/screen/choose/booking-1.dart';
 import 'package:lywing/sizes_helpers.dart';
@@ -24,14 +29,17 @@ class _Flight_DetailsState extends State<Flight_Details> {
           elevation: 0.0,
           bottomOpacity: 0.0,
           leading: IconButton(
-            icon: Image.asset('assets/icons/pin-left.png'),
+            icon: Icon(
+              Icons.arrow_back_ios_rounded,
+              color: kBlack,
+            ),
             onPressed: () {
               Navigator.pop(context);
             },
           ),
           centerTitle: true,
           title: Text(
-            'Flight Details',
+            AppLocalizations.of(context).translate('FlightDetails'),
             style: TextStyle(
               color: kBlack,
               fontSize: 17,
@@ -42,6 +50,7 @@ class _Flight_DetailsState extends State<Flight_Details> {
         ),
       ),
       body: Container(
+        width: displaySize(context).width,
         child: ListView(
           addAutomaticKeepAlives: false,
           children: <Widget>[
@@ -60,7 +69,7 @@ class _Flight_DetailsState extends State<Flight_Details> {
                       children: <Widget>[
                         Container(
                           child: Text(
-                            'Outbound',
+                            AppLocalizations.of(context).translate('Outbound'),
                             style: TextStyle(
                               color: kWhite,
                               fontSize: 17,
@@ -97,9 +106,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                       left: 15,
                       right: 15,
                     ),
+                    width: displaySize(context).width,
                     child: Column(
                       children: <Widget>[
-                        // Title địa điểm đi và đến
+                        // Title of departure and destination locations
                         Container(
                           padding: const EdgeInsets.only(
                             bottom: 10,
@@ -125,9 +135,9 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                         left: 10,
                                         right: 10,
                                       ),
-                                      child: Image(
-                                        image: AssetImage(
-                                            'assets/icons/icswapright-2.png'),
+                                      child: Icon(
+                                        MaterialIcons.flight_takeoff,
+                                        size: 20,
                                       ),
                                     ),
                                     Container(
@@ -150,10 +160,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                       padding: const EdgeInsets.only(
                                         right: 10,
                                       ),
-                                      child: Image(
-                                        image: AssetImage(
-                                          'assets/icons/date.png',
-                                        ),
+                                      child: Icon(
+                                        MaterialIcons.timelapse,
+                                        color: kGrey600,
+                                        size: 20,
                                       ),
                                     ),
                                     Container(
@@ -171,7 +181,7 @@ class _Flight_DetailsState extends State<Flight_Details> {
                             ],
                           ),
                         ),
-                        //Thoi gian bat dau di
+                        //Time started to go
                         Container(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -194,10 +204,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                         left: 15,
                                         right: 15,
                                       ),
-                                      child: Image(
-                                        image: AssetImage(
-                                          'assets/icons/Oval.png',
-                                        ),
+                                      child: Icon(
+                                        Icons.lens,
+                                        color: kGrey400,
+                                        size: 10,
                                       ),
                                     ),
                                     Container(
@@ -224,7 +234,7 @@ class _Flight_DetailsState extends State<Flight_Details> {
                             ],
                           ),
                         ),
-                        //Chuyen bay
+                        //flight
                         Container(
                           child: Row(
                             children: <Widget>[
@@ -248,233 +258,464 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                       'assets/icons/linedown-flights.png'),
                                 ),
                               ),
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: kGrey100,
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: DropdownButton(
-                                    icon: Icon(Icons.arrow_drop_down),
-                                    iconSize: 42,
-                                    // isExpanded: true,
-                                    underline: SizedBox(),
-                                    value: _value,
-                                    items: [
-                                      DropdownMenuItem(
-                                        child: Container(
-                                          padding: EdgeInsets.only(
-                                            top: 10,
-                                            left: 10,
-                                            right: 100,
-                                            bottom: 5,
-                                          ),
-                                          child: Row(
-                                            children: <Widget>[
-                                              Container(
-                                                margin: const EdgeInsets.only(
-                                                  bottom: 10,
-                                                ),
-                                                child: Image(
-                                                  image: AssetImage(
-                                                      'assets/images/VJ-1.png'),
-                                                ),
-                                              ),
-                                              Container(
-                                                padding: const EdgeInsets.only(
-                                                  left: 10,
-                                                ),
-                                                child: Column(
-                                                  children: <Widget>[
-                                                    Container(
-                                                      child: Text(
-                                                        'Vietjet Air',
-                                                        style: TextStyle(
-                                                          fontSize: 15,
-                                                          color: kGrey500,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      child: Text(
-                                                        'Airbus 320',
-                                                        style: TextStyle(
-                                                          fontSize: 11,
-                                                          color: kGrey400,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        value: 1,
+                              Expanded(
+                                flex: 1,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: kGrey100,
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(
+                                      color: kGrey100,
+                                      width: 0,
+                                    ),
+                                  ),
+                                  child: ExpansionCard(
+                                    margin: const EdgeInsets.only(
+                                      top: 0,
+                                    ),
+                                    // expandedColor: kGreenLight,
+                                    leading: Image(
+                                      image: AssetImage(
+                                        'assets/images/VJ-1.png',
                                       ),
-                                      DropdownMenuItem(
-                                        child: Container(
-                                          padding: EdgeInsets.only(
-                                            top: 10,
-                                            left: 10,
-                                            right: 100,
-                                            bottom: 5,
-                                          ),
-                                          child: Row(
-                                            children: <Widget>[
-                                              Container(
-                                                margin: const EdgeInsets.only(
-                                                  bottom: 10,
-                                                ),
-                                                child: Image(
-                                                  image: AssetImage(
-                                                      'assets/images/VJ-1.png'),
-                                                ),
-                                              ),
-                                              Container(
-                                                padding: const EdgeInsets.only(
-                                                  left: 10,
-                                                ),
-                                                child: Column(
-                                                  children: <Widget>[
-                                                    Container(
-                                                      child: Text(
-                                                        'Vietjet Air',
-                                                        style: TextStyle(
-                                                          fontSize: 15,
-                                                          color: kGrey500,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      child: Text(
-                                                        'Airbus 320',
-                                                        style: TextStyle(
-                                                          fontSize: 11,
-                                                          color: kGrey400,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
+                                    ),
+                                    title: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                          child: Text(
+                                            'Vietjet Air',
+                                            style: TextStyle(
+                                              fontSize: 15,
+                                              color: kGrey500,
+                                            ),
                                           ),
                                         ),
-                                        value: 2,
-                                      ),
-                                      DropdownMenuItem(
-                                        child: Container(
-                                          padding: EdgeInsets.only(
-                                            top: 10,
-                                            left: 10,
-                                            right: 100,
-                                            bottom: 5,
-                                          ),
-                                          child: Row(
-                                            children: <Widget>[
-                                              Container(
-                                                margin: const EdgeInsets.only(
-                                                  bottom: 10,
-                                                ),
-                                                child: Image(
-                                                  image: AssetImage(
-                                                      'assets/images/VJ-1.png'),
-                                                ),
-                                              ),
-                                              Container(
-                                                padding: const EdgeInsets.only(
-                                                  left: 10,
-                                                ),
-                                                child: Column(
-                                                  children: <Widget>[
-                                                    Container(
-                                                      child: Text(
-                                                        'Vietjet Air',
-                                                        style: TextStyle(
-                                                          fontSize: 15,
-                                                          color: kGrey500,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      child: Text(
-                                                        'Airbus 320',
-                                                        style: TextStyle(
-                                                          fontSize: 11,
-                                                          color: kGrey400,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
+                                        Container(
+                                          child: Text(
+                                            'Airbus 320',
+                                            style: TextStyle(
+                                              fontSize: 11,
+                                              color: kGrey400,
+                                            ),
                                           ),
                                         ),
-                                        value: 3,
-                                      ),
-                                      DropdownMenuItem(
-                                        child: Container(
-                                          padding: EdgeInsets.only(
-                                            top: 10,
-                                            left: 10,
-                                            right: displaySize(context).width * 0.2,
-                                            bottom: 5,
-                                          ),
-                                          child: Row(
-                                            children: <Widget>[
-                                              Container(
-                                                margin: const EdgeInsets.only(
-                                                  bottom: 10,
-                                                ),
-                                                child: Image(
-                                                  image: AssetImage(
-                                                      'assets/images/VJ-1.png'),
+                                      ],
+                                    ),
+                                    children: <Widget>[
+                                      Container(
+                                        padding: const EdgeInsets.only(
+                                          left: 15,
+                                          right: 20,
+                                        ),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            //Connection info
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 10,
+                                              ),
+                                              child: Text(
+                                                AppLocalizations.of(context).translate('Connectioninfo'),
+                                                style: TextStyle(
+                                                  fontSize: 12,
+                                                  color: kBlack,
                                                 ),
                                               ),
-                                              Container(
-                                                padding: const EdgeInsets.only(
-                                                  left: 10,
-                                                ),
-                                                child: Column(
-                                                  children: <Widget>[
-                                                    Container(
-                                                      child: Text(
-                                                        'Vietjet Air',
-                                                        style: TextStyle(
-                                                          fontSize: 15,
-                                                          color: kGrey500,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      child: Text(
-                                                        'Airbus 320',
-                                                        style: TextStyle(
-                                                          fontSize: 11,
+                                            ),
+
+                                            //Flight no
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 10,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Container(
+                                                    child: Row(
+                                                      children: [
+                                                        Icon(
+                                                          Icons.flight,
                                                           color: kGrey400,
                                                         ),
-                                                      ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                            left: 10,
+                                                          ),
+                                                          child: Text(
+                                                            AppLocalizations.of(context).translate('Flightno'),
+                                                            style: TextStyle(
+                                                              fontSize: 11,
+                                                              color: kGrey400,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
                                                     ),
-                                                  ],
+                                                  ),
+                                                  Text(
+                                                    'KE 690',
+                                                    style: TextStyle(
+                                                      fontSize: 11,
+                                                      color: kGrey400,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+
+                                            //Operating carrier
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 10,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Container(
+                                                    child: Row(
+                                                      children: [
+                                                        Image(
+                                                          image: AssetImage(
+                                                            'assets/images/VJ-1.png',
+                                                          ),
+                                                          width: 25,
+                                                          height: 25,
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                            left: 10,
+                                                          ),
+                                                          child: Text(
+                                                            AppLocalizations.of(context).translate('Operatingcarrier'),
+                                                            style: TextStyle(
+                                                              fontSize: 11,
+                                                              color: kGrey400,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    'Vietjet Air',
+                                                    style: TextStyle(
+                                                      fontSize: 11,
+                                                      color: kGrey400,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+
+                                            //Seating info
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 10,
+                                              ),
+                                              child: Text(
+                                                AppLocalizations.of(context).translate('Seatinginfo'),
+                                                style: TextStyle(
+                                                  fontSize: 12,
+                                                  color: kBlack,
                                                 ),
                                               ),
-                                            ],
-                                          ),
+                                            ),
+
+                                            //Wifi on board
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 10,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Container(
+                                                    child: Row(
+                                                      children: [
+                                                        Icon(
+                                                          Icons.wifi,
+                                                          color: kGrey400,
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                            left: 10,
+                                                          ),
+                                                          child: Text(
+                                                            AppLocalizations.of(context).translate('Wifionboard'),
+                                                            style: TextStyle(
+                                                              fontSize: 11,
+                                                              color: kGrey400,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    'Yes',
+                                                    style: TextStyle(
+                                                      fontSize: 11,
+                                                      color: kGrey400,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+
+                                            //Seat pitch
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 10,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Container(
+                                                    child: Row(
+                                                      children: [
+                                                        Icon(
+                                                          Icons
+                                                              .airline_seat_recline_extra,
+                                                          color: kGrey400,
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                            left: 10,
+                                                          ),
+                                                          child: Text(
+                                                            AppLocalizations.of(context).translate('Seatpitch'),
+                                                            style: TextStyle(
+                                                              fontSize: 11,
+                                                              color: kGrey400,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    '81 cm - 86 cm',
+                                                    style: TextStyle(
+                                                      fontSize: 11,
+                                                      color: kGrey400,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+
+                                            //Seat width
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 10,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Container(
+                                                    child: Row(
+                                                      children: [
+                                                        Icon(
+                                                          Icons
+                                                              .airline_seat_recline_extra,
+                                                          color: kGrey400,
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                            left: 10,
+                                                          ),
+                                                          child: Text(
+                                                            AppLocalizations.of(context).translate('Seatwidth'),
+                                                            style: TextStyle(
+                                                              fontSize: 11,
+                                                              color: kGrey400,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    '44 cm',
+                                                    style: TextStyle(
+                                                      fontSize: 11,
+                                                      color: kGrey400,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+
+                                            //Seat recline
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 10,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Container(
+                                                    child: Row(
+                                                      children: [
+                                                        Icon(
+                                                          Icons
+                                                              .airline_seat_recline_extra,
+                                                          color: kGrey400,
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                            left: 10,
+                                                          ),
+                                                          child: Text(
+                                                            AppLocalizations.of(context).translate('Seatrecline'),
+                                                            style: TextStyle(
+                                                              fontSize: 11,
+                                                              color: kGrey400,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    '7 cm',
+                                                    style: TextStyle(
+                                                      fontSize: 11,
+                                                      color: kGrey400,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+
+                                            //Audio & video on demand
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 10,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Container(
+                                                    child: Row(
+                                                      children: [
+                                                        Icon(
+                                                          Icons.audiotrack,
+                                                          color: kGrey400,
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                            left: 10,
+                                                          ),
+                                                          child: Text(
+                                                            AppLocalizations.of(context).translate('Audiovideoondemand'),
+                                                            style: TextStyle(
+                                                              fontSize: 11,
+                                                              color: kGrey400,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    'Yes',
+                                                    style: TextStyle(
+                                                      fontSize: 11,
+                                                      color: kGrey400,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 10,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Container(
+                                                    child: Row(
+                                                      children: [
+                                                        Icon(
+                                                          FontAwesomeIcons.plug,
+                                                          color: kGrey400,
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                            left: 10,
+                                                          ),
+                                                          child: Text(
+                                                            AppLocalizations.of(context).translate('Inseatpower'),
+                                                            style: TextStyle(
+                                                              fontSize: 11,
+                                                              color: kGrey400,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    'AC',
+                                                    style: TextStyle(
+                                                      fontSize: 11,
+                                                      color: kGrey400,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                        value: 4,
                                       ),
                                     ],
-                                    onChanged: (value) {
-                                      setState(() {
-                                        _value = value;
-                                      });
-                                    }),
+                                  ),
+                                ),
                               ),
                             ],
                           ),
                         ),
-                        //Thoi gian bat dau di
+                        //Arrival time
                         Container(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -497,10 +738,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                         left: 15,
                                         right: 15,
                                       ),
-                                      child: Image(
-                                        image: AssetImage(
-                                          'assets/icons/Oval.png',
-                                        ),
+                                      child: Icon(
+                                        Icons.lens,
+                                        color: kGrey400,
+                                        size: 10,
                                       ),
                                     ),
                                     Container(
@@ -529,7 +770,6 @@ class _Flight_DetailsState extends State<Flight_Details> {
                         ),
                         Container(
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
                               Container(
                                 child: Row(
@@ -548,37 +788,39 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                         ),
                                       ),
                                     ),
-                                    DottedBorder(
-                                      padding: EdgeInsets.only(
-                                        top: 5,
-                                        bottom: 5,
-                                        left: 15,
-                                        right: displaySize(context).width * 0.15,
-                                      ),
-                                      color: kGrey200,
-                                      strokeWidth: 1,
-                                      child: Row(
-                                        children: <Widget>[
-                                          Container(
-                                            child: Image(
-                                              image: AssetImage(
-                                                'assets/icons/timelapse.png',
+                                    Container(
+                                      width: displaySize(context).width * 0.71,
+                                      child: DottedBorder(
+                                        padding: EdgeInsets.only(
+                                          top: 5,
+                                          bottom: 5,
+                                          left: 15,
+                                        ),
+                                        color: kGrey200,
+                                        strokeWidth: 1,
+                                        child: Row(
+                                          children: <Widget>[
+                                            Container(
+                                              child: Icon(
+                                                Icons.lens,
+                                                color: kGrey400,
+                                                size: 15,
                                               ),
                                             ),
-                                          ),
-                                          Container(
-                                            padding: const EdgeInsets.only(
-                                              left: 10,
-                                            ),
-                                            child: Text(
-                                              '8h20 layover in Bangkok',
-                                              style: TextStyle(
-                                                fontSize: 15,
-                                                color: kBlack,
+                                            Container(
+                                              padding: const EdgeInsets.only(
+                                                left: 10,
+                                              ),
+                                              child: Text(
+                                                '8h20 layover in Bangkok',
+                                                style: TextStyle(
+                                                  fontSize: 15,
+                                                  color: kBlack,
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ],
@@ -587,7 +829,7 @@ class _Flight_DetailsState extends State<Flight_Details> {
                             ],
                           ),
                         ),
-                        //Thoi gian bat dau di
+                        //Time started to go
                         Container(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -610,10 +852,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                         left: 15,
                                         right: 15,
                                       ),
-                                      child: Image(
-                                        image: AssetImage(
-                                          'assets/icons/Oval.png',
-                                        ),
+                                      child: Icon(
+                                        Icons.lens,
+                                        color: kGrey400,
+                                        size: 10,
                                       ),
                                     ),
                                     Container(
@@ -640,7 +882,7 @@ class _Flight_DetailsState extends State<Flight_Details> {
                             ],
                           ),
                         ),
-                        //Chuyen bay
+                        //flight
                         Container(
                           child: Row(
                             children: <Widget>[
@@ -664,233 +906,464 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                       'assets/icons/linedown-flights.png'),
                                 ),
                               ),
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: kGrey100,
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: DropdownButton(
-                                    icon: Icon(Icons.arrow_drop_down),
-                                    iconSize: 42,
-                                    // isExpanded: true,
-                                    underline: SizedBox(),
-                                    value: _value,
-                                    items: [
-                                      DropdownMenuItem(
-                                        child: Container(
-                                          padding: EdgeInsets.only(
-                                            top: 10,
-                                            left: 10,
-                                            right: 100,
-                                            bottom: 5,
-                                          ),
-                                          child: Row(
-                                            children: <Widget>[
-                                              Container(
-                                                margin: const EdgeInsets.only(
-                                                  bottom: 10,
-                                                ),
-                                                child: Image(
-                                                  image: AssetImage(
-                                                      'assets/images/VJ-1.png'),
-                                                ),
-                                              ),
-                                              Container(
-                                                padding: const EdgeInsets.only(
-                                                  left: 10,
-                                                ),
-                                                child: Column(
-                                                  children: <Widget>[
-                                                    Container(
-                                                      child: Text(
-                                                        'Vietjet Air',
-                                                        style: TextStyle(
-                                                          fontSize: 15,
-                                                          color: kGrey500,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      child: Text(
-                                                        'Airbus 320',
-                                                        style: TextStyle(
-                                                          fontSize: 11,
-                                                          color: kGrey400,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        value: 1,
+                              Expanded(
+                                flex: 1,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: kGrey100,
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(
+                                      color: kGrey100,
+                                      width: 0,
+                                    ),
+                                  ),
+                                  child: ExpansionCard(
+                                    margin: const EdgeInsets.only(
+                                      top: 0,
+                                    ),
+                                    // expandedColor: kGreenLight,
+                                    leading: Image(
+                                      image: AssetImage(
+                                        'assets/images/VJ-1.png',
                                       ),
-                                      DropdownMenuItem(
-                                        child: Container(
-                                          padding: EdgeInsets.only(
-                                            top: 10,
-                                            left: 10,
-                                            right: 100,
-                                            bottom: 5,
-                                          ),
-                                          child: Row(
-                                            children: <Widget>[
-                                              Container(
-                                                margin: const EdgeInsets.only(
-                                                  bottom: 10,
-                                                ),
-                                                child: Image(
-                                                  image: AssetImage(
-                                                      'assets/images/VJ-1.png'),
-                                                ),
-                                              ),
-                                              Container(
-                                                padding: const EdgeInsets.only(
-                                                  left: 10,
-                                                ),
-                                                child: Column(
-                                                  children: <Widget>[
-                                                    Container(
-                                                      child: Text(
-                                                        'Vietjet Air',
-                                                        style: TextStyle(
-                                                          fontSize: 15,
-                                                          color: kGrey500,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      child: Text(
-                                                        'Airbus 320',
-                                                        style: TextStyle(
-                                                          fontSize: 11,
-                                                          color: kGrey400,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
+                                    ),
+                                    title: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                          child: Text(
+                                            'Vietjet Air',
+                                            style: TextStyle(
+                                              fontSize: 15,
+                                              color: kGrey500,
+                                            ),
                                           ),
                                         ),
-                                        value: 2,
-                                      ),
-                                      DropdownMenuItem(
-                                        child: Container(
-                                          padding: EdgeInsets.only(
-                                            top: 10,
-                                            left: 10,
-                                            right: 100,
-                                            bottom: 5,
-                                          ),
-                                          child: Row(
-                                            children: <Widget>[
-                                              Container(
-                                                margin: const EdgeInsets.only(
-                                                  bottom: 10,
-                                                ),
-                                                child: Image(
-                                                  image: AssetImage(
-                                                      'assets/images/VJ-1.png'),
-                                                ),
-                                              ),
-                                              Container(
-                                                padding: const EdgeInsets.only(
-                                                  left: 10,
-                                                ),
-                                                child: Column(
-                                                  children: <Widget>[
-                                                    Container(
-                                                      child: Text(
-                                                        'Vietjet Air',
-                                                        style: TextStyle(
-                                                          fontSize: 15,
-                                                          color: kGrey500,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      child: Text(
-                                                        'Airbus 320',
-                                                        style: TextStyle(
-                                                          fontSize: 11,
-                                                          color: kGrey400,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
+                                        Container(
+                                          child: Text(
+                                            'Airbus 320',
+                                            style: TextStyle(
+                                              fontSize: 11,
+                                              color: kGrey400,
+                                            ),
                                           ),
                                         ),
-                                        value: 3,
-                                      ),
-                                      DropdownMenuItem(
-                                        child: Container(
-                                          padding: EdgeInsets.only(
-                                            top: 10,
-                                            left: 10,
-                                            right: displaySize(context).width * 0.2,
-                                            bottom: 5,
-                                          ),
-                                          child: Row(
-                                            children: <Widget>[
-                                              Container(
-                                                margin: const EdgeInsets.only(
-                                                  bottom: 10,
-                                                ),
-                                                child: Image(
-                                                  image: AssetImage(
-                                                      'assets/images/VJ-1.png'),
+                                      ],
+                                    ),
+                                    children: <Widget>[
+                                      Container(
+                                        padding: const EdgeInsets.only(
+                                          left: 15,
+                                          right: 20,
+                                        ),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            //Connection info
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 10,
+                                              ),
+                                              child: Text(
+                                                AppLocalizations.of(context).translate('Connectioninfo'),
+                                                style: TextStyle(
+                                                  fontSize: 12,
+                                                  color: kBlack,
                                                 ),
                                               ),
-                                              Container(
-                                                padding: const EdgeInsets.only(
-                                                  left: 10,
-                                                ),
-                                                child: Column(
-                                                  children: <Widget>[
-                                                    Container(
-                                                      child: Text(
-                                                        'Vietjet Air',
-                                                        style: TextStyle(
-                                                          fontSize: 15,
-                                                          color: kGrey500,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      child: Text(
-                                                        'Airbus 320',
-                                                        style: TextStyle(
-                                                          fontSize: 11,
+                                            ),
+
+                                            //Flight no
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 10,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Container(
+                                                    child: Row(
+                                                      children: [
+                                                        Icon(
+                                                          Icons.flight,
                                                           color: kGrey400,
                                                         ),
-                                                      ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                            left: 10,
+                                                          ),
+                                                          child: Text(
+                                                            AppLocalizations.of(context).translate('Flightno'),
+                                                            style: TextStyle(
+                                                              fontSize: 11,
+                                                              color: kGrey400,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
                                                     ),
-                                                  ],
+                                                  ),
+                                                  Text(
+                                                    'KE 690',
+                                                    style: TextStyle(
+                                                      fontSize: 11,
+                                                      color: kGrey400,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+
+                                            //Operating carrier
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 10,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Container(
+                                                    child: Row(
+                                                      children: [
+                                                        Image(
+                                                          image: AssetImage(
+                                                            'assets/images/VJ-1.png',
+                                                          ),
+                                                          width: 25,
+                                                          height: 25,
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                            left: 10,
+                                                          ),
+                                                          child: Text(
+                                                           AppLocalizations.of(context).translate('Operatingcarrier'),
+                                                            style: TextStyle(
+                                                              fontSize: 11,
+                                                              color: kGrey400,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    'Vietjet Air',
+                                                    style: TextStyle(
+                                                      fontSize: 11,
+                                                      color: kGrey400,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+
+                                            //Seating info
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 10,
+                                              ),
+                                              child: Text(
+                                                AppLocalizations.of(context).translate('Seatinginfo'),
+                                                style: TextStyle(
+                                                  fontSize: 12,
+                                                  color: kBlack,
                                                 ),
                                               ),
-                                            ],
-                                          ),
+                                            ),
+
+                                            //Wifi on board
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 10,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Container(
+                                                    child: Row(
+                                                      children: [
+                                                        Icon(
+                                                          Icons.wifi,
+                                                          color: kGrey400,
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                            left: 10,
+                                                          ),
+                                                          child: Text(
+                                                            AppLocalizations.of(context).translate('Wifionboard'),
+                                                            style: TextStyle(
+                                                              fontSize: 11,
+                                                              color: kGrey400,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    'Yes',
+                                                    style: TextStyle(
+                                                      fontSize: 11,
+                                                      color: kGrey400,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+
+                                            //Seat pitch
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 10,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Container(
+                                                    child: Row(
+                                                      children: [
+                                                        Icon(
+                                                          Icons
+                                                              .airline_seat_recline_extra,
+                                                          color: kGrey400,
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                            left: 10,
+                                                          ),
+                                                          child: Text(
+                                                             AppLocalizations.of(context).translate('Seatpitch'),
+                                                            style: TextStyle(
+                                                              fontSize: 11,
+                                                              color: kGrey400,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    '81 cm - 86 cm',
+                                                    style: TextStyle(
+                                                      fontSize: 11,
+                                                      color: kGrey400,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+
+                                            //Seat width
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 10,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Container(
+                                                    child: Row(
+                                                      children: [
+                                                        Icon(
+                                                          Icons
+                                                              .airline_seat_recline_extra,
+                                                          color: kGrey400,
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                            left: 10,
+                                                          ),
+                                                          child: Text(
+                                                            AppLocalizations.of(context).translate('Seatwidth'),
+                                                            style: TextStyle(
+                                                              fontSize: 11,
+                                                              color: kGrey400,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    '44 cm',
+                                                    style: TextStyle(
+                                                      fontSize: 11,
+                                                      color: kGrey400,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+
+                                            //Seat recline
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 10,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Container(
+                                                    child: Row(
+                                                      children: [
+                                                        Icon(
+                                                          Icons
+                                                              .airline_seat_recline_extra,
+                                                          color: kGrey400,
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                            left: 10,
+                                                          ),
+                                                          child: Text(
+                                                            AppLocalizations.of(context).translate('Seatrecline'),
+                                                            style: TextStyle(
+                                                              fontSize: 11,
+                                                              color: kGrey400,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    '7 cm',
+                                                    style: TextStyle(
+                                                      fontSize: 11,
+                                                      color: kGrey400,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+
+                                            //Audio & video on demand
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 10,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Container(
+                                                    child: Row(
+                                                      children: [
+                                                        Icon(
+                                                          Icons.audiotrack,
+                                                          color: kGrey400,
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                            left: 10,
+                                                          ),
+                                                          child: Text(
+                                                            AppLocalizations.of(context).translate('Audiovideoondemand'),
+                                                            style: TextStyle(
+                                                              fontSize: 11,
+                                                              color: kGrey400,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    'Yes',
+                                                    style: TextStyle(
+                                                      fontSize: 11,
+                                                      color: kGrey400,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 10,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Container(
+                                                    child: Row(
+                                                      children: [
+                                                        Icon(
+                                                          FontAwesomeIcons.plug,
+                                                          color: kGrey400,
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                            left: 10,
+                                                          ),
+                                                          child: Text(
+                                                            AppLocalizations.of(context).translate('Inseatpower'),
+                                                            style: TextStyle(
+                                                              fontSize: 11,
+                                                              color: kGrey400,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    'AC',
+                                                    style: TextStyle(
+                                                      fontSize: 11,
+                                                      color: kGrey400,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                        value: 4,
                                       ),
                                     ],
-                                    onChanged: (value) {
-                                      setState(() {
-                                        _value = value;
-                                      });
-                                    }),
+                                  ),
+                                ),
                               ),
                             ],
                           ),
                         ),
-                        //Thoi gian bat dau di
+                        //Arrival time
                         Container(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -913,10 +1386,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                         left: 15,
                                         right: 15,
                                       ),
-                                      child: Image(
-                                        image: AssetImage(
-                                          'assets/icons/Oval.png',
-                                        ),
+                                      child: Icon(
+                                        Icons.lens,
+                                        color: kGrey400,
+                                        size: 10,
                                       ),
                                     ),
                                     Container(
@@ -949,6 +1422,7 @@ class _Flight_DetailsState extends State<Flight_Details> {
                 ],
               ),
             ),
+            //Inbound
             Container(
               margin: const EdgeInsets.only(
                 top: 15,
@@ -964,7 +1438,7 @@ class _Flight_DetailsState extends State<Flight_Details> {
                       children: <Widget>[
                         Container(
                           child: Text(
-                            'Inbound',
+                            AppLocalizations.of(context).translate('Inbound'),
                             style: TextStyle(
                               color: kWhite,
                               fontSize: 17,
@@ -1001,9 +1475,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                       left: 15,
                       right: 15,
                     ),
+                    width: displaySize(context).width,
                     child: Column(
                       children: <Widget>[
-                        // Title địa điểm đi và đến
+                        // Title of departure and destination locations
                         Container(
                           padding: const EdgeInsets.only(
                             bottom: 10,
@@ -1029,9 +1504,9 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                         left: 10,
                                         right: 10,
                                       ),
-                                      child: Image(
-                                        image: AssetImage(
-                                            'assets/icons/icswapright-2.png'),
+                                      child: Icon(
+                                        MaterialIcons.flight_takeoff,
+                                        size: 20,
                                       ),
                                     ),
                                     Container(
@@ -1054,10 +1529,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                       padding: const EdgeInsets.only(
                                         right: 10,
                                       ),
-                                      child: Image(
-                                        image: AssetImage(
-                                          'assets/icons/date.png',
-                                        ),
+                                      child: Icon(
+                                        MaterialIcons.timelapse,
+                                        color: kGrey600,
+                                        size: 20,
                                       ),
                                     ),
                                     Container(
@@ -1075,7 +1550,7 @@ class _Flight_DetailsState extends State<Flight_Details> {
                             ],
                           ),
                         ),
-                        //Thoi gian bat dau di
+                        //Time started to go
                         Container(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1098,10 +1573,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                         left: 15,
                                         right: 15,
                                       ),
-                                      child: Image(
-                                        image: AssetImage(
-                                          'assets/icons/Oval.png',
-                                        ),
+                                      child: Icon(
+                                        Icons.lens,
+                                        color: kGrey400,
+                                        size: 10,
                                       ),
                                     ),
                                     Container(
@@ -1128,7 +1603,7 @@ class _Flight_DetailsState extends State<Flight_Details> {
                             ],
                           ),
                         ),
-                        //Chuyen bay
+                        //flight
                         Container(
                           child: Row(
                             children: <Widget>[
@@ -1152,233 +1627,464 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                       'assets/icons/linedown-flights.png'),
                                 ),
                               ),
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: kGrey100,
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: DropdownButton(
-                                    icon: Icon(Icons.arrow_drop_down),
-                                    iconSize: 42,
-                                    // isExpanded: true,
-                                    underline: SizedBox(),
-                                    value: _value,
-                                    items: [
-                                      DropdownMenuItem(
-                                        child: Container(
-                                          padding: EdgeInsets.only(
-                                            top: 10,
-                                            left: 10,
-                                            right: 100,
-                                            bottom: 5,
-                                          ),
-                                          child: Row(
-                                            children: <Widget>[
-                                              Container(
-                                                margin: const EdgeInsets.only(
-                                                  bottom: 10,
-                                                ),
-                                                child: Image(
-                                                  image: AssetImage(
-                                                      'assets/images/VJ-1.png'),
-                                                ),
-                                              ),
-                                              Container(
-                                                padding: const EdgeInsets.only(
-                                                  left: 10,
-                                                ),
-                                                child: Column(
-                                                  children: <Widget>[
-                                                    Container(
-                                                      child: Text(
-                                                        'Vietjet Air',
-                                                        style: TextStyle(
-                                                          fontSize: 15,
-                                                          color: kGrey500,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      child: Text(
-                                                        'Airbus 320',
-                                                        style: TextStyle(
-                                                          fontSize: 11,
-                                                          color: kGrey400,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        value: 1,
+                              Expanded(
+                                flex: 1,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: kGrey100,
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(
+                                      color: kGrey100,
+                                      width: 0,
+                                    ),
+                                  ),
+                                  child: ExpansionCard(
+                                    margin: const EdgeInsets.only(
+                                      top: 0,
+                                    ),
+                                    // expandedColor: kGreenLight,
+                                    leading: Image(
+                                      image: AssetImage(
+                                        'assets/images/VJ-1.png',
                                       ),
-                                      DropdownMenuItem(
-                                        child: Container(
-                                          padding: EdgeInsets.only(
-                                            top: 10,
-                                            left: 10,
-                                            right: 100,
-                                            bottom: 5,
-                                          ),
-                                          child: Row(
-                                            children: <Widget>[
-                                              Container(
-                                                margin: const EdgeInsets.only(
-                                                  bottom: 10,
-                                                ),
-                                                child: Image(
-                                                  image: AssetImage(
-                                                      'assets/images/VJ-1.png'),
-                                                ),
-                                              ),
-                                              Container(
-                                                padding: const EdgeInsets.only(
-                                                  left: 10,
-                                                ),
-                                                child: Column(
-                                                  children: <Widget>[
-                                                    Container(
-                                                      child: Text(
-                                                        'Vietjet Air',
-                                                        style: TextStyle(
-                                                          fontSize: 15,
-                                                          color: kGrey500,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      child: Text(
-                                                        'Airbus 320',
-                                                        style: TextStyle(
-                                                          fontSize: 11,
-                                                          color: kGrey400,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
+                                    ),
+                                    title: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                          child: Text(
+                                            'Vietjet Air',
+                                            style: TextStyle(
+                                              fontSize: 15,
+                                              color: kGrey500,
+                                            ),
                                           ),
                                         ),
-                                        value: 2,
-                                      ),
-                                      DropdownMenuItem(
-                                        child: Container(
-                                          padding: EdgeInsets.only(
-                                            top: 10,
-                                            left: 10,
-                                            right: 100,
-                                            bottom: 5,
-                                          ),
-                                          child: Row(
-                                            children: <Widget>[
-                                              Container(
-                                                margin: const EdgeInsets.only(
-                                                  bottom: 10,
-                                                ),
-                                                child: Image(
-                                                  image: AssetImage(
-                                                      'assets/images/VJ-1.png'),
-                                                ),
-                                              ),
-                                              Container(
-                                                padding: const EdgeInsets.only(
-                                                  left: 10,
-                                                ),
-                                                child: Column(
-                                                  children: <Widget>[
-                                                    Container(
-                                                      child: Text(
-                                                        'Vietjet Air',
-                                                        style: TextStyle(
-                                                          fontSize: 15,
-                                                          color: kGrey500,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      child: Text(
-                                                        'Airbus 320',
-                                                        style: TextStyle(
-                                                          fontSize: 11,
-                                                          color: kGrey400,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
+                                        Container(
+                                          child: Text(
+                                            'Airbus 320',
+                                            style: TextStyle(
+                                              fontSize: 11,
+                                              color: kGrey400,
+                                            ),
                                           ),
                                         ),
-                                        value: 3,
-                                      ),
-                                      DropdownMenuItem(
-                                        child: Container(
-                                          padding: EdgeInsets.only(
-                                            top: 10,
-                                            left: 10,
-                                            right: displaySize(context).width * 0.2,
-                                            bottom: 5,
-                                          ),
-                                          child: Row(
-                                            children: <Widget>[
-                                              Container(
-                                                margin: const EdgeInsets.only(
-                                                  bottom: 10,
-                                                ),
-                                                child: Image(
-                                                  image: AssetImage(
-                                                      'assets/images/VJ-1.png'),
+                                      ],
+                                    ),
+                                    children: <Widget>[
+                                      Container(
+                                        padding: const EdgeInsets.only(
+                                          left: 15,
+                                          right: 20,
+                                        ),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            //Connection info
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 10,
+                                              ),
+                                              child: Text(
+                                                AppLocalizations.of(context).translate('Connectioninfo'),
+                                                style: TextStyle(
+                                                  fontSize: 12,
+                                                  color: kBlack,
                                                 ),
                                               ),
-                                              Container(
-                                                padding: const EdgeInsets.only(
-                                                  left: 10,
-                                                ),
-                                                child: Column(
-                                                  children: <Widget>[
-                                                    Container(
-                                                      child: Text(
-                                                        'Vietjet Air',
-                                                        style: TextStyle(
-                                                          fontSize: 15,
-                                                          color: kGrey500,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      child: Text(
-                                                        'Airbus 320',
-                                                        style: TextStyle(
-                                                          fontSize: 11,
+                                            ),
+
+                                            //Flight no
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 10,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Container(
+                                                    child: Row(
+                                                      children: [
+                                                        Icon(
+                                                          Icons.flight,
                                                           color: kGrey400,
                                                         ),
-                                                      ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                            left: 10,
+                                                          ),
+                                                          child: Text(
+                                                            AppLocalizations.of(context).translate('Flightno'),
+                                                            style: TextStyle(
+                                                              fontSize: 11,
+                                                              color: kGrey400,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
                                                     ),
-                                                  ],
+                                                  ),
+                                                  Text(
+                                                    'KE 690',
+                                                    style: TextStyle(
+                                                      fontSize: 11,
+                                                      color: kGrey400,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+
+                                            //Operating carrier
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 10,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Container(
+                                                    child: Row(
+                                                      children: [
+                                                        Image(
+                                                          image: AssetImage(
+                                                            'assets/images/VJ-1.png',
+                                                          ),
+                                                          width: 25,
+                                                          height: 25,
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                            left: 10,
+                                                          ),
+                                                          child: Text(
+                                                           AppLocalizations.of(context).translate('Operatingcarrier'),
+                                                            style: TextStyle(
+                                                              fontSize: 11,
+                                                              color: kGrey400,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    'Vietjet Air',
+                                                    style: TextStyle(
+                                                      fontSize: 11,
+                                                      color: kGrey400,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+
+                                            //Seating info
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 10,
+                                              ),
+                                              child: Text(
+                                                AppLocalizations.of(context).translate('Seatinginfo'),
+                                                style: TextStyle(
+                                                  fontSize: 12,
+                                                  color: kBlack,
                                                 ),
                                               ),
-                                            ],
-                                          ),
+                                            ),
+
+                                            //Wifi on board
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 10,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Container(
+                                                    child: Row(
+                                                      children: [
+                                                        Icon(
+                                                          Icons.wifi,
+                                                          color: kGrey400,
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                            left: 10,
+                                                          ),
+                                                          child: Text(
+                                                            AppLocalizations.of(context).translate('Wifionboard'),
+                                                            style: TextStyle(
+                                                              fontSize: 11,
+                                                              color: kGrey400,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    'Yes',
+                                                    style: TextStyle(
+                                                      fontSize: 11,
+                                                      color: kGrey400,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+
+                                            //Seat pitch
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 10,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Container(
+                                                    child: Row(
+                                                      children: [
+                                                        Icon(
+                                                          Icons
+                                                              .airline_seat_recline_extra,
+                                                          color: kGrey400,
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                            left: 10,
+                                                          ),
+                                                          child: Text(
+                                                             AppLocalizations.of(context).translate('Seatpitch'),
+                                                            style: TextStyle(
+                                                              fontSize: 11,
+                                                              color: kGrey400,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    '81 cm - 86 cm',
+                                                    style: TextStyle(
+                                                      fontSize: 11,
+                                                      color: kGrey400,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+
+                                            //Seat width
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 10,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Container(
+                                                    child: Row(
+                                                      children: [
+                                                        Icon(
+                                                          Icons
+                                                              .airline_seat_recline_extra,
+                                                          color: kGrey400,
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                            left: 10,
+                                                          ),
+                                                          child: Text(
+                                                            AppLocalizations.of(context).translate('Seatwidth'),
+                                                            style: TextStyle(
+                                                              fontSize: 11,
+                                                              color: kGrey400,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    '44 cm',
+                                                    style: TextStyle(
+                                                      fontSize: 11,
+                                                      color: kGrey400,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+
+                                            //Seat recline
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 10,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Container(
+                                                    child: Row(
+                                                      children: [
+                                                        Icon(
+                                                          Icons
+                                                              .airline_seat_recline_extra,
+                                                          color: kGrey400,
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                            left: 10,
+                                                          ),
+                                                          child: Text(
+                                                            AppLocalizations.of(context).translate('Seatrecline'),
+                                                            style: TextStyle(
+                                                              fontSize: 11,
+                                                              color: kGrey400,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    '7 cm',
+                                                    style: TextStyle(
+                                                      fontSize: 11,
+                                                      color: kGrey400,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+
+                                            //Audio & video on demand
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 10,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Container(
+                                                    child: Row(
+                                                      children: [
+                                                        Icon(
+                                                          Icons.audiotrack,
+                                                          color: kGrey400,
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                            left: 10,
+                                                          ),
+                                                          child: Text(
+                                                            AppLocalizations.of(context).translate('Audiovideoondemand'),
+                                                            style: TextStyle(
+                                                              fontSize: 11,
+                                                              color: kGrey400,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    'Yes',
+                                                    style: TextStyle(
+                                                      fontSize: 11,
+                                                      color: kGrey400,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 10,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Container(
+                                                    child: Row(
+                                                      children: [
+                                                        Icon(
+                                                          FontAwesomeIcons.plug,
+                                                          color: kGrey400,
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                            left: 10,
+                                                          ),
+                                                          child: Text(
+                                                            AppLocalizations.of(context).translate('Inseatpower'),
+                                                            style: TextStyle(
+                                                              fontSize: 11,
+                                                              color: kGrey400,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    'AC',
+                                                    style: TextStyle(
+                                                      fontSize: 11,
+                                                      color: kGrey400,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                        value: 4,
                                       ),
                                     ],
-                                    onChanged: (value) {
-                                      setState(() {
-                                        _value = value;
-                                      });
-                                    }),
+                                  ),
+                                ),
                               ),
                             ],
                           ),
                         ),
-                        //Thoi gian bat dau di
+                        //Arrival time
                         Container(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1401,10 +2107,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                         left: 15,
                                         right: 15,
                                       ),
-                                      child: Image(
-                                        image: AssetImage(
-                                          'assets/icons/Oval.png',
-                                        ),
+                                      child: Icon(
+                                        Icons.lens,
+                                        color: kGrey400,
+                                        size: 10,
                                       ),
                                     ),
                                     Container(
@@ -1433,7 +2139,6 @@ class _Flight_DetailsState extends State<Flight_Details> {
                         ),
                         Container(
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
                               Container(
                                 child: Row(
@@ -1452,37 +2157,39 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                         ),
                                       ),
                                     ),
-                                    DottedBorder(
-                                      padding: EdgeInsets.only(
-                                        top: 5,
-                                        bottom: 5,
-                                        left: 15,
-                                        right: displaySize(context).width * 0.15,
-                                      ),
-                                      color: kGrey200,
-                                      strokeWidth: 1,
-                                      child: Row(
-                                        children: <Widget>[
-                                          Container(
-                                            child: Image(
-                                              image: AssetImage(
-                                                'assets/icons/timelapse.png',
+                                    Container(
+                                      width: displaySize(context).width * 0.71,
+                                      child: DottedBorder(
+                                        padding: EdgeInsets.only(
+                                          top: 5,
+                                          bottom: 5,
+                                          left: 15,
+                                        ),
+                                        color: kGrey200,
+                                        strokeWidth: 1,
+                                        child: Row(
+                                          children: <Widget>[
+                                            Container(
+                                              child: Icon(
+                                                Icons.lens,
+                                                color: kGrey400,
+                                                size: 15,
                                               ),
                                             ),
-                                          ),
-                                          Container(
-                                            padding: const EdgeInsets.only(
-                                              left: 10,
-                                            ),
-                                            child: Text(
-                                              '8h20 layover in Bangkok',
-                                              style: TextStyle(
-                                                fontSize: 15,
-                                                color: kBlack,
+                                            Container(
+                                              padding: const EdgeInsets.only(
+                                                left: 10,
+                                              ),
+                                              child: Text(
+                                                '8h20 layover in Bangkok',
+                                                style: TextStyle(
+                                                  fontSize: 15,
+                                                  color: kBlack,
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ],
@@ -1491,7 +2198,7 @@ class _Flight_DetailsState extends State<Flight_Details> {
                             ],
                           ),
                         ),
-                        //Thoi gian bat dau di
+                        //Time started to go
                         Container(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1514,10 +2221,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                         left: 15,
                                         right: 15,
                                       ),
-                                      child: Image(
-                                        image: AssetImage(
-                                          'assets/icons/Oval.png',
-                                        ),
+                                      child: Icon(
+                                        Icons.lens,
+                                        color: kGrey400,
+                                        size: 10,
                                       ),
                                     ),
                                     Container(
@@ -1544,7 +2251,7 @@ class _Flight_DetailsState extends State<Flight_Details> {
                             ],
                           ),
                         ),
-                        //Chuyen bay
+                        //flight
                         Container(
                           child: Row(
                             children: <Widget>[
@@ -1568,233 +2275,464 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                       'assets/icons/linedown-flights.png'),
                                 ),
                               ),
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: kGrey100,
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: DropdownButton(
-                                    icon: Icon(Icons.arrow_drop_down),
-                                    iconSize: 42,
-                                    // isExpanded: true,
-                                    underline: SizedBox(),
-                                    value: _value,
-                                    items: [
-                                      DropdownMenuItem(
-                                        child: Container(
-                                          padding: EdgeInsets.only(
-                                            top: 10,
-                                            left: 10,
-                                            right: 100,
-                                            bottom: 5,
-                                          ),
-                                          child: Row(
-                                            children: <Widget>[
-                                              Container(
-                                                margin: const EdgeInsets.only(
-                                                  bottom: 10,
-                                                ),
-                                                child: Image(
-                                                  image: AssetImage(
-                                                      'assets/images/VJ-1.png'),
-                                                ),
-                                              ),
-                                              Container(
-                                                padding: const EdgeInsets.only(
-                                                  left: 10,
-                                                ),
-                                                child: Column(
-                                                  children: <Widget>[
-                                                    Container(
-                                                      child: Text(
-                                                        'Vietjet Air',
-                                                        style: TextStyle(
-                                                          fontSize: 15,
-                                                          color: kGrey500,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      child: Text(
-                                                        'Airbus 320',
-                                                        style: TextStyle(
-                                                          fontSize: 11,
-                                                          color: kGrey400,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        value: 1,
+                              Expanded(
+                                flex: 1,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: kGrey100,
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(
+                                      color: kGrey100,
+                                      width: 0,
+                                    ),
+                                  ),
+                                  child: ExpansionCard(
+                                    margin: const EdgeInsets.only(
+                                      top: 0,
+                                    ),
+                                    // expandedColor: kGreenLight,
+                                    leading: Image(
+                                      image: AssetImage(
+                                        'assets/images/VJ-1.png',
                                       ),
-                                      DropdownMenuItem(
-                                        child: Container(
-                                          padding: EdgeInsets.only(
-                                            top: 10,
-                                            left: 10,
-                                            right: 100,
-                                            bottom: 5,
-                                          ),
-                                          child: Row(
-                                            children: <Widget>[
-                                              Container(
-                                                margin: const EdgeInsets.only(
-                                                  bottom: 10,
-                                                ),
-                                                child: Image(
-                                                  image: AssetImage(
-                                                      'assets/images/VJ-1.png'),
-                                                ),
-                                              ),
-                                              Container(
-                                                padding: const EdgeInsets.only(
-                                                  left: 10,
-                                                ),
-                                                child: Column(
-                                                  children: <Widget>[
-                                                    Container(
-                                                      child: Text(
-                                                        'Vietjet Air',
-                                                        style: TextStyle(
-                                                          fontSize: 15,
-                                                          color: kGrey500,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      child: Text(
-                                                        'Airbus 320',
-                                                        style: TextStyle(
-                                                          fontSize: 11,
-                                                          color: kGrey400,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
+                                    ),
+                                    title: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                          child: Text(
+                                            'Vietjet Air',
+                                            style: TextStyle(
+                                              fontSize: 15,
+                                              color: kGrey500,
+                                            ),
                                           ),
                                         ),
-                                        value: 2,
-                                      ),
-                                      DropdownMenuItem(
-                                        child: Container(
-                                          padding: EdgeInsets.only(
-                                            top: 10,
-                                            left: 10,
-                                            right: 100,
-                                            bottom: 5,
-                                          ),
-                                          child: Row(
-                                            children: <Widget>[
-                                              Container(
-                                                margin: const EdgeInsets.only(
-                                                  bottom: 10,
-                                                ),
-                                                child: Image(
-                                                  image: AssetImage(
-                                                      'assets/images/VJ-1.png'),
-                                                ),
-                                              ),
-                                              Container(
-                                                padding: const EdgeInsets.only(
-                                                  left: 10,
-                                                ),
-                                                child: Column(
-                                                  children: <Widget>[
-                                                    Container(
-                                                      child: Text(
-                                                        'Vietjet Air',
-                                                        style: TextStyle(
-                                                          fontSize: 15,
-                                                          color: kGrey500,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      child: Text(
-                                                        'Airbus 320',
-                                                        style: TextStyle(
-                                                          fontSize: 11,
-                                                          color: kGrey400,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
+                                        Container(
+                                          child: Text(
+                                            'Airbus 320',
+                                            style: TextStyle(
+                                              fontSize: 11,
+                                              color: kGrey400,
+                                            ),
                                           ),
                                         ),
-                                        value: 3,
-                                      ),
-                                      DropdownMenuItem(
-                                        child: Container(
-                                          padding: EdgeInsets.only(
-                                            top: 10,
-                                            left: 10,
-                                            right: displaySize(context).width * 0.2,
-                                            bottom: 5,
-                                          ),
-                                          child: Row(
-                                            children: <Widget>[
-                                              Container(
-                                                margin: const EdgeInsets.only(
-                                                  bottom: 10,
-                                                ),
-                                                child: Image(
-                                                  image: AssetImage(
-                                                      'assets/images/VJ-1.png'),
+                                      ],
+                                    ),
+                                    children: <Widget>[
+                                      Container(
+                                        padding: const EdgeInsets.only(
+                                          left: 15,
+                                          right: 20,
+                                        ),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            //Connection info
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 10,
+                                              ),
+                                              child: Text(
+                                                AppLocalizations.of(context).translate('Connectioninfo'),
+                                                style: TextStyle(
+                                                  fontSize: 12,
+                                                  color: kBlack,
                                                 ),
                                               ),
-                                              Container(
-                                                padding: const EdgeInsets.only(
-                                                  left: 10,
-                                                ),
-                                                child: Column(
-                                                  children: <Widget>[
-                                                    Container(
-                                                      child: Text(
-                                                        'Vietjet Air',
-                                                        style: TextStyle(
-                                                          fontSize: 15,
-                                                          color: kGrey500,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      child: Text(
-                                                        'Airbus 320',
-                                                        style: TextStyle(
-                                                          fontSize: 11,
+                                            ),
+
+                                            //Flight no
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 10,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Container(
+                                                    child: Row(
+                                                      children: [
+                                                        Icon(
+                                                          Icons.flight,
                                                           color: kGrey400,
                                                         ),
-                                                      ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                            left: 10,
+                                                          ),
+                                                          child: Text(
+                                                            AppLocalizations.of(context).translate('Flightno'),
+                                                            style: TextStyle(
+                                                              fontSize: 11,
+                                                              color: kGrey400,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
                                                     ),
-                                                  ],
+                                                  ),
+                                                  Text(
+                                                    'KE 690',
+                                                    style: TextStyle(
+                                                      fontSize: 11,
+                                                      color: kGrey400,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+
+                                            //Operating carrier
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 10,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Container(
+                                                    child: Row(
+                                                      children: [
+                                                        Image(
+                                                          image: AssetImage(
+                                                            'assets/images/VJ-1.png',
+                                                          ),
+                                                          width: 25,
+                                                          height: 25,
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                            left: 10,
+                                                          ),
+                                                          child: Text(
+                                                           AppLocalizations.of(context).translate('Operatingcarrier'),
+                                                            style: TextStyle(
+                                                              fontSize: 11,
+                                                              color: kGrey400,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    'Vietjet Air',
+                                                    style: TextStyle(
+                                                      fontSize: 11,
+                                                      color: kGrey400,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+
+                                            //Seating info
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 10,
+                                              ),
+                                              child: Text(
+                                                AppLocalizations.of(context).translate('Seatinginfo'),
+                                                style: TextStyle(
+                                                  fontSize: 12,
+                                                  color: kBlack,
                                                 ),
                                               ),
-                                            ],
-                                          ),
+                                            ),
+
+                                            //Wifi on board
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 10,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Container(
+                                                    child: Row(
+                                                      children: [
+                                                        Icon(
+                                                          Icons.wifi,
+                                                          color: kGrey400,
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                            left: 10,
+                                                          ),
+                                                          child: Text(
+                                                            AppLocalizations.of(context).translate('Wifionboard'),
+                                                            style: TextStyle(
+                                                              fontSize: 11,
+                                                              color: kGrey400,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    'Yes',
+                                                    style: TextStyle(
+                                                      fontSize: 11,
+                                                      color: kGrey400,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+
+                                            //Seat pitch
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 10,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Container(
+                                                    child: Row(
+                                                      children: [
+                                                        Icon(
+                                                          Icons
+                                                              .airline_seat_recline_extra,
+                                                          color: kGrey400,
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                            left: 10,
+                                                          ),
+                                                          child: Text(
+                                                             AppLocalizations.of(context).translate('Seatpitch'),
+                                                            style: TextStyle(
+                                                              fontSize: 11,
+                                                              color: kGrey400,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    '81 cm - 86 cm',
+                                                    style: TextStyle(
+                                                      fontSize: 11,
+                                                      color: kGrey400,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+
+                                            //Seat width
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 10,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Container(
+                                                    child: Row(
+                                                      children: [
+                                                        Icon(
+                                                          Icons
+                                                              .airline_seat_recline_extra,
+                                                          color: kGrey400,
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                            left: 10,
+                                                          ),
+                                                          child: Text(
+                                                            AppLocalizations.of(context).translate('Seatwidth'),
+                                                            style: TextStyle(
+                                                              fontSize: 11,
+                                                              color: kGrey400,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    '44 cm',
+                                                    style: TextStyle(
+                                                      fontSize: 11,
+                                                      color: kGrey400,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+
+                                            //Seat recline
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 10,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Container(
+                                                    child: Row(
+                                                      children: [
+                                                        Icon(
+                                                          Icons
+                                                              .airline_seat_recline_extra,
+                                                          color: kGrey400,
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                            left: 10,
+                                                          ),
+                                                          child: Text(
+                                                            AppLocalizations.of(context).translate('Seatrecline'),
+                                                            style: TextStyle(
+                                                              fontSize: 11,
+                                                              color: kGrey400,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    '7 cm',
+                                                    style: TextStyle(
+                                                      fontSize: 11,
+                                                      color: kGrey400,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+
+                                            //Audio & video on demand
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 10,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Container(
+                                                    child: Row(
+                                                      children: [
+                                                        Icon(
+                                                          Icons.audiotrack,
+                                                          color: kGrey400,
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                            left: 10,
+                                                          ),
+                                                          child: Text(
+                                                            AppLocalizations.of(context).translate('Audiovideoondemand'),
+                                                            style: TextStyle(
+                                                              fontSize: 11,
+                                                              color: kGrey400,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    'Yes',
+                                                    style: TextStyle(
+                                                      fontSize: 11,
+                                                      color: kGrey400,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                bottom: 10,
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Container(
+                                                    child: Row(
+                                                      children: [
+                                                        Icon(
+                                                          FontAwesomeIcons.plug,
+                                                          color: kGrey400,
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                            left: 10,
+                                                          ),
+                                                          child: Text(
+                                                            AppLocalizations.of(context).translate('Inseatpower'),
+                                                            style: TextStyle(
+                                                              fontSize: 11,
+                                                              color: kGrey400,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    'AC',
+                                                    style: TextStyle(
+                                                      fontSize: 11,
+                                                      color: kGrey400,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                        value: 4,
                                       ),
                                     ],
-                                    onChanged: (value) {
-                                      setState(() {
-                                        _value = value;
-                                      });
-                                    }),
+                                  ),
+                                ),
                               ),
                             ],
                           ),
                         ),
-                        //Thoi gian bat dau di
+                        //Arrival time
                         Container(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1817,10 +2755,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                         left: 15,
                                         right: 15,
                                       ),
-                                      child: Image(
-                                        image: AssetImage(
-                                          'assets/icons/Oval.png',
-                                        ),
+                                      child: Icon(
+                                        Icons.lens,
+                                        color: kGrey400,
+                                        size: 10,
                                       ),
                                     ),
                                     Container(
@@ -1853,6 +2791,7 @@ class _Flight_DetailsState extends State<Flight_Details> {
                 ],
               ),
             ),
+            //go to know
             Container(
               decoration: BoxDecoration(
                 color: kWhite,
@@ -1876,7 +2815,7 @@ class _Flight_DetailsState extends State<Flight_Details> {
                 children: <Widget>[
                   Container(
                     child: Text(
-                      'Good to known',
+                      AppLocalizations.of(context).translate('Goodtoknown'),
                       style: TextStyle(
                         color: kBlack,
                         fontSize: 17,
@@ -1902,8 +2841,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                     child: Row(
                       children: <Widget>[
                         Container(
-                          child: Image(
-                            image: AssetImage('assets/icons/time-2.png'),
+                          child: Icon(
+                              FontAwesomeIcons.history,
+                              size: 30,
+                              color: kGrey500,
                           ),
                         ),
                         Container(
@@ -1915,7 +2856,7 @@ class _Flight_DetailsState extends State<Flight_Details> {
                             children: <Widget>[
                               Container(
                                 child: Text(
-                                  'Timezone different is 1 hours',
+                                  AppLocalizations.of(context).translate('Timezone'),
                                   style: TextStyle(
                                     color: kBlack,
                                     fontSize: 17,
@@ -1924,7 +2865,7 @@ class _Flight_DetailsState extends State<Flight_Details> {
                               ),
                               Container(
                                 child: Text(
-                                  'Between Hanoi and Singapore',
+                                  '${AppLocalizations.of(context).translate('Between')} HaNoi ${AppLocalizations.of(context).translate('and')} Singapore',
                                   style: TextStyle(
                                     color: kBlack,
                                     fontSize: 12,
@@ -1940,6 +2881,7 @@ class _Flight_DetailsState extends State<Flight_Details> {
                 ],
               ),
             ),
+            //Not ready to book yet?
             Container(
               margin: const EdgeInsets.only(
                 top: 15,
@@ -1966,7 +2908,7 @@ class _Flight_DetailsState extends State<Flight_Details> {
                 children: <Widget>[
                   Container(
                     child: Text(
-                      'Good to known',
+                      AppLocalizations.of(context).translate('Notready'),
                       style: TextStyle(
                         color: kBlack,
                         fontSize: 17,
@@ -1992,13 +2934,23 @@ class _Flight_DetailsState extends State<Flight_Details> {
                     child: Row(
                       children: <Widget>[
                         Container(
-                          child: Checkbox(
-                            value: save_flight,
-                            onChanged: (bool value) {
+                          child: InkWell(
+                            onTap: () {
                               setState(() {
-                                save_flight = value;
+                                save_flight = !save_flight;
                               });
                             },
+                            child: save_flight
+                                ? Icon(
+                                    FontAwesome5Solid.star,
+                                    size: 30.0,
+                                    color: kGrey500,
+                                  )
+                                : Icon(
+                                    FontAwesome5Solid.star,
+                                    size: 30.0,
+                                    color: kBlue,
+                                  ),
                           ),
                         ),
                         Container(
@@ -2009,8 +2961,11 @@ class _Flight_DetailsState extends State<Flight_Details> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Container(
+                                margin: const EdgeInsets.only(
+                                  bottom: 3,
+                                ),
                                 child: Text(
-                                  'Save this flight',
+                                  AppLocalizations.of(context).translate('Savethisflight'),
                                   style: TextStyle(
                                     color: kBlack,
                                     fontSize: 17,
@@ -2019,7 +2974,7 @@ class _Flight_DetailsState extends State<Flight_Details> {
                               ),
                               Container(
                                 child: Text(
-                                  'So you can always come back and find it',
+                                  AppLocalizations.of(context).translate('comebackandfindit'),
                                   style: TextStyle(
                                     color: kBlack,
                                     fontSize: 12,
@@ -2035,6 +2990,7 @@ class _Flight_DetailsState extends State<Flight_Details> {
                 ],
               ),
             ),
+            //book now
             Container(
               margin: const EdgeInsets.only(
                 top: 50,
@@ -2078,7 +3034,7 @@ class _Flight_DetailsState extends State<Flight_Details> {
                         ),
                         Container(
                           child: Text(
-                            'Total (1 adult)',
+                            '${AppLocalizations.of(context).translate('Total')} (1 ${AppLocalizations.of(context).translate('adult')})',
                             style: TextStyle(
                               fontSize: 12,
                               color: kGrey400,
@@ -2107,7 +3063,7 @@ class _Flight_DetailsState extends State<Flight_Details> {
                         );
                       },
                       child: Text(
-                        'Book now',
+                        AppLocalizations.of(context).translate('Booknow'),
                         style: TextStyle(
                           fontSize: 15,
                           color: kWhite,
