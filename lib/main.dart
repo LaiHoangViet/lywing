@@ -9,6 +9,7 @@ import 'common/app_localizations.dart';
 import 'screen/empty/flight-result-empty.dart';
 import 'screen/users/login/slash-screen.dart';
 
+
 void main() {
   runApp(MyApp());
 }

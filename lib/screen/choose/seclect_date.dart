@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:lywing/common/constants/colors.dart';
 import 'package:intl/intl.dart';
+import 'package:lywing/screen/home/SysManager.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:lywing/sizes_helpers.dart';
 
@@ -14,37 +15,20 @@ class Seclect_Date extends StatefulWidget {
 }
 
 class _Seclect_DateState extends State<Seclect_Date> {
-  String _selectedDate;
-  String _dateCount;
   String _range;
-  String _rangeCount;
-
-  @override
-  void initState() {
-    _selectedDate = '';
-    _dateCount = '';
-    _range = '';
-    _rangeCount = '';
-    super.initState();
-  }
 
   void _onSelectionChanged(DateRangePickerSelectionChangedArgs args) {
     setState(() {
-      if (args.value is PickerDateRange) {
-        _range =
-            DateFormat('dd/MM/yyyy').format(args.value.startDate).toString() +
-                ' - ' +
-                DateFormat('dd/MM/yyyy')
-                    .format(args.value.endDate ?? args.value.startDate)
-                    .toString();
-      } else if (args.value is DateTime) {
-        _selectedDate = args.value;
-      } else if (args.value is List<DateTime>) {
-        _dateCount = args.value.length.toString();
-      } else {
-        _rangeCount = args.value.length.toString();
-      }
+      _range =
+          DateFormat('dd/MM/yyyy').format(args.value.startDate).toString() +
+          "              -             " +
+              DateFormat('dd/MM/yyyy')
+                  .format(args.value.endDate ?? args.value.startDate)
+                  .toString();
     });
+    FileSystemManager.instance.range = _range;
+
+    print(_range);
   }
 
   @override
@@ -55,9 +39,9 @@ class _Seclect_DateState extends State<Seclect_Date> {
         child: AppBar(
           leading: IconButton(
             icon: Icon(
-                    Icons.arrow_back_ios_rounded,
-                  color: kBlack,
-                ),
+              Icons.arrow_back_ios_rounded,
+              color: kBlack,
+            ),
             onPressed: () {
               Navigator.pop(context);
             },
@@ -82,8 +66,8 @@ class _Seclect_DateState extends State<Seclect_Date> {
                 onSelectionChanged: _onSelectionChanged,
                 selectionMode: DateRangePickerSelectionMode.range,
                 initialSelectedRange: PickerDateRange(
-                    DateTime.now().subtract(const Duration(days: 4)),
-                    DateTime.now().add(const Duration(days: 3))),
+                    DateTime.now().subtract(const Duration(days: 0)),
+                    DateTime.now().add(const Duration(days: 0))),
               ),
             ),
             RaisedButton(
@@ -99,10 +83,7 @@ class _Seclect_DateState extends State<Seclect_Date> {
                 ),
               ),
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Flight_Results()),
-                );
+                Navigator.pop(context);
               },
               child: Text(
                 'Submit',
@@ -118,5 +99,3 @@ class _Seclect_DateState extends State<Seclect_Date> {
     );
   }
 }
-
-class DateTimeRange {}

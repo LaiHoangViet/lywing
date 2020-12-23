@@ -18,15 +18,18 @@ import 'package:lywing/screen/choose/flight-results.dart';
 import 'package:lywing/screen/choose/seclect_date.dart';
 import 'package:lywing/sizes_helpers.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:lywing/common/constants/data.dart';
 
-class BackendService {
-  static Future<List> getSuggestions(String query) async {
-    await Future.delayed(Duration(seconds: 1));
-    return List.generate(3, (index) {
-      return {'name': query + index.toString(), 'price': Random().nextInt(100)};
-    });
-  }
-}
+import 'SysManager.dart';
+
+// class BackendService {
+//   static Future<List> getSuggestions(String query) async {
+//     await Future.delayed(Duration(seconds: 1));
+//     return List.generate(3, (index) {
+//       return {'name': query + index.toString(), 'price': Random().nextInt(100)};
+//     });
+//   }
+// }
 
 class Home extends StatefulWidget {
   @override
@@ -39,11 +42,28 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   final destination_from = TextEditingController();
   final destination_to = TextEditingController();
 
+  final focus = FocusNode();
+  final TextEditingController _typeAheadController = TextEditingController();
+  final TextEditingController _typeAheadController1 = TextEditingController();
+
   int selectedRadio = 1;
   SingingCharacter _character = SingingCharacter.Economy;
 
   Animation _arrowAnimation;
   AnimationController _arrowAnimationController;
+
+  String _selectedCity;
+
+  String selection = "Return";
+  int typeIcon = 0;
+
+  int value1 = 1;
+  int value2 = 1;
+  int value3 = 1;
+
+  bool chosen = false;
+  bool chosen1 = false;
+  String _range = "";
 
   @override
   void initState() {
@@ -104,94 +124,46 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
               ),
               alignment: Alignment.bottomRight,
               child: InkWell(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: Icon(Icons.close, color: kGrey500,)
-              ),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Icon(
+                    Icons.close,
+                    color: kGrey500,
+                  )),
             ),
             Container(
               decoration: BoxDecoration(
                 color: kGrey200,
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: TypeAheadField(
+              child: TypeAheadFormField(
                 textFieldConfiguration: TextFieldConfiguration(
-                  style: TextStyle(
-                    fontSize: 17,
-                    color: kGrey500,
-                  ),
-                  decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.all(5.0),
-                    prefixIcon: Icon(Icons.search),
-                    hintText: AppLocalizations.of(context).translate('Search'),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
-                        color: kWhite,
-                        width: 0.0,
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
-                        color: kWhite,
-                        width: 0.0,
-                      ),
-                    ),
-                  ),
+                  decoration: InputDecoration(labelText: "City"),
+                  // 2 controller khac nhau
+                  controller: this._typeAheadController,
                 ),
-                suggestionsCallback: (pattern) async {
-                  // Here you can call http call
-                  return await BackendService.getSuggestions(pattern);
+                suggestionsCallback: (pattern) {
+                  return CitiesService.getSuggestions(pattern);
                 },
-                suggestionsBoxDecoration: SuggestionsBoxDecoration(
-                  elevation: 0,
-                  color: kWhite,
-                ),
                 itemBuilder: (context, suggestion) {
-                  return Container(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Container(
-                          child: Container(
-                            child: Text(
-                              AppLocalizations.of(context).translate('Recent'),
-                              style: TextStyle(
-                                fontSize: 17,
-                                color: kGrey500,
-                              ),
-                            ),
-                          ),
-                        ),
-                        ListTile(
-                          title: Text(
-                            suggestion['name'],
-                            style: TextStyle(
-                              fontSize: 15,
-                              color: kGrey600,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          child: Container(
-                            child: Text(
-                              AppLocalizations.of(context).translate('nearBy'),
-                              style: TextStyle(
-                                fontSize: 17,
-                                color: kGrey500,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                  return ListTile(
+                    title: Text(suggestion),
                   );
                 },
-                onSuggestionSelected: (suggestion) {
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => Seclect_Date(),
-                  ));
+                transitionBuilder: (context, suggestionBox, controller) {
+                  return suggestionBox;
                 },
+                onSuggestionSelected: (suggestion) {
+                  this._typeAheadController.text = suggestion;
+                  setState(() {
+                    chosen = !chosen;
+                  });
+                  Navigator.pop(context);
+                },
+                validator: (value) =>
+                value.isEmpty ? 'Please select a city?' : null,
+                onSaved: (value) => FocusScope.of(context).requestFocus(focus),
               ),
             ),
           ],
@@ -200,300 +172,396 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     );
   }
 
-  void passenger_and_bags() {
-    showMaterialModalBottomSheet(
-      context: context,
-      backgroundColor: kWhite,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(10.0)),
-      ),
-      builder: (context, BuildContext) =>
-          StatefulBuilder(builder: (context, StateSetter setState) {
-        return Container(
-          height: displaySize(context).height * 0.62,
-          margin: const EdgeInsets.only(
-            top: 20,
-            bottom: 20,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              // Passengers
-              Container(
-                margin: const EdgeInsets.only(
-                  left: 25,
-                  right: 25,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Container(
-                      child: Text(
-                        AppLocalizations.of(context).translate('Passengers'),
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: kBlack,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(
-                        top: 15,
-                        bottom: 15,
-                      ),
-                      child: Column(
-                        children: <Widget>[
-                          Container(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Container(
-                                  child: Row(
-                                    children: <Widget>[
-                                      Container(
-                                        child: Image(
-                                          image: AssetImage(
-                                              'assets/icons/modal-bottom-sheet/adults.png'),
-                                        ),
-                                      ),
-                                      Container(
-                                        padding: const EdgeInsets.only(
-                                          left: 15,
-                                        ),
-                                        child: Text(
-                                          AppLocalizations.of(context)
-                                              .translate('Adults'),
-                                          style: TextStyle(
-                                            fontSize: 15,
-                                            color: kGrey600,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                                    width: 150,
-                                    child: CupertinoSpinBox(
-                                      decoration: BoxDecoration(
-                                        color: kWhite,
-                                      ),
-                                      textStyle: TextStyle(
-                                        color: kGrey600,
-                                      ),
-                                      min: 1,
-                                      max: 100,
-                                      value: 50,
-                                      onChanged: (value) => print(value),
-                                    )),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Container(
-                                  child: Row(
-                                    children: <Widget>[
-                                      Container(
-                                        child: Image(
-                                          image: AssetImage(
-                                              'assets/icons/modal-bottom-sheet/infants.png'),
-                                        ),
-                                      ),
-                                      Container(
-                                        padding: const EdgeInsets.only(
-                                          left: 15,
-                                        ),
-                                        child: Text(
-                                          AppLocalizations.of(context)
-                                              .translate('Infants'),
-                                          style: TextStyle(
-                                            fontSize: 15,
-                                            color: kGrey600,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                                    width: 150,
-                                    child: CupertinoSpinBox(
-                                      decoration: BoxDecoration(
-                                        color: kWhite,
-                                      ),
-                                      textStyle: TextStyle(
-                                        color: kGrey600,
-                                      ),
-                                      min: 1,
-                                      max: 100,
-                                      value: 50,
-                                      onChanged: (value) => print(value),
-                                    )),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              // Bags
-              Container(
-                margin: const EdgeInsets.only(
-                  left: 25,
-                  right: 25,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Container(
-                      child: Text(
-                        AppLocalizations.of(context).translate('Bags'),
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: kBlack,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(
-                        top: 15,
-                        bottom: 15,
-                      ),
-                      child: Column(
-                        children: <Widget>[
-                          Container(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Container(
-                                  child: Row(
-                                    children: <Widget>[
-                                      Container(
-                                        child: Image(
-                                          image: AssetImage(
-                                              'assets/icons/modal-bottom-sheet/checked-bags.png'),
-                                        ),
-                                      ),
-                                      Container(
-                                        padding: const EdgeInsets.only(
-                                          left: 15,
-                                        ),
-                                        child: Text(
-                                          AppLocalizations.of(context)
-                                              .translate('checkedBags'),
-                                          style: TextStyle(
-                                            fontSize: 15,
-                                            color: kGrey600,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                                    width: 150,
-                                    child: CupertinoSpinBox(
-                                      decoration: BoxDecoration(
-                                        color: kWhite,
-                                      ),
-                                      textStyle: TextStyle(
-                                        color: kGrey600,
-                                      ),
-                                      min: 1,
-                                      max: 100,
-                                      value: 50,
-                                      onChanged: (value) => print(value),
-                                    )),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              // Classes
-              Container(
-                margin: const EdgeInsets.only(
-                  left: 25,
-                  right: 25,
-                ),
-                child: Text(
-                  AppLocalizations.of(context).translate('Classes'),
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: kBlack,
-                  ),
-                ),
-              ),
-              Container(
-                margin: const EdgeInsets.only(
-                  top: 10,
-                ),
-                child: Column(
-                  children: <Widget>[
-                    RadioListTile<SingingCharacter>(
-                      title: Text(
-                        AppLocalizations.of(context).translate('Economy'),
-                      ),
-                      value: SingingCharacter.Economy,
-                      groupValue: _character,
-                      onChanged: (SingingCharacter value) {
-                        setState(() {
-                          _character = value;
-                        });
-                      },
-                    ),
-                    RadioListTile<SingingCharacter>(
-                      title: Text(
-                        AppLocalizations.of(context)
-                            .translate('premiumEconomy'),
-                      ),
-                      value: SingingCharacter.Premium_Economy,
-                      groupValue: _character,
-                      onChanged: (SingingCharacter value) {
-                        setState(() {
-                          _character = value;
-                        });
-                      },
-                    ),
-                    RadioListTile<SingingCharacter>(
-                      title: Text(
-                        AppLocalizations.of(context).translate('Business'),
-                      ),
-                      value: SingingCharacter.Business,
-                      groupValue: _character,
-                      onChanged: (SingingCharacter value) {
-                        setState(() {
-                          _character = value;
-                        });
-                      },
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        );
-      }),
-    );
-  }
-
-  void type_of_flight() {
+  void search_place1() {
     showMaterialModalBottomSheet(
       context: context,
       expand: false,
       backgroundColor: kWhite,
+      builder: (context, scrollController) => Container(
+        padding: EdgeInsets.only(
+          top: displaySize(context).height * 0.06,
+          left: 10,
+          right: 10,
+          bottom: 10,
+        ),
+        child: Column(
+          // crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Container(
+              margin: EdgeInsets.only(
+                bottom: 10,
+              ),
+              alignment: Alignment.bottomRight,
+              child: InkWell(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Icon(
+                    Icons.close,
+                    color: kGrey500,
+                  )),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                color: kGrey200,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: TypeAheadFormField(
+                textFieldConfiguration: TextFieldConfiguration(
+                  decoration: InputDecoration(labelText: "City"),
+                  // 2 controller khac nhau
+                  controller: this._typeAheadController1,
+                ),
+                suggestionsCallback: (pattern) {
+                  return CitiesService.getSuggestions(pattern);
+                },
+                itemBuilder: (context, suggestion) {
+                  return ListTile(
+                    title: Text(suggestion),
+                  );
+                },
+                transitionBuilder: (context, suggestionBox, controller) {
+                  return suggestionBox;
+                },
+                onSuggestionSelected: (suggestion) {
+                  this._typeAheadController1.text = suggestion;
+                  setState(() {
+                    chosen1 = !chosen1;
+                  });
+                  Navigator.pop(context);
+                },
+                validator: (value) =>
+                value.isEmpty ? 'Please select a city?' : null,
+                onSaved: (value) => FocusScope.of(context).requestFocus(focus),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  passenger_and_bags() async {
+    await showModalBottomSheet(
+        context: context,
+        backgroundColor: kWhite,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(10.0)),
+        ),
+        builder: (BuildContext context) {
+          return Container(
+            child: StatefulBuilder(
+              builder: (BuildContext context, State) {
+                return Container(
+                  // height: displaySize(context).height * 0.67,
+                  margin: const EdgeInsets.only(
+                    top: 20,
+                    bottom: 20,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      // Passengers
+                      Container(
+                        margin: const EdgeInsets.only(
+                          left: 25,
+                          right: 25,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Container(
+                              child: Text(
+                                AppLocalizations.of(context)
+                                    .translate('Passengers'),
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: kBlack,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              margin: const EdgeInsets.only(
+                                top: 15,
+                                bottom: 15,
+                              ),
+                              child: Column(
+                                children: <Widget>[
+                                  Container(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: <Widget>[
+                                        Container(
+                                          child: Row(
+                                            children: <Widget>[
+                                              Container(
+                                                child: Icon(
+                                                  Icons.person,
+                                                  color: kGrey400,
+                                                  size: 25,
+                                                ),
+                                              ),
+                                              Container(
+                                                padding: const EdgeInsets.only(
+                                                  left: 15,
+                                                ),
+                                                child: Text(
+                                                  AppLocalizations.of(context)
+                                                      .translate('Adults'),
+                                                  style: TextStyle(
+                                                    fontSize: 15,
+                                                    color: kGrey600,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                            width: 150,
+                                            child: CupertinoSpinBox(
+                                              decoration: BoxDecoration(
+                                                color: kWhite,
+                                              ),
+                                              textStyle: TextStyle(
+                                                color: kGrey600,
+                                              ),
+                                              min: 1,
+                                              max: 100,
+                                              value: 1,
+                                              onChanged: (value) {
+                                                setState(() {
+                                                  value1 = value.toInt();
+                                                  print(value);
+                                                });
+                                              },
+                                            )),
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: <Widget>[
+                                        Container(
+                                          child: Row(
+                                            children: <Widget>[
+                                              Container(
+                                                child: Icon(
+                                                  Icons.child_friendly_sharp,
+                                                  size: 20,
+                                                  color: kGrey400,
+                                                ),
+                                              ),
+                                              Container(
+                                                padding: const EdgeInsets.only(
+                                                  left: 15,
+                                                ),
+                                                child: Text(
+                                                  AppLocalizations.of(context)
+                                                      .translate('Infants'),
+                                                  style: TextStyle(
+                                                    fontSize: 15,
+                                                    color: kGrey600,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                            width: 150,
+                                            child: CupertinoSpinBox(
+                                              decoration: BoxDecoration(
+                                                color: kWhite,
+                                              ),
+                                              textStyle: TextStyle(
+                                                color: kGrey600,
+                                              ),
+                                              min: 1,
+                                              max: 100,
+                                              value: 1,
+                                              onChanged: (value) {
+                                                setState(() {
+                                                  value2 = value.toInt();
+                                                  print(value);
+                                                });
+                                              },
+                                            )),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      // Bags
+                      Container(
+                        margin: const EdgeInsets.only(
+                          left: 25,
+                          right: 25,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Container(
+                              child: Text(
+                                AppLocalizations.of(context).translate('Bags'),
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: kBlack,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              margin: const EdgeInsets.only(
+                                top: 15,
+                                bottom: 15,
+                              ),
+                              child: Column(
+                                children: <Widget>[
+                                  Container(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: <Widget>[
+                                        Container(
+                                          child: Row(
+                                            children: <Widget>[
+                                              Container(
+                                                child: Icon(
+                                                  FontAwesomeIcons.suitcase,
+                                                  size: 15,
+                                                  color: kGrey400,
+                                                ),
+                                              ),
+                                              Container(
+                                                padding: const EdgeInsets.only(
+                                                  left: 15,
+                                                ),
+                                                child: Text(
+                                                  AppLocalizations.of(context)
+                                                      .translate('checkedBags'),
+                                                  style: TextStyle(
+                                                    fontSize: 15,
+                                                    color: kGrey600,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                            width: 150,
+                                            child: CupertinoSpinBox(
+                                              decoration: BoxDecoration(
+                                                color: kWhite,
+                                              ),
+                                              textStyle: TextStyle(
+                                                color: kGrey600,
+                                              ),
+                                              min: 1,
+                                              max: 100,
+                                              value: 1,
+                                              onChanged: (value) {
+                                                setState(() {
+                                                  value3 = value.toInt();
+                                                  print(value);
+                                                });
+                                              },
+                                            )),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      // Classes
+                      Container(
+                        margin: const EdgeInsets.only(
+                          left: 25,
+                          right: 25,
+                        ),
+                        child: Text(
+                          AppLocalizations.of(context).translate('Classes'),
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: kBlack,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(
+                          top: 10,
+                        ),
+                        child: Column(
+                          children: <Widget>[
+                            RadioListTile<SingingCharacter>(
+                              title: Text(
+                                AppLocalizations.of(context)
+                                    .translate('Economy'),
+                              ),
+                              value: SingingCharacter.Economy,
+                              groupValue: _character,
+                              onChanged: (SingingCharacter value) {
+                                setState(() {
+                                  _character = value;
+                                });
+                              },
+                            ),
+                            RadioListTile<SingingCharacter>(
+                              title: Text(
+                                AppLocalizations.of(context)
+                                    .translate('premiumEconomy'),
+                              ),
+                              value: SingingCharacter.Premium_Economy,
+                              groupValue: _character,
+                              onChanged: (SingingCharacter value) {
+                                setState(() {
+                                  _character = value;
+                                });
+                              },
+                            ),
+                            RadioListTile<SingingCharacter>(
+                              title: Text(
+                                AppLocalizations.of(context)
+                                    .translate('Business'),
+                              ),
+                              value: SingingCharacter.Business,
+                              groupValue: _character,
+                              onChanged: (SingingCharacter value) {
+                                setState(() {
+                                  _character = value;
+                                });
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+          );
+        });
+  }
+
+  Future type_of_flight() async {
+    final option = await showModalBottomSheet(
+      context: context,
+      backgroundColor: kWhite,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(10.0)),
       ),
-      builder: (context, scrollController) => Container(
+      builder: (context) => Container(
         height: displaySize(context).height * 0.3,
         padding: const EdgeInsets.only(
           top: 25,
@@ -522,119 +590,21 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
               width: displaySize(context).width,
               child: Column(
                 children: <Widget>[
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    child: RaisedButton(
-                      onPressed: () {},
-                      color: kWhite,
-                      hoverElevation: 0.0,
-                      highlightElevation: 0.0,
-                      elevation: 0,
-                      shape: Border.all(
-                        width: 0.0,
-                        color: kWhite,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          Container(
-                            child: Icon(
-                              FontAwesomeIcons.exchangeAlt,
-                              size: 15,
-                              color: kGrey600,
-                            ),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.only(
-                              left: 15,
-                            ),
-                            child: Text(
-                              AppLocalizations.of(context).translate('Return'),
-                              style: TextStyle(
-                                fontSize: 15,
-                                color: kBlack,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    child: RaisedButton(
-                      onPressed: () {},
-                      color: kWhite,
-                      hoverElevation: 0.0,
-                      highlightElevation: 0.0,
-                      elevation: 0,
-                      shape: Border.all(
-                        width: 0.0,
-                        color: kWhite,
-                      ),
-                      child: Row(
-                        children: <Widget>[
-                          Container(
-                            child: Icon(
-                              FontAwesomeIcons.longArrowAltRight,
-                              color: kGrey500,
-                              size: 15,
-                            ),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.only(
-                              left: 15,
-                            ),
-                            child: Text(
-                              AppLocalizations.of(context).translate('oneWay'),
-                              style: TextStyle(
-                                fontSize: 15,
-                                color: kBlack,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    child: RaisedButton(
-                      onPressed: () {},
-                      color: kWhite,
-                      hoverElevation: 0.0,
-                      highlightElevation: 0.0,
-                      elevation: 0,
-                      shape: Border.all(
-                        width: 0.0,
-                        color: kWhite,
-                      ),
-                      child: Row(
-                        children: <Widget>[
-                          Container(
-                            child: Icon(
-                              MaterialIcons.call_split,
-                              size: 15,
-                              color: kGrey500,
-                            ),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.only(
-                              left: 15,
-                            ),
-                            child: Text(
-                              AppLocalizations.of(context)
-                                  .translate('multiCity'),
-                              style: TextStyle(
-                                fontSize: 15,
-                                color: kBlack,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+                  TypeTravel(FontAwesomeIcons.exchangeAlt, "Return", () {
+                    typeIcon = 0;
+                    Navigator.pop(context,
+                        (AppLocalizations.of(context).translate('Return')));
+                  }),
+                  TypeTravel(FontAwesomeIcons.longArrowAltRight, "oneWay", () {
+                    typeIcon = 1;
+                    Navigator.pop(context,
+                        (AppLocalizations.of(context).translate('oneWay')));
+                  }),
+                  TypeTravel(MaterialIcons.call_split, "multiCity", () {
+                    typeIcon = 2;
+                    Navigator.pop(context,
+                        (AppLocalizations.of(context).translate('multiCity')));
+                  }),
                 ],
               ),
             ),
@@ -642,6 +612,16 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
         ),
       ),
     );
+    setState(() {
+      selection = option;
+    });
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _typeAheadController.dispose();
   }
 
   @override
@@ -676,7 +656,6 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                   ),
                 ),
               ),
-
               // Dia diem den va di
               Container(
                   padding: const EdgeInsets.all(15),
@@ -730,21 +709,27 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                       left: 10,
                                     ),
                                     child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
                                       children: <Widget>[
                                         Container(
                                           child: InkWell(
                                             onTap: () {
+                                              chosen = false;
                                               search_place();
                                             },
-                                            child: Text(
+                                            child: chosen == false ? Text(
                                               AppLocalizations.of(context)
                                                   .translate('whereYouToGo?'),
                                               style: TextStyle(
                                                 fontSize: 15,
                                                 color: kGrey500,
                                               ),
+                                            ):Text(
+                                              _typeAheadController.text,
+                                              style: TextStyle(
+                                              fontSize: 15,
+                                              color: kGrey500,
+                                            ),
                                             ),
                                           ),
                                         ),
@@ -755,11 +740,18 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                         Container(
                                           child: InkWell(
                                             onTap: () {
-                                              search_place();
+                                              chosen1 = false;
+                                              search_place1();
                                             },
-                                            child: Text(
+                                            child: chosen1 == false ? Text(
                                               AppLocalizations.of(context)
                                                   .translate('whereYouToGo?'),
+                                              style: TextStyle(
+                                                fontSize: 15,
+                                                color: kGrey500,
+                                              ),
+                                            ):Text(
+                                              _typeAheadController1.text,
                                               style: TextStyle(
                                                 fontSize: 15,
                                                 color: kGrey500,
@@ -784,52 +776,40 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
 
                       // Ngay di va ngay ve
                       InkWell(
-                        onTap: (){
+                        onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => Seclect_Date()),
+                            MaterialPageRoute(
+                                builder: (context) => Seclect_Date()),
                           );
                         },
                         child: Container(
+                          width: displaySize(context).height * 0.6,
                           padding: const EdgeInsets.all(15),
                           decoration: BoxDecoration(
                             color: kGrey100,
-                            borderRadius: BorderRadiusDirectional.circular(10.0),
+                            borderRadius:
+                                BorderRadiusDirectional.circular(10.0),
                           ),
                           margin: const EdgeInsets.only(
                             top: 20,
                           ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Container(
-                                child: Text(
-                                  'Wed, Mar 20',
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: kGrey500,
-                                  ),
-                                ),
+                          child: Container(
+                            alignment: Alignment.center,
+                            child: FileSystemManager.instance.range != null ? Text(
+                              FileSystemManager.instance.range,
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: kGrey500,
                               ),
-                              Container(
-                                child: Text(
-                                  '-',
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: kGrey500,
-                                  ),
-                                ),
+                            )
+                            :Text(
+                              "Choose Date Time",
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: kGrey500,
                               ),
-                              Container(
-                                child: Text(
-                                  'Mon, Mar 25',
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: kGrey500,
-                                  ),
-                                ),
-                              ),
-                            ],
+                            ),
                           ),
                         ),
                       ),
@@ -848,7 +828,6 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Container(
-                      width: 130,
                       color: Color.fromRGBO(112, 112, 112, 0.0),
                       child: RaisedButton(
                         onPressed: () {
@@ -861,7 +840,11 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                           children: <Widget>[
                             Container(
                               child: Icon(
-                                FontAwesomeIcons.exchangeAlt,
+                                typeIcon == 0
+                                    ? FontAwesomeIcons.exchangeAlt
+                                    : typeIcon == 1
+                                        ? FontAwesomeIcons.longArrowAltRight
+                                        : MaterialIcons.call_split,
                                 size: 15,
                                 color: kGrey600,
                               ),
@@ -871,8 +854,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                 left: 10,
                               ),
                               child: Text(
-                                AppLocalizations.of(context)
-                                    .translate('Return'),
+                                typeIcon == 0 ? "Return" : '$selection',
                                 style: TextStyle(
                                   fontSize: 15,
                                   color: kGrey600,
@@ -911,7 +893,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                   ),
                                   Container(
                                     child: Text(
-                                      '2',
+                                      value1.toString(),
                                       style: TextStyle(
                                         fontSize: 15,
                                         color: kGrey600,
@@ -936,7 +918,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                   ),
                                   Container(
                                     child: Text(
-                                      '0',
+                                      value2.toString(),
                                       style: TextStyle(
                                         fontSize: 15,
                                         color: kGrey600,
@@ -961,7 +943,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                   ),
                                   Container(
                                     child: Text(
-                                      '0',
+                                      value3.toString(),
                                       style: TextStyle(
                                         fontSize: 15,
                                         color: kGrey600,
@@ -1016,6 +998,55 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class TypeTravel extends StatelessWidget {
+  IconData icon;
+  String typeTravel;
+  Function onPress;
+
+  TypeTravel(this.icon, this.typeTravel, this.onPress);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.centerLeft,
+      child: RaisedButton(
+        onPressed: onPress,
+        color: kWhite,
+        hoverElevation: 0.0,
+        highlightElevation: 0.0,
+        elevation: 0,
+        shape: Border.all(
+          width: 0.0,
+          color: kWhite,
+        ),
+        child: Row(
+          children: <Widget>[
+            Container(
+              child: Icon(
+                icon,
+                color: kGrey500,
+                size: 15,
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(
+                left: 15,
+              ),
+              child: Text(
+                AppLocalizations.of(context).translate('$typeTravel'),
+                style: TextStyle(
+                  fontSize: 15,
+                  color: kBlack,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
