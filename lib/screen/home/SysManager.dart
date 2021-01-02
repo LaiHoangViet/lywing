@@ -1,6 +1,17 @@
 class FileSystemManager{
   String range;
   int dem;
+  int adults;
+  int infants;
+  int bags;
+  String typeAheadController;
+  String typeAheadController1;
+  int type = 0;
+  String typestring;
+  bool chosen = false;
+  bool chosen1 = false;
+  bool swap = false;
+
   static final FileSystemManager _instance = FileSystemManager._internal();
 
   FileSystemManager._internal();

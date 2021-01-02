@@ -7,6 +7,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lywing/common/app_localizations.dart';
 import 'package:lywing/common/constants.dart';
 import 'package:lywing/screen/choose/filter.dart';
+import 'package:lywing/screen/choose/seclect_date.dart';
+import 'package:lywing/screen/home/SysManager.dart';
+import 'package:lywing/screen/home/choose-quantity/choose-type.dart';
+import 'package:lywing/screen/home/choose-quantity/passengers-bags-classes.dart';
+import 'package:lywing/screen/home/search-location/destination.dart';
+import 'package:lywing/screen/home/search-location/place-to-go.dart';
 import 'choose-filter/nonstop.dart';
 import 'choose-flight-results/best.dart';
 import 'package:lywing/sizes_helpers.dart';
@@ -29,7 +35,7 @@ class _Flight_ResultsState extends State<Flight_Results>
   Animation _arrowAnimation;
   AnimationController _arrowAnimationController;
 
-  List ticket = ["12","12","12","12"];
+  List ticket = ["12", "12", "12", "12"];
 
   @override
   void initState() {
@@ -88,7 +94,13 @@ class _Flight_ResultsState extends State<Flight_Results>
               ),
               centerTitle: true,
               title: Text(
-                'SIN - HAN',
+                FileSystemManager.instance.typeAheadController == null && FileSystemManager
+                    .instance.typeAheadController1 == null
+                    ? ""
+                    : FileSystemManager.instance.typeAheadController
+                                    .toString() +
+                                ' - ' + FileSystemManager.instance.typeAheadController1
+                            .toString(),
                 style: TextStyle(
                   color: kBlack,
                   fontSize: 17,
@@ -184,13 +196,7 @@ class _Flight_ResultsState extends State<Flight_Results>
                                               width:
                                                   displaySize(context).width *
                                                       0.4,
-                                              child: Text(
-                                                'Singapore (SIN)',
-                                                style: TextStyle(
-                                                  fontSize: 17,
-                                                  color: kBlack,
-                                                ),
-                                              ),
+                                              child: Place_To_Go(),
                                             ),
                                             SizedBox(
                                               height:
@@ -204,13 +210,7 @@ class _Flight_ResultsState extends State<Flight_Results>
                                               width:
                                                   displaySize(context).width *
                                                       0.4,
-                                              child: Text(
-                                                'HaNoi (HAN)',
-                                                style: TextStyle(
-                                                  fontSize: 17,
-                                                  color: kBlack,
-                                                ),
-                                              ),
+                                              child: Destination(),
                                             ),
                                           ],
                                         ),
@@ -228,56 +228,44 @@ class _Flight_ResultsState extends State<Flight_Results>
                             ),
                           ),
                           //date of departure and return date
-                          Container(
-                            padding: const EdgeInsets.all(15),
-                            decoration: BoxDecoration(
-                              color: kGrey100,
-                              borderRadius:
-                                  BorderRadiusDirectional.circular(10.0),
-                            ),
-                            margin: const EdgeInsets.only(
-                              left: 10,
-                              right: 10,
-                              top: 20,
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Container(
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Seclect_Date()),
+                              );
+                            },
+                            child: Container(
+                              width: displaySize(context).height * 0.6,
+                              padding: const EdgeInsets.all(15),
+                              decoration: BoxDecoration(
+                                color: kGrey100,
+                                borderRadius:
+                                    BorderRadiusDirectional.circular(10.0),
+                              ),
+                              margin: const EdgeInsets.only(
+                                top: 20,
+                              ),
+                              child: Container(
+                                  alignment: Alignment.center,
                                   child: Text(
-                                    'Wed, Mar 20',
+                                    FileSystemManager.instance.range == null
+                                        ? "Choose Date Time"
+                                        : FileSystemManager.instance.range
+                                            .toString(),
                                     style: TextStyle(
                                       fontSize: 15,
                                       color: kGrey500,
                                     ),
-                                  ),
-                                ),
-                                Container(
-                                  child: Text(
-                                    '-',
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: kGrey500,
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  child: Text(
-                                    'Mon, Mar 25',
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: kGrey500,
-                                    ),
-                                  ),
-                                ),
-                              ],
+                                  )),
                             ),
                           ),
                           //quantity information
                           Container(
                             margin: const EdgeInsets.only(
-                              top: 15,
-                              bottom: 15,
+                              top: 10,
+                              bottom: 10,
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -285,125 +273,12 @@ class _Flight_ResultsState extends State<Flight_Results>
                                 Container(
                                   width: 130,
                                   color: kWhite,
-                                  child: Row(
-                                    children: <Widget>[
-                                      Container(
-                                        child: Icon(
-                                          FontAwesomeIcons.exchangeAlt,
-                                          size: 15,
-                                          color: kGrey600,
-                                        ),
-                                      ),
-                                      Container(
-                                        padding: const EdgeInsets.only(
-                                          left: 10,
-                                        ),
-                                        child: Text(
-                                          AppLocalizations.of(context)
-                                              .translate('Return'),
-                                          style: TextStyle(
-                                            fontSize: 15,
-                                            color: kGrey600,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                                  child: Choose_Type1(),
                                 ),
                                 Container(
                                   width: 130,
                                   color: kWhite,
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: <Widget>[
-                                      Container(
-                                        margin: const EdgeInsets.only(
-                                          right: 5,
-                                        ),
-                                        child: Row(
-                                          children: <Widget>[
-                                            Container(
-                                              padding: const EdgeInsets.only(
-                                                right: 5,
-                                              ),
-                                              child: Icon(
-                                                MaterialIcons
-                                                    .supervisor_account,
-                                                size: 20,
-                                                color: kGrey600,
-                                              ),
-                                            ),
-                                            Container(
-                                              child: Text(
-                                                '2',
-                                                style: TextStyle(
-                                                  fontSize: 15,
-                                                  color: kGrey600,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Container(
-                                        margin: const EdgeInsets.only(
-                                          right: 5,
-                                        ),
-                                        child: Row(
-                                          children: <Widget>[
-                                            Container(
-                                              padding: const EdgeInsets.only(
-                                                right: 5,
-                                              ),
-                                              child: Icon(
-                                                Icons.child_friendly_sharp,
-                                                size: 20,
-                                                color: kGrey600,
-                                              ),
-                                            ),
-                                            Container(
-                                              child: Text(
-                                                '0',
-                                                style: TextStyle(
-                                                  fontSize: 15,
-                                                  color: kGrey600,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Container(
-                                        margin: const EdgeInsets.only(
-                                          right: 5,
-                                        ),
-                                        child: Row(
-                                          children: <Widget>[
-                                            Container(
-                                              padding: const EdgeInsets.only(
-                                                right: 5,
-                                              ),
-                                              child: Icon(
-                                                FontAwesomeIcons.suitcase,
-                                                size: 15,
-                                                color: kGrey600,
-                                              ),
-                                            ),
-                                            Container(
-                                              child: Text(
-                                                '0',
-                                                style: TextStyle(
-                                                  fontSize: 15,
-                                                  color: kGrey600,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                                  child: Passengers_Bags_Classes1(),
                                 ),
                               ],
                             ),
@@ -557,8 +432,9 @@ class _Flight_ResultsState extends State<Flight_Results>
                     Container(
                       margin: const EdgeInsets.all(10),
                       child: Column(
-                          children: [
-                            for (var index in ticket ) Container(
+                        children: [
+                          for (var index in ticket)
+                            Container(
                               margin: const EdgeInsets.only(
                                 bottom: 20,
                               ),
@@ -578,8 +454,7 @@ class _Flight_ResultsState extends State<Flight_Results>
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) =>
-                                            Flight_Details()),
+                                        builder: (context) => Flight_Details()),
                                   );
                                 },
                                 elevation: 0,
@@ -598,10 +473,9 @@ class _Flight_ResultsState extends State<Flight_Results>
                                     Container(
                                       child: Row(
                                         mainAxisAlignment:
-                                        MainAxisAlignment
-                                            .spaceBetween,
+                                            MainAxisAlignment.spaceBetween,
                                         crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                            CrossAxisAlignment.start,
                                         children: <Widget>[
                                           //logo
                                           Container(
@@ -609,43 +483,38 @@ class _Flight_ResultsState extends State<Flight_Results>
                                                 image: AssetImage(
                                                     'assets/images/VJ-1.png'),
                                                 width:
-                                                displaySize(context)
-                                                    .width *
-                                                    0.11,
-                                                height:
-                                                displaySize(context)
-                                                    .height *
+                                                    displaySize(context).width *
+                                                        0.11,
+                                                height: displaySize(context)
+                                                        .height *
                                                     0.05,
                                                 fit: BoxFit.fill),
                                           ),
 
                                           Container(
-                                            width: displaySize(context)
-                                                .width *
+                                            width: displaySize(context).width *
                                                 0.35,
-                                            height: displaySize(context)
-                                                .height *
-                                                0.1,
+                                            height:
+                                                displaySize(context).height *
+                                                    0.1,
                                             margin: const EdgeInsets.only(
                                               left: 10,
                                             ),
                                             child: Column(
                                               crossAxisAlignment:
-                                              CrossAxisAlignment
-                                                  .start,
+                                                  CrossAxisAlignment.start,
                                               children: <Widget>[
                                                 Container(
                                                   child: Row(
                                                     mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
                                                     children: <Widget>[
                                                       //flight time
                                                       Container(
                                                         child: Text(
                                                           '9:35',
-                                                          style:
-                                                          TextStyle(
+                                                          style: TextStyle(
                                                             fontSize: 17,
                                                             color: kBlack,
                                                           ),
@@ -653,8 +522,7 @@ class _Flight_ResultsState extends State<Flight_Results>
                                                       ),
 
                                                       Container(
-                                                        child: Transform
-                                                            .rotate(
+                                                        child: Transform.rotate(
                                                           angle: pi / 2,
                                                           child: Icon(
                                                             Icons.flight,
@@ -667,8 +535,7 @@ class _Flight_ResultsState extends State<Flight_Results>
                                                       Container(
                                                         child: Text(
                                                           '13:35',
-                                                          style:
-                                                          TextStyle(
+                                                          style: TextStyle(
                                                             fontSize: 17,
                                                             color: kBlack,
                                                           ),
@@ -694,26 +561,23 @@ class _Flight_ResultsState extends State<Flight_Results>
 
                                           //direct flight, 3h 20m
                                           Container(
-                                            width: displaySize(context)
-                                                .width *
+                                            width: displaySize(context).width *
                                                 0.3,
-                                            height: displaySize(context)
-                                                .height *
-                                                0.1,
-                                            padding:
-                                            const EdgeInsets.only(
+                                            height:
+                                                displaySize(context).height *
+                                                    0.1,
+                                            padding: const EdgeInsets.only(
                                               top: 6,
                                             ),
                                             child: Column(
                                               crossAxisAlignment:
-                                              CrossAxisAlignment.end,
+                                                  CrossAxisAlignment.end,
                                               children: <Widget>[
                                                 Container(
                                                   child: Text(
-                                                    AppLocalizations.of(
-                                                        context)
+                                                    AppLocalizations.of(context)
                                                         .translate(
-                                                        'directflight'),
+                                                            'directflight'),
                                                     style: TextStyle(
                                                       fontSize: 12,
                                                       color: kGrey500,
@@ -739,56 +603,49 @@ class _Flight_ResultsState extends State<Flight_Results>
                                     //second flight
                                     Container(
                                       height:
-                                      displaySize(context).height *
-                                          0.06,
+                                          displaySize(context).height * 0.06,
                                       child: Row(
                                         mainAxisAlignment:
-                                        MainAxisAlignment
-                                            .spaceBetween,
+                                            MainAxisAlignment.spaceBetween,
                                         crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                            CrossAxisAlignment.start,
                                         children: <Widget>[
                                           Container(
                                             child: Image(
                                                 image: AssetImage(
                                                     'assets/images/VJ-1.png'),
                                                 width:
-                                                displaySize(context)
-                                                    .width *
-                                                    0.11,
-                                                height:
-                                                displaySize(context)
-                                                    .height *
+                                                    displaySize(context).width *
+                                                        0.11,
+                                                height: displaySize(context)
+                                                        .height *
                                                     0.05,
                                                 fit: BoxFit.fill),
                                           ),
                                           Container(
-                                            width: displaySize(context)
-                                                .width *
+                                            width: displaySize(context).width *
                                                 0.35,
-                                            height: displaySize(context)
-                                                .height *
-                                                0.1,
+                                            height:
+                                                displaySize(context).height *
+                                                    0.1,
                                             margin: const EdgeInsets.only(
                                               left: 10,
                                             ),
                                             child: Column(
                                               crossAxisAlignment:
-                                              CrossAxisAlignment
-                                                  .start,
+                                                  CrossAxisAlignment.start,
                                               children: <Widget>[
                                                 Container(
                                                   child: Row(
                                                     mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
                                                     children: <Widget>[
                                                       //destination and departure
                                                       Container(
                                                         child: Text(
                                                           '14:55',
-                                                          style:
-                                                          TextStyle(
+                                                          style: TextStyle(
                                                             fontSize: 17,
                                                             color: kBlack,
                                                           ),
@@ -797,8 +654,7 @@ class _Flight_ResultsState extends State<Flight_Results>
 
                                                       //date of departure and return date
                                                       Container(
-                                                        child: Transform
-                                                            .rotate(
+                                                        child: Transform.rotate(
                                                           angle: pi / 2,
                                                           child: Icon(
                                                             Icons.flight,
@@ -811,8 +667,7 @@ class _Flight_ResultsState extends State<Flight_Results>
                                                       Container(
                                                         child: Text(
                                                           '17:20',
-                                                          style:
-                                                          TextStyle(
+                                                          style: TextStyle(
                                                             fontSize: 17,
                                                             color: kBlack,
                                                           ),
@@ -838,26 +693,23 @@ class _Flight_ResultsState extends State<Flight_Results>
 
                                           //direct flight, 3h 20m
                                           Container(
-                                            width: displaySize(context)
-                                                .width *
+                                            width: displaySize(context).width *
                                                 0.3,
-                                            height: displaySize(context)
-                                                .height *
-                                                0.1,
-                                            padding:
-                                            const EdgeInsets.only(
+                                            height:
+                                                displaySize(context).height *
+                                                    0.1,
+                                            padding: const EdgeInsets.only(
                                               top: 6,
                                             ),
                                             child: Column(
                                               crossAxisAlignment:
-                                              CrossAxisAlignment.end,
+                                                  CrossAxisAlignment.end,
                                               children: <Widget>[
                                                 Container(
                                                   child: Text(
-                                                    AppLocalizations.of(
-                                                        context)
+                                                    AppLocalizations.of(context)
                                                         .translate(
-                                                        'directflight'),
+                                                            'directflight'),
                                                     style: TextStyle(
                                                       fontSize: 12,
                                                       color: kGrey500,
@@ -882,8 +734,7 @@ class _Flight_ResultsState extends State<Flight_Results>
 
                                     Container(
                                       height:
-                                      displaySize(context).height *
-                                          0.05,
+                                          displaySize(context).height * 0.05,
                                       child: Image(
                                         image: AssetImage(
                                             'assets/icons/Line-3.png'),
@@ -894,8 +745,7 @@ class _Flight_ResultsState extends State<Flight_Results>
                                     Container(
                                       child: Row(
                                         mainAxisAlignment:
-                                        MainAxisAlignment
-                                            .spaceBetween,
+                                            MainAxisAlignment.spaceBetween,
                                         children: <Widget>[
                                           Container(
                                             child: Text(
@@ -922,7 +772,7 @@ class _Flight_ResultsState extends State<Flight_Results>
                                 ),
                               ),
                             )
-                          ],
+                        ],
                       ),
                     ),
                   ],

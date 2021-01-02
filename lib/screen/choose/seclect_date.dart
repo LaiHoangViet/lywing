@@ -21,7 +21,7 @@ class _Seclect_DateState extends State<Seclect_Date> {
     setState(() {
       _range =
           DateFormat('dd/MM/yyyy').format(args.value.startDate).toString() +
-          "              -             " +
+          "                 -                " +
               DateFormat('dd/MM/yyyy')
                   .format(args.value.endDate ?? args.value.startDate)
                   .toString();
