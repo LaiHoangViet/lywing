@@ -11,6 +11,7 @@ class FileSystemManager{
   bool chosen = false;
   bool chosen1 = false;
   bool swap = false;
+  int temp;
 
   static final FileSystemManager _instance = FileSystemManager._internal();
 

@@ -94,12 +94,13 @@ class _Flight_ResultsState extends State<Flight_Results>
               ),
               centerTitle: true,
               title: Text(
-                FileSystemManager.instance.typeAheadController == null && FileSystemManager
-                    .instance.typeAheadController1 == null
+                FileSystemManager.instance.typeAheadController == null &&
+                        FileSystemManager.instance.typeAheadController1 == null
                     ? ""
                     : FileSystemManager.instance.typeAheadController
-                                    .toString() +
-                                ' - ' + FileSystemManager.instance.typeAheadController1
+                            .toString() +
+                        ' - ' +
+                        FileSystemManager.instance.typeAheadController1
                             .toString(),
                 style: TextStyle(
                   color: kBlack,
@@ -150,6 +151,7 @@ class _Flight_ResultsState extends State<Flight_Results>
                         children: <Widget>[
                           //destination and departure
                           Container(
+                            height: displaySize(context).height * 0.1,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
@@ -162,25 +164,33 @@ class _Flight_ResultsState extends State<Flight_Results>
                                       Container(
                                         child: Column(
                                           children: <Widget>[
-                                            Icon(
-                                              MaterialIcons.location_on,
-                                              color: kGrey400,
+                                            Container(
+                                              height:
+                                                  displaySize(context).height *
+                                                      0.03,
+                                              child: Icon(
+                                                MaterialIcons.location_on,
+                                                color: kGrey400,
+                                              ),
+                                            ),
+                                            Expanded(
+                                              child: Container(
+                                                child: Image(
+                                                  image: AssetImage(
+                                                      'assets/icons/Line.png'),
+                                                ),
+                                              ),
                                             ),
                                             Container(
-                                              margin: const EdgeInsets.only(
-                                                top: 6,
-                                                bottom: 6,
-                                              ),
-                                              child: Image(
-                                                image: AssetImage(
-                                                    'assets/icons/Line.png'),
-                                              ),
-                                            ),
-                                            Transform.rotate(
-                                              angle: pi / 2,
-                                              child: Icon(
-                                                Icons.flight,
-                                                color: kGrey400,
+                                              height:
+                                                  displaySize(context).height *
+                                                      0.03,
+                                              child: Transform.rotate(
+                                                angle: pi / 2,
+                                                child: Icon(
+                                                  Icons.flight,
+                                                  color: kGrey400,
+                                                ),
                                               ),
                                             ),
                                           ],
@@ -193,17 +203,21 @@ class _Flight_ResultsState extends State<Flight_Results>
                                               margin: const EdgeInsets.only(
                                                 left: 15,
                                               ),
+                                              height:
+                                                  displaySize(context).height *
+                                                      0.03,
                                               width:
                                                   displaySize(context).width *
                                                       0.4,
                                               child: Place_To_Go(),
                                             ),
-                                            SizedBox(
-                                              height:
-                                                  displaySize(context).height *
-                                                      0.05,
+                                            Expanded(
+                                              child: Container(),
                                             ),
                                             Container(
+                                              height:
+                                                  displaySize(context).height *
+                                                      0.03,
                                               margin: const EdgeInsets.only(
                                                 left: 15,
                                               ),
@@ -263,9 +277,9 @@ class _Flight_ResultsState extends State<Flight_Results>
                           ),
                           //quantity information
                           Container(
-                            margin: const EdgeInsets.only(
-                              top: 10,
-                              bottom: 10,
+                            margin: EdgeInsets.only(
+                              top: displaySize(context).height * 0.03,
+                              bottom: displaySize(context).height * 0.02,
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,

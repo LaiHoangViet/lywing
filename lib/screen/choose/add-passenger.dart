@@ -6,6 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lywing/common/app_localizations.dart';
 import 'package:lywing/common/constants.dart';
 import 'package:lywing/sizes_helpers.dart';
+import 'package:responsive_flutter/responsive_flutter.dart';
 
 class Add_Passenger extends StatefulWidget {
   @override
@@ -423,15 +424,16 @@ class _Add_PassengerState extends State<Add_Passenger> {
                               child: DropdownButton(
                                   icon: Icon(Icons.arrow_drop_down),
                                   iconSize: 42,
-                                  // isExpanded: true,
+                                  isExpanded: true,
                                   underline: SizedBox(),
                                   value: _ID_type,
                                   items: <DropdownMenuItem<int>>[
                                     DropdownMenuItem(
                                       child: Container(
+                                        // width: double.maxFinite,
                                         padding: EdgeInsets.only(
                                           right:
-                                              displaySize(context).width * 0.59,
+                                              displaySize(context).width * 0.58,
                                         ),
                                         child: Text(
                                           AppLocalizations.of(context).translate('Passport'),
@@ -445,9 +447,10 @@ class _Add_PassengerState extends State<Add_Passenger> {
                                     ),
                                     DropdownMenuItem(
                                       child: Container(
+                                        // width: double.maxFinite,
                                         padding: EdgeInsets.only(
                                           right:
-                                              displaySize(context).width * 0.59,
+                                              displaySize(context).width * 0.58,
                                         ),
                                         child: Text(
                                           AppLocalizations.of(context).translate('NationalID'),
@@ -506,345 +509,361 @@ class _Add_PassengerState extends State<Add_Passenger> {
                 ),
               ),
 
-              //Tab Travel insurance
               Container(
-                margin: const EdgeInsets.only(
-                  top: 20,
-                  left: 15,
-                  right: 15,
-                ),
-                padding: const EdgeInsets.all(0),
-                decoration: BoxDecoration(
-                  color: kWhite,
-                  borderRadius: BorderRadius.circular(5),
-                  border: Border.all(
-                    width: 1,
-                    color: kGrey100,
-                  ),
-                ),
-                child: TabBar(
-                  indicatorColor: kGrey100,
-                  indicator: BoxDecoration(
-                    color: kGrey100,
-                    // borderRadius: BorderRadius.circular(10),
-                  ),
-                  tabs: <Widget>[
-                    Container(
-                      height: displaySize(context).height * 0.2,
-                      child: Tab(
-                        icon: Image.asset(
-                          'assets/icons/tabs/shield-3.png',
-                          color: kOrangeLight,
-                        ),
-                        child: Container(
-                          child: Column(
-                            children: <Widget>[
-                              Text(
-                                AppLocalizations.of(context).translate('TravelPlus'),
-                                style: TextStyle(
-                                  color: kGrey400,
-                                  fontSize: 13,
-                                ),
-                              ),
-                              Text(
-                                '\$33,60',
-                                style: TextStyle(
-                                  color: kGrey400,
-                                  fontSize: 12,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      height: displaySize(context).height * 0.2,
-                      child: Tab(
-                        icon: Image.asset(
-                          'assets/icons/tabs/shield-3.png',
-                          color: kBlue1000,
-                        ),
-                        child: Column(
-                          children: <Widget>[
-                            Text(
-                              AppLocalizations.of(context).translate('TravelBasic'),
-                              style: TextStyle(
-                                color: kGrey400,
-                                fontSize: 13,
-                              ),
-                            ),
-                            Text(
-                              '\$15,45',
-                              style: TextStyle(
-                                color: kGrey400,
-                                fontSize: 12,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Container(
-                      height: displaySize(context).height * 0.2,
-                      child: Tab(
-                        icon: Image.asset(
-                          'assets/icons/tabs/shield-3.png',
-                          color: kGrey600,
-                        ),
-                        child: Column(
-                          children: <Widget>[
-                            Text(
-                              AppLocalizations.of(context).translate('Noinsurance'),
-                              style: TextStyle(
-                                color: kGrey400,
-                                fontSize: 13,
-                              ),
-                            ),
-                            Text(
-                              AppLocalizations.of(context).translate('Free'),
-                              style: TextStyle(
-                                color: kGrey400,
-                                fontSize: 12,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-
-              //View tab Travel insurance
-              Container(
-                height: displaySize(context).height * 0.11,
-                margin: const EdgeInsets.only(
-                  left: 30,
-                  right: 30,
-                  bottom: 20,
-                ),
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: kGrey100,
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(10),
-                    bottomRight: Radius.circular(10),
-                  ),
-                ),
-                child: TabBarView(
+                child: Column(
                   children: [
+                    //Tab Travel insurance
                     Container(
-                      child: Column(
-                        children: <Widget>[
+                      height: displaySize(context).height * 0.2,
+                      margin: EdgeInsets.only(
+                        top: displaySize(context).height * 0.03,
+                        left: displaySize(context).width * 0.04,
+                        right: displaySize(context).width * 0.04,
+                      ),
+                      padding: const EdgeInsets.all(0),
+                      decoration: BoxDecoration(
+                        color: kWhite,
+                        borderRadius: BorderRadius.circular(5),
+                        border: Border.all(
+                          width: 1,
+                          color: kGrey100,
+                        ),
+                      ),
+                      child: TabBar(
+                        indicatorColor: kGrey100,
+                        indicator: BoxDecoration(
+                          color: kGrey100,
+                          // borderRadius: BorderRadius.circular(10),
+                        ),
+                        tabs: <Widget>[
                           Container(
-                            child: Row(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.lens,
-                                  size: 15,
-                                  color: kGrey400,
+                            height: displaySize(context).height * 0.2,
+                            child: Tab(
+                              icon: Image.asset(
+                                'assets/icons/tabs/shield-3.png',
+                                color: kOrangeLight,
+                              ),
+                              child: Container(
+                                child: Column(
+                                  children: <Widget>[
+                                    Text(
+                                      AppLocalizations.of(context).translate('TravelPlus'),
+                                      style: TextStyle(
+                                        color: kGrey400,
+                                        fontSize: 13,
+                                      ),
+                                    ),
+                                    Text(
+                                      '\$33,60',
+                                      style: TextStyle(
+                                        color: kGrey400,
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                Container(
-                                  margin: const EdgeInsets.only(
-                                    left: 10,
-                                  ),
-                                  child: Text(
-                                    AppLocalizations.of(context).translate('Medicalexpanses'),
-                                    style: TextStyle(
-                                        color: kGrey400, fontSize: 12),
-                                  ),
-                                ),
-                              ],
+                              ),
                             ),
                           ),
                           Container(
-                            margin: const EdgeInsets.only(
-                              top: 10,
-                              bottom: 10,
-                            ),
-                            child: Row(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.lens,
-                                  size: 15,
-                                  color: kGrey400,
-                                ),
-                                Container(
-                                  margin: const EdgeInsets.only(
-                                    left: 10,
-                                  ),
-                                  child: Text(
-                                    AppLocalizations.of(context).translate('Tripcancellation'),
+                            height: displaySize(context).height * 0.2,
+                            child: Tab(
+                              icon: Image.asset(
+                                'assets/icons/tabs/shield-3.png',
+                                color: kBlue1000,
+                              ),
+                              child: Column(
+                                children: <Widget>[
+                                  Text(
+                                    AppLocalizations.of(context).translate('TravelBasic'),
                                     style: TextStyle(
-                                        color: kGrey400, fontSize: 12),
+                                      color: kGrey400,
+                                      fontSize: 13,
+                                    ),
                                   ),
-                                ),
-                              ],
+                                  Text(
+                                    '\$15,45',
+                                    style: TextStyle(
+                                      color: kGrey400,
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                           Container(
-                            child: Row(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.lens,
-                                  size: 15,
-                                  color: kGrey400,
-                                ),
-                                Container(
-                                  margin: const EdgeInsets.only(
-                                    left: 10,
-                                  ),
-                                  child: Text(
-                                    AppLocalizations.of(context).translate('Assistanceservices'),
+                            height: displaySize(context).height * 0.2,
+                            child: Tab(
+                              icon: Image.asset(
+                                'assets/icons/tabs/shield-3.png',
+                                color: kGrey600,
+                              ),
+                              child: Column(
+                                children: <Widget>[
+                                  Text(
+                                    AppLocalizations.of(context).translate('Noinsurance'),
                                     style: TextStyle(
-                                        color: kGrey400, fontSize: 12),
+                                      color: kGrey400,
+                                      fontSize: 13,
+                                    ),
                                   ),
-                                ),
-                              ],
+                                  Text(
+                                    AppLocalizations.of(context).translate('Free'),
+                                    style: TextStyle(
+                                      color: kGrey400,
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ],
                       ),
                     ),
+
+                    //View tab Travel insurance
                     Container(
-                      child: Column(
-                        children: <Widget>[
-                          Container(
-                            child: Row(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.lens,
-                                  size: 15,
-                                  color: kGrey400,
-                                ),
-                                Container(
-                                  margin: const EdgeInsets.only(
-                                    left: 10,
-                                  ),
-                                  child: Text(
-                                    AppLocalizations.of(context).translate('Medicalexpanses'),
-                                    style: TextStyle(
-                                        color: kGrey400, fontSize: 12),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.only(
-                              top: 10,
-                              bottom: 10,
-                            ),
-                            child: Row(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.lens,
-                                  size: 15,
-                                  color: kGrey400,
-                                ),
-                                Container(
-                                  margin: const EdgeInsets.only(
-                                    left: 10,
-                                  ),
-                                  child: Text(
-                                    AppLocalizations.of(context).translate('Tripcancellation'),
-                                    style: TextStyle(
-                                        color: kGrey400, fontSize: 12),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            child: Row(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.lens,
-                                  size: 15,
-                                  color: kGrey400,
-                                ),
-                                Container(
-                                  margin: const EdgeInsets.only(
-                                    left: 10,
-                                  ),
-                                  child: Text(
-                                    AppLocalizations.of(context).translate('Assistanceservices'),
-                                    style: TextStyle(
-                                        color: kGrey400, fontSize: 12),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
+                      height: displaySize(context).height * 0.15,
+                      margin: EdgeInsets.only(
+                        left: displaySize(context).width * 0.07,
+                        right: displaySize(context).width * 0.07,
+                        bottom: displaySize(context).height * 0.01,
                       ),
-                    ),
-                    Container(
-                      child: Column(
-                        children: <Widget>[
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: kGrey100,
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(10),
+                          bottomRight: Radius.circular(10),
+                        ),
+                      ),
+                      child: TabBarView(
+                        children: [
                           Container(
-                            child: Row(
+                            child: Column(
                               children: <Widget>[
-                                Icon(
-                                  Icons.lens,
-                                  size: 15,
-                                  color: kGrey400,
+                                Container(
+                                  margin: EdgeInsets.only(
+                                    top: displaySize(context).height * 0.01,
+                                  ),
+                                  child: Row(
+                                    children: <Widget>[
+                                      Icon(
+                                        Icons.lens,
+                                        size: ResponsiveFlutter.of(context).fontSize(1.7),
+                                        color: kGrey400,
+                                      ),
+                                      Container(
+                                        margin: const EdgeInsets.only(
+                                          left: 10,
+                                        ),
+                                        child: Text(
+                                          AppLocalizations.of(context).translate('Medicalexpanses'),
+                                          style: TextStyle(
+                                              color: kGrey400, fontSize: ResponsiveFlutter.of(context).fontSize(1.5)),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                                 Container(
-                                  margin: const EdgeInsets.only(
-                                    left: 10,
+                                  margin: EdgeInsets.only(
+                                    top: displaySize(context).height * 0.02,
+                                    bottom: displaySize(context).height * 0.02,
                                   ),
-                                  child: Text(
-                                    AppLocalizations.of(context).translate('Medicalexpanses'),
-                                    style: TextStyle(
-                                        color: kGrey400, fontSize: 12),
+                                  child: Row(
+                                    children: <Widget>[
+                                      Icon(
+                                        Icons.lens,
+                                        size: ResponsiveFlutter.of(context).fontSize(1.7),
+                                        color: kGrey400,
+                                      ),
+                                      Container(
+                                        margin: const EdgeInsets.only(
+                                          left: 10,
+                                        ),
+                                        child: Text(
+                                          AppLocalizations.of(context).translate('Tripcancellation'),
+                                          style: TextStyle(
+                                              color: kGrey400, fontSize: ResponsiveFlutter.of(context).fontSize(1.5)),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  child: Row(
+                                    children: <Widget>[
+                                      Icon(
+                                        Icons.lens,
+                                        size: ResponsiveFlutter.of(context).fontSize(1.7),
+                                        color: kGrey400,
+                                      ),
+                                      Container(
+                                        margin: const EdgeInsets.only(
+                                          left: 10,
+                                        ),
+                                        child: Text(
+                                          AppLocalizations.of(context).translate('Assistanceservices'),
+                                          style: TextStyle(
+                                              color: kGrey400, fontSize: ResponsiveFlutter.of(context).fontSize(1.5)),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],
                             ),
                           ),
                           Container(
-                            margin: const EdgeInsets.only(
-                              top: 10,
-                              bottom: 10,
-                            ),
-                            child: Row(
+                            child: Column(
                               children: <Widget>[
-                                Icon(
-                                  Icons.lens,
-                                  size: 15,
-                                  color: kGrey400,
+                                Container(
+                                  margin: EdgeInsets.only(
+                                    top: displaySize(context).height * 0.01,
+                                  ),
+                                  child: Row(
+                                    children: <Widget>[
+                                      Icon(
+                                        Icons.lens,
+                                        size: ResponsiveFlutter.of(context).fontSize(1.7),
+                                        color: kGrey400,
+                                      ),
+                                      Container(
+                                        margin: const EdgeInsets.only(
+                                          left: 10,
+                                        ),
+                                        child: Text(
+                                          AppLocalizations.of(context).translate('Medicalexpanses'),
+                                          style: TextStyle(
+                                              color: kGrey400, fontSize: ResponsiveFlutter.of(context).fontSize(1.5)),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                                 Container(
-                                  margin: const EdgeInsets.only(
-                                    left: 10,
+                                  margin: EdgeInsets.only(
+                                    top: displaySize(context).height * 0.02,
+                                    bottom: displaySize(context).height * 0.02,
                                   ),
-                                  child: Text(
-                                    AppLocalizations.of(context).translate('Tripcancellation'),
-                                    style: TextStyle(
-                                        color: kGrey400, fontSize: 12),
+                                  child: Row(
+                                    children: <Widget>[
+                                      Icon(
+                                        Icons.lens,
+                                        size: ResponsiveFlutter.of(context).fontSize(1.7),
+                                        color: kGrey400,
+                                      ),
+                                      Container(
+                                        margin: const EdgeInsets.only(
+                                          left: 10,
+                                        ),
+                                        child: Text(
+                                          AppLocalizations.of(context).translate('Tripcancellation'),
+                                          style: TextStyle(
+                                              color: kGrey400, fontSize: ResponsiveFlutter.of(context).fontSize(1.5)),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  child: Row(
+                                    children: <Widget>[
+                                      Icon(
+                                        Icons.lens,
+                                        size: ResponsiveFlutter.of(context).fontSize(1.7),
+                                        color: kGrey400,
+                                      ),
+                                      Container(
+                                        margin: const EdgeInsets.only(
+                                          left: 10,
+                                        ),
+                                        child: Text(
+                                          AppLocalizations.of(context).translate('Assistanceservices'),
+                                          style: TextStyle(
+                                              color: kGrey400, fontSize: ResponsiveFlutter.of(context).fontSize(1.5)),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],
                             ),
                           ),
                           Container(
-                            child: Row(
+                            child: Column(
                               children: <Widget>[
-                                Icon(
-                                  Icons.lens,
-                                  size: 15,
-                                  color: kGrey400,
+                                Container(
+                                  margin: EdgeInsets.only(
+                                    top: displaySize(context).height * 0.01,
+                                  ),
+                                  child: Row(
+                                    children: <Widget>[
+                                      Icon(
+                                        Icons.lens,
+                                        size: ResponsiveFlutter.of(context).fontSize(1.7),
+                                        color: kGrey400,
+                                      ),
+                                      Container(
+                                        margin: const EdgeInsets.only(
+                                          left: 10,
+                                        ),
+                                        child: Text(
+                                          AppLocalizations.of(context).translate('Medicalexpanses'),
+                                          style: TextStyle(
+                                              color: kGrey400, fontSize: ResponsiveFlutter.of(context).fontSize(1.5)),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                                 Container(
-                                  margin: const EdgeInsets.only(
-                                    left: 10,
+                                  margin: EdgeInsets.only(
+                                    top: displaySize(context).height * 0.02,
+                                    bottom: displaySize(context).height * 0.02,
                                   ),
-                                  child: Text(
-                                    AppLocalizations.of(context).translate('Assistanceservices'),
-                                    style: TextStyle(
-                                        color: kGrey400, fontSize: 12),
+                                  child: Row(
+                                    children: <Widget>[
+                                      Icon(
+                                        Icons.lens,
+                                        size: ResponsiveFlutter.of(context).fontSize(1.7),
+                                        color: kGrey400,
+                                      ),
+                                      Container(
+                                        margin: const EdgeInsets.only(
+                                          left: 10,
+                                        ),
+                                        child: Text(
+                                          AppLocalizations.of(context).translate('Tripcancellation'),
+                                          style: TextStyle(
+                                              color: kGrey400, fontSize: ResponsiveFlutter.of(context).fontSize(1.5)),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  child: Row(
+                                    children: <Widget>[
+                                      Icon(
+                                        Icons.lens,
+                                        size: ResponsiveFlutter.of(context).fontSize(1.7),
+                                        color: kGrey400,
+                                      ),
+                                      Container(
+                                        margin: const EdgeInsets.only(
+                                          left: 10,
+                                        ),
+                                        child: Text(
+                                          AppLocalizations.of(context).translate('Assistanceservices'),
+                                          style: TextStyle(
+                                              color: kGrey400, fontSize: ResponsiveFlutter.of(context).fontSize(1.5)),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],

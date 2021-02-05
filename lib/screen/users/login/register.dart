@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lywing/common/app_localizations.dart';
 import 'package:lywing/common/constants.dart';
+import 'package:responsive_flutter/responsive_flutter.dart';
 
 import '../../../sizes_helpers.dart';
 import 'login.dart';
@@ -15,13 +16,13 @@ class _registerNewAccountState extends State<registerNewAccount> {
   Widget build(BuildContext context) {
     return Material(
       child: Container(
-        height: displaySize(context).height,
+        // height: displaySize(context).height,
         color: kWhite,
         child: Column(
           children: <Widget>[
             Container(
               width: displaySize(context).width,
-              height: displaySize(context).height * 0.54,
+              height: displaySize(context).height * 0.5,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/images/lywing-slash-screen.png'),
@@ -33,7 +34,7 @@ class _registerNewAccountState extends State<registerNewAccount> {
                 children: <Widget>[
                   Container(
                     margin:
-                        EdgeInsets.only(top: displaySize(context).height * 0.38),
+                        EdgeInsets.only(top: displaySize(context).height * 0.34),
                     child: Column(
                       children: <Widget>[
                         Padding(
@@ -43,7 +44,7 @@ class _registerNewAccountState extends State<registerNewAccount> {
                                 .translate('register'),
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              fontSize: 36,
+                              fontSize: ResponsiveFlutter.of(context).fontSize(5),
                               color: kWhite,
                             ),
                           ),
@@ -78,10 +79,10 @@ class _registerNewAccountState extends State<registerNewAccount> {
               ),
             ),
             Container(
-              margin: const EdgeInsets.only(
+              margin: EdgeInsets.only(
                 left: 10,
                 right: 10,
-                top: 15,
+                top: displaySize(context).height * 0.02,
               ),
               child: Material(
                 elevation: 10,
@@ -103,10 +104,10 @@ class _registerNewAccountState extends State<registerNewAccount> {
               ),
             ),
             Container(
-              margin: const EdgeInsets.only(
+              margin: EdgeInsets.only(
                 left: 10,
                 right: 10,
-                top: 15,
+                top: displaySize(context).height * 0.02,
               ),
               child: Material(
                 elevation: 10,
@@ -128,8 +129,8 @@ class _registerNewAccountState extends State<registerNewAccount> {
               ),
             ),
             Container(
-              margin: const EdgeInsets.only(
-                top: 15,
+              margin: EdgeInsets.only(
+                top: displaySize(context).height * 0.02,
                 left: 10,
                 right: 10,
               ),
@@ -155,7 +156,7 @@ class _registerNewAccountState extends State<registerNewAccount> {
             ),
             Container(
               margin: EdgeInsets.only(
-                top: displaySize(context).height * 0.04,
+                top: displaySize(context).height * 0.01,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -163,7 +164,7 @@ class _registerNewAccountState extends State<registerNewAccount> {
                   Text(
                     AppLocalizations.of(context)
                         .translate('alreadyHaveAnAccount?'),
-                    style: TextStyle(
+                    style: TextStyle( 
                       fontSize: 13,
                       color: kGrey600,
                     ),

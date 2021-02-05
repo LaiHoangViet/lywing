@@ -54,18 +54,15 @@ class _ExploreState extends State<Explore> {
       ),
       body: ListView(
         scrollDirection: Axis.vertical,
-        padding: const EdgeInsets.only(
-          top: 10,
-        ),
         children: <Widget>[
           Container(
             child: Column(
               children: [
                 for(var index in city) Container(
-                  margin: const EdgeInsets.only(
-                    left: 10,
-                    right: 10,
-                    top: 20,
+                  margin: EdgeInsets.only(
+                    left: displaySize(context).width * 0.03,
+                    right: displaySize(context).width * 0.03,
+                    top: displaySize(context).height * 0.02,
                   ),
                   decoration: BoxDecoration(
                     color: kWhite,
@@ -87,7 +84,12 @@ class _ExploreState extends State<Explore> {
                     onPressed: () {},
                     color: kWhite,
                     elevation: 0,
-                    padding: const EdgeInsets.all(20),
+                    padding: EdgeInsets.only(
+                      left: displaySize(context).width * 0.04,
+                      right: displaySize(context).width * 0.04,
+                      top: displaySize(context).height * 0.01,
+                      bottom: displaySize(context).height * 0.02,
+                    ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                       side: BorderSide(
@@ -110,12 +112,12 @@ class _ExploreState extends State<Explore> {
                                 ),
                               ),
                               Container(
-                                child: IconButton(
-                                  icon: Icon(
+                                child: InkWell(
+                                  child: Icon(
                                     MaterialIcons.more_horiz,
                                     color: kGrey400,
                                   ),
-                                  onPressed: () {},
+                                  onTap: () {},
                                 ),
                               ),
                             ],

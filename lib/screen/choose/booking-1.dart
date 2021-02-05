@@ -586,9 +586,11 @@ class _Booking_1State extends State<Booking_1> {
                       child: Column(
                         children: <Widget>[
                           Container(
-                            padding: const EdgeInsets.all(15),
+                            padding: EdgeInsets.only(
+                              left: displaySize(context).width * 0.03,
+                            ),
                             width: displaySize(context).width,
-                            height: displaySize(context).height* 0.11,
+                            height: displaySize(context).height* 0.13,
                             child: Stack(
                               children: <Widget>[
                                 Container(
@@ -649,8 +651,8 @@ class _Booking_1State extends State<Booking_1> {
                                   ),
                                 ),
                                 Positioned(
-                                  bottom: displaySize(context).height * 0.03,
-                                  left: displaySize(context).width * 0.78,
+                                  bottom: displaySize(context).height * 0.065,
+                                  left: displaySize(context).width * 0.79,
                                   child: Container(
                                     // alignment: Alignment.topLeft,
                                     width: displaySize(context).width * 0.07,

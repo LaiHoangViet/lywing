@@ -1,9 +1,12 @@
 import 'dart:ui';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/screen_util.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lywing/common/app_localizations.dart';
 import 'package:lywing/common/constants.dart';
+import 'package:responsive_flutter/responsive_flutter.dart';
 import '../../../sizes_helpers.dart';
 import 'login.dart';
 
@@ -18,13 +21,13 @@ class _Slash_ScreenState extends State<Slash_Screen> {
     return Material(
       child: Container(
         color: kWhite,
-        height: displaySize(context).height,
+        // height: displaySize(context).height,
         width: displaySize(context).width,
         child: Column(
           children: <Widget>[
             Container(
               width: displaySize(context).width,
-              height: displaySize(context).height * 0.54,
+              height: displaySize(context).height * 0.5,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/images/lywing-slash-screen.png'),
@@ -60,29 +63,31 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                   Container(
                     width: displaySize(context).width * 0.7,
                     margin: EdgeInsets.only(
-                        top: displaySize(context).height * 0.26),
+                        top: displaySize(context).height * 0.26,
+                    ),
                     child: Column(
                       children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.all(10),
-                          child: Text(
+                          child: AutoSizeText(
                             AppLocalizations.of(context).translate('title1'),
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              fontSize: 22,
                               color: kWhite,
                             ),
+                            presetFontSizes: [22,19,16,13],
+                            maxLines: 1,
                           ),
                         ),
                         Center(
-                          child: Text(
+                          child: AutoSizeText(
                             AppLocalizations.of(context).translate('title2'),
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              fontSize: 15,
                               color: kWhite,
-                              // decoration: TextDecoration.underline,
                             ),
+                            presetFontSizes: [15,12,9,6],
+                            maxLines: 3,
                           ),
                         ),
                       ],
@@ -119,9 +124,8 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                     ),
                   ),
                   Container(
-                    margin: const EdgeInsets.only(
-                      top: 10,
-                      bottom: 5,
+                    margin: EdgeInsets.only(
+                      top: displaySize(context).height * 0.01,
                     ),
                     child: ButtonTheme(
                       minWidth: 500,
@@ -136,21 +140,21 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                         color: Color.fromRGBO(0, 120, 255, 1),
                         shape: new RoundedRectangleBorder(
                             borderRadius: new BorderRadius.circular(10.0)),
-                        child: Text(
+                        child: AutoSizeText(
                           AppLocalizations.of(context).translate('login'),
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize: ResponsiveFlutter.of(context).fontSize(2),
                             color: kWhite,
                           ),
+                          minFontSize: 12,
                         ),
                       ),
                     ),
                   ),
                   Container(
-                    margin: const EdgeInsets.only(
-                      top: 5,
-                      bottom: 5,
+                    margin: EdgeInsets.only(
+                      top: displaySize(context).height * 0.01,
                     ),
                     child: ButtonTheme(
                       minWidth: 500,
@@ -170,7 +174,7 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                               .translate('registerNewAccount'),
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize: ResponsiveFlutter.of(context).fontSize(1.7),
                             color: kBlack,
                           ),
                         ),
@@ -178,9 +182,8 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                     ),
                   ),
                   Container(
-                    margin: const EdgeInsets.only(
-                      top: 5,
-                      bottom: 5,
+                    margin: EdgeInsets.only(
+                      top: displaySize(context).height * 0.01,
                     ),
                     child: ButtonTheme(
                       minWidth: 500,
@@ -203,13 +206,13 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                               height: 15,
                             ),
                             Container(
-                              width: displaySize(context).width * 0.78,
+                              width: displaySize(context).width * 0.70,
                               alignment: Alignment.center,
                               child: Text(
                                 AppLocalizations.of(context)
                                     .translate('signUpWithGoogle'),
                                 style: TextStyle(
-                                  fontSize: 15,
+                                  fontSize: ResponsiveFlutter.of(context).fontSize(1.7),
                                   color: kBlack,
                                 ),
                               ),
@@ -220,9 +223,8 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                     ),
                   ),
                   Container(
-                    margin: const EdgeInsets.only(
-                      top: 5,
-                      bottom: 5,
+                    margin: EdgeInsets.only(
+                      top: displaySize(context).height * 0.01,
                     ),
                     // width: displaySize(context).width,
                     child: ButtonTheme(
@@ -246,32 +248,26 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                               height: 15,
                             ),
                             Container(
-                              width: displaySize(context).width * 0.77,
+                              width: displaySize(context).width * 0.72,
                               alignment: Alignment.center,
                               child: Text(
                                 AppLocalizations.of(context)
                                     .translate('loginWithFacebook'),
                                 style: TextStyle(
-                                  fontSize: 15,
+                                  fontSize: ResponsiveFlutter.of(context).fontSize(1.7),
                                   color: kBlack,
                                 ),
                               ),
                             ),
-                            // Padding(
-                            //   padding: EdgeInsets.only(
-                            //     left: displaySize(context).width * 0.21,
-                            //   ),
-                            //   child:
-                            // ),
                           ],
                         ),
                       ),
                     ),
                   ),
                   Container(
-                    margin: const EdgeInsets.only(
-                      top: 10,
-                    ),
+                    // margin: EdgeInsets.only(
+                      // top: displaySize(context).height * 0.01,
+                    // ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -281,19 +277,21 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                             AppLocalizations.of(context)
                                 .translate('alreadyHaveAnAccount?'),
                             style: TextStyle(
-                              fontSize: 13,
+                              fontSize: ResponsiveFlutter.of(context).fontSize(1.5),
                               color: Colors.black54,
                             ),
                           ),
                         ),
                         FlatButton(
                           onPressed: () {},
-                          child: Text(
+                          child: AutoSizeText(
                             AppLocalizations.of(context).translate('login'),
                             style: TextStyle(
                               color: kBlue,
-                              fontSize: 13,
+                              fontSize: ResponsiveFlutter.of(context).fontSize(1.5),
                             ),
+                            minFontSize: 12,
+                            maxLines: 1,
                           ),
                         ),
                       ],

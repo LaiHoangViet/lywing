@@ -21,10 +21,40 @@ class _Seclect_DateState extends State<Seclect_Date> {
     setState(() {
       _range =
           DateFormat('dd/MM/yyyy').format(args.value.startDate).toString() +
-          "                 -                " +
               DateFormat('dd/MM/yyyy')
                   .format(args.value.endDate ?? args.value.startDate)
                   .toString();
+
+      // Row(
+      //   children: [
+      //     Expanded(
+      //       child: Text(
+      //         "${DateFormat('dd/MM/yyyy').format(args.value.startDate)}",
+      //       ),
+      //     ),
+      //     Text("-"),
+      //     Expanded(
+      //       child: Container(
+      //         alignment: Alignment.centerRight,
+      //         child: Text(
+      //           "${DateFormat('dd/MM/yyyy').format(args.value.endDate ?? args.value.startDate)}",
+      //         ),
+      //       ),
+      //     ),
+      //   ],
+      // ) as String;
+      // Expanded(
+      //   child: Container(
+      //     alignment: Alignment.centerLeft,
+      //     child: Text(
+      //       "${DateFormat('dd/MM/yyyy').format(args.value.startDate)}",
+      //     ),
+      //   ),
+      // ) +
+      // "-" +
+      // DateFormat('dd/MM/yyyy')
+      //     .format(args.value.endDate ?? args.value.startDate)
+      //     .toString();
     });
     FileSystemManager.instance.range = _range;
 

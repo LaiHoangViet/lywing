@@ -14,7 +14,20 @@ class Saved_Flights extends StatefulWidget {
 }
 
 class _Saved_FlightsState extends State<Saved_Flights> {
-  List city = ["HaNoi","HaNoi","HaNoi","HaNoi",];
+  List city = [
+    "HaNoi",
+    "HaNoi",
+    "HaNoi",
+    "HaNoi",
+  ];
+
+  List<bool> save_flight;
+
+  @override
+  void initState() {
+    super.initState();
+    save_flight = List<bool>.filled(city.length, false);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,78 +58,64 @@ class _Saved_FlightsState extends State<Saved_Flights> {
           backgroundColor: kWhite,
         ),
       ),
-      body: ListView(
-        children: <Widget>[
-          Container(
+      body: ListView.builder(
+        itemCount: city.length,
+        itemBuilder: (context, index) {
+          return Container(
+            margin: const EdgeInsets.only(
+              left: 10,
+              right: 10,
+              top: 20,
+              bottom: 15,
+            ),
+            padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: kWhite,
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(
+                width: 0.1,
+                color: kGrey100,
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: kGrey100,
+                  // spreadRadius: 6,
+                  blurRadius: 10,
+                  offset: Offset(0, 0),
+                ),
+              ],
+            ),
             child: Column(
-              children: [
-                for(var index in city) Container(
-                  margin: const EdgeInsets.only(
-                    left: 10,
-                    right: 10,
-                    top: 20,
-                    bottom: 15,
-                  ),
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: kWhite,
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(
-                      width: 0.1,
-                      color: kGrey100,
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: kGrey100,
-                        // spreadRadius: 6,
-                        blurRadius: 10,
-                        offset: Offset(0, 0),
-                      ),
-                    ],
-                  ),
-                  child: Column(
+              children: <Widget>[
+                Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Container(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Container(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                              margin: const EdgeInsets.only(
+                                bottom: 5,
+                              ),
+                              child: Row(
                                 children: <Widget>[
                                   Container(
-                                    margin: const EdgeInsets.only(
-                                      bottom: 5,
-                                    ),
-                                    child: Row(
-                                      children: <Widget>[
-                                        Container(
-                                          child: Text(
-                                            '$index',
-                                            style: TextStyle(
-                                              fontSize: 17,
-                                              color: kBlack,
-                                            ),
-                                          ),
-                                        ),
-                                        Container(
-                                          margin: const EdgeInsets.only(
-                                            left: 10,
-                                          ),
-                                          child: Text(
-                                            '${AppLocalizations.of(context).translate('from')} Singapore',
-                                            style: TextStyle(
-                                              fontSize: 12,
-                                              color: kGrey400,
-                                            ),
-                                          ),
-                                        ),
-                                      ],
+                                    child: Text(
+                                      city[index],
+                                      style: TextStyle(
+                                        fontSize: 17,
+                                        color: kBlack,
+                                      ),
                                     ),
                                   ),
                                   Container(
+                                    margin: const EdgeInsets.only(
+                                      left: 10,
+                                    ),
                                     child: Text(
-                                      'Monday, Mar 20 - Wednesday, Mar 25',
+                                      '${AppLocalizations.of(context).translate('from')} Singapore',
                                       style: TextStyle(
                                         fontSize: 12,
                                         color: kGrey400,
@@ -127,259 +126,144 @@ class _Saved_FlightsState extends State<Saved_Flights> {
                               ),
                             ),
                             Container(
-                              alignment: Alignment.centerRight,
-                              child: Icon(
-                                FontAwesome5Solid.star,
-                                color: kBlue,
-                                size: 24,
+                              child: Text(
+                                'Monday, Mar 20 - Wednesday, Mar 25',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: kGrey400,
+                                ),
                               ),
                             ),
                           ],
                         ),
                       ),
                       Container(
-                        height: displaySize(context).height * 0.05,
-                        child: Image(
-                          image: AssetImage('assets/icons/Line-3.png'),
+                        alignment: Alignment.centerRight,
+                        child: InkWell(
+                          onTap: () {
+                            setState(() {
+                              save_flight[index] = !save_flight[index];
+                            });
+                          },
+                          child: save_flight[index] == true
+                              ? Icon(
+                                  FontAwesome5Solid.star,
+                                  size: 30.0,
+                                  color: kGrey500,
+                                )
+                              : Icon(
+                                  FontAwesome5Solid.star,
+                                  size: 30.0,
+                                  color: kBlue,
+                                ),
                         ),
                       ),
+                    ],
+                  ),
+                ),
+                Container(
+                  height: displaySize(context).height * 0.05,
+                  child: Image(
+                    image: AssetImage('assets/icons/Line-3.png'),
+                  ),
+                ),
+                Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
                       Container(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        child: Image(
+                            image: AssetImage('assets/images/VJ-1.png'),
+                            width: displaySize(context).width * 0.11,
+                            height: displaySize(context).height * 0.05,
+                            fit: BoxFit.fill),
+                      ),
+                      Container(
+                        height: displaySize(context).height * 0.1,
+                        margin: const EdgeInsets.only(
+                          left: 10,
+                        ),
+                        child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Container(
-                              child: Image(
-                                  image: AssetImage('assets/images/VJ-1.png'),
-                                  width: displaySize(context).width * 0.11,
-                                  height: displaySize(context).height * 0.05,
-                                  fit: BoxFit.fill),
-                            ),
-                            Container(
-                              height: displaySize(context).height * 0.1,
-                              margin: const EdgeInsets.only(
-                                left: 10,
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
                                   Container(
-                                    child: Row(
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                      children: <Widget>[
-                                        Container(
-                                          width: displaySize(context).width * 0.15,
-                                          child: Text(
-                                            '9:35',
-                                            style: TextStyle(
-                                              fontSize: 17,
-                                              color: kBlack,
-                                            ),
-                                          ),
-                                        ),
-                                        Container(
-                                          margin: const EdgeInsets.only(
-                                            left: 10,
-                                            right: 20,
-                                          ),
-                                          child: Transform.rotate(
-                                            angle: pi / 2,
-                                            child: Icon(
-                                              Icons.flight,
-                                              color: kYellow,
-                                            ),
-                                          ),
-                                        ),
-                                        Container(
-                                          child: Text(
-                                            '13:35',
-                                            style: TextStyle(
-                                              fontSize: 17,
-                                              color: kBlack,
-                                            ),
-                                          ),
-                                        ),
-                                      ],
+                                    width: displaySize(context).width * 0.15,
+                                    child: Text(
+                                      '9:35',
+                                      style: TextStyle(
+                                        fontSize: 17,
+                                        color: kBlack,
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: const EdgeInsets.only(
+                                      left: 10,
+                                      right: 20,
+                                    ),
+                                    child: Transform.rotate(
+                                      angle: pi / 2,
+                                      child: Icon(
+                                        Icons.flight,
+                                        color: kYellow,
+                                      ),
                                     ),
                                   ),
                                   Container(
                                     child: Text(
-                                      'SIN -HAN, Vietjet Ari',
+                                      '13:35',
                                       style: TextStyle(
-                                        fontSize: 12,
-                                        color: kGrey200,
+                                        fontSize: 17,
+                                        color: kBlack,
                                       ),
                                     ),
                                   ),
                                 ],
                               ),
                             ),
-                            Container(
-                              width: displaySize(context).width * 0.3,
-                              height: displaySize(context).height * 0.1,
-                              padding: const EdgeInsets.only(
-                                top: 6,
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: <Widget>[
-                                  Container(
-                                    child: Text(
-                                      AppLocalizations.of(context).translate('directflight'),
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                        color: kGrey500,
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    child: Text(
-                                      '3h 20m',
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                        color: kGrey200,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        height: displaySize(context).height * 0.06,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Container(
-                              child: Image(
-                                  image: AssetImage('assets/images/VJ-1.png'),
-                                  width: displaySize(context).width * 0.11,
-                                  height: displaySize(context).height * 0.05,
-                                  fit: BoxFit.fill),
-                            ),
-                            Container(
-                              // width: displaySize(context).width * 0.35,
-                              height: displaySize(context).height * 0.1,
-                              margin: const EdgeInsets.only(
-                                left: 10,
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Container(
-                                    child: Row(
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                      children: <Widget>[
-                                        Container(
-                                          width: displaySize(context).width * 0.15,
-                                          child: Text(
-                                            '14:55',
-                                            style: TextStyle(
-                                              fontSize: 17,
-                                              color: kBlack,
-                                            ),
-                                          ),
-                                        ),
-                                        Container(
-                                          margin: const EdgeInsets.only(
-                                            left: 10,
-                                            right: 20,
-                                          ),
-                                          child: Transform.rotate(
-                                            angle: pi / 2,
-                                            child: Icon(
-                                              Icons.flight,
-                                              color: kYellow,
-                                            ),
-                                          ),
-                                        ),
-                                        Container(
-                                          child: Text(
-                                            '17:20',
-                                            style: TextStyle(
-                                              fontSize: 17,
-                                              color: kBlack,
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    child: Text(
-                                      'HAN -SIN, Vietjet Ari',
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                        color: kGrey200,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              width: displaySize(context).width * 0.3,
-                              height: displaySize(context).height * 0.1,
-                              padding: const EdgeInsets.only(
-                                top: 6,
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: <Widget>[
-                                  Container(
-                                    child: Text(
-                                      AppLocalizations.of(context).translate('directflight'),
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                        color: kGrey500,
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    child: Text(
-                                      '3h 20m',
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                        color: kGrey200,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        height: displaySize(context).height * 0.05,
-                        child: Image(
-                          image: AssetImage('assets/icons/Line-3.png'),
-                        ),
-                      ),
-                      Container(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
                             Container(
                               child: Text(
-                                '12 nights ${ AppLocalizations.of(context).translate('in')} Singapore',
+                                'SIN -HAN, Vietjet Ari',
                                 style: TextStyle(
                                   fontSize: 12,
                                   color: kGrey200,
                                 ),
                               ),
                             ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        width: displaySize(context).width * 0.3,
+                        height: displaySize(context).height * 0.1,
+                        padding: const EdgeInsets.only(
+                          top: 6,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: <Widget>[
                             Container(
                               child: Text(
-                                '\$112',
+                                AppLocalizations.of(context)
+                                    .translate('directflight'),
                                 style: TextStyle(
-                                  fontSize: 17,
-                                  color: kBlack,
+                                  fontSize: 12,
+                                  color: kGrey500,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              child: Text(
+                                '3h 20m',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: kGrey200,
                                 ),
                               ),
                             ),
@@ -389,10 +273,149 @@ class _Saved_FlightsState extends State<Saved_Flights> {
                     ],
                   ),
                 ),
+                Container(
+                  height: displaySize(context).height * 0.06,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Container(
+                        child: Image(
+                            image: AssetImage('assets/images/VJ-1.png'),
+                            width: displaySize(context).width * 0.11,
+                            height: displaySize(context).height * 0.05,
+                            fit: BoxFit.fill),
+                      ),
+                      Container(
+                        // width: displaySize(context).width * 0.35,
+                        height: displaySize(context).height * 0.1,
+                        margin: const EdgeInsets.only(
+                          left: 10,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Container(
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  Container(
+                                    width: displaySize(context).width * 0.15,
+                                    child: Text(
+                                      '14:55',
+                                      style: TextStyle(
+                                        fontSize: 17,
+                                        color: kBlack,
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: const EdgeInsets.only(
+                                      left: 10,
+                                      right: 20,
+                                    ),
+                                    child: Transform.rotate(
+                                      angle: pi / 2,
+                                      child: Icon(
+                                        Icons.flight,
+                                        color: kYellow,
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    child: Text(
+                                      '17:20',
+                                      style: TextStyle(
+                                        fontSize: 17,
+                                        color: kBlack,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              child: Text(
+                                'HAN -SIN, Vietjet Ari',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: kGrey200,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        width: displaySize(context).width * 0.3,
+                        height: displaySize(context).height * 0.1,
+                        padding: const EdgeInsets.only(
+                          top: 6,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: <Widget>[
+                            Container(
+                              child: Text(
+                                AppLocalizations.of(context)
+                                    .translate('directflight'),
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: kGrey500,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              child: Text(
+                                '3h 20m',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: kGrey200,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  height: displaySize(context).height * 0.05,
+                  child: Image(
+                    image: AssetImage('assets/icons/Line-3.png'),
+                  ),
+                ),
+                Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Container(
+                        child: Text(
+                          '12 nights ${AppLocalizations.of(context).translate('in')} Singapore',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: kGrey200,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        child: Text(
+                          '\$112',
+                          style: TextStyle(
+                            fontSize: 17,
+                            color: kBlack,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
-          ),
-        ],
+          );
+        },
       ),
     );
   }

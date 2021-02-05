@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lywing/common/constants.dart';
 import 'package:lywing/sizes_helpers.dart';
@@ -248,7 +249,11 @@ class _My_TripState extends State<My_Trip> {
                                 ),
                                 decoration: BoxDecoration(
                                   color: kGreenLight,
-                                  borderRadius: BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(10),
+                                    bottomLeft: Radius.circular(10),
+                                    bottomRight: Radius.circular(10),
+                                  ),
                                 ),
                                 child: Text(
                                   '$index',

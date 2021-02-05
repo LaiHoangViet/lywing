@@ -319,7 +319,9 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                                 bottom: 10,
                                               ),
                                               child: Text(
-                                                AppLocalizations.of(context).translate('Connectioninfo'),
+                                                AppLocalizations.of(context)
+                                                    .translate(
+                                                        'Connectioninfo'),
                                                 style: TextStyle(
                                                   fontSize: 12,
                                                   color: kBlack,
@@ -351,7 +353,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                                             left: 10,
                                                           ),
                                                           child: Text(
-                                                            AppLocalizations.of(context).translate('Flightno'),
+                                                            AppLocalizations.of(
+                                                                    context)
+                                                                .translate(
+                                                                    'Flightno'),
                                                             style: TextStyle(
                                                               fontSize: 11,
                                                               color: kGrey400,
@@ -399,7 +404,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                                             left: 10,
                                                           ),
                                                           child: Text(
-                                                            AppLocalizations.of(context).translate('Operatingcarrier'),
+                                                            AppLocalizations.of(
+                                                                    context)
+                                                                .translate(
+                                                                    'Operatingcarrier'),
                                                             style: TextStyle(
                                                               fontSize: 11,
                                                               color: kGrey400,
@@ -426,7 +434,8 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                                 bottom: 10,
                                               ),
                                               child: Text(
-                                                AppLocalizations.of(context).translate('Seatinginfo'),
+                                                AppLocalizations.of(context)
+                                                    .translate('Seatinginfo'),
                                                 style: TextStyle(
                                                   fontSize: 12,
                                                   color: kBlack,
@@ -458,7 +467,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                                             left: 10,
                                                           ),
                                                           child: Text(
-                                                            AppLocalizations.of(context).translate('Wifionboard'),
+                                                            AppLocalizations.of(
+                                                                    context)
+                                                                .translate(
+                                                                    'Wifionboard'),
                                                             style: TextStyle(
                                                               fontSize: 11,
                                                               color: kGrey400,
@@ -504,7 +516,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                                             left: 10,
                                                           ),
                                                           child: Text(
-                                                            AppLocalizations.of(context).translate('Seatpitch'),
+                                                            AppLocalizations.of(
+                                                                    context)
+                                                                .translate(
+                                                                    'Seatpitch'),
                                                             style: TextStyle(
                                                               fontSize: 11,
                                                               color: kGrey400,
@@ -550,7 +565,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                                             left: 10,
                                                           ),
                                                           child: Text(
-                                                            AppLocalizations.of(context).translate('Seatwidth'),
+                                                            AppLocalizations.of(
+                                                                    context)
+                                                                .translate(
+                                                                    'Seatwidth'),
                                                             style: TextStyle(
                                                               fontSize: 11,
                                                               color: kGrey400,
@@ -596,7 +614,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                                             left: 10,
                                                           ),
                                                           child: Text(
-                                                            AppLocalizations.of(context).translate('Seatrecline'),
+                                                            AppLocalizations.of(
+                                                                    context)
+                                                                .translate(
+                                                                    'Seatrecline'),
                                                             style: TextStyle(
                                                               fontSize: 11,
                                                               color: kGrey400,
@@ -641,7 +662,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                                             left: 10,
                                                           ),
                                                           child: Text(
-                                                            AppLocalizations.of(context).translate('Audiovideoondemand'),
+                                                            AppLocalizations.of(
+                                                                    context)
+                                                                .translate(
+                                                                    'Audiovideoondemand'),
                                                             style: TextStyle(
                                                               fontSize: 11,
                                                               color: kGrey400,
@@ -685,7 +709,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                                             left: 10,
                                                           ),
                                                           child: Text(
-                                                            AppLocalizations.of(context).translate('Inseatpower'),
+                                                            AppLocalizations.of(
+                                                                    context)
+                                                                .translate(
+                                                                    'Inseatpower'),
                                                             style: TextStyle(
                                                               fontSize: 11,
                                                               color: kGrey400,
@@ -772,60 +799,58 @@ class _Flight_DetailsState extends State<Flight_Details> {
                           child: Row(
                             children: <Widget>[
                               Container(
-                                child: Row(
-                                  children: <Widget>[
-                                    Container(
-                                      width: displaySize(context).width * 0.12,
-                                    ),
-                                    Container(
-                                      padding: const EdgeInsets.only(
-                                        left: 15,
-                                        right: 15,
-                                      ),
-                                      child: Image(
-                                        image: AssetImage(
-                                          'assets/icons/Line-4.png',
-                                        ),
-                                      ),
-                                    ),
-                                    Container(
-                                      width: displaySize(context).width * 0.71,
-                                      child: DottedBorder(
-                                        padding: EdgeInsets.only(
-                                          top: 5,
-                                          bottom: 5,
-                                          left: 15,
-                                        ),
-                                        color: kGrey200,
-                                        strokeWidth: 1,
-                                        child: Row(
-                                          children: <Widget>[
-                                            Container(
-                                              child: Icon(
-                                                Icons.lens,
-                                                color: kGrey400,
-                                                size: 15,
-                                              ),
-                                            ),
-                                            Container(
-                                              padding: const EdgeInsets.only(
-                                                left: 10,
-                                              ),
-                                              child: Text(
-                                                '8h20 layover in Bangkok',
-                                                style: TextStyle(
-                                                  fontSize: 15,
-                                                  color: kBlack,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ],
+                                width: displaySize(context).width * 0.12,
+                              ),
+                              Container(
+                                padding: const EdgeInsets.only(
+                                  left: 15,
+                                  right: 15,
+                                ),
+                                child: Image(
+                                  image: AssetImage(
+                                    'assets/icons/Line-4.png',
+                                  ),
                                 ),
                               ),
+                              Expanded(
+                                child: DottedBorder(
+                                  padding: EdgeInsets.only(
+                                    top: 5,
+                                    bottom: 5,
+                                    left: 15,
+                                  ),
+                                  color: kGrey200,
+                                  strokeWidth: 1,
+                                  child: Row(
+                                    children: <Widget>[
+                                      Container(
+                                        child: Icon(
+                                          Icons.lens,
+                                          color: kGrey400,
+                                          size: 15,
+                                        ),
+                                      ),
+                                      Container(
+                                        padding: const EdgeInsets.only(
+                                          left: 10,
+                                        ),
+                                        child: Text(
+                                          '8h20 layover in Bangkok',
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                            color: kBlack,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              // Container(
+                              // width:
+                              // displaySize(context).width * 0.71,
+                              //   child:
+                              // ),
                             ],
                           ),
                         ),
@@ -967,7 +992,9 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                                 bottom: 10,
                                               ),
                                               child: Text(
-                                                AppLocalizations.of(context).translate('Connectioninfo'),
+                                                AppLocalizations.of(context)
+                                                    .translate(
+                                                        'Connectioninfo'),
                                                 style: TextStyle(
                                                   fontSize: 12,
                                                   color: kBlack,
@@ -999,7 +1026,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                                             left: 10,
                                                           ),
                                                           child: Text(
-                                                            AppLocalizations.of(context).translate('Flightno'),
+                                                            AppLocalizations.of(
+                                                                    context)
+                                                                .translate(
+                                                                    'Flightno'),
                                                             style: TextStyle(
                                                               fontSize: 11,
                                                               color: kGrey400,
@@ -1047,7 +1077,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                                             left: 10,
                                                           ),
                                                           child: Text(
-                                                           AppLocalizations.of(context).translate('Operatingcarrier'),
+                                                            AppLocalizations.of(
+                                                                    context)
+                                                                .translate(
+                                                                    'Operatingcarrier'),
                                                             style: TextStyle(
                                                               fontSize: 11,
                                                               color: kGrey400,
@@ -1074,7 +1107,8 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                                 bottom: 10,
                                               ),
                                               child: Text(
-                                                AppLocalizations.of(context).translate('Seatinginfo'),
+                                                AppLocalizations.of(context)
+                                                    .translate('Seatinginfo'),
                                                 style: TextStyle(
                                                   fontSize: 12,
                                                   color: kBlack,
@@ -1106,7 +1140,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                                             left: 10,
                                                           ),
                                                           child: Text(
-                                                            AppLocalizations.of(context).translate('Wifionboard'),
+                                                            AppLocalizations.of(
+                                                                    context)
+                                                                .translate(
+                                                                    'Wifionboard'),
                                                             style: TextStyle(
                                                               fontSize: 11,
                                                               color: kGrey400,
@@ -1152,7 +1189,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                                             left: 10,
                                                           ),
                                                           child: Text(
-                                                             AppLocalizations.of(context).translate('Seatpitch'),
+                                                            AppLocalizations.of(
+                                                                    context)
+                                                                .translate(
+                                                                    'Seatpitch'),
                                                             style: TextStyle(
                                                               fontSize: 11,
                                                               color: kGrey400,
@@ -1198,7 +1238,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                                             left: 10,
                                                           ),
                                                           child: Text(
-                                                            AppLocalizations.of(context).translate('Seatwidth'),
+                                                            AppLocalizations.of(
+                                                                    context)
+                                                                .translate(
+                                                                    'Seatwidth'),
                                                             style: TextStyle(
                                                               fontSize: 11,
                                                               color: kGrey400,
@@ -1244,7 +1287,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                                             left: 10,
                                                           ),
                                                           child: Text(
-                                                            AppLocalizations.of(context).translate('Seatrecline'),
+                                                            AppLocalizations.of(
+                                                                    context)
+                                                                .translate(
+                                                                    'Seatrecline'),
                                                             style: TextStyle(
                                                               fontSize: 11,
                                                               color: kGrey400,
@@ -1289,7 +1335,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                                             left: 10,
                                                           ),
                                                           child: Text(
-                                                            AppLocalizations.of(context).translate('Audiovideoondemand'),
+                                                            AppLocalizations.of(
+                                                                    context)
+                                                                .translate(
+                                                                    'Audiovideoondemand'),
                                                             style: TextStyle(
                                                               fontSize: 11,
                                                               color: kGrey400,
@@ -1333,7 +1382,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                                             left: 10,
                                                           ),
                                                           child: Text(
-                                                            AppLocalizations.of(context).translate('Inseatpower'),
+                                                            AppLocalizations.of(
+                                                                    context)
+                                                                .translate(
+                                                                    'Inseatpower'),
                                                             style: TextStyle(
                                                               fontSize: 11,
                                                               color: kGrey400,
@@ -1688,7 +1740,9 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                                 bottom: 10,
                                               ),
                                               child: Text(
-                                                AppLocalizations.of(context).translate('Connectioninfo'),
+                                                AppLocalizations.of(context)
+                                                    .translate(
+                                                        'Connectioninfo'),
                                                 style: TextStyle(
                                                   fontSize: 12,
                                                   color: kBlack,
@@ -1720,7 +1774,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                                             left: 10,
                                                           ),
                                                           child: Text(
-                                                            AppLocalizations.of(context).translate('Flightno'),
+                                                            AppLocalizations.of(
+                                                                    context)
+                                                                .translate(
+                                                                    'Flightno'),
                                                             style: TextStyle(
                                                               fontSize: 11,
                                                               color: kGrey400,
@@ -1768,7 +1825,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                                             left: 10,
                                                           ),
                                                           child: Text(
-                                                           AppLocalizations.of(context).translate('Operatingcarrier'),
+                                                            AppLocalizations.of(
+                                                                    context)
+                                                                .translate(
+                                                                    'Operatingcarrier'),
                                                             style: TextStyle(
                                                               fontSize: 11,
                                                               color: kGrey400,
@@ -1795,7 +1855,8 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                                 bottom: 10,
                                               ),
                                               child: Text(
-                                                AppLocalizations.of(context).translate('Seatinginfo'),
+                                                AppLocalizations.of(context)
+                                                    .translate('Seatinginfo'),
                                                 style: TextStyle(
                                                   fontSize: 12,
                                                   color: kBlack,
@@ -1827,7 +1888,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                                             left: 10,
                                                           ),
                                                           child: Text(
-                                                            AppLocalizations.of(context).translate('Wifionboard'),
+                                                            AppLocalizations.of(
+                                                                    context)
+                                                                .translate(
+                                                                    'Wifionboard'),
                                                             style: TextStyle(
                                                               fontSize: 11,
                                                               color: kGrey400,
@@ -1873,7 +1937,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                                             left: 10,
                                                           ),
                                                           child: Text(
-                                                             AppLocalizations.of(context).translate('Seatpitch'),
+                                                            AppLocalizations.of(
+                                                                    context)
+                                                                .translate(
+                                                                    'Seatpitch'),
                                                             style: TextStyle(
                                                               fontSize: 11,
                                                               color: kGrey400,
@@ -1919,7 +1986,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                                             left: 10,
                                                           ),
                                                           child: Text(
-                                                            AppLocalizations.of(context).translate('Seatwidth'),
+                                                            AppLocalizations.of(
+                                                                    context)
+                                                                .translate(
+                                                                    'Seatwidth'),
                                                             style: TextStyle(
                                                               fontSize: 11,
                                                               color: kGrey400,
@@ -1965,7 +2035,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                                             left: 10,
                                                           ),
                                                           child: Text(
-                                                            AppLocalizations.of(context).translate('Seatrecline'),
+                                                            AppLocalizations.of(
+                                                                    context)
+                                                                .translate(
+                                                                    'Seatrecline'),
                                                             style: TextStyle(
                                                               fontSize: 11,
                                                               color: kGrey400,
@@ -2010,7 +2083,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                                             left: 10,
                                                           ),
                                                           child: Text(
-                                                            AppLocalizations.of(context).translate('Audiovideoondemand'),
+                                                            AppLocalizations.of(
+                                                                    context)
+                                                                .translate(
+                                                                    'Audiovideoondemand'),
                                                             style: TextStyle(
                                                               fontSize: 11,
                                                               color: kGrey400,
@@ -2054,7 +2130,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                                             left: 10,
                                                           ),
                                                           child: Text(
-                                                            AppLocalizations.of(context).translate('Inseatpower'),
+                                                            AppLocalizations.of(
+                                                                    context)
+                                                                .translate(
+                                                                    'Inseatpower'),
                                                             style: TextStyle(
                                                               fontSize: 11,
                                                               color: kGrey400,
@@ -2141,60 +2220,58 @@ class _Flight_DetailsState extends State<Flight_Details> {
                           child: Row(
                             children: <Widget>[
                               Container(
-                                child: Row(
-                                  children: <Widget>[
-                                    Container(
-                                      width: displaySize(context).width * 0.12,
-                                    ),
-                                    Container(
-                                      padding: const EdgeInsets.only(
-                                        left: 15,
-                                        right: 15,
-                                      ),
-                                      child: Image(
-                                        image: AssetImage(
-                                          'assets/icons/Line-4.png',
-                                        ),
-                                      ),
-                                    ),
-                                    Container(
-                                      width: displaySize(context).width * 0.71,
-                                      child: DottedBorder(
-                                        padding: EdgeInsets.only(
-                                          top: 5,
-                                          bottom: 5,
-                                          left: 15,
-                                        ),
-                                        color: kGrey200,
-                                        strokeWidth: 1,
-                                        child: Row(
-                                          children: <Widget>[
-                                            Container(
-                                              child: Icon(
-                                                Icons.lens,
-                                                color: kGrey400,
-                                                size: 15,
-                                              ),
-                                            ),
-                                            Container(
-                                              padding: const EdgeInsets.only(
-                                                left: 10,
-                                              ),
-                                              child: Text(
-                                                '8h20 layover in Bangkok',
-                                                style: TextStyle(
-                                                  fontSize: 15,
-                                                  color: kBlack,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ],
+                                width: displaySize(context).width * 0.12,
+                              ),
+                              Container(
+                                padding: const EdgeInsets.only(
+                                  left: 15,
+                                  right: 15,
+                                ),
+                                child: Image(
+                                  image: AssetImage(
+                                    'assets/icons/Line-4.png',
+                                  ),
                                 ),
                               ),
+                              Expanded(
+                                child: DottedBorder(
+                                  padding: EdgeInsets.only(
+                                    top: 5,
+                                    bottom: 5,
+                                    left: 15,
+                                  ),
+                                  color: kGrey200,
+                                  strokeWidth: 1,
+                                  child: Row(
+                                    children: <Widget>[
+                                      Container(
+                                        child: Icon(
+                                          Icons.lens,
+                                          color: kGrey400,
+                                          size: 15,
+                                        ),
+                                      ),
+                                      Container(
+                                        padding: const EdgeInsets.only(
+                                          left: 10,
+                                        ),
+                                        child: Text(
+                                          '8h20 layover in Bangkok',
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                            color: kBlack,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              // Container(
+                              // width:
+                              // displaySize(context).width * 0.71,
+                              //   child:
+                              // ),
                             ],
                           ),
                         ),
@@ -2336,7 +2413,9 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                                 bottom: 10,
                                               ),
                                               child: Text(
-                                                AppLocalizations.of(context).translate('Connectioninfo'),
+                                                AppLocalizations.of(context)
+                                                    .translate(
+                                                        'Connectioninfo'),
                                                 style: TextStyle(
                                                   fontSize: 12,
                                                   color: kBlack,
@@ -2368,7 +2447,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                                             left: 10,
                                                           ),
                                                           child: Text(
-                                                            AppLocalizations.of(context).translate('Flightno'),
+                                                            AppLocalizations.of(
+                                                                    context)
+                                                                .translate(
+                                                                    'Flightno'),
                                                             style: TextStyle(
                                                               fontSize: 11,
                                                               color: kGrey400,
@@ -2416,7 +2498,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                                             left: 10,
                                                           ),
                                                           child: Text(
-                                                           AppLocalizations.of(context).translate('Operatingcarrier'),
+                                                            AppLocalizations.of(
+                                                                    context)
+                                                                .translate(
+                                                                    'Operatingcarrier'),
                                                             style: TextStyle(
                                                               fontSize: 11,
                                                               color: kGrey400,
@@ -2443,7 +2528,8 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                                 bottom: 10,
                                               ),
                                               child: Text(
-                                                AppLocalizations.of(context).translate('Seatinginfo'),
+                                                AppLocalizations.of(context)
+                                                    .translate('Seatinginfo'),
                                                 style: TextStyle(
                                                   fontSize: 12,
                                                   color: kBlack,
@@ -2475,7 +2561,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                                             left: 10,
                                                           ),
                                                           child: Text(
-                                                            AppLocalizations.of(context).translate('Wifionboard'),
+                                                            AppLocalizations.of(
+                                                                    context)
+                                                                .translate(
+                                                                    'Wifionboard'),
                                                             style: TextStyle(
                                                               fontSize: 11,
                                                               color: kGrey400,
@@ -2521,7 +2610,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                                             left: 10,
                                                           ),
                                                           child: Text(
-                                                             AppLocalizations.of(context).translate('Seatpitch'),
+                                                            AppLocalizations.of(
+                                                                    context)
+                                                                .translate(
+                                                                    'Seatpitch'),
                                                             style: TextStyle(
                                                               fontSize: 11,
                                                               color: kGrey400,
@@ -2567,7 +2659,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                                             left: 10,
                                                           ),
                                                           child: Text(
-                                                            AppLocalizations.of(context).translate('Seatwidth'),
+                                                            AppLocalizations.of(
+                                                                    context)
+                                                                .translate(
+                                                                    'Seatwidth'),
                                                             style: TextStyle(
                                                               fontSize: 11,
                                                               color: kGrey400,
@@ -2613,7 +2708,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                                             left: 10,
                                                           ),
                                                           child: Text(
-                                                            AppLocalizations.of(context).translate('Seatrecline'),
+                                                            AppLocalizations.of(
+                                                                    context)
+                                                                .translate(
+                                                                    'Seatrecline'),
                                                             style: TextStyle(
                                                               fontSize: 11,
                                                               color: kGrey400,
@@ -2658,7 +2756,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                                             left: 10,
                                                           ),
                                                           child: Text(
-                                                            AppLocalizations.of(context).translate('Audiovideoondemand'),
+                                                            AppLocalizations.of(
+                                                                    context)
+                                                                .translate(
+                                                                    'Audiovideoondemand'),
                                                             style: TextStyle(
                                                               fontSize: 11,
                                                               color: kGrey400,
@@ -2702,7 +2803,10 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                                             left: 10,
                                                           ),
                                                           child: Text(
-                                                            AppLocalizations.of(context).translate('Inseatpower'),
+                                                            AppLocalizations.of(
+                                                                    context)
+                                                                .translate(
+                                                                    'Inseatpower'),
                                                             style: TextStyle(
                                                               fontSize: 11,
                                                               color: kGrey400,
@@ -2842,9 +2946,9 @@ class _Flight_DetailsState extends State<Flight_Details> {
                       children: <Widget>[
                         Container(
                           child: Icon(
-                              FontAwesomeIcons.history,
-                              size: 30,
-                              color: kGrey500,
+                            FontAwesomeIcons.history,
+                            size: 30,
+                            color: kGrey500,
                           ),
                         ),
                         Container(
@@ -2856,7 +2960,8 @@ class _Flight_DetailsState extends State<Flight_Details> {
                             children: <Widget>[
                               Container(
                                 child: Text(
-                                  AppLocalizations.of(context).translate('Timezone'),
+                                  AppLocalizations.of(context)
+                                      .translate('Timezone'),
                                   style: TextStyle(
                                     color: kBlack,
                                     fontSize: 17,
@@ -2965,7 +3070,8 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                   bottom: 3,
                                 ),
                                 child: Text(
-                                  AppLocalizations.of(context).translate('Savethisflight'),
+                                  AppLocalizations.of(context)
+                                      .translate('Savethisflight'),
                                   style: TextStyle(
                                     color: kBlack,
                                     fontSize: 17,
@@ -2974,7 +3080,8 @@ class _Flight_DetailsState extends State<Flight_Details> {
                               ),
                               Container(
                                 child: Text(
-                                  AppLocalizations.of(context).translate('comebackandfindit'),
+                                  AppLocalizations.of(context)
+                                      .translate('comebackandfindit'),
                                   style: TextStyle(
                                     color: kBlack,
                                     fontSize: 12,

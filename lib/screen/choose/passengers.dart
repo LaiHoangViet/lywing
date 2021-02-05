@@ -13,14 +13,23 @@ class Passengers extends StatefulWidget {
 }
 
 class _PassengersState extends State<Passengers> {
-  bool _checked = false;
-  bool _checked1 = false;
-  bool _checked2 = false;
-  bool _checked3 = false;
-  bool _checked4 = false;
-  bool _checked5 = false;
 
-  List name = ["Ms.May Thao Nguyen","Mr.Nguyen Nam Long","Ms.Linh Thi Hoang","Mr.Viet Quoc Hoang","Mr.Dao Hung Than","Ms.Dieu Quang Ly"];
+  List<String> name = [
+    "Ms.May Thao Nguyen",
+    "Mr.Nguyen Nam Long",
+    "Ms.Linh Thi Hoang",
+    "Mr.Viet Quoc Hoang",
+    "Mr.Dao Hung Than",
+    "Ms.Dieu Quang Ly"
+  ];
+
+  List<bool> _isChecked;
+
+  @override
+  void initState() {
+    super.initState();
+    _isChecked = List<bool>.filled(name.length, false);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +40,9 @@ class _PassengersState extends State<Passengers> {
           elevation: 3.0,
           leading: IconButton(
             icon: Icon(
-                    Icons.arrow_back_ios_rounded,
-                  color: kBlack,
-                ),
+              Icons.arrow_back_ios_rounded,
+              color: kBlack,
+            ),
             onPressed: () {
               Navigator.pop(context);
             },
@@ -119,9 +128,12 @@ class _PassengersState extends State<Passengers> {
               ),
             ),
             Container(
-              child: Column(
-                children: [
-                  for (var index in name ) Container(
+              height: 600,
+              //ông không cho cái chiều cao cho listview, nên nó ko biết hiển thị ra đâu
+              child: ListView.builder(
+                itemCount: name.length,
+                itemBuilder: (context, index) {
+                  return Container(
                     margin: const EdgeInsets.only(
                       bottom: 15,
                     ),
@@ -131,7 +143,7 @@ class _PassengersState extends State<Passengers> {
                       boxShadow: [
                         BoxShadow(
                           color: kGrey200,
-                          // spreadRadius: 6,
+// spreadRadius: 6,
                           blurRadius: 15,
                           offset: Offset(0, 5),
                         ),
@@ -141,10 +153,10 @@ class _PassengersState extends State<Passengers> {
                       title: Container(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
+                          children: [
                             Container(
                               child: Text(
-                                '$index',
+                                name[index],
                                 style: TextStyle(
                                   fontSize: 15,
                                   color: kBlack,
@@ -153,7 +165,7 @@ class _PassengersState extends State<Passengers> {
                             ),
                             Container(
                               child: Text(
-                                '15/04/1996 | ${AppLocalizations.of(context).translate('Passportor')} ID: 104710',
+                                '15/04/1996 |${AppLocalizations.of(context).translate('Passportor')}ID: 104710',
                                 style: TextStyle(
                                   fontSize: 11,
                                   color: kGrey400,
@@ -162,21 +174,26 @@ class _PassengersState extends State<Passengers> {
                             ),
                           ],
                         ),
-                      ),
+                      )  ,
                       secondary: IconButton(
-                        icon: Icon(MaterialIcons.create,color: kGrey400,),
+                        icon: Icon(
+                          MaterialIcons.create,
+                          color: kGrey400,
+                        ),
                         onPressed: () {},
                       ),
-                      controlAffinity: ListTileControlAffinity.leading,
-                      value: _checked,
-                      onChanged: (bool value){
-                        setState(() {
-                          _checked = value;
-                        });
+                      // controlAffinity: ListTileControlAffinity.leading,
+                      value: _isChecked[index],
+                      onChanged: (val) {
+                        setState(
+                          () {
+                            _isChecked[index] = val;
+                          },
+                        );
                       },
                     ),
-                  ),
-                ],
+                  );
+                },
               ),
             ),
           ],

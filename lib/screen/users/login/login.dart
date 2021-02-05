@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -5,6 +6,7 @@ import 'package:lywing/common/app_localizations.dart';
 import 'package:lywing/common/constants.dart';
 import 'package:lywing/screen/home/home_screen.dart';
 import 'package:lywing/screen/users/login/register.dart';
+import 'package:responsive_flutter/responsive_flutter.dart';
 
 import '../../../sizes_helpers.dart';
 
@@ -24,7 +26,7 @@ class _LoginState extends State<Login> {
           children: <Widget>[
             Container(
               width: displaySize(context).width,
-              height: displaySize(context).height * 0.55,
+              height: displaySize(context).height * 0.5,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/images/lywing-slash-screen.png'),
@@ -36,19 +38,20 @@ class _LoginState extends State<Login> {
                 children: <Widget>[
                   Container(
                     margin: EdgeInsets.only(
-                        top: displaySize(context).height * 0.38),
+                        top: displaySize(context).height * 0.35),
                     child: Column(
                       children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.all(10),
-                          child: Text(
-                            AppLocalizations.of(context)
-                                .translate('login'),
+                          child: AutoSizeText(
+                            AppLocalizations.of(context).translate('login'),
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 36,
                               color: kWhite,
                             ),
+                            minFontSize: 18,
+                            maxLines: 1,
                           ),
                         ),
                       ],
@@ -71,10 +74,10 @@ class _LoginState extends State<Login> {
                     labelText: AppLocalizations.of(context)
                         .translate('enterYourEmail'),
                     enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: kWhite, width: 0.0),
+                      borderSide: BorderSide(color: Colors.white, width: 0.0),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: kWhite, width: 0.0),
+                      borderSide: BorderSide(width: 0.0),
                     ),
                   ),
                 ),
@@ -125,24 +128,24 @@ class _LoginState extends State<Login> {
                   shape: new RoundedRectangleBorder(
                       borderRadius: new BorderRadius.circular(10.0)),
                   child: Text(
-                    AppLocalizations.of(context)
-                        .translate('login'),
+                    AppLocalizations.of(context).translate('login'),
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 15,
+                      fontSize: ResponsiveFlutter.of(context).fontSize(1.8),
                       color: kWhite,
                     ),
                   ),
                 ),
               ),
             ),
-            SizedBox(
-              height: displaySize(context).height * 0.05,
-            ),
+            // SizedBox(
+            //   height: displaySize(context).height * 0.05,
+            // ),
             Container(
-              margin: const EdgeInsets.only(
+              margin: EdgeInsets.only(
                 left: 10,
                 right: 10,
+                top: displaySize(context).height * 0.05,
               ),
               width: displaySize(context).width,
               child: Row(
@@ -150,7 +153,7 @@ class _LoginState extends State<Login> {
                 children: <Widget>[
                   Container(
                     width: displaySize(context).width * 0.45,
-                    child:ButtonTheme(
+                    child: ButtonTheme(
                       child: RaisedButton(
                         elevation: 0,
                         onPressed: () {},
@@ -178,7 +181,7 @@ class _LoginState extends State<Login> {
                               'Google',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontSize: 15,
+                                fontSize: ResponsiveFlutter.of(context).fontSize(1.9),
                                 color: kBlack,
                               ),
                             ),
@@ -205,7 +208,7 @@ class _LoginState extends State<Login> {
                           children: <Widget>[
                             Container(
                               padding: EdgeInsets.only(
-                                  right: displaySize(context).width * 0.1,
+                                right: displaySize(context).width * 0.1,
                               ),
                               child: SvgPicture.asset(
                                 ('assets/images/facebook.svg'),
@@ -216,7 +219,7 @@ class _LoginState extends State<Login> {
                             Text(
                               'Facebook',
                               style: TextStyle(
-                                fontSize: 15,
+                                fontSize: ResponsiveFlutter.of(context).fontSize(1.9),
                                 color: kBlack,
                               ),
                             ),
@@ -229,8 +232,9 @@ class _LoginState extends State<Login> {
               ),
             ),
             Container(
-              margin: const EdgeInsets.only(
-                top: 20,
+              margin: EdgeInsets.only(
+                top: displaySize(context).height * 0.02,
+                bottom: displaySize(context).height * 0.02,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -241,7 +245,7 @@ class _LoginState extends State<Login> {
                       AppLocalizations.of(context)
                           .translate('don\'tHaveAccount?'),
                       style: TextStyle(
-                        fontSize: 13,
+                        fontSize: ResponsiveFlutter.of(context).fontSize(1.7),
                         color: kGrey600,
                       ),
                     ),
@@ -250,7 +254,8 @@ class _LoginState extends State<Login> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => registerNewAccount()),
+                        MaterialPageRoute(
+                            builder: (context) => registerNewAccount()),
                       );
                     },
                     child: Text(
@@ -258,7 +263,7 @@ class _LoginState extends State<Login> {
                           .translate('registerNewAccount'),
                       style: TextStyle(
                         color: kBlue,
-                        fontSize: 13,
+                        fontSize: ResponsiveFlutter.of(context).fontSize(1.7),
                       ),
                     ),
                   ),

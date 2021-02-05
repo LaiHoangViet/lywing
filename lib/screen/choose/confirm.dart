@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dash/flutter_dash.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:lywing/common/app_localizations.dart';
 import 'package:lywing/common/constants.dart';
 import 'package:lywing/screen/home/home_screen.dart';
 import 'package:lywing/sizes_helpers.dart';
+import 'package:responsive_flutter/responsive_flutter.dart';
 
 class Confirm extends StatefulWidget {
   @override
@@ -113,10 +115,6 @@ class _ConfirmState extends State<Confirm> {
                     child: Column(
                       children: <Widget>[
                         Container(
-                          margin: EdgeInsets.only(
-                            left: 15,
-                            right: 15,
-                          ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
@@ -145,10 +143,6 @@ class _ConfirmState extends State<Confirm> {
                           height: 10,
                         ),
                         Container(
-                          margin: EdgeInsets.only(
-                            left: 15,
-                            right: 15,
-                          ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
@@ -177,10 +171,6 @@ class _ConfirmState extends State<Confirm> {
                           height: 10,
                         ),
                         Container(
-                          margin: EdgeInsets.only(
-                            left: 15,
-                            right: 15,
-                          ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
@@ -209,10 +199,6 @@ class _ConfirmState extends State<Confirm> {
                           height: 10,
                         ),
                         Container(
-                          margin: EdgeInsets.only(
-                            left: 15,
-                            right: 15,
-                          ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
@@ -241,10 +227,6 @@ class _ConfirmState extends State<Confirm> {
                           height: 10,
                         ),
                         Container(
-                          margin: EdgeInsets.only(
-                            left: 15,
-                            right: 15,
-                          ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
@@ -273,10 +255,6 @@ class _ConfirmState extends State<Confirm> {
                           height: 10,
                         ),
                         Container(
-                          margin: EdgeInsets.only(
-                            left: 15,
-                            right: 15,
-                          ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
@@ -305,10 +283,6 @@ class _ConfirmState extends State<Confirm> {
                           height: 10,
                         ),
                         Container(
-                          margin: EdgeInsets.only(
-                            left: 15,
-                            right: 15,
-                          ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
@@ -348,10 +322,10 @@ class _ConfirmState extends State<Confirm> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Container(
-                          child: Image(
-                            image: AssetImage(
-                              'assets/icons/Accent.png',
-                            ),
+                          child: Icon(
+                            MaterialIcons.error_outline,
+                            size: ResponsiveFlutter.of(context).fontSize(3),
+                            color: kBlue,
                           ),
                         ),
                         Container(

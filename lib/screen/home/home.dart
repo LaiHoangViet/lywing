@@ -1,14 +1,11 @@
 import 'dart:math';
 import 'dart:ui';
-import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:flutter_spinbox/cupertino.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lywing/common/app_localizations.dart';
 import 'package:lywing/common/constants.dart';
 import 'package:lywing/screen/choose/flight-results.dart';
@@ -20,14 +17,6 @@ import 'choose-quantity/passengers-bags-classes.dart';
 import 'search-location/destination.dart';
 import 'search-location/place-to-go.dart';
 
-// class BackendService {
-//   static Future<List> getSuggestions(String query) async {
-//     await Future.delayed(Duration(seconds: 1));
-//     return List.generate(3, (index) {
-//       return {'name': query + index.toString(), 'price': Random().nextInt(100)};
-//     });
-//   }
-// }
 
 class Home extends StatefulWidget {
   @override
@@ -88,13 +77,6 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     );
   }
 
-  // @override
-  // void dispose() {
-  //   // TODO: implement dispose
-  //   super.dispose();
-  //   _typeAheadController.dispose();
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -137,6 +119,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                   child: Column(
                     children: <Widget>[
                       Container(
+                        height: displaySize(context).height * 0.15,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
@@ -146,6 +129,9 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                 children: <Widget>[
                                   Container(
                                     child: Column(
+                                      crossAxisAlignment:
+                                      CrossAxisAlignment.center,
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: <Widget>[
                                         Container(
                                           child: Icon(
@@ -154,10 +140,6 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                           ),
                                         ),
                                         Container(
-                                          margin: const EdgeInsets.only(
-                                            top: 5,
-                                            bottom: 5,
-                                          ),
                                           child: Image(
                                             image: AssetImage(
                                                 'assets/icons/Line.png'),
@@ -180,17 +162,23 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                       left: 10,
                                     ),
                                     child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: <Widget>[
                                         Container(
+                                          height:
+                                          displaySize(context).height *
+                                              0.03,
                                           child: Place_To_Go(),
                                         ),
-                                        SizedBox(
-                                          height: displaySize(context).height *
-                                              0.05,
+                                        Expanded(
+                                          child: Container(),
                                         ),
                                         Container(
+                                          height:
+                                          displaySize(context).height *
+                                              0.03,
                                           child: Destination(),
                                         ),
                                       ],
