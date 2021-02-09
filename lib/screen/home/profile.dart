@@ -213,10 +213,10 @@ class _ProfileState extends State<Profile> {
                                   );
                                 },
                               ),
-                              Divider(
-                                color: kGrey200,
-                                height: 1,
-                              ),
+                              // Divider(
+                              //   color: kGrey200,
+                              //   height: 1,
+                              // ),
                             ],
                           ),
                         ),
@@ -309,10 +309,10 @@ class _ProfileState extends State<Profile> {
                                   );
                                 },
                               ),
-                              Divider(
-                                color: kGrey200,
-                                height: 1,
-                              ),
+                              // Divider(
+                              //   color: kGrey200,
+                              //   height: 1,
+                              // ),
                             ],
                           ),
                         ),
@@ -471,10 +471,10 @@ class _ProfileState extends State<Profile> {
                                   // );
                                 },
                               ),
-                              Divider(
-                                color: kGrey200,
-                                height: 1,
-                              ),
+                              // Divider(
+                              //   color: kGrey200,
+                              //   height: 1,
+                              // ),
                             ],
                           ),
                         ),
@@ -565,10 +565,10 @@ class _ProfileState extends State<Profile> {
                                   // );
                                 },
                               ),
-                              Divider(
-                                color: kGrey200,
-                                height: 1,
-                              ),
+                              // Divider(
+                              //   color: kGrey200,
+                              //   height: 1,
+                              // ),
                             ],
                           ),
                         ),

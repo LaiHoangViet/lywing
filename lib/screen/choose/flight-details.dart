@@ -50,9 +50,12 @@ class _Flight_DetailsState extends State<Flight_Details> {
         ),
       ),
       body: Container(
+        // padding: EdgeInsets.only(
+        //   bottom: 20,
+        // ),
         width: displaySize(context).width,
+        height: displaySize(context).height * 2,
         child: ListView(
-          addAutomaticKeepAlives: false,
           children: <Widget>[
             // Outbound
             Container(

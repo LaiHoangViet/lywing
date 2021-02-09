@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:lywing/screen/choose/add-passenger.dart';
-import 'package:lywing/screen/choose/flight-details.dart';
-import 'package:lywing/screen/choose/flight-results.dart';
-import 'package:lywing/screen/empty/my-trip-empty.dart';
-import 'package:lywing/screen/empty/watch-empty.dart';
 import 'common/app_localizations.dart';
-import 'screen/empty/flight-result-empty.dart';
 import 'screen/users/login/slash-screen.dart';
 
 

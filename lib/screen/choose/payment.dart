@@ -45,6 +45,10 @@ class _PaymentState extends State<Payment> {
         ),
       ),
       body: Container(
+        height: displaySize(context).height * 3,
+        padding: EdgeInsets.only(
+          bottom: 20,
+        ),
         color: kGrey100,
         child: ListView(
           children: <Widget>[
@@ -1095,86 +1099,87 @@ class _PaymentState extends State<Payment> {
                 ],
               ),
             ),
-
-            Container(
-              margin: const EdgeInsets.only(
-                top: 60,
-              ),
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: kWhite,
-                border: Border.all(
-                  width: 0,
-                  color: kWhite,
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black12,
-                    // spreadRadius: 6,
-                    blurRadius: 15,
-                    offset: Offset(10, 0),
-                  ),
-                ],
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Container(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Container(
-                          child: Text(
-                            '\$122',
-                            style: TextStyle(
-                              fontSize: 17,
-                              color: kBlack,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          child: Text(
-                            '${AppLocalizations.of(context).translate('Total')} (1 ${AppLocalizations.of(context).translate('adult')})',
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: kGrey400,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    child: RaisedButton(
-                      hoverElevation: 0.0,
-                      highlightElevation: 0.0,
-                      elevation: 0,
-                      color: kGreenLight,
-                      shape: new RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(30.0),
-                        side: BorderSide(
-                          width: 0.1,
-                        ),
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Confirm()),
-                        );
-                      },
-                      child: Text(
-                        AppLocalizations.of(context).translate('Paynow'),
-                        style: TextStyle(
-                          fontSize: 15,
-                          color: kWhite,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
           ],
+        ),
+      ),
+      bottomSheet: BottomAppBar(
+        child: Container(
+          height: displaySize(context).height * 0.08,
+          padding: const EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            color: kWhite,
+            border: Border.all(
+              width: 0,
+              color: kWhite,
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black12,
+                // spreadRadius: 6,
+                blurRadius: 15,
+                offset: Offset(10, 0),
+              ),
+            ],
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+                      child: Text(
+                        '\$122',
+                        style: TextStyle(
+                          fontSize: 17,
+                          color: kBlack,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      child: Text(
+                        '${AppLocalizations.of(context).translate('Total')} (1 ${AppLocalizations.of(context).translate('adult')})',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: kGrey400,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                child: RaisedButton(
+                  hoverElevation: 0.0,
+                  highlightElevation: 0.0,
+                  elevation: 0,
+                  color: kGreenLight,
+                  shape: new RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(30.0),
+                    side: BorderSide(
+                      width: 0.1,
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Confirm()),
+                    );
+                  },
+                  child: Text(
+                    AppLocalizations.of(context).translate('Paynow'),
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: kWhite,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -1,5 +1,6 @@
 class FileSystemManager{
-  String range;
+  String firstDate;
+  String secondDate;
   int dem;
   int adults;
   int infants;

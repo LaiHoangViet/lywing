@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -30,9 +31,9 @@ class _Add_PassengerState extends State<Add_Passenger> {
             elevation: 3.0,
             leading: IconButton(
               icon: Icon(
-                    Icons.arrow_back_ios_rounded,
-                  color: kBlack,
-                ),
+                Icons.arrow_back_ios_rounded,
+                color: kBlack,
+              ),
               onPressed: () {
                 Navigator.pop(context);
               },
@@ -95,7 +96,8 @@ class _Add_PassengerState extends State<Add_Passenger> {
                     children: <Widget>[
                       Container(
                         child: Text(
-                          AppLocalizations.of(context).translate('Passengerdetails'),
+                          AppLocalizations.of(context)
+                              .translate('Passengerdetails'),
                           style: TextStyle(
                             color: kBlack,
                             fontSize: 17,
@@ -120,7 +122,8 @@ class _Add_PassengerState extends State<Add_Passenger> {
                           children: <Widget>[
                             Container(
                               child: Text(
-                                AppLocalizations.of(context).translate('Surname'),
+                                AppLocalizations.of(context)
+                                    .translate('Surname'),
                                 style: TextStyle(
                                   fontSize: 11,
                                   color: kGrey400,
@@ -152,7 +155,8 @@ class _Add_PassengerState extends State<Add_Passenger> {
                           children: <Widget>[
                             Container(
                               child: Text(
-                                AppLocalizations.of(context).translate('Middlename'),
+                                AppLocalizations.of(context)
+                                    .translate('Middlename'),
                                 style: TextStyle(
                                   fontSize: 11,
                                   color: kGrey400,
@@ -185,7 +189,8 @@ class _Add_PassengerState extends State<Add_Passenger> {
                           children: <Widget>[
                             Container(
                               child: Text(
-                                AppLocalizations.of(context).translate('Givenname'),
+                                AppLocalizations.of(context)
+                                    .translate('Givenname'),
                                 style: TextStyle(
                                   fontSize: 11,
                                   color: kGrey400,
@@ -219,7 +224,8 @@ class _Add_PassengerState extends State<Add_Passenger> {
                           children: <Widget>[
                             Container(
                               child: Text(
-                                AppLocalizations.of(context).translate('Gender'),
+                                AppLocalizations.of(context)
+                                    .translate('Gender'),
                                 style: TextStyle(
                                   fontSize: 11,
                                   color: kGrey400,
@@ -262,7 +268,8 @@ class _Add_PassengerState extends State<Add_Passenger> {
                                                 ),
                                                 Container(
                                                   child: Text(
-                                                    AppLocalizations.of(context).translate('Famale'),
+                                                    AppLocalizations.of(context)
+                                                        .translate('Famale'),
                                                     style: TextStyle(
                                                       color: _value == 0
                                                           ? kBlue
@@ -311,7 +318,8 @@ class _Add_PassengerState extends State<Add_Passenger> {
                                                 ),
                                                 Container(
                                                   child: Text(
-                                                    AppLocalizations.of(context).translate('Male'),
+                                                    AppLocalizations.of(context)
+                                                        .translate('Male'),
                                                     style: TextStyle(
                                                       color: _value == 1
                                                           ? kBlue
@@ -341,7 +349,8 @@ class _Add_PassengerState extends State<Add_Passenger> {
                           children: <Widget>[
                             Container(
                               child: Text(
-                            AppLocalizations.of(context).translate('Dateofbirth'),
+                                AppLocalizations.of(context)
+                                    .translate('Dateofbirth'),
                                 style: TextStyle(
                                   fontSize: 11,
                                   color: kGrey400,
@@ -351,12 +360,14 @@ class _Add_PassengerState extends State<Add_Passenger> {
                             Container(
                               child: TextField(
                                 decoration: InputDecoration(
-                                    focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: kGrey500,
-                                      ),
+                                  focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: kGrey500,
                                     ),
-                                    hintText:  AppLocalizations.of(context).translate('Pickyourdateofbirth'),),
+                                  ),
+                                  hintText: AppLocalizations.of(context)
+                                      .translate('Pickyourdateofbirth'),
+                                ),
                               ),
                             ),
                           ],
@@ -373,7 +384,8 @@ class _Add_PassengerState extends State<Add_Passenger> {
                           children: <Widget>[
                             Container(
                               child: Text(
-                                AppLocalizations.of(context).translate('Nationality'),
+                                AppLocalizations.of(context)
+                                    .translate('Nationality'),
                                 style: TextStyle(
                                   fontSize: 11,
                                   color: kGrey400,
@@ -383,12 +395,14 @@ class _Add_PassengerState extends State<Add_Passenger> {
                             Container(
                               child: TextField(
                                 decoration: InputDecoration(
-                                    focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: kGrey500,
-                                      ),
+                                  focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: kGrey500,
                                     ),
-                                    hintText:  AppLocalizations.of(context).translate('SelectaCountryorRegion'),),
+                                  ),
+                                  hintText: AppLocalizations.of(context)
+                                      .translate('SelectaCountryorRegion'),
+                                ),
                               ),
                             ),
                           ],
@@ -405,7 +419,8 @@ class _Add_PassengerState extends State<Add_Passenger> {
                           children: <Widget>[
                             Container(
                               child: Text(
-                                AppLocalizations.of(context).translate('IDtype'),
+                                AppLocalizations.of(context)
+                                    .translate('IDtype'),
                                 style: TextStyle(
                                   fontSize: 11,
                                   color: kGrey400,
@@ -436,7 +451,8 @@ class _Add_PassengerState extends State<Add_Passenger> {
                                               displaySize(context).width * 0.58,
                                         ),
                                         child: Text(
-                                          AppLocalizations.of(context).translate('Passport'),
+                                          AppLocalizations.of(context)
+                                              .translate('Passport'),
                                           style: TextStyle(
                                             color: kGrey400,
                                             fontSize: 15,
@@ -453,7 +469,8 @@ class _Add_PassengerState extends State<Add_Passenger> {
                                               displaySize(context).width * 0.58,
                                         ),
                                         child: Text(
-                                          AppLocalizations.of(context).translate('NationalID'),
+                                          AppLocalizations.of(context)
+                                              .translate('NationalID'),
                                           style: TextStyle(
                                             color: kGrey400,
                                             fontSize: 15,
@@ -483,7 +500,8 @@ class _Add_PassengerState extends State<Add_Passenger> {
                           children: <Widget>[
                             Container(
                               child: Text(
-                                AppLocalizations.of(context).translate('IDnumber'),
+                                AppLocalizations.of(context)
+                                    .translate('IDnumber'),
                                 style: TextStyle(
                                   fontSize: 11,
                                   color: kGrey400,
@@ -493,12 +511,14 @@ class _Add_PassengerState extends State<Add_Passenger> {
                             Container(
                               child: TextField(
                                 decoration: InputDecoration(
-                                    focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: kGrey500,
-                                      ),
+                                  focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: kGrey500,
                                     ),
-                                    hintText: AppLocalizations.of(context).translate('NumberofPassportorID'),),
+                                  ),
+                                  hintText: AppLocalizations.of(context)
+                                      .translate('NumberofPassportorID'),
+                                ),
                               ),
                             ),
                           ],
@@ -547,7 +567,8 @@ class _Add_PassengerState extends State<Add_Passenger> {
                                 child: Column(
                                   children: <Widget>[
                                     Text(
-                                      AppLocalizations.of(context).translate('TravelPlus'),
+                                      AppLocalizations.of(context)
+                                          .translate('TravelPlus'),
                                       style: TextStyle(
                                         color: kGrey400,
                                         fontSize: 13,
@@ -575,7 +596,8 @@ class _Add_PassengerState extends State<Add_Passenger> {
                               child: Column(
                                 children: <Widget>[
                                   Text(
-                                    AppLocalizations.of(context).translate('TravelBasic'),
+                                    AppLocalizations.of(context)
+                                        .translate('TravelBasic'),
                                     style: TextStyle(
                                       color: kGrey400,
                                       fontSize: 13,
@@ -602,14 +624,16 @@ class _Add_PassengerState extends State<Add_Passenger> {
                               child: Column(
                                 children: <Widget>[
                                   Text(
-                                    AppLocalizations.of(context).translate('Noinsurance'),
+                                    AppLocalizations.of(context)
+                                        .translate('Noinsurance'),
                                     style: TextStyle(
                                       color: kGrey400,
                                       fontSize: 13,
                                     ),
                                   ),
                                   Text(
-                                    AppLocalizations.of(context).translate('Free'),
+                                    AppLocalizations.of(context)
+                                        .translate('Free'),
                                     style: TextStyle(
                                       color: kGrey400,
                                       fontSize: 12,
@@ -625,13 +649,17 @@ class _Add_PassengerState extends State<Add_Passenger> {
 
                     //View tab Travel insurance
                     Container(
-                      height: displaySize(context).height * 0.15,
+                      height: displaySize(context).height * 0.12,
                       margin: EdgeInsets.only(
                         left: displaySize(context).width * 0.07,
                         right: displaySize(context).width * 0.07,
-                        bottom: displaySize(context).height * 0.01,
+                        // bottom: displaySize(context).height * 0.01,
                       ),
-                      padding: const EdgeInsets.all(10),
+                      padding: EdgeInsets.only(
+                        top: displaySize(context).height * 0.001,
+                        left: displaySize(context).width * 0.03,
+                        right: displaySize(context).width * 0.03,
+                      ),
                       decoration: BoxDecoration(
                         color: kGrey100,
                         borderRadius: BorderRadius.only(
@@ -652,17 +680,21 @@ class _Add_PassengerState extends State<Add_Passenger> {
                                     children: <Widget>[
                                       Icon(
                                         Icons.lens,
-                                        size: ResponsiveFlutter.of(context).fontSize(1.7),
+                                        size: ResponsiveFlutter.of(context)
+                                            .fontSize(1.7),
                                         color: kGrey400,
                                       ),
                                       Container(
                                         margin: const EdgeInsets.only(
                                           left: 10,
                                         ),
-                                        child: Text(
-                                          AppLocalizations.of(context).translate('Medicalexpanses'),
+                                        child: AutoSizeText(
+                                          AppLocalizations.of(context)
+                                              .translate('Medicalexpanses'),
                                           style: TextStyle(
-                                              color: kGrey400, fontSize: ResponsiveFlutter.of(context).fontSize(1.5)),
+                                            color: kGrey400,
+                                          ),
+                                          presetFontSizes: [12, 9, 6, 3],
                                         ),
                                       ),
                                     ],
@@ -670,24 +702,28 @@ class _Add_PassengerState extends State<Add_Passenger> {
                                 ),
                                 Container(
                                   margin: EdgeInsets.only(
-                                    top: displaySize(context).height * 0.02,
-                                    bottom: displaySize(context).height * 0.02,
+                                    top: displaySize(context).height * 0.015,
+                                    bottom: displaySize(context).height * 0.015,
                                   ),
                                   child: Row(
                                     children: <Widget>[
                                       Icon(
                                         Icons.lens,
-                                        size: ResponsiveFlutter.of(context).fontSize(1.7),
+                                        size: ResponsiveFlutter.of(context)
+                                            .fontSize(1.7),
                                         color: kGrey400,
                                       ),
                                       Container(
                                         margin: const EdgeInsets.only(
                                           left: 10,
                                         ),
-                                        child: Text(
-                                          AppLocalizations.of(context).translate('Tripcancellation'),
+                                        child: AutoSizeText(
+                                          AppLocalizations.of(context)
+                                              .translate('Tripcancellation'),
                                           style: TextStyle(
-                                              color: kGrey400, fontSize: ResponsiveFlutter.of(context).fontSize(1.5)),
+                                            color: kGrey400,
+                                          ),
+                                          presetFontSizes: [12, 9, 6, 3],
                                         ),
                                       ),
                                     ],
@@ -698,17 +734,21 @@ class _Add_PassengerState extends State<Add_Passenger> {
                                     children: <Widget>[
                                       Icon(
                                         Icons.lens,
-                                        size: ResponsiveFlutter.of(context).fontSize(1.7),
+                                        size: ResponsiveFlutter.of(context)
+                                            .fontSize(1.7),
                                         color: kGrey400,
                                       ),
                                       Container(
                                         margin: const EdgeInsets.only(
                                           left: 10,
                                         ),
-                                        child: Text(
-                                          AppLocalizations.of(context).translate('Assistanceservices'),
+                                        child: AutoSizeText(
+                                          AppLocalizations.of(context)
+                                              .translate('Assistanceservices'),
                                           style: TextStyle(
-                                              color: kGrey400, fontSize: ResponsiveFlutter.of(context).fontSize(1.5)),
+                                            color: kGrey400,
+                                          ),
+                                          presetFontSizes: [12, 9, 6, 3],
                                         ),
                                       ),
                                     ],
@@ -728,17 +768,21 @@ class _Add_PassengerState extends State<Add_Passenger> {
                                     children: <Widget>[
                                       Icon(
                                         Icons.lens,
-                                        size: ResponsiveFlutter.of(context).fontSize(1.7),
+                                        size: ResponsiveFlutter.of(context)
+                                            .fontSize(1.7),
                                         color: kGrey400,
                                       ),
                                       Container(
                                         margin: const EdgeInsets.only(
                                           left: 10,
                                         ),
-                                        child: Text(
-                                          AppLocalizations.of(context).translate('Medicalexpanses'),
+                                        child: AutoSizeText(
+                                          AppLocalizations.of(context)
+                                              .translate('Medicalexpanses'),
                                           style: TextStyle(
-                                              color: kGrey400, fontSize: ResponsiveFlutter.of(context).fontSize(1.5)),
+                                            color: kGrey400,
+                                          ),
+                                          presetFontSizes: [12, 9, 6, 3],
                                         ),
                                       ),
                                     ],
@@ -746,24 +790,28 @@ class _Add_PassengerState extends State<Add_Passenger> {
                                 ),
                                 Container(
                                   margin: EdgeInsets.only(
-                                    top: displaySize(context).height * 0.02,
-                                    bottom: displaySize(context).height * 0.02,
+                                    top: displaySize(context).height * 0.015,
+                                    bottom: displaySize(context).height * 0.015,
                                   ),
                                   child: Row(
                                     children: <Widget>[
                                       Icon(
                                         Icons.lens,
-                                        size: ResponsiveFlutter.of(context).fontSize(1.7),
+                                        size: ResponsiveFlutter.of(context)
+                                            .fontSize(1.7),
                                         color: kGrey400,
                                       ),
                                       Container(
                                         margin: const EdgeInsets.only(
                                           left: 10,
                                         ),
-                                        child: Text(
-                                          AppLocalizations.of(context).translate('Tripcancellation'),
+                                        child: AutoSizeText(
+                                          AppLocalizations.of(context)
+                                              .translate('Tripcancellation'),
                                           style: TextStyle(
-                                              color: kGrey400, fontSize: ResponsiveFlutter.of(context).fontSize(1.5)),
+                                            color: kGrey400,
+                                          ),
+                                          presetFontSizes: [12, 9, 6, 3],
                                         ),
                                       ),
                                     ],
@@ -774,17 +822,21 @@ class _Add_PassengerState extends State<Add_Passenger> {
                                     children: <Widget>[
                                       Icon(
                                         Icons.lens,
-                                        size: ResponsiveFlutter.of(context).fontSize(1.7),
+                                        size: ResponsiveFlutter.of(context)
+                                            .fontSize(1.7),
                                         color: kGrey400,
                                       ),
                                       Container(
                                         margin: const EdgeInsets.only(
                                           left: 10,
                                         ),
-                                        child: Text(
-                                          AppLocalizations.of(context).translate('Assistanceservices'),
+                                        child: AutoSizeText(
+                                          AppLocalizations.of(context)
+                                              .translate('Assistanceservices'),
                                           style: TextStyle(
-                                              color: kGrey400, fontSize: ResponsiveFlutter.of(context).fontSize(1.5)),
+                                            color: kGrey400,
+                                          ),
+                                          presetFontSizes: [12, 9, 6, 3],
                                         ),
                                       ),
                                     ],
@@ -804,17 +856,21 @@ class _Add_PassengerState extends State<Add_Passenger> {
                                     children: <Widget>[
                                       Icon(
                                         Icons.lens,
-                                        size: ResponsiveFlutter.of(context).fontSize(1.7),
+                                        size: ResponsiveFlutter.of(context)
+                                            .fontSize(1.7),
                                         color: kGrey400,
                                       ),
                                       Container(
                                         margin: const EdgeInsets.only(
                                           left: 10,
                                         ),
-                                        child: Text(
-                                          AppLocalizations.of(context).translate('Medicalexpanses'),
+                                        child: AutoSizeText(
+                                          AppLocalizations.of(context)
+                                              .translate('Medicalexpanses'),
                                           style: TextStyle(
-                                              color: kGrey400, fontSize: ResponsiveFlutter.of(context).fontSize(1.5)),
+                                            color: kGrey400,
+                                          ),
+                                          presetFontSizes: [12, 9, 6, 3],
                                         ),
                                       ),
                                     ],
@@ -822,24 +878,28 @@ class _Add_PassengerState extends State<Add_Passenger> {
                                 ),
                                 Container(
                                   margin: EdgeInsets.only(
-                                    top: displaySize(context).height * 0.02,
-                                    bottom: displaySize(context).height * 0.02,
+                                    top: displaySize(context).height * 0.015,
+                                    bottom: displaySize(context).height * 0.015,
                                   ),
                                   child: Row(
                                     children: <Widget>[
                                       Icon(
                                         Icons.lens,
-                                        size: ResponsiveFlutter.of(context).fontSize(1.7),
+                                        size: ResponsiveFlutter.of(context)
+                                            .fontSize(1.7),
                                         color: kGrey400,
                                       ),
                                       Container(
                                         margin: const EdgeInsets.only(
                                           left: 10,
                                         ),
-                                        child: Text(
-                                          AppLocalizations.of(context).translate('Tripcancellation'),
+                                        child: AutoSizeText(
+                                          AppLocalizations.of(context)
+                                              .translate('Tripcancellation'),
                                           style: TextStyle(
-                                              color: kGrey400, fontSize: ResponsiveFlutter.of(context).fontSize(1.5)),
+                                            color: kGrey400,
+                                          ),
+                                          presetFontSizes: [12, 9, 6, 3],
                                         ),
                                       ),
                                     ],
@@ -850,17 +910,21 @@ class _Add_PassengerState extends State<Add_Passenger> {
                                     children: <Widget>[
                                       Icon(
                                         Icons.lens,
-                                        size: ResponsiveFlutter.of(context).fontSize(1.7),
+                                        size: ResponsiveFlutter.of(context)
+                                            .fontSize(1.7),
                                         color: kGrey400,
                                       ),
                                       Container(
                                         margin: const EdgeInsets.only(
                                           left: 10,
                                         ),
-                                        child: Text(
-                                          AppLocalizations.of(context).translate('Assistanceservices'),
+                                        child: AutoSizeText(
+                                          AppLocalizations.of(context)
+                                              .translate('Assistanceservices'),
                                           style: TextStyle(
-                                              color: kGrey400, fontSize: ResponsiveFlutter.of(context).fontSize(1.5)),
+                                            color: kGrey400,
+                                          ),
+                                          presetFontSizes: [12, 9, 6, 3],
                                         ),
                                       ),
                                     ],
@@ -942,7 +1006,8 @@ class _Add_PassengerState extends State<Add_Passenger> {
                                         left: 10,
                                       ),
                                       child: Text(
-                                        AppLocalizations.of(context).translate('Cabinbaggage'),
+                                        AppLocalizations.of(context)
+                                            .translate('Cabinbaggage'),
                                         style: TextStyle(
                                           fontSize: 15,
                                           color: kBlack,
@@ -1021,7 +1086,8 @@ class _Add_PassengerState extends State<Add_Passenger> {
                                         left: 10,
                                       ),
                                       child: Text(
-                                        AppLocalizations.of(context).translate('Addcheckedbaggage'),
+                                        AppLocalizations.of(context)
+                                            .translate('Addcheckedbaggage'),
                                         style: TextStyle(
                                           fontSize: 15,
                                           color: kBlack,

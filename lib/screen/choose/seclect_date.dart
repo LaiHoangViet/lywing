@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:lywing/common/constants/colors.dart';
 import 'package:intl/intl.dart';
 import 'package:lywing/screen/home/SysManager.dart';
+import 'package:scrollable_clean_calendar/scrollable_clean_calendar.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:lywing/sizes_helpers.dart';
 
@@ -15,51 +16,21 @@ class Seclect_Date extends StatefulWidget {
 }
 
 class _Seclect_DateState extends State<Seclect_Date> {
-  String _range;
+  String _firstDate;
+  String _secondDate;
 
-  void _onSelectionChanged(DateRangePickerSelectionChangedArgs args) {
-    setState(() {
-      _range =
-          DateFormat('dd/MM/yyyy').format(args.value.startDate).toString() +
-              DateFormat('dd/MM/yyyy')
-                  .format(args.value.endDate ?? args.value.startDate)
-                  .toString();
-
-      // Row(
-      //   children: [
-      //     Expanded(
-      //       child: Text(
-      //         "${DateFormat('dd/MM/yyyy').format(args.value.startDate)}",
-      //       ),
-      //     ),
-      //     Text("-"),
-      //     Expanded(
-      //       child: Container(
-      //         alignment: Alignment.centerRight,
-      //         child: Text(
-      //           "${DateFormat('dd/MM/yyyy').format(args.value.endDate ?? args.value.startDate)}",
-      //         ),
-      //       ),
-      //     ),
-      //   ],
-      // ) as String;
-      // Expanded(
-      //   child: Container(
-      //     alignment: Alignment.centerLeft,
-      //     child: Text(
-      //       "${DateFormat('dd/MM/yyyy').format(args.value.startDate)}",
-      //     ),
-      //   ),
-      // ) +
-      // "-" +
-      // DateFormat('dd/MM/yyyy')
-      //     .format(args.value.endDate ?? args.value.startDate)
-      //     .toString();
-    });
-    FileSystemManager.instance.range = _range;
-
-    print(_range);
-  }
+  //
+  // void _onSelectionChanged(DateRangePickerSelectionChangedArgs args) {
+  //   setState(() {
+  //     _firstDate =  DateFormat('dd/MM/yyyy').format(args.value.startDate).toString();
+  //     _secondDate = DateFormat('dd/MM/yyyy').format(args.value.startDate).toString();
+  //   });
+  //   FileSystemManager.instance.firstDate = _firstDate;
+  //   FileSystemManager.instance.secondDate = _secondDate;
+  //
+  //   print(_firstDate);
+  //   print(_secondDate);
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -91,14 +62,29 @@ class _Seclect_DateState extends State<Seclect_Date> {
         child: Column(
           children: <Widget>[
             Container(
-              height: displaySize(context).height * 0.7,
-              child: SfDateRangePicker(
-                onSelectionChanged: _onSelectionChanged,
-                selectionMode: DateRangePickerSelectionMode.range,
-                initialSelectedRange: PickerDateRange(
-                    DateTime.now().subtract(const Duration(days: 0)),
-                    DateTime.now().add(const Duration(days: 0))),
+              height: displaySize(context).height * 0.8,
+              child: ScrollableCleanCalendar(
+                onRangeSelected: (firstDate,secondDate) {
+                  _firstDate = DateFormat('yyyy-MM-dd').format(firstDate);
+                  _secondDate = DateFormat('yyyy-MM-dd').format(secondDate);
+                  FileSystemManager.instance.firstDate = _firstDate;
+                  FileSystemManager.instance.secondDate = _secondDate;
+                  print(_firstDate);
+                },
+                locale: 'en',
+                minDate: DateTime.now(),
+                maxDate: DateTime.now().add(
+                  Duration(days: 365),
+                ),
+                renderPostAndPreviousMonthDates: true,
               ),
+              // SfDateRangePicker(
+              //   onSelectionChanged: _onSelectionChanged,
+              //   selectionMode: DateRangePickerSelectionMode.range,
+              //   initialSelectedRange: PickerDateRange(
+              //       DateTime.now().subtract(const Duration(days: 0)),
+              //       DateTime.now().add(const Duration(days: 0))),
+              // ),
             ),
             RaisedButton(
               color: kBlue,

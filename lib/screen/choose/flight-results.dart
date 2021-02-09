@@ -34,6 +34,7 @@ class _Flight_ResultsState extends State<Flight_Results>
 
   Animation _arrowAnimation;
   AnimationController _arrowAnimationController;
+  String swap;
 
   List ticket = ["12", "12", "12", "12"];
 
@@ -41,7 +42,7 @@ class _Flight_ResultsState extends State<Flight_Results>
   void initState() {
     super.initState();
     _arrowAnimationController =
-        AnimationController(vsync: this, duration: Duration(seconds: 1));
+        AnimationController(vsync: this, duration: Duration(milliseconds: 200));
     _arrowAnimation =
         Tween(begin: 0.0, end: pi).animate(_arrowAnimationController);
   }
@@ -65,8 +66,9 @@ class _Flight_ResultsState extends State<Flight_Results>
             ? _arrowAnimationController.reverse()
             : _arrowAnimationController.forward();
         setState(() {
-          // destination_to.text = destination_from.text;
-          destination_from.text = destination_to.text;
+          swap = FileSystemManager.instance.typeAheadController ;
+          FileSystemManager.instance.typeAheadController = FileSystemManager.instance.typeAheadController1;
+          FileSystemManager.instance.typeAheadController1 = swap;
         });
       },
     );
@@ -262,17 +264,48 @@ class _Flight_ResultsState extends State<Flight_Results>
                                 top: 20,
                               ),
                               child: Container(
-                                  alignment: Alignment.center,
-                                  child: Text(
-                                    FileSystemManager.instance.range == null
-                                        ? "Choose Date Time"
-                                        : FileSystemManager.instance.range
-                                            .toString(),
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: kGrey500,
-                                    ),
-                                  )),
+                                alignment: Alignment.center,
+                                child:
+                                    FileSystemManager.instance.firstDate == null
+                                        ? Text(
+                                            'Chosse date time',
+                                            style: TextStyle(
+                                              fontSize: 15,
+                                              color: kGrey500,
+                                            ),
+                                          )
+                                        : Container(
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceBetween,
+                                              children: [
+                                                Text(
+                                                  FileSystemManager
+                                                      .instance.firstDate,
+                                                  style: TextStyle(
+                                                    fontSize: 15,
+                                                    color: kGrey500,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  "-",
+                                                  style: TextStyle(
+                                                    fontSize: 15,
+                                                    color: kGrey500,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  FileSystemManager
+                                                      .instance.secondDate,
+                                                  style: TextStyle(
+                                                    fontSize: 15,
+                                                    color: kGrey500,
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                              ),
                             ),
                           ),
                           //quantity information
@@ -281,8 +314,12 @@ class _Flight_ResultsState extends State<Flight_Results>
                               top: displaySize(context).height * 0.03,
                               bottom: displaySize(context).height * 0.02,
                             ),
+                            padding: EdgeInsets.only(
+                              left: displaySize(context).width * 0.033,
+                              right: displaySize(context).width * 0.033,
+                            ),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
                                 Container(
                                   width: 130,
