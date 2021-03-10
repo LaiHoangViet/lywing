@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:lywing/common/app_localizations.dart';
@@ -13,7 +14,6 @@ class Place_To_Go extends StatefulWidget {
 }
 
 class _Place_To_GoState extends State<Place_To_Go> {
-
   final focus = FocusNode();
   final TextEditingController _typeAheadController = TextEditingController();
 
@@ -55,12 +55,23 @@ class _Place_To_GoState extends State<Place_To_Go> {
             ),
             Container(
               decoration: BoxDecoration(
-                color: kGrey200,
+                color: kGrey100,
                 borderRadius: BorderRadius.circular(10),
+              ),
+              padding: EdgeInsets.only(
+                left: displaySize(context).width * 0.02,
+                right: displaySize(context).width * 0.02,
               ),
               child: TypeAheadFormField(
                 textFieldConfiguration: TextFieldConfiguration(
-                  decoration: InputDecoration(labelText: "City"),
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    errorBorder: InputBorder.none,
+                    disabledBorder: InputBorder.none,
+                      hintText: "City",
+                  ),
                   // 2 controller khac nhau
                   controller: this._typeAheadController,
                 ),
@@ -79,13 +90,14 @@ class _Place_To_GoState extends State<Place_To_Go> {
                   this._typeAheadController.text = suggestion;
                   setState(() {
                     FileSystemManager.instance.chosen = true;
-                    FileSystemManager.instance.typeAheadController = this._typeAheadController.text;
+                    FileSystemManager.instance.typeAheadController =
+                        this._typeAheadController.text;
                     print(FileSystemManager.instance.chosen);
                   });
                   Navigator.pop(context);
                 },
                 validator: (value) =>
-                value.isEmpty ? 'Please select a city?' : null,
+                    value.isEmpty ? 'Please select a city?' : null,
                 onSaved: (value) => FocusScope.of(context).requestFocus(focus),
               ),
             ),
@@ -102,24 +114,22 @@ class _Place_To_GoState extends State<Place_To_Go> {
         FileSystemManager.instance.chosen = false;
         search_place();
       },
-      child: FileSystemManager.instance.chosen == false ? Text(
-        AppLocalizations.of(context)
-            .translate('whereYouToGo?'),
-        style: TextStyle(
-          fontSize: 15,
-          color: kGrey500,
-        ),
-      ): Text(
-        FileSystemManager.instance.typeAheadController.toString(),
-        style: TextStyle(
-          fontSize: 15,
-          color: kGrey500,
-        ),
-      ),
+      child: FileSystemManager.instance.chosen == false
+          ? Text(
+              AppLocalizations.of(context).translate('whereYouToGo?'),
+              style: TextStyle(
+                fontSize: 15,
+                color: kGrey500,
+              ),
+            )
+          : Text(
+              FileSystemManager.instance.typeAheadController.toString(),
+              style: TextStyle(
+                fontSize: 15,
+                color: kGrey500,
+              ),
+            ),
     );
   }
 }
 // mà màn 1 ý sao nó khong quay icon nữa
-
-
-

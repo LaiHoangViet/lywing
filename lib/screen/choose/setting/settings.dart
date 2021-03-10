@@ -1,9 +1,19 @@
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lywing/common/app_localizations.dart';
 import 'package:lywing/common/constants.dart';
+import 'package:lywing/screen/choose/setting/currency.dart';
+import 'package:lywing/screen/choose/setting/language.dart';
+import 'package:lywing/screen/choose/setting/units.dart';
 import 'package:lywing/sizes_helpers.dart';
+
+import 'notification-settings.dart';
+import 'privacy-statements.dart';
+import 'temperature_scale.dart';
+import 'version.dart';
 
 class Settings extends StatefulWidget {
   @override
@@ -11,6 +21,8 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
+  bool _switchValue = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,10 +78,12 @@ class _SettingsState extends State<Settings> {
                 Container(
                   child: Row(
                     children: <Widget>[
-                      Expanded(
-                        flex: 1,
+                      Container(
+                        margin: EdgeInsets.only(
+                          left: displaySize(context).width * 0.05,
+                        ),
                         child: Icon(
-                          MaterialIcons.g_translate,
+                          MaterialIcons.home,
                           color: kGrey400,
                         ),
                       ),
@@ -78,15 +92,27 @@ class _SettingsState extends State<Settings> {
                         child: Column(
                           children: <Widget>[
                             ListTile(
-                              title: Transform(
-                                transform:
-                                Matrix4.translationValues(-15, 0.0, 0.0),
-                                child: Text(
-                                  AppLocalizations.of(context).translate('Language'),
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: kBlack,
-                                  ),
+                              title: Container(
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      AppLocalizations.of(context)
+                                          .translate('Home'),
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        color: kBlack,
+                                      ),
+                                    ),
+                                    AutoSizeText(
+                                      "Style1",
+                                      style: TextStyle(
+                                        color: kGrey300,
+                                      ),
+                                      presetFontSizes: [15, 12, 9, 6],
+                                    ),
+                                  ],
                                 ),
                               ),
                               trailing: Icon(
@@ -102,9 +128,64 @@ class _SettingsState extends State<Settings> {
                                 //   );
                               },
                             ),
-                            Divider(
-                              color: kGrey200,
-                              height: 1,
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  child: Row(
+                    children: <Widget>[
+                      Container(
+                        margin: EdgeInsets.only(
+                          left: displaySize(context).width * 0.05,
+                        ),
+                        child: Icon(
+                          MaterialIcons.g_translate,
+                          color: kGrey400,
+                        ),
+                      ),
+                      Expanded(
+                        flex: 5,
+                        child: Column(
+                          children: <Widget>[
+                            ListTile(
+                              title: Container(
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      AppLocalizations.of(context)
+                                          .translate('Language'),
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        color: kBlack,
+                                      ),
+                                    ),
+                                    AutoSizeText(
+                                      "English",
+                                      style: TextStyle(
+                                        color: kGrey300,
+                                      ),
+                                      presetFontSizes: [15, 12, 9, 6],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              trailing: Icon(
+                                Icons.navigate_next,
+                                color: kGrey400,
+                                size: 30,
+                              ),
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Language()),
+                                );
+                              },
                             ),
                           ],
                         ),
@@ -115,8 +196,10 @@ class _SettingsState extends State<Settings> {
                 Container(
                   child: Row(
                     children: <Widget>[
-                      Expanded(
-                        flex: 1,
+                      Container(
+                        margin: EdgeInsets.only(
+                          left: displaySize(context).width * 0.05,
+                        ),
                         child: Icon(
                           MaterialIcons.public,
                           color: kGrey400,
@@ -127,15 +210,27 @@ class _SettingsState extends State<Settings> {
                         child: Column(
                           children: <Widget>[
                             ListTile(
-                              title: Transform(
-                                transform:
-                                Matrix4.translationValues(-15, 0.0, 0.0),
-                                child: Text(
-                                  AppLocalizations.of(context).translate('CountryorRegion'),
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: kBlack,
-                                  ),
+                              title: Container(
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      AppLocalizations.of(context)
+                                          .translate('CountryorRegion'),
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        color: kBlack,
+                                      ),
+                                    ),
+                                    AutoSizeText(
+                                      "VietNam",
+                                      style: TextStyle(
+                                        color: kGrey300,
+                                      ),
+                                      presetFontSizes: [15, 12, 9, 6],
+                                    ),
+                                  ],
                                 ),
                               ),
                               trailing: Icon(
@@ -151,10 +246,6 @@ class _SettingsState extends State<Settings> {
                                 // );
                               },
                             ),
-                            Divider(
-                              color: kGrey200,
-                              height: 1,
-                            ),
                           ],
                         ),
                       ),
@@ -164,8 +255,10 @@ class _SettingsState extends State<Settings> {
                 Container(
                   child: Row(
                     children: <Widget>[
-                      Expanded(
-                        flex: 1,
+                      Container(
+                        margin: EdgeInsets.only(
+                          left: displaySize(context).width * 0.05,
+                        ),
                         child: Icon(
                           MaterialIcons.attach_money,
                           color: kGrey400,
@@ -176,15 +269,27 @@ class _SettingsState extends State<Settings> {
                         child: Column(
                           children: <Widget>[
                             ListTile(
-                              title: Transform(
-                                transform:
-                                Matrix4.translationValues(-15, 0.0, 0.0),
-                                child: Text(
-                                  AppLocalizations.of(context).translate('Currency'),
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: kBlack,
-                                  ),
+                              title: Container(
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      AppLocalizations.of(context)
+                                          .translate('Currency'),
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        color: kBlack,
+                                      ),
+                                    ),
+                                    AutoSizeText(
+                                      "USD",
+                                      style: TextStyle(
+                                        color: kGrey300,
+                                      ),
+                                      presetFontSizes: [15, 12, 9, 6],
+                                    ),
+                                  ],
                                 ),
                               ),
                               trailing: Icon(
@@ -193,15 +298,12 @@ class _SettingsState extends State<Settings> {
                                 size: 30,
                               ),
                               onTap: () {
-                                // Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(builder: (context) => Add_Passenger()),
-                                // );
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Currency()),
+                                );
                               },
-                            ),
-                            Divider(
-                              color: kGrey200,
-                              height: 1,
                             ),
                           ],
                         ),
@@ -212,8 +314,10 @@ class _SettingsState extends State<Settings> {
                 Container(
                   child: Row(
                     children: <Widget>[
-                      Expanded(
-                        flex: 1,
+                      Container(
+                        margin: EdgeInsets.only(
+                          left: displaySize(context).width * 0.05,
+                        ),
                         child: Icon(
                           FontAwesomeIcons.rulerCombined,
                           color: kGrey400,
@@ -224,15 +328,27 @@ class _SettingsState extends State<Settings> {
                         child: Column(
                           children: <Widget>[
                             ListTile(
-                              title: Transform(
-                                transform:
-                                Matrix4.translationValues(-15, 0.0, 0.0),
-                                child: Text(
-                                  AppLocalizations.of(context).translate('Units'),
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: kBlack,
-                                  ),
+                              title: Container(
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      AppLocalizations.of(context)
+                                          .translate('Units'),
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        color: kBlack,
+                                      ),
+                                    ),
+                                    AutoSizeText(
+                                      "Metric (km, m²)",
+                                      style: TextStyle(
+                                        color: kGrey300,
+                                      ),
+                                      presetFontSizes: [15, 12, 9, 6],
+                                    ),
+                                  ],
                                 ),
                               ),
                               trailing: Icon(
@@ -241,16 +357,12 @@ class _SettingsState extends State<Settings> {
                                 size: 30,
                               ),
                               onTap: () {
-                                // Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(
-                                //       builder: (context) => My_Cards()),
-                                // );
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Untis()),
+                                );
                               },
-                            ),
-                            Divider(
-                              color: kGrey200,
-                              height: 1,
                             ),
                           ],
                         ),
@@ -261,8 +373,10 @@ class _SettingsState extends State<Settings> {
                 Container(
                   child: Row(
                     children: <Widget>[
-                      Expanded(
-                        flex: 1,
+                      Container(
+                        margin: EdgeInsets.only(
+                          left: displaySize(context).width * 0.05,
+                        ),
                         child: Icon(
                           MaterialIcons.ac_unit,
                           color: kGrey400,
@@ -273,15 +387,27 @@ class _SettingsState extends State<Settings> {
                         child: Column(
                           children: <Widget>[
                             ListTile(
-                              title: Transform(
-                                transform:
-                                Matrix4.translationValues(-15, 0.0, 0.0),
-                                child: Text(
-                                  AppLocalizations.of(context).translate('TemperatureScale'),
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: kBlack,
-                                  ),
+                              title: Container(
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    AutoSizeText(
+                                      AppLocalizations.of(context)
+                                          .translate('TemperatureScale'),
+                                      style: TextStyle(
+                                        color: kBlack,
+                                      ),
+                                      presetFontSizes: [14, 12, 9, 6],
+                                    ),
+                                    AutoSizeText(
+                                      "Celsius (°C)",
+                                      style: TextStyle(
+                                        color: kGrey300,
+                                      ),
+                                      presetFontSizes: [14, 12, 9, 6],
+                                    ),
+                                  ],
                                 ),
                               ),
                               trailing: Icon(
@@ -290,11 +416,12 @@ class _SettingsState extends State<Settings> {
                                 size: 30,
                               ),
                               onTap: () {
-                                // Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(
-                                //       builder: (context) => Saved_Flights()),
-                                // );
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          Temperature_Scale()),
+                                );
                               },
                             ),
                           ],
@@ -333,7 +460,7 @@ class _SettingsState extends State<Settings> {
                       Expanded(
                         flex: 1,
                         child: Icon(
-                          MaterialIcons.notifications,
+                          FontAwesome5Solid.moon,
                           color: kGrey400,
                         ),
                       ),
@@ -344,9 +471,56 @@ class _SettingsState extends State<Settings> {
                             ListTile(
                               title: Transform(
                                 transform:
-                                Matrix4.translationValues(-15, 0.0, 0.0),
+                                    Matrix4.translationValues(-15, 0.0, 0.0),
                                 child: Text(
-                                  AppLocalizations.of(context).translate('NotificationsSettings'),
+                                  "Dark mode",
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    color: kBlack,
+                                  ),
+                                ),
+                              ),
+                              trailing: CupertinoSwitch(
+                                value: _switchValue,
+                                onChanged: (value) {
+                                  setState(() {
+                                    _switchValue = value;
+                                  });
+                                },
+                              ),
+                              onTap: () {
+                                // Navigator.push(
+                                //   context,
+                                //   MaterialPageRoute(builder: (context) => Customer_Support()),
+                                // );
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(
+                        flex: 1,
+                        child: Icon(
+                          FontAwesome5Solid.qrcode,
+                          color: kGrey400,
+                        ),
+                      ),
+                      Expanded(
+                        flex: 5,
+                        child: Column(
+                          children: <Widget>[
+                            ListTile(
+                              title: Transform(
+                                transform:
+                                    Matrix4.translationValues(-15, 0.0, 0.0),
+                                child: Text(
+                                  "Scan QR code",
                                   style: TextStyle(
                                     fontSize: 15,
                                     color: kBlack,
@@ -365,9 +539,52 @@ class _SettingsState extends State<Settings> {
                                 // );
                               },
                             ),
-                            Divider(
-                              color: kGrey200,
-                              height: 1,
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(
+                        flex: 1,
+                        child: Icon(
+                          MaterialIcons.notifications,
+                          color: kGrey400,
+                        ),
+                      ),
+                      Expanded(
+                        flex: 5,
+                        child: Column(
+                          children: <Widget>[
+                            ListTile(
+                              title: Transform(
+                                transform:
+                                    Matrix4.translationValues(-15, 0.0, 0.0),
+                                child: Text(
+                                  AppLocalizations.of(context)
+                                      .translate('NotificationsSettings'),
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    color: kBlack,
+                                  ),
+                                ),
+                              ),
+                              trailing: Icon(
+                                Icons.navigate_next,
+                                color: kGrey400,
+                                size: 30,
+                              ),
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          Notification_Settings()),
+                                );
+                              },
                             ),
                           ],
                         ),
@@ -392,9 +609,10 @@ class _SettingsState extends State<Settings> {
                             ListTile(
                               title: Transform(
                                 transform:
-                                Matrix4.translationValues(-15, 0.0, 0.0),
+                                    Matrix4.translationValues(-15, 0.0, 0.0),
                                 child: Text(
-                                  AppLocalizations.of(context).translate('Screenshottoshare'),
+                                  AppLocalizations.of(context)
+                                      .translate('Screenshottoshare'),
                                   style: TextStyle(
                                     fontSize: 15,
                                     color: kBlack,
@@ -412,10 +630,6 @@ class _SettingsState extends State<Settings> {
                                 //   MaterialPageRoute(builder: (context) => Add_Passenger()),
                                 // );
                               },
-                            ),
-                            Divider(
-                              color: kGrey200,
-                              height: 1,
                             ),
                           ],
                         ),
@@ -440,9 +654,10 @@ class _SettingsState extends State<Settings> {
                             ListTile(
                               title: Transform(
                                 transform:
-                                Matrix4.translationValues(-15, 0.0, 0.0),
+                                    Matrix4.translationValues(-15, 0.0, 0.0),
                                 child: Text(
-                                  AppLocalizations.of(context).translate('PrivacyStatement'),
+                                  AppLocalizations.of(context)
+                                      .translate('PrivacyStatement'),
                                   style: TextStyle(
                                     fontSize: 15,
                                     color: kBlack,
@@ -455,15 +670,13 @@ class _SettingsState extends State<Settings> {
                                 size: 30,
                               ),
                               onTap: () {
-                                // Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(builder: (context) => Customer_Support()),
-                                // );
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          Privacy_Statements()),
+                                );
                               },
-                            ),
-                            Divider(
-                              color: kGrey200,
-                              height: 1,
                             ),
                           ],
                         ),
@@ -488,9 +701,10 @@ class _SettingsState extends State<Settings> {
                             ListTile(
                               title: Transform(
                                 transform:
-                                Matrix4.translationValues(-15, 0.0, 0.0),
+                                    Matrix4.translationValues(-15, 0.0, 0.0),
                                 child: Text(
-                                  AppLocalizations.of(context).translate('RatethisApp'),
+                                  AppLocalizations.of(context)
+                                      .translate('RatethisApp'),
                                   style: TextStyle(
                                     fontSize: 15,
                                     color: kBlack,
@@ -508,10 +722,6 @@ class _SettingsState extends State<Settings> {
                                 //   MaterialPageRoute(builder: (context) => Add_Passenger()),
                                 // );
                               },
-                            ),
-                            Divider(
-                              color: kGrey200,
-                              height: 1,
                             ),
                           ],
                         ),
@@ -536,9 +746,10 @@ class _SettingsState extends State<Settings> {
                             ListTile(
                               title: Transform(
                                 transform:
-                                Matrix4.translationValues(-15, 0.0, 0.0),
+                                    Matrix4.translationValues(-15, 0.0, 0.0),
                                 child: Text(
-                                  AppLocalizations.of(context).translate('Version'),
+                                  AppLocalizations.of(context)
+                                      .translate('Version'),
                                   style: TextStyle(
                                     fontSize: 15,
                                     color: kBlack,
@@ -554,7 +765,7 @@ class _SettingsState extends State<Settings> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Settings()),
+                                      builder: (context) => Version()),
                                 );
                               },
                             ),

@@ -101,7 +101,7 @@ class _Edit_ProfileState extends State<Edit_Profile> {
                   ),
                   height: 1,
                   decoration: BoxDecoration(
-                    border: Border.all(color: kGrey200, width: 1),
+                    border: Border.all(color: kGrey300, width: 1),
                   ),
                 ),
 

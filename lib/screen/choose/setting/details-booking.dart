@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dash/flutter_dash.dart';
 import 'package:lywing/common/constants.dart';
+import 'package:lywing/screen/choose/setting/qr-code.dart';
 import 'package:lywing/sizes_helpers.dart';
 
 class Details_Booking extends StatefulWidget {
@@ -103,9 +104,18 @@ class _Details_BookingState extends State<Details_Booking> {
                         ),
                       ),
                       Container(
-                        child: Image(
-                          image: AssetImage('assets/icons/qrcode.png'),
-                          fit: BoxFit.cover,
+                        child: InkWell(
+                          child: Image(
+                            image: AssetImage('assets/icons/qrcode.png'),
+                            fit: BoxFit.cover,
+                          ),
+                          onTap: (){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Qr_Code()),
+                            );
+                          },
                         ),
                       ),
                     ],
@@ -116,7 +126,7 @@ class _Details_BookingState extends State<Details_Booking> {
                 Container(
                   height: 1,
                   decoration: BoxDecoration(
-                    border: Border.all(color: kGrey200, width: 1),
+                    border: Border.all(color: kGrey300, width: 1),
                   ),
                 ),
 
@@ -310,7 +320,7 @@ class _Details_BookingState extends State<Details_Booking> {
                           length: displaySize(context).width * 0.82,
                           dashThickness: 1,
                           dashGap: 1,
-                          dashColor: kGrey200,
+                          dashColor: kGrey300,
                         ),
                       ),
 
@@ -461,7 +471,7 @@ class _Details_BookingState extends State<Details_Booking> {
                           length: displaySize(context).width * 0.82,
                           dashThickness: 1,
                           dashGap: 1,
-                          dashColor: kGrey200,
+                          dashColor: kGrey300,
                         ),
                       ),
 
@@ -596,7 +606,7 @@ class _Details_BookingState extends State<Details_Booking> {
                 Container(
                   height: 1,
                   decoration: BoxDecoration(
-                    border: Border.all(color: kGrey200, width: 1),
+                    border: Border.all(color: kGrey300, width: 1),
                   ),
                 ),
 
@@ -694,7 +704,7 @@ class _Details_BookingState extends State<Details_Booking> {
                 Container(
                   height: 1,
                   decoration: BoxDecoration(
-                    border: Border.all(color: kGrey200, width: 1),
+                    border: Border.all(color: kGrey300, width: 1),
                   ),
                 ),
 
@@ -888,7 +898,7 @@ class _Details_BookingState extends State<Details_Booking> {
                           length: displaySize(context).width * 0.82,
                           dashThickness: 1,
                           dashGap: 1,
-                          dashColor: kGrey200,
+                          dashColor: kGrey300,
                         ),
                       ),
 
@@ -1039,7 +1049,7 @@ class _Details_BookingState extends State<Details_Booking> {
                           length: displaySize(context).width * 0.82,
                           dashThickness: 1,
                           dashGap: 1,
-                          dashColor: kGrey200,
+                          dashColor: kGrey300,
                         ),
                       ),
 
@@ -1174,7 +1184,7 @@ class _Details_BookingState extends State<Details_Booking> {
                 Container(
                   height: 1,
                   decoration: BoxDecoration(
-                    border: Border.all(color: kGrey200, width: 1),
+                    border: Border.all(color: kGrey300, width: 1),
                   ),
                 ),
 

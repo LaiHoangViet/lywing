@@ -96,7 +96,7 @@ class _Flight_DetailsState extends State<Flight_Details> {
                       color: kWhite,
                       boxShadow: [
                         BoxShadow(
-                          color: kGrey200,
+                          color: kGrey300,
                           // spreadRadius: 6,
                           blurRadius: 10,
                           offset: Offset(0, 1),
@@ -247,7 +247,7 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                   '1h50m',
                                   style: TextStyle(
                                     fontSize: 10,
-                                    color: kGrey200,
+                                    color: kGrey300,
                                   ),
                                 ),
                               ),
@@ -822,7 +822,7 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                     bottom: 5,
                                     left: 15,
                                   ),
-                                  color: kGrey200,
+                                  color: kGrey300,
                                   strokeWidth: 1,
                                   child: Row(
                                     children: <Widget>[
@@ -920,7 +920,7 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                   '2h30m',
                                   style: TextStyle(
                                     fontSize: 10,
-                                    color: kGrey200,
+                                    color: kGrey300,
                                   ),
                                 ),
                               ),
@@ -1517,7 +1517,7 @@ class _Flight_DetailsState extends State<Flight_Details> {
                       color: kWhite,
                       boxShadow: [
                         BoxShadow(
-                          color: kGrey200,
+                          color: kGrey300,
                           // spreadRadius: 6,
                           blurRadius: 10,
                           offset: Offset(0, 1),
@@ -1668,7 +1668,7 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                   '1h50m',
                                   style: TextStyle(
                                     fontSize: 10,
-                                    color: kGrey200,
+                                    color: kGrey300,
                                   ),
                                 ),
                               ),
@@ -2243,7 +2243,7 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                     bottom: 5,
                                     left: 15,
                                   ),
-                                  color: kGrey200,
+                                  color: kGrey300,
                                   strokeWidth: 1,
                                   child: Row(
                                     children: <Widget>[
@@ -2341,7 +2341,7 @@ class _Flight_DetailsState extends State<Flight_Details> {
                                   '2h30m',
                                   style: TextStyle(
                                     fontSize: 10,
-                                    color: kGrey200,
+                                    color: kGrey300,
                                   ),
                                 ),
                               ),
@@ -2904,7 +2904,7 @@ class _Flight_DetailsState extends State<Flight_Details> {
                 color: kWhite,
                 boxShadow: [
                   BoxShadow(
-                    color: kGrey200,
+                    color: kGrey300,
                     // spreadRadius: 6,
                     blurRadius: 10,
                     offset: Offset(0, 1),
@@ -2998,7 +2998,7 @@ class _Flight_DetailsState extends State<Flight_Details> {
                 color: kWhite,
                 boxShadow: [
                   BoxShadow(
-                    color: kGrey200,
+                    color: kGrey300,
                     // spreadRadius: 6,
                     blurRadius: 10,
                     offset: Offset(0, 1),

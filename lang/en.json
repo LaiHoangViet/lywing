@@ -144,6 +144,7 @@
 
 
   "Notifications": "Notifications",
+  "Profile": "Profile",
   "MyBooking": "My Booking",
   "Passengersinfo": "Passengers info",
   "MyCards": "My Cards",
@@ -177,6 +178,7 @@
   "Supportavailablein" : "Support available in English 24/7",
   "Othercountriesandregions" : "Other countries and regions",
 
+  "Home" : "Home",
   "Language" : "Language",
   "CountryorRegion" : "Country or Region",
   "Currency" : "Currency",
@@ -200,5 +202,13 @@
   "Allyoursavedflight" : "All your saved flight will show up here",
 
   "Noflightswerefound" : "No flights were found",
-  "Wehavenot" : "We have not found any flights that match your search."
+  "Wehavenot" : "We have not found any flights that match your search.",
+
+  "MyEmail": "My Email",
+  "LinkPhoneNumber": "Link Phone Number",
+  "LinkedAccounts": "Linked Accounts",
+  "DisplayName": "Display Name",
+  "ResetPassword": "Reset Password",
+  "DeleteMyAccount": "Delete My Account",
+  "SignOut": "Sign Out"
 }

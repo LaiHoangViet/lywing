@@ -239,7 +239,7 @@ class _Customer_SupportState extends State<Customer_Support> {
                     bottom: 20,
                   ),
                   child: Divider(
-                    color: kGrey200,
+                    color: kGrey300,
                     height: 1,
                   ),
                 ),
@@ -294,7 +294,7 @@ class _Customer_SupportState extends State<Customer_Support> {
                     bottom: 20,
                   ),
                   child: Divider(
-                    color: kGrey200,
+                    color: kGrey300,
                     height: 1,
                   ),
                 ),

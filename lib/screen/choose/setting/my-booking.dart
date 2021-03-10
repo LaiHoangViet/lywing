@@ -7,6 +7,7 @@ import 'package:lywing/common/app_localizations.dart';
 import 'package:lywing/common/constants/colors.dart';
 import 'package:lywing/screen/choose/flight-details.dart';
 import 'package:lywing/screen/choose/flight-details.dart';
+import 'package:lywing/screen/choose/setting/details-booking.dart';
 import 'package:lywing/sizes_helpers.dart';
 
 class My_Booking extends StatefulWidget {
@@ -67,7 +68,7 @@ class _My_BookingState extends State<My_Booking> {
                     onPressed: (){
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Flight_Details()),
+                        MaterialPageRoute(builder: (context) => Details_Booking()),
                       );
                     },
                     padding: const EdgeInsets.all(15),
@@ -106,7 +107,7 @@ class _My_BookingState extends State<My_Booking> {
                                       width: displaySize(context).width * 0.2,
                                       height: 1,
                                       decoration: BoxDecoration(
-                                        border: Border.all(color: kGrey200, width: 1),
+                                        border: Border.all(color: kGrey300, width: 1),
                                       ),
                                     ),
                                     Container(
@@ -123,7 +124,7 @@ class _My_BookingState extends State<My_Booking> {
                                       width: displaySize(context).width * 0.2,
                                       height: 1,
                                       decoration: BoxDecoration(
-                                        border: Border.all(color: kGrey200, width: 1),
+                                        border: Border.all(color: kGrey300, width: 1),
                                       ),
                                     ),
                                   ],
@@ -149,7 +150,7 @@ class _My_BookingState extends State<My_Booking> {
                                 child: Text(
                                   'Hanoi',
                                   style: TextStyle(
-                                    color: kGrey200,
+                                    color: kGrey300,
                                     fontSize: 11,
                                   ),
                                 ),
@@ -161,7 +162,7 @@ class _My_BookingState extends State<My_Booking> {
                                 child: Text(
                                   '1 ${AppLocalizations.of(context).translate('stop')}',
                                   style: TextStyle(
-                                    color: kGrey200,
+                                    color: kGrey300,
                                     fontSize: 11,
                                   ),
                                 ),
@@ -170,7 +171,7 @@ class _My_BookingState extends State<My_Booking> {
                                 child: Text(
                                   'Singapore',
                                   style: TextStyle(
-                                    color: kGrey200,
+                                    color: kGrey300,
                                     fontSize: 11,
                                   ),
                                 ),
@@ -216,7 +217,7 @@ class _My_BookingState extends State<My_Booking> {
                                 child: Text(
                                   '12h30m',
                                   style: TextStyle(
-                                    color: kGrey200,
+                                    color: kGrey300,
                                     fontSize: 11,
                                   ),
                                 ),
@@ -257,7 +258,7 @@ class _My_BookingState extends State<My_Booking> {
                             length: displaySize(context).width * 0.8,
                             dashThickness: 1,
                             dashGap:1,
-                            dashColor: kGrey200,
+                            dashColor: kGrey300,
                           ),
                         ),
                         Container(
@@ -292,7 +293,7 @@ class _My_BookingState extends State<My_Booking> {
                                         'Airbus 320',
                                         style: TextStyle(
                                           fontSize: 12,
-                                          color: kGrey200,
+                                          color: kGrey300,
                                         ),
                                       ),
                                     ),
@@ -318,7 +319,7 @@ class _My_BookingState extends State<My_Booking> {
                           ),
                           height: 1,
                           decoration: BoxDecoration(
-                            border: Border.all(color: kGrey200, width: 1),
+                            border: Border.all(color: kGrey300, width: 1),
                           ),
                         ),
                         Container(
@@ -341,7 +342,7 @@ class _My_BookingState extends State<My_Booking> {
                                       width: displaySize(context).width * 0.2,
                                       height: 1,
                                       decoration: BoxDecoration(
-                                        border: Border.all(color: kGrey200, width: 1),
+                                        border: Border.all(color: kGrey300, width: 1),
                                       ),
                                     ),
                                     Container(
@@ -358,7 +359,7 @@ class _My_BookingState extends State<My_Booking> {
                                       width: displaySize(context).width * 0.2,
                                       height: 1,
                                       decoration: BoxDecoration(
-                                        border: Border.all(color: kGrey200, width: 1),
+                                        border: Border.all(color: kGrey300, width: 1),
                                       ),
                                     ),
                                   ],
@@ -384,7 +385,7 @@ class _My_BookingState extends State<My_Booking> {
                                 child: Text(
                                   'Hanoi',
                                   style: TextStyle(
-                                    color: kGrey200,
+                                    color: kGrey300,
                                     fontSize: 11,
                                   ),
                                 ),
@@ -396,7 +397,7 @@ class _My_BookingState extends State<My_Booking> {
                                 child: Text(
                                   '1 ${AppLocalizations.of(context).translate('stop')}',
                                   style: TextStyle(
-                                    color: kGrey200,
+                                    color: kGrey300,
                                     fontSize: 11,
                                   ),
                                 ),
@@ -405,7 +406,7 @@ class _My_BookingState extends State<My_Booking> {
                                 child: Text(
                                   'Singapore',
                                   style: TextStyle(
-                                    color: kGrey200,
+                                    color: kGrey300,
                                     fontSize: 11,
                                   ),
                                 ),
@@ -451,7 +452,7 @@ class _My_BookingState extends State<My_Booking> {
                                 child: Text(
                                   '12h30m',
                                   style: TextStyle(
-                                    color: kGrey200,
+                                    color: kGrey300,
                                     fontSize: 11,
                                   ),
                                 ),
@@ -492,7 +493,7 @@ class _My_BookingState extends State<My_Booking> {
                             length: displaySize(context).width * 0.8,
                             dashThickness: 1,
                             dashGap:1,
-                            dashColor: kGrey200,
+                            dashColor: kGrey300,
                           ),
                         ),
                         Container(
@@ -527,7 +528,7 @@ class _My_BookingState extends State<My_Booking> {
                                         'Airbus 320',
                                         style: TextStyle(
                                           fontSize: 12,
-                                          color: kGrey200,
+                                          color: kGrey300,
                                         ),
                                       ),
                                     ),
@@ -553,7 +554,7 @@ class _My_BookingState extends State<My_Booking> {
                           ),
                           height: 1,
                           decoration: BoxDecoration(
-                            border: Border.all(color: kGrey200, width: 1),
+                            border: Border.all(color: kGrey300, width: 1),
                           ),
                         ),
                         Container(

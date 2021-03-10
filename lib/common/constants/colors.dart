@@ -9,7 +9,8 @@ const kBlue = Color(0xFF0078FF);
 const kGrey600 = Color(0xFF8A8A8E);
 const kGrey500 = Color(0xFF9F9FA7);
 const kGrey400 = Color(0xFFBABAC2);
-const kGrey200 = Color(0xFFD6D6DE);
+const kGrey300 = Color(0xFFD6D6DE);
+const kGrey200 = Color(0xFFEBEDF0);
 const kGrey100 = Color(0xFFF0F2F5);
 
 //Color for variation of product

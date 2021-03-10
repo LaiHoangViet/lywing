@@ -131,7 +131,7 @@ class _AnyState extends State<Any> {
                               child: Text(
                                 '(309 of 412 flights)',
                                 style: TextStyle(
-                                  color: kGrey200,
+                                  color: kGrey300,
                                   fontSize: 12,
                                   fontWeight: FontWeight.normal,
                                 ),

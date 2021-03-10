@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'dart:ui';
 import 'package:buttons_tabbar/buttons_tabbar.dart';
+import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -38,6 +39,9 @@ class _Flight_ResultsState extends State<Flight_Results>
 
   List ticket = ["12", "12", "12", "12"];
 
+  DateTime _selectedValue = DateTime.now();
+  DatePickerController _controller = DatePickerController();
+
   @override
   void initState() {
     super.initState();
@@ -66,8 +70,9 @@ class _Flight_ResultsState extends State<Flight_Results>
             ? _arrowAnimationController.reverse()
             : _arrowAnimationController.forward();
         setState(() {
-          swap = FileSystemManager.instance.typeAheadController ;
-          FileSystemManager.instance.typeAheadController = FileSystemManager.instance.typeAheadController1;
+          swap = FileSystemManager.instance.typeAheadController;
+          FileSystemManager.instance.typeAheadController =
+              FileSystemManager.instance.typeAheadController1;
           FileSystemManager.instance.typeAheadController1 = swap;
         });
       },
@@ -142,7 +147,7 @@ class _Flight_ResultsState extends State<Flight_Results>
                         color: kWhite,
                         boxShadow: [
                           BoxShadow(
-                            color: kGrey200,
+                            color: kGrey300,
                             // spreadRadius: 6,
                             blurRadius: 15,
                             offset: Offset(0, 5),
@@ -265,46 +270,46 @@ class _Flight_ResultsState extends State<Flight_Results>
                               ),
                               child: Container(
                                 alignment: Alignment.center,
-                                child:
-                                    FileSystemManager.instance.firstDate == null
-                                        ? Text(
-                                            'Chosse date time',
-                                            style: TextStyle(
-                                              fontSize: 15,
-                                              color: kGrey500,
+                                child: FileSystemManager.instance.firstDate ==
+                                        null
+                                    ? Text(
+                                        'Chosse date time',
+                                        style: TextStyle(
+                                          fontSize: 15,
+                                          color: kGrey500,
+                                        ),
+                                      )
+                                    : Container(
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              FileSystemManager
+                                                  .instance.firstDate,
+                                              style: TextStyle(
+                                                fontSize: 15,
+                                                color: kGrey500,
+                                              ),
                                             ),
-                                          )
-                                        : Container(
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceBetween,
-                                              children: [
-                                                Text(
-                                                  FileSystemManager
-                                                      .instance.firstDate,
-                                                  style: TextStyle(
-                                                    fontSize: 15,
-                                                    color: kGrey500,
-                                                  ),
-                                                ),
-                                                Text(
-                                                  "-",
-                                                  style: TextStyle(
-                                                    fontSize: 15,
-                                                    color: kGrey500,
-                                                  ),
-                                                ),
-                                                Text(
-                                                  FileSystemManager
-                                                      .instance.secondDate,
-                                                  style: TextStyle(
-                                                    fontSize: 15,
-                                                    color: kGrey500,
-                                                  ),
-                                                )
-                                              ],
+                                            Text(
+                                              "-",
+                                              style: TextStyle(
+                                                fontSize: 15,
+                                                color: kGrey500,
+                                              ),
                                             ),
-                                          ),
+                                            Text(
+                                              FileSystemManager
+                                                  .instance.secondDate,
+                                              style: TextStyle(
+                                                fontSize: 15,
+                                                color: kGrey500,
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ),
                               ),
                             ),
                           ),
@@ -486,10 +491,10 @@ class _Flight_ResultsState extends State<Flight_Results>
                         children: [
                           for (var index in ticket)
                             Container(
-                              margin: const EdgeInsets.only(
-                                bottom: 20,
+                              margin: EdgeInsets.only(
+                                bottom: displaySize(context).height * 0.03,
                               ),
-                              padding: const EdgeInsets.all(5),
+                              padding: EdgeInsets.all(3),
                               decoration: BoxDecoration(
                                 boxShadow: [
                                   BoxShadow(
@@ -548,7 +553,7 @@ class _Flight_ResultsState extends State<Flight_Results>
                                             height:
                                                 displaySize(context).height *
                                                     0.1,
-                                            margin: const EdgeInsets.only(
+                                            margin: EdgeInsets.only(
                                               left: 10,
                                             ),
                                             child: Column(
@@ -602,7 +607,7 @@ class _Flight_ResultsState extends State<Flight_Results>
                                                     'SIN -HAN, Vietjet Ari',
                                                     style: TextStyle(
                                                       fontSize: 12,
-                                                      color: kGrey200,
+                                                      color: kGrey300,
                                                     ),
                                                   ),
                                                 ),
@@ -640,7 +645,7 @@ class _Flight_ResultsState extends State<Flight_Results>
                                                     '3h 20m',
                                                     style: TextStyle(
                                                       fontSize: 12,
-                                                      color: kGrey200,
+                                                      color: kGrey300,
                                                     ),
                                                   ),
                                                 ),
@@ -734,7 +739,7 @@ class _Flight_ResultsState extends State<Flight_Results>
                                                     'HAN -SIN, Vietjet Ari',
                                                     style: TextStyle(
                                                       fontSize: 12,
-                                                      color: kGrey200,
+                                                      color: kGrey300,
                                                     ),
                                                   ),
                                                 ),
@@ -772,7 +777,7 @@ class _Flight_ResultsState extends State<Flight_Results>
                                                     '3h 20m',
                                                     style: TextStyle(
                                                       fontSize: 12,
-                                                      color: kGrey200,
+                                                      color: kGrey300,
                                                     ),
                                                   ),
                                                 ),
@@ -803,7 +808,7 @@ class _Flight_ResultsState extends State<Flight_Results>
                                               '$index nights ${AppLocalizations.of(context).translate('in')} Singapore',
                                               style: TextStyle(
                                                 fontSize: 12,
-                                                color: kGrey200,
+                                                color: kGrey300,
                                               ),
                                             ),
                                           ),
@@ -830,6 +835,36 @@ class _Flight_ResultsState extends State<Flight_Results>
                 ),
               ),
             ],
+          ),
+          bottomSheet: BottomAppBar(
+            child: Container(
+              // height: 90,
+              child: DatePicker(
+                DateTime.now(),
+                controller: _controller,
+                initialSelectedDate: DateTime.now(),
+                selectionColor: kGrey100,
+                monthTextStyle: TextStyle(
+                  color: kGrey500,
+                  fontSize: 12,
+                ),
+                dateTextStyle: TextStyle(
+                  color: kBlack,
+                  fontSize: 17,
+                  fontWeight: FontWeight.bold,
+                ),
+                dayTextStyle: TextStyle(
+                  color: kGrey600,
+                  fontSize: 12,
+                ),
+                onDateChange: (date) {
+                  // New date selected
+                  // setState(() {
+                  //   _selectedValue = date;
+                  // });
+                },
+              ),
+            ),
           ),
         ),
       ),

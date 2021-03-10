@@ -237,7 +237,7 @@ class _NotificationsState extends State<Notifications> {
               borderRadius: BorderRadius.circular(10),
               border: Border.all(
                 width: 1,
-                color: kGrey200,
+                color: kGrey300,
               ),
             ),
             child: Column(
@@ -313,7 +313,7 @@ class _NotificationsState extends State<Notifications> {
               borderRadius: BorderRadius.circular(10),
               border: Border.all(
                 width: 1,
-                color: kGrey200,
+                color: kGrey300,
               ),
             ),
             child: Column(

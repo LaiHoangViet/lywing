@@ -107,7 +107,7 @@ class _PaymentState extends State<Payment> {
                                   width: displaySize(context).width * 0.2,
                                   height: 1,
                                   decoration: BoxDecoration(
-                                    border: Border.all(color: kGrey200, width: 1),
+                                    border: Border.all(color: kGrey300, width: 1),
                                   ),
                                 ),
                                 Container(
@@ -124,7 +124,7 @@ class _PaymentState extends State<Payment> {
                                   width: displaySize(context).width * 0.2,
                                   height: 1,
                                   decoration: BoxDecoration(
-                                    border: Border.all(color: kGrey200, width: 1),
+                                    border: Border.all(color: kGrey300, width: 1),
                                   ),
                                 ),
                               ],
@@ -150,7 +150,7 @@ class _PaymentState extends State<Payment> {
                             child: Text(
                               'Hanoi',
                               style: TextStyle(
-                                color: kGrey200,
+                                color: kGrey300,
                                 fontSize: 11,
                               ),
                             ),
@@ -162,7 +162,7 @@ class _PaymentState extends State<Payment> {
                             child: Text(
                               '1 ${AppLocalizations.of(context).translate('stop')}',
                               style: TextStyle(
-                                color: kGrey200,
+                                color: kGrey300,
                                 fontSize: 11,
                               ),
                             ),
@@ -171,7 +171,7 @@ class _PaymentState extends State<Payment> {
                             child: Text(
                               'Singapore',
                               style: TextStyle(
-                                color: kGrey200,
+                                color: kGrey300,
                                 fontSize: 11,
                               ),
                             ),
@@ -217,7 +217,7 @@ class _PaymentState extends State<Payment> {
                             child: Text(
                               '12h30m',
                               style: TextStyle(
-                                color: kGrey200,
+                                color: kGrey300,
                                 fontSize: 11,
                               ),
                             ),
@@ -258,7 +258,7 @@ class _PaymentState extends State<Payment> {
                         length: displaySize(context).width * 0.8,
                         dashThickness: 1,
                         dashGap: 1,
-                        dashColor: kGrey200,
+                        dashColor: kGrey300,
                       ),
                     ),
                     Container(
@@ -293,7 +293,7 @@ class _PaymentState extends State<Payment> {
                                     'Airbus 320',
                                     style: TextStyle(
                                       fontSize: 12,
-                                      color: kGrey200,
+                                      color: kGrey300,
                                     ),
                                   ),
                                 ),
@@ -319,7 +319,7 @@ class _PaymentState extends State<Payment> {
                       ),
                       height: 1,
                       decoration: BoxDecoration(
-                        border: Border.all(color: kGrey200, width: 1),
+                        border: Border.all(color: kGrey300, width: 1),
                       ),
                     ),
                     Container(
@@ -342,7 +342,7 @@ class _PaymentState extends State<Payment> {
                                   width: displaySize(context).width * 0.2,
                                   height: 1,
                                   decoration: BoxDecoration(
-                                    border: Border.all(color: kGrey200, width: 1),
+                                    border: Border.all(color: kGrey300, width: 1),
                                   ),
                                 ),
                                 Container(
@@ -359,7 +359,7 @@ class _PaymentState extends State<Payment> {
                                   width: displaySize(context).width * 0.2,
                                   height: 1,
                                   decoration: BoxDecoration(
-                                    border: Border.all(color: kGrey200, width: 1),
+                                    border: Border.all(color: kGrey300, width: 1),
                                   ),
                                 ),
                               ],
@@ -385,7 +385,7 @@ class _PaymentState extends State<Payment> {
                             child: Text(
                               'Hanoi',
                               style: TextStyle(
-                                color: kGrey200,
+                                color: kGrey300,
                                 fontSize: 11,
                               ),
                             ),
@@ -397,7 +397,7 @@ class _PaymentState extends State<Payment> {
                             child: Text(
                               '1 ${AppLocalizations.of(context).translate('stop')}',
                               style: TextStyle(
-                                color: kGrey200,
+                                color: kGrey300,
                                 fontSize: 11,
                               ),
                             ),
@@ -406,7 +406,7 @@ class _PaymentState extends State<Payment> {
                             child: Text(
                               'Singapore',
                               style: TextStyle(
-                                color: kGrey200,
+                                color: kGrey300,
                                 fontSize: 11,
                               ),
                             ),
@@ -452,7 +452,7 @@ class _PaymentState extends State<Payment> {
                             child: Text(
                               '12h30m',
                               style: TextStyle(
-                                color: kGrey200,
+                                color: kGrey300,
                                 fontSize: 11,
                               ),
                             ),
@@ -493,7 +493,7 @@ class _PaymentState extends State<Payment> {
                         length: displaySize(context).width * 0.8,
                         dashThickness: 1,
                         dashGap: 1,
-                        dashColor: kGrey200,
+                        dashColor: kGrey300,
                       ),
                     ),
                     Container(
@@ -528,7 +528,7 @@ class _PaymentState extends State<Payment> {
                                     'Airbus 320',
                                     style: TextStyle(
                                       fontSize: 12,
-                                      color: kGrey200,
+                                      color: kGrey300,
                                     ),
                                   ),
                                 ),
@@ -824,7 +824,7 @@ class _PaymentState extends State<Payment> {
                     ),
                     height: 1,
                     decoration: BoxDecoration(
-                      border: Border.all(color: kGrey200, width: 1),
+                      border: Border.all(color: kGrey300, width: 1),
                     ),
                   ),
                   Container(
@@ -888,7 +888,7 @@ class _PaymentState extends State<Payment> {
                     ),
                     height: 1,
                     decoration: BoxDecoration(
-                      border: Border.all(color: kGrey200, width: 1),
+                      border: Border.all(color: kGrey300, width: 1),
                     ),
                   ),
                   //Card Holder
@@ -1065,11 +1065,11 @@ class _PaymentState extends State<Payment> {
               padding: const EdgeInsets.all(15),
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                color: kGrey200,
+                color: kGrey300,
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(
                   width: 0,
-                  color: kGrey200,
+                  color: kGrey300,
                 ),
               ),
               child: Row(

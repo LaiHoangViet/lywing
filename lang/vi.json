@@ -144,6 +144,7 @@
 
 
   "Notifications": "Thông báo",
+  "Profile": "Hồ sơ",
   "MyBooking": "Đặt chỗ của tôi",
   "Passengersinfo": "Thông tin hành khách",
   "MyCards": "Thẻ của tôi",
@@ -177,6 +178,7 @@
   "Supportavailablein" : "Hỗ trợ bằng tiếng Anh 24/7",
   "Othercountriesandregions" : "Các quốc gia và khu vực khác",
 
+  "Home" : "Trang chủ",
   "Language" : "Ngôn ngữ",
   "CountryorRegion" : "Quốc gia hoặc Khu vực",
   "Currency" : "Tiền tệ",
@@ -200,5 +202,13 @@
   "Allyoursavedflight" : "Tất cả chuyến bay đã lưu của bạn sẽ hiển thị ở đây",
 
   "Noflightswerefound" : "Không tìm thấy chuyến bay nào",
-  "Wehavenot" : "Chúng tôi không tìm thấy chuyến bay nào phù hợp với tìm kiếm của bạn."
+  "Wehavenot" : "Chúng tôi không tìm thấy chuyến bay nào phù hợp với tìm kiếm của bạn.",
+
+  "MyEmail": "Email của tôi",
+  "LinkPhoneNumber": "Liên kết số điện thoại",
+  "LinkedAccounts": "Tài khoản được Liên kết",
+  "DisplayName": "Tên hiển thị",
+  "ResetPassword": "Đặt lại mật khẩu",
+  "DeleteMyAccount": "Xóa tài khoản",
+  "SignOut": "Đăng xuất"
 }

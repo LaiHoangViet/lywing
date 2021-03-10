@@ -313,7 +313,7 @@ class _ConfirmState extends State<Confirm> {
                   Container(
                     height: 1,
                     decoration: BoxDecoration(
-                      border: Border.all(color: kGrey200, width: 1),
+                      border: Border.all(color: kGrey300, width: 1),
                     ),
                   ),
                   Container(
@@ -438,7 +438,7 @@ class _ConfirmState extends State<Confirm> {
                         Container(
                           height: 1,
                           decoration: BoxDecoration(
-                            border: Border.all(color: kGrey200, width: 1),
+                            border: Border.all(color: kGrey300, width: 1),
                           ),
                         ),
 
@@ -633,7 +633,7 @@ class _ConfirmState extends State<Confirm> {
                                   length: displaySize(context).width * 0.82,
                                   dashThickness: 1,
                                   dashGap: 1,
-                                  dashColor: kGrey200,
+                                  dashColor: kGrey300,
                                 ),
                               ),
 
@@ -784,7 +784,7 @@ class _ConfirmState extends State<Confirm> {
                                   length: displaySize(context).width * 0.82,
                                   dashThickness: 1,
                                   dashGap: 1,
-                                  dashColor: kGrey200,
+                                  dashColor: kGrey300,
                                 ),
                               ),
 
@@ -919,7 +919,7 @@ class _ConfirmState extends State<Confirm> {
                         Container(
                           height: 1,
                           decoration: BoxDecoration(
-                            border: Border.all(color: kGrey200, width: 1),
+                            border: Border.all(color: kGrey300, width: 1),
                           ),
                         ),
 

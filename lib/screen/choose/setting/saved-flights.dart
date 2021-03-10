@@ -172,6 +172,7 @@ class _Saved_FlightsState extends State<Saved_Flights> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
+                      //logo
                       Container(
                         child: Image(
                             image: AssetImage('assets/images/VJ-1.png'),
@@ -179,9 +180,11 @@ class _Saved_FlightsState extends State<Saved_Flights> {
                             height: displaySize(context).height * 0.05,
                             fit: BoxFit.fill),
                       ),
+
                       Container(
-                        height: displaySize(context).height * 0.1,
-                        margin: const EdgeInsets.only(
+                        width: displaySize(context).width * 0.35,
+                        // height: displaySize(context).height * 0.06,
+                        margin: EdgeInsets.only(
                           left: 10,
                         ),
                         child: Column(
@@ -192,8 +195,8 @@ class _Saved_FlightsState extends State<Saved_Flights> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
+                                  //flight time
                                   Container(
-                                    width: displaySize(context).width * 0.15,
                                     child: Text(
                                       '9:35',
                                       style: TextStyle(
@@ -202,11 +205,8 @@ class _Saved_FlightsState extends State<Saved_Flights> {
                                       ),
                                     ),
                                   ),
+
                                   Container(
-                                    margin: const EdgeInsets.only(
-                                      left: 10,
-                                      right: 20,
-                                    ),
                                     child: Transform.rotate(
                                       angle: pi / 2,
                                       child: Icon(
@@ -215,6 +215,8 @@ class _Saved_FlightsState extends State<Saved_Flights> {
                                       ),
                                     ),
                                   ),
+
+                                  //landing time
                                   Container(
                                     child: Text(
                                       '13:35',
@@ -227,21 +229,25 @@ class _Saved_FlightsState extends State<Saved_Flights> {
                                 ],
                               ),
                             ),
+
+                            //airline
                             Container(
                               child: Text(
                                 'SIN -HAN, Vietjet Ari',
                                 style: TextStyle(
                                   fontSize: 12,
-                                  color: kGrey200,
+                                  color: kGrey300,
                                 ),
                               ),
                             ),
                           ],
                         ),
                       ),
+
+                      //direct flight, 3h 20m
                       Container(
                         width: displaySize(context).width * 0.3,
-                        height: displaySize(context).height * 0.1,
+                        // height: displaySize(context).height * 0.1,
                         padding: const EdgeInsets.only(
                           top: 6,
                         ),
@@ -263,7 +269,7 @@ class _Saved_FlightsState extends State<Saved_Flights> {
                                 '3h 20m',
                                 style: TextStyle(
                                   fontSize: 12,
-                                  color: kGrey200,
+                                  color: kGrey300,
                                 ),
                               ),
                             ),
@@ -274,11 +280,15 @@ class _Saved_FlightsState extends State<Saved_Flights> {
                   ),
                 ),
                 Container(
-                  height: displaySize(context).height * 0.06,
+                  margin: EdgeInsets.only(
+                    top: displaySize(context).height * 0.02,
+                    bottom: displaySize(context).height * 0.02,
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
+                      //logo
                       Container(
                         child: Image(
                             image: AssetImage('assets/images/VJ-1.png'),
@@ -286,10 +296,11 @@ class _Saved_FlightsState extends State<Saved_Flights> {
                             height: displaySize(context).height * 0.05,
                             fit: BoxFit.fill),
                       ),
+
                       Container(
-                        // width: displaySize(context).width * 0.35,
-                        height: displaySize(context).height * 0.1,
-                        margin: const EdgeInsets.only(
+                        width: displaySize(context).width * 0.35,
+                        // height: displaySize(context).height * 0.06,
+                        margin: EdgeInsets.only(
                           left: 10,
                         ),
                         child: Column(
@@ -300,8 +311,8 @@ class _Saved_FlightsState extends State<Saved_Flights> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
+                                  //flight time
                                   Container(
-                                    width: displaySize(context).width * 0.15,
                                     child: Text(
                                       '14:55',
                                       style: TextStyle(
@@ -310,11 +321,8 @@ class _Saved_FlightsState extends State<Saved_Flights> {
                                       ),
                                     ),
                                   ),
+
                                   Container(
-                                    margin: const EdgeInsets.only(
-                                      left: 10,
-                                      right: 20,
-                                    ),
                                     child: Transform.rotate(
                                       angle: pi / 2,
                                       child: Icon(
@@ -323,6 +331,8 @@ class _Saved_FlightsState extends State<Saved_Flights> {
                                       ),
                                     ),
                                   ),
+
+                                  //landing time
                                   Container(
                                     child: Text(
                                       '17:20',
@@ -335,24 +345,26 @@ class _Saved_FlightsState extends State<Saved_Flights> {
                                 ],
                               ),
                             ),
+
+                            //airline
                             Container(
                               child: Text(
-                                'HAN -SIN, Vietjet Ari',
+                                'SIN -HAN, Vietjet Ari',
                                 style: TextStyle(
                                   fontSize: 12,
-                                  color: kGrey200,
+                                  color: kGrey300,
                                 ),
                               ),
                             ),
                           ],
                         ),
                       ),
+
+                      //direct flight, 3h 20m
                       Container(
                         width: displaySize(context).width * 0.3,
-                        height: displaySize(context).height * 0.1,
-                        padding: const EdgeInsets.only(
-                          top: 6,
-                        ),
+                        // height: displaySize(context).height * 0.05,
+                        padding: const EdgeInsets.only(top: 6),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: <Widget>[
@@ -371,7 +383,7 @@ class _Saved_FlightsState extends State<Saved_Flights> {
                                 '3h 20m',
                                 style: TextStyle(
                                   fontSize: 12,
-                                  color: kGrey200,
+                                  color: kGrey300,
                                 ),
                               ),
                             ),
@@ -382,7 +394,10 @@ class _Saved_FlightsState extends State<Saved_Flights> {
                   ),
                 ),
                 Container(
-                  height: displaySize(context).height * 0.05,
+                  // height: displaySize(context).height * 0.03,
+                  margin: EdgeInsets.only(
+                    bottom: displaySize(context).height * 0.02,
+                  ),
                   child: Image(
                     image: AssetImage('assets/icons/Line-3.png'),
                   ),
@@ -396,7 +411,7 @@ class _Saved_FlightsState extends State<Saved_Flights> {
                           '12 nights ${AppLocalizations.of(context).translate('in')} Singapore',
                           style: TextStyle(
                             fontSize: 12,
-                            color: kGrey200,
+                            color: kGrey300,
                           ),
                         ),
                       ),

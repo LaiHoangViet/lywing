@@ -112,7 +112,7 @@ class _Flight_Result_EmptyState extends State<Flight_Result_Empty>
                 color: kWhite,
                 boxShadow: [
                   BoxShadow(
-                    color: kGrey200,
+                    color: kGrey300,
                     // spreadRadius: 6,
                     blurRadius: 15,
                     offset: Offset(0, 5),

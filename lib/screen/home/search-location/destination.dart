@@ -54,12 +54,23 @@ class _DestinationState extends State<Destination> {
             ),
             Container(
               decoration: BoxDecoration(
-                color: kGrey200,
+                color: kGrey100,
                 borderRadius: BorderRadius.circular(10),
+              ),
+              padding: EdgeInsets.only(
+                left: displaySize(context).width * 0.02,
+                right: displaySize(context).width * 0.02,
               ),
               child: TypeAheadFormField(
                 textFieldConfiguration: TextFieldConfiguration(
-                  decoration: InputDecoration(labelText: "City"),
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    errorBorder: InputBorder.none,
+                    disabledBorder: InputBorder.none,
+                    hintText: "City",
+                  ),
                   // 2 controller khac nhau
                   controller: this._typeAheadController1,
                 ),

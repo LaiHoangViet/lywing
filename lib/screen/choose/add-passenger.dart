@@ -111,7 +111,7 @@ class _Add_PassengerState extends State<Add_Passenger> {
                         ),
                         height: 1,
                         decoration: BoxDecoration(
-                          border: Border.all(color: kGrey200, width: 1),
+                          border: Border.all(color: kGrey300, width: 1),
                         ),
                       ),
 
@@ -973,7 +973,7 @@ class _Add_PassengerState extends State<Add_Passenger> {
                       ),
                       height: 1,
                       decoration: BoxDecoration(
-                        border: Border.all(color: kGrey200, width: 1),
+                        border: Border.all(color: kGrey300, width: 1),
                       ),
                     ),
                     Container(

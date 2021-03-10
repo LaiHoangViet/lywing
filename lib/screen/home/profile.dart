@@ -3,14 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:lywing/common/app_localizations.dart';
 import 'package:lywing/common/constants.dart';
-import 'package:lywing/screen/choose/choose-profile/customer-support.dart';
-import 'package:lywing/screen/choose/choose-profile/edit-profile.dart';
-import 'package:lywing/screen/choose/choose-profile/my-booking.dart';
-import 'package:lywing/screen/choose/choose-profile/my-cards.dart';
-import 'package:lywing/screen/choose/choose-profile/notifications.dart';
-import 'package:lywing/screen/choose/choose-profile/saved-flights.dart';
-import 'package:lywing/screen/choose/choose-profile/settings.dart';
+
 import 'package:lywing/screen/choose/passengers.dart';
+import 'package:lywing/screen/choose/setting/customer-support.dart';
+import 'package:lywing/screen/choose/setting/edit-profile.dart';
+import 'package:lywing/screen/choose/setting/my-booking.dart';
+import 'package:lywing/screen/choose/setting/my-cards.dart';
+import 'package:lywing/screen/choose/setting/notifications.dart';
+import 'package:lywing/screen/choose/setting/profile-setting.dart';
+import 'package:lywing/screen/choose/setting/saved-flights.dart';
+import 'package:lywing/screen/choose/setting/settings.dart';
+import 'package:lywing/screen/choose/setting/terms-conditions.dart';
 import 'package:lywing/sizes_helpers.dart';
 
 class Profile extends StatefulWidget {
@@ -28,10 +31,10 @@ class _ProfileState extends State<Profile> {
             Container(
               color: kWhite,
               padding: EdgeInsets.only(
-                top: 30,
-                bottom: 10,
-                left: 10,
-                right: 10,
+                top: displaySize(context).height * 0.04,
+                bottom: displaySize(context).height * 0.01,
+                left: displaySize(context).width * 0.02,
+                right: displaySize(context).width * 0.02,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -133,6 +136,56 @@ class _ProfileState extends State<Profile> {
                         Expanded(
                           flex: 1,
                           child: Icon(
+                            MaterialIcons.account_circle,
+                            color: kGrey400,
+                          ),
+                        ),
+                        Expanded(
+                          flex: 5,
+                          child: Column(
+                            children: <Widget>[
+                              ListTile(
+                                title: Transform(
+                                  transform:
+                                      Matrix4.translationValues(-15, 0.0, 0.0),
+                                  child: Text(
+                                    AppLocalizations.of(context)
+                                        .translate('Profile'),
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      color: kBlack,
+                                    ),
+                                  ),
+                                ),
+                                trailing: Icon(
+                                  Icons.navigate_next,
+                                  color: kGrey400,
+                                ),
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            Profile_Setting()),
+                                  );
+                                },
+                              ),
+                              // Divider(
+                              //   color: kGrey300,
+                              //   height: 1,
+                              // ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    child: Row(
+                      children: <Widget>[
+                        Expanded(
+                          flex: 1,
+                          child: Icon(
                             MaterialIcons.notifications,
                             color: kGrey400,
                           ),
@@ -146,7 +199,8 @@ class _ProfileState extends State<Profile> {
                                   transform:
                                       Matrix4.translationValues(-15, 0.0, 0.0),
                                   child: Text(
-                                    AppLocalizations.of(context).translate('Notifications'),
+                                    AppLocalizations.of(context)
+                                        .translate('Notifications'),
                                     style: TextStyle(
                                       fontSize: 15,
                                       color: kBlack,
@@ -165,10 +219,10 @@ class _ProfileState extends State<Profile> {
                                   );
                                 },
                               ),
-                              Divider(
-                                color: kGrey200,
-                                height: 1,
-                              ),
+                              // Divider(
+                              //   color: kGrey300,
+                              //   height: 1,
+                              // ),
                             ],
                           ),
                         ),
@@ -194,7 +248,8 @@ class _ProfileState extends State<Profile> {
                                   transform:
                                       Matrix4.translationValues(-15, 0.0, 0.0),
                                   child: Text(
-                                    AppLocalizations.of(context).translate('MyBooking'),
+                                    AppLocalizations.of(context)
+                                        .translate('MyBooking'),
                                     style: TextStyle(
                                       fontSize: 15,
                                       color: kBlack,
@@ -214,7 +269,7 @@ class _ProfileState extends State<Profile> {
                                 },
                               ),
                               // Divider(
-                              //   color: kGrey200,
+                              //   color: kGrey300,
                               //   height: 1,
                               // ),
                             ],
@@ -242,7 +297,8 @@ class _ProfileState extends State<Profile> {
                                   transform:
                                       Matrix4.translationValues(-15, 0.0, 0.0),
                                   child: Text(
-                                    AppLocalizations.of(context).translate('Passengersinfo'),
+                                    AppLocalizations.of(context)
+                                        .translate('Passengersinfo'),
                                     style: TextStyle(
                                       fontSize: 15,
                                       color: kBlack,
@@ -261,10 +317,10 @@ class _ProfileState extends State<Profile> {
                                   );
                                 },
                               ),
-                              Divider(
-                                color: kGrey200,
-                                height: 1,
-                              ),
+                              // Divider(
+                              //   color: kGrey300,
+                              //   height: 1,
+                              // ),
                             ],
                           ),
                         ),
@@ -290,7 +346,8 @@ class _ProfileState extends State<Profile> {
                                   transform:
                                       Matrix4.translationValues(-15, 0.0, 0.0),
                                   child: Text(
-                                    AppLocalizations.of(context).translate('MyCards'),
+                                    AppLocalizations.of(context)
+                                        .translate('MyCards'),
                                     style: TextStyle(
                                       fontSize: 15,
                                       color: kBlack,
@@ -310,7 +367,7 @@ class _ProfileState extends State<Profile> {
                                 },
                               ),
                               // Divider(
-                              //   color: kGrey200,
+                              //   color: kGrey300,
                               //   height: 1,
                               // ),
                             ],
@@ -338,7 +395,8 @@ class _ProfileState extends State<Profile> {
                                   transform:
                                       Matrix4.translationValues(-15, 0.0, 0.0),
                                   child: Text(
-                                    AppLocalizations.of(context).translate('Savedflights'),
+                                    AppLocalizations.of(context)
+                                        .translate('Savedflights'),
                                     style: TextStyle(
                                       fontSize: 15,
                                       color: kBlack,
@@ -406,7 +464,8 @@ class _ProfileState extends State<Profile> {
                                   transform:
                                       Matrix4.translationValues(-15, 0.0, 0.0),
                                   child: Text(
-                                    AppLocalizations.of(context).translate('CustomerSupport'),
+                                    AppLocalizations.of(context)
+                                        .translate('CustomerSupport'),
                                     style: TextStyle(
                                       fontSize: 15,
                                       color: kBlack,
@@ -420,13 +479,11 @@ class _ProfileState extends State<Profile> {
                                 onTap: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => Customer_Support()),
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            Customer_Support()),
                                   );
                                 },
-                              ),
-                              Divider(
-                                color: kGrey200,
-                                height: 1,
                               ),
                             ],
                           ),
@@ -453,7 +510,8 @@ class _ProfileState extends State<Profile> {
                                   transform:
                                       Matrix4.translationValues(-15, 0.0, 0.0),
                                   child: Text(
-                                    AppLocalizations.of(context).translate('Followus'),
+                                    AppLocalizations.of(context)
+                                        .translate('Followus'),
                                     style: TextStyle(
                                       fontSize: 15,
                                       color: kBlack,
@@ -472,7 +530,7 @@ class _ProfileState extends State<Profile> {
                                 },
                               ),
                               // Divider(
-                              //   color: kGrey200,
+                              //   color: kGrey300,
                               //   height: 1,
                               // ),
                             ],
@@ -500,7 +558,8 @@ class _ProfileState extends State<Profile> {
                                   transform:
                                       Matrix4.translationValues(-15, 0.0, 0.0),
                                   child: Text(
-                                    AppLocalizations.of(context).translate('TermsConditions'),
+                                    AppLocalizations.of(context)
+                                        .translate('TermsConditions'),
                                     style: TextStyle(
                                       fontSize: 15,
                                       color: kBlack,
@@ -512,16 +571,18 @@ class _ProfileState extends State<Profile> {
                                   color: kGrey400,
                                 ),
                                 onTap: () {
-                                  // Navigator.push(
-                                  //   context,
-                                  //   MaterialPageRoute(builder: (context) => Customer_Support()),
-                                  // );
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            Terms_Conditions()),
+                                  );
                                 },
                               ),
-                              Divider(
-                                color: kGrey200,
-                                height: 1,
-                              ),
+                              // Divider(
+                              //   color: kGrey300,
+                              //   height: 1,
+                              // ),
                             ],
                           ),
                         ),
@@ -547,7 +608,8 @@ class _ProfileState extends State<Profile> {
                                   transform:
                                       Matrix4.translationValues(-15, 0.0, 0.0),
                                   child: Text(
-                                    AppLocalizations.of(context).translate('Guarantee'),
+                                    AppLocalizations.of(context)
+                                        .translate('Guarantee'),
                                     style: TextStyle(
                                       fontSize: 15,
                                       color: kBlack,
@@ -566,7 +628,7 @@ class _ProfileState extends State<Profile> {
                                 },
                               ),
                               // Divider(
-                              //   color: kGrey200,
+                              //   color: kGrey300,
                               //   height: 1,
                               // ),
                             ],
@@ -594,7 +656,8 @@ class _ProfileState extends State<Profile> {
                                   transform:
                                       Matrix4.translationValues(-15, 0.0, 0.0),
                                   child: Text(
-                                    AppLocalizations.of(context).translate('Settings'),
+                                    AppLocalizations.of(context)
+                                        .translate('Settings'),
                                     style: TextStyle(
                                       fontSize: 15,
                                       color: kBlack,
@@ -608,7 +671,8 @@ class _ProfileState extends State<Profile> {
                                 onTap: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => Settings()),
+                                    MaterialPageRoute(
+                                        builder: (context) => Settings()),
                                   );
                                 },
                               ),

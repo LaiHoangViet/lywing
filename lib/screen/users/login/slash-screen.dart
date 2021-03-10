@@ -2,11 +2,11 @@ import 'dart:ui';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_screenutil/screen_util.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lywing/common/app_localizations.dart';
 import 'package:lywing/common/constants.dart';
 import 'package:responsive_flutter/responsive_flutter.dart';
+import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import '../../../sizes_helpers.dart';
 import 'login.dart';
 
@@ -63,7 +63,7 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                   Container(
                     width: displaySize(context).width * 0.7,
                     margin: EdgeInsets.only(
-                        top: displaySize(context).height * 0.26,
+                      top: displaySize(context).height * 0.26,
                     ),
                     child: Column(
                       children: <Widget>[
@@ -75,7 +75,7 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                             style: TextStyle(
                               color: kWhite,
                             ),
-                            presetFontSizes: [22,19,16,13],
+                            presetFontSizes: [22, 19, 16, 13],
                             maxLines: 1,
                           ),
                         ),
@@ -86,7 +86,7 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                             style: TextStyle(
                               color: kWhite,
                             ),
-                            presetFontSizes: [15,12,9,6],
+                            presetFontSizes: [15, 12, 9, 6],
                             maxLines: 3,
                           ),
                         ),
@@ -174,7 +174,8 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                               .translate('registerNewAccount'),
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: ResponsiveFlutter.of(context).fontSize(1.7),
+                            fontSize:
+                                ResponsiveFlutter.of(context).fontSize(1.7),
                             color: kBlack,
                           ),
                         ),
@@ -212,7 +213,8 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                                 AppLocalizations.of(context)
                                     .translate('signUpWithGoogle'),
                                 style: TextStyle(
-                                  fontSize: ResponsiveFlutter.of(context).fontSize(1.7),
+                                  fontSize: ResponsiveFlutter.of(context)
+                                      .fontSize(1.7),
                                   color: kBlack,
                                 ),
                               ),
@@ -254,7 +256,8 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                                 AppLocalizations.of(context)
                                     .translate('loginWithFacebook'),
                                 style: TextStyle(
-                                  fontSize: ResponsiveFlutter.of(context).fontSize(1.7),
+                                  fontSize: ResponsiveFlutter.of(context)
+                                      .fontSize(1.7),
                                   color: kBlack,
                                 ),
                               ),
@@ -266,7 +269,7 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                   ),
                   Container(
                     // margin: EdgeInsets.only(
-                      // top: displaySize(context).height * 0.01,
+                    // top: displaySize(context).height * 0.01,
                     // ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -277,7 +280,8 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                             AppLocalizations.of(context)
                                 .translate('alreadyHaveAnAccount?'),
                             style: TextStyle(
-                              fontSize: ResponsiveFlutter.of(context).fontSize(1.5),
+                              fontSize:
+                                  ResponsiveFlutter.of(context).fontSize(1.5),
                               color: Colors.black54,
                             ),
                           ),
@@ -288,7 +292,8 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                             AppLocalizations.of(context).translate('login'),
                             style: TextStyle(
                               color: kBlue,
-                              fontSize: ResponsiveFlutter.of(context).fontSize(1.5),
+                              fontSize:
+                                  ResponsiveFlutter.of(context).fontSize(1.5),
                             ),
                             minFontSize: 12,
                             maxLines: 1,

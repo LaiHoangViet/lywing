@@ -57,7 +57,7 @@ class _My_CardsState extends State<My_Cards> {
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(
                       width: 0.1,
-                      color: kGrey200,
+                      color: kGrey300,
                     ),
                     boxShadow: [
                       BoxShadow(
