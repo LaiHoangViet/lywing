@@ -33,18 +33,18 @@ class _registerNewAccountState extends State<registerNewAccount> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Container(
-                    margin:
-                        EdgeInsets.only(top: displaySize(context).height * 0.34),
+                    margin: EdgeInsets.only(
+                        top: displaySize(context).height * 0.34),
                     child: Column(
                       children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.all(10),
                           child: Text(
-                            AppLocalizations.of(context)
-                                .translate('register'),
+                            AppLocalizations.of(context).translate('register'),
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              fontSize: ResponsiveFlutter.of(context).fontSize(5),
+                              fontSize:
+                                  ResponsiveFlutter.of(context).fontSize(5),
                               color: kWhite,
                             ),
                           ),
@@ -69,9 +69,11 @@ class _registerNewAccountState extends State<registerNewAccount> {
                     labelText: AppLocalizations.of(context)
                         .translate('enterYourEmail'),
                     enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
                       borderSide: BorderSide(color: kWhite, width: 0.0),
                     ),
                     focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
                       borderSide: BorderSide(color: kWhite, width: 0.0),
                     ),
                   ),
@@ -94,9 +96,11 @@ class _registerNewAccountState extends State<registerNewAccount> {
                     labelText: AppLocalizations.of(context)
                         .translate('enterPassword?'),
                     enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
                       borderSide: BorderSide(color: kWhite, width: 0.0),
                     ),
                     focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
                       borderSide: BorderSide(color: kWhite, width: 0.0),
                     ),
                   ),
@@ -119,9 +123,11 @@ class _registerNewAccountState extends State<registerNewAccount> {
                     labelText: AppLocalizations.of(context)
                         .translate('enterPassword?'),
                     enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
                       borderSide: BorderSide(color: kWhite, width: 0.0),
                     ),
                     focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
                       borderSide: BorderSide(color: kWhite, width: 0.0),
                     ),
                   ),
@@ -143,8 +149,7 @@ class _registerNewAccountState extends State<registerNewAccount> {
                   shape: new RoundedRectangleBorder(
                       borderRadius: new BorderRadius.circular(10.0)),
                   child: Text(
-                    AppLocalizations.of(context)
-                        .translate('register'),
+                    AppLocalizations.of(context).translate('register'),
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 15,
@@ -164,7 +169,7 @@ class _registerNewAccountState extends State<registerNewAccount> {
                   Text(
                     AppLocalizations.of(context)
                         .translate('alreadyHaveAnAccount?'),
-                    style: TextStyle( 
+                    style: TextStyle(
                       fontSize: 13,
                       color: kGrey600,
                     ),
@@ -177,8 +182,7 @@ class _registerNewAccountState extends State<registerNewAccount> {
                       );
                     },
                     child: Text(
-                      AppLocalizations.of(context)
-                          .translate('login'),
+                      AppLocalizations.of(context).translate('login'),
                       style: TextStyle(
                         color: kBlue,
                         fontSize: 13,

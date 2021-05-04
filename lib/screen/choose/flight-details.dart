@@ -28,12 +28,12 @@ class _Flight_DetailsState extends State<Flight_Details> {
         child: AppBar(
           elevation: 0.0,
           bottomOpacity: 0.0,
-          leading: IconButton(
-            icon: Icon(
+          leading: InkWell(
+            child: Icon(
               Icons.arrow_back_ios_rounded,
               color: kBlack,
             ),
-            onPressed: () {
+            onTap: () {
               Navigator.pop(context);
             },
           ),

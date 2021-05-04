@@ -5,6 +5,9 @@ import 'package:lywing/common/app_localizations.dart';
 import 'package:lywing/common/constants.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 
+import 'FAQs.dart';
+import 'contact-number.dart';
+
 class Customer_Support extends StatefulWidget {
   @override
   _Customer_SupportState createState() => _Customer_SupportState();
@@ -19,12 +22,12 @@ class _Customer_SupportState extends State<Customer_Support> {
         child: AppBar(
           elevation: 0.0,
           bottomOpacity: 0.0,
-          leading: IconButton(
-            icon: Icon(
-                    Icons.arrow_back_ios_rounded,
-                  color: kBlack,
-                ),
-            onPressed: () {
+          leading: InkWell(
+            child: Icon(
+              Icons.arrow_back_ios_rounded,
+              color: kBlack,
+            ),
+            onTap: () {
               Navigator.pop(context);
             },
           ),
@@ -199,7 +202,8 @@ class _Customer_SupportState extends State<Customer_Support> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              AppLocalizations.of(context).translate('UnitedState'),
+                              AppLocalizations.of(context)
+                                  .translate('UnitedState'),
                               style: TextStyle(
                                 fontSize: 12,
                                 color: kGrey400,
@@ -213,7 +217,8 @@ class _Customer_SupportState extends State<Customer_Support> {
                               ),
                             ),
                             Text(
-                               AppLocalizations.of(context).translate('Supportavailablein'),
+                              AppLocalizations.of(context)
+                                  .translate('Supportavailablein'),
                               style: TextStyle(
                                 fontSize: 12,
                                 color: kGrey400,
@@ -268,7 +273,8 @@ class _Customer_SupportState extends State<Customer_Support> {
                               ),
                             ),
                             Text(
-                               AppLocalizations.of(context).translate('Supportavailablein'),
+                              AppLocalizations.of(context)
+                                  .translate('Supportavailablein'),
                               style: TextStyle(
                                 fontSize: 12,
                                 color: kGrey400,
@@ -302,12 +308,19 @@ class _Customer_SupportState extends State<Customer_Support> {
                 //Other countries and regions
                 Container(
                   child: InkWell(
-                    onTap: (){},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Contact_Numbers()),
+                      );
+                    },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Text(
-                          AppLocalizations.of(context).translate('Othercountriesandregions'),
+                          AppLocalizations.of(context)
+                              .translate('Othercountriesandregions'),
                           style: TextStyle(
                             fontSize: 15,
                             color: kBlack,
@@ -346,7 +359,12 @@ class _Customer_SupportState extends State<Customer_Support> {
               ],
             ),
             child: InkWell(
-              onTap: (){},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => FAQs()),
+                );
+              },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[

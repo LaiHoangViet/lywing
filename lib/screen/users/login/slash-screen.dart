@@ -112,9 +112,11 @@ class _Slash_ScreenState extends State<Slash_Screen> {
                         labelText: AppLocalizations.of(context)
                             .translate('enterYourEmail'),
                         enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
                           borderSide: BorderSide(color: kWhite, width: 0.0),
                         ),
                         focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
                           borderSide: BorderSide(color: kWhite, width: 0.0),
                         ),
                         border: OutlineInputBorder(

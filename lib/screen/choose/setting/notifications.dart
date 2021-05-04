@@ -20,12 +20,12 @@ class _NotificationsState extends State<Notifications> {
         child: AppBar(
           elevation: 0.0,
           bottomOpacity: 0.0,
-          leading: IconButton(
-            icon: Icon(
-                    Icons.arrow_back_ios_rounded,
-                  color: kBlack,
-                ),
-            onPressed: () {
+          leading: InkWell(
+            child: Icon(
+              Icons.arrow_back_ios_rounded,
+              color: kBlack,
+            ),
+            onTap: () {
               Navigator.pop(context);
             },
           ),
@@ -95,7 +95,8 @@ class _NotificationsState extends State<Notifications> {
                                 left: 15,
                               ),
                               child: Text(
-                                AppLocalizations.of(context).translate('Flighttickethasbeenissued'),
+                                AppLocalizations.of(context)
+                                    .translate('Flighttickethasbeenissued'),
                                 style: TextStyle(fontSize: 15, color: kBlack),
                               ),
                             ),
@@ -136,7 +137,6 @@ class _NotificationsState extends State<Notifications> {
               ],
             ),
           ),
-
           Container(
             margin: const EdgeInsets.only(
               top: 20,
@@ -178,7 +178,8 @@ class _NotificationsState extends State<Notifications> {
                                 left: 15,
                               ),
                               child: Text(
-                                AppLocalizations.of(context).translate('Flightis'),
+                                AppLocalizations.of(context)
+                                    .translate('Flightis'),
                                 style: TextStyle(fontSize: 15, color: kBlack),
                               ),
                             ),
@@ -219,7 +220,6 @@ class _NotificationsState extends State<Notifications> {
               ],
             ),
           ),
-
           Container(
             margin: const EdgeInsets.only(
               top: 20,
@@ -258,8 +258,12 @@ class _NotificationsState extends State<Notifications> {
                                 left: 15,
                               ),
                               child: Text(
-                                AppLocalizations.of(context).translate('Itrains'),
-                                style: TextStyle(fontSize: 15, color: kGrey500,),
+                                AppLocalizations.of(context)
+                                    .translate('Itrains'),
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: kGrey500,
+                                ),
                               ),
                             ),
                           ],
@@ -295,7 +299,6 @@ class _NotificationsState extends State<Notifications> {
               ],
             ),
           ),
-
           Container(
             margin: const EdgeInsets.only(
               top: 20,
@@ -334,8 +337,12 @@ class _NotificationsState extends State<Notifications> {
                                 left: 15,
                               ),
                               child: Text(
-                                AppLocalizations.of(context).translate('Itrains'),
-                                style: TextStyle(fontSize: 15, color: kGrey500,),
+                                AppLocalizations.of(context)
+                                    .translate('Itrains'),
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: kGrey500,
+                                ),
                               ),
                             ),
                           ],
@@ -371,7 +378,6 @@ class _NotificationsState extends State<Notifications> {
               ],
             ),
           ),
-
         ],
       ),
     );

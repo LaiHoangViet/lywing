@@ -31,12 +31,12 @@ class _Booking_1State extends State<Booking_1> {
         child: AppBar(
           elevation: 0.0,
           bottomOpacity: 0.0,
-          leading: IconButton(
-            icon: Icon(
+          leading: InkWell(
+            child: Icon(
               Icons.arrow_back_ios_rounded,
               color: kWhite,
             ),
-            onPressed: () {
+            onTap: () {
               Navigator.pop(context);
             },
           ),
@@ -144,6 +144,7 @@ class _Booking_1State extends State<Booking_1> {
           bottom: 20,
         ),
         child: ListView(
+          addAutomaticKeepAlives: false,
           children: <Widget>[
             Container(
               decoration: BoxDecoration(
@@ -749,18 +750,24 @@ class _Booking_1State extends State<Booking_1> {
                                   ),
                                   Positioned(
                                     bottom: displaySize(context).height * 0.065,
-                                    left: displaySize(context).width * 0.79,
+                                    left: displaySize(context).width * 0.76,
                                     child: Container(
                                       // alignment: Alignment.topLeft,
-                                      width: displaySize(context).width * 0.07,
+                                      // width: displaySize(context).width * 0.06,
                                       child: Ink(
+                                        width:
+                                            displaySize(context).width * 0.085,
                                         decoration: const ShapeDecoration(
                                           color: kGrey100,
                                           shape: CircleBorder(),
                                         ),
                                         child: IconButton(
-                                          icon: Image.asset(
-                                              'assets/icons/close.png'),
+                                          // padding: EdgeInsets.all(20),
+                                          // alignment: Alignment.center,
+                                          icon: Icon(
+                                            MaterialIcons.close,
+                                            size: 12,
+                                          ),
                                           onPressed: () {},
                                         ),
                                       ),
@@ -1268,9 +1275,9 @@ class _Booking_1State extends State<Booking_1> {
             ),
             Container(
               padding: const EdgeInsets.all(15),
-              margin: const EdgeInsets.only(
-                top: 10,
-                bottom: 50,
+              margin: EdgeInsets.only(
+                top: displaySize(context).height * 0.02,
+                bottom: displaySize(context).height * 0.1,
               ),
               decoration: BoxDecoration(
                 color: kWhite,
@@ -1373,7 +1380,6 @@ class _Booking_1State extends State<Booking_1> {
                 ],
               ),
             ),
-
           ],
         ),
       ),

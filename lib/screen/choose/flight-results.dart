@@ -90,12 +90,12 @@ class _Flight_ResultsState extends State<Flight_Results>
             child: AppBar(
               elevation: 0.0,
               bottomOpacity: 0.0,
-              leading: IconButton(
-                icon: Icon(
+              leading: InkWell(
+                child: Icon(
                   Icons.arrow_back_ios_rounded,
                   color: kBlack,
                 ),
-                onPressed: () {
+                onTap: () {
                   Navigator.pop(context);
                 },
               ),

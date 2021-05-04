@@ -19,31 +19,18 @@ class _Seclect_DateState extends State<Seclect_Date> {
   String _firstDate;
   String _secondDate;
 
-  //
-  // void _onSelectionChanged(DateRangePickerSelectionChangedArgs args) {
-  //   setState(() {
-  //     _firstDate =  DateFormat('dd/MM/yyyy').format(args.value.startDate).toString();
-  //     _secondDate = DateFormat('dd/MM/yyyy').format(args.value.startDate).toString();
-  //   });
-  //   FileSystemManager.instance.firstDate = _firstDate;
-  //   FileSystemManager.instance.secondDate = _secondDate;
-  //
-  //   print(_firstDate);
-  //   print(_secondDate);
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50.0),
         child: AppBar(
-          leading: IconButton(
-            icon: Icon(
+          leading: InkWell(
+            child: Icon(
               Icons.arrow_back_ios_rounded,
               color: kBlack,
             ),
-            onPressed: () {
+            onTap: () {
               Navigator.pop(context);
             },
           ),
@@ -64,9 +51,9 @@ class _Seclect_DateState extends State<Seclect_Date> {
             Container(
               height: displaySize(context).height * 0.8,
               child: ScrollableCleanCalendar(
-                onRangeSelected: (firstDate,secondDate) {
-                  _firstDate = DateFormat('yyyy-MM-dd').format(firstDate);
-                  _secondDate = DateFormat('yyyy-MM-dd').format(secondDate);
+                onRangeSelected: (firstDate, secondDate) {
+                  _firstDate = DateFormat('dd-MM-yyyy').format(firstDate);
+                  _secondDate = DateFormat('dd-MM-yyyy').format(secondDate);
                   FileSystemManager.instance.firstDate = _firstDate;
                   FileSystemManager.instance.secondDate = _secondDate;
                   print(_firstDate);
@@ -78,13 +65,6 @@ class _Seclect_DateState extends State<Seclect_Date> {
                 ),
                 renderPostAndPreviousMonthDates: true,
               ),
-              // SfDateRangePicker(
-              //   onSelectionChanged: _onSelectionChanged,
-              //   selectionMode: DateRangePickerSelectionMode.range,
-              //   initialSelectedRange: PickerDateRange(
-              //       DateTime.now().subtract(const Duration(days: 0)),
-              //       DateTime.now().add(const Duration(days: 0))),
-              // ),
             ),
             RaisedButton(
               color: kBlue,

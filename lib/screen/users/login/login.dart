@@ -74,10 +74,12 @@ class _LoginState extends State<Login> {
                     labelText: AppLocalizations.of(context)
                         .translate('enterYourEmail'),
                     enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white, width: 0.0),
+                      borderRadius: BorderRadius.circular(15),
+                      borderSide: BorderSide(color: kWhite, width: 0.0),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(width: 0.0),
+                      borderRadius: BorderRadius.circular(15),
+                      borderSide: BorderSide(color: kWhite, width: 0.0),
                     ),
                   ),
                 ),
@@ -99,9 +101,11 @@ class _LoginState extends State<Login> {
                     labelText: AppLocalizations.of(context)
                         .translate('enterPassword?'),
                     enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
                       borderSide: BorderSide(color: kWhite, width: 0.0),
                     ),
                     focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
                       borderSide: BorderSide(color: kWhite, width: 0.0),
                     ),
                   ),
@@ -138,9 +142,6 @@ class _LoginState extends State<Login> {
                 ),
               ),
             ),
-            // SizedBox(
-            //   height: displaySize(context).height * 0.05,
-            // ),
             Container(
               margin: EdgeInsets.only(
                 left: 10,
@@ -181,7 +182,8 @@ class _LoginState extends State<Login> {
                               'Google',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontSize: ResponsiveFlutter.of(context).fontSize(1.9),
+                                fontSize:
+                                    ResponsiveFlutter.of(context).fontSize(1.9),
                                 color: kBlack,
                               ),
                             ),
@@ -219,7 +221,8 @@ class _LoginState extends State<Login> {
                             Text(
                               'Facebook',
                               style: TextStyle(
-                                fontSize: ResponsiveFlutter.of(context).fontSize(1.9),
+                                fontSize:
+                                    ResponsiveFlutter.of(context).fontSize(1.9),
                                 color: kBlack,
                               ),
                             ),

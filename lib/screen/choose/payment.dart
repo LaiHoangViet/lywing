@@ -23,12 +23,12 @@ class _PaymentState extends State<Payment> {
         child: AppBar(
           elevation: 0.0,
           bottomOpacity: 0.0,
-          leading: IconButton(
-            icon: Icon(
+          leading: InkWell(
+            child: Icon(
               Icons.arrow_back_ios_rounded,
               color: kWhite,
             ),
-            onPressed: () {
+            onTap: () {
               Navigator.pop(context);
             },
           ),
@@ -107,7 +107,8 @@ class _PaymentState extends State<Payment> {
                                   width: displaySize(context).width * 0.2,
                                   height: 1,
                                   decoration: BoxDecoration(
-                                    border: Border.all(color: kGrey300, width: 1),
+                                    border:
+                                        Border.all(color: kGrey300, width: 1),
                                   ),
                                 ),
                                 Container(
@@ -124,7 +125,8 @@ class _PaymentState extends State<Payment> {
                                   width: displaySize(context).width * 0.2,
                                   height: 1,
                                   decoration: BoxDecoration(
-                                    border: Border.all(color: kGrey300, width: 1),
+                                    border:
+                                        Border.all(color: kGrey300, width: 1),
                                   ),
                                 ),
                               ],
@@ -342,7 +344,8 @@ class _PaymentState extends State<Payment> {
                                   width: displaySize(context).width * 0.2,
                                   height: 1,
                                   decoration: BoxDecoration(
-                                    border: Border.all(color: kGrey300, width: 1),
+                                    border:
+                                        Border.all(color: kGrey300, width: 1),
                                   ),
                                 ),
                                 Container(
@@ -359,7 +362,8 @@ class _PaymentState extends State<Payment> {
                                   width: displaySize(context).width * 0.2,
                                   height: 1,
                                   decoration: BoxDecoration(
-                                    border: Border.all(color: kGrey300, width: 1),
+                                    border:
+                                        Border.all(color: kGrey300, width: 1),
                                   ),
                                 ),
                               ],
@@ -1056,11 +1060,11 @@ class _PaymentState extends State<Payment> {
             ),
 
             Container(
-              margin: const EdgeInsets.only(
-                top: 20,
-                bottom: 20,
-                left: 15,
-                right: 15,
+              margin: EdgeInsets.only(
+                top: displaySize(context).height * 0.02,
+                bottom: displaySize(context).height * 0.1,
+                left: displaySize(context).width * 0.02,
+                right: displaySize(context).width * 0.02,
               ),
               padding: const EdgeInsets.all(15),
               alignment: Alignment.center,

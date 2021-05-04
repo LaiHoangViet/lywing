@@ -30,7 +30,6 @@ class AppLocalizations {
     return true;
   }
 
-
   // This method will be called from every widget which needs a localized text
   String translate(String key) {
     return _localizedStrings[key];
@@ -38,8 +37,7 @@ class AppLocalizations {
 
   // Static member to have a simple access to the delegate from the MaterialApp
   static const LocalizationsDelegate<AppLocalizations> delegate =
-  _AppLocalizationsDelegate();
-
+      _AppLocalizationsDelegate();
 }
 
 // LocalizationsDelegate is a factory for a set of localized resources

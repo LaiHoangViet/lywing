@@ -22,12 +22,12 @@ class _Edit_ProfileState extends State<Edit_Profile> {
         child: AppBar(
           elevation: 0.0,
           bottomOpacity: 0.0,
-          leading: IconButton(
-            icon: Icon(
+          leading: InkWell(
+            child: Icon(
               Icons.arrow_back_ios_rounded,
               color: kBlack,
             ),
-            onPressed: () {
+            onTap: () {
               Navigator.pop(context);
             },
           ),

@@ -170,10 +170,10 @@ class _ProfileState extends State<Profile> {
                                   );
                                 },
                               ),
-                              // Divider(
-                              //   color: kGrey300,
-                              //   height: 1,
-                              // ),
+                              Divider(
+                                color: kGrey300,
+                                height: 2,
+                              ),
                             ],
                           ),
                         ),
@@ -219,10 +219,10 @@ class _ProfileState extends State<Profile> {
                                   );
                                 },
                               ),
-                              // Divider(
-                              //   color: kGrey300,
-                              //   height: 1,
-                              // ),
+                              Divider(
+                                color: kGrey300,
+                                height: 2,
+                              ),
                             ],
                           ),
                         ),
@@ -268,10 +268,10 @@ class _ProfileState extends State<Profile> {
                                   );
                                 },
                               ),
-                              // Divider(
-                              //   color: kGrey300,
-                              //   height: 1,
-                              // ),
+                              Divider(
+                                color: kGrey300,
+                                height: 2,
+                              ),
                             ],
                           ),
                         ),
@@ -317,10 +317,10 @@ class _ProfileState extends State<Profile> {
                                   );
                                 },
                               ),
-                              // Divider(
-                              //   color: kGrey300,
-                              //   height: 1,
-                              // ),
+                              Divider(
+                                color: kGrey300,
+                                height: 2,
+                              ),
                             ],
                           ),
                         ),
@@ -366,10 +366,10 @@ class _ProfileState extends State<Profile> {
                                   );
                                 },
                               ),
-                              // Divider(
-                              //   color: kGrey300,
-                              //   height: 1,
-                              // ),
+                              Divider(
+                                color: kGrey300,
+                                height: 2,
+                              ),
                             ],
                           ),
                         ),
@@ -485,6 +485,10 @@ class _ProfileState extends State<Profile> {
                                   );
                                 },
                               ),
+                              Divider(
+                                color: kGrey300,
+                                height: 2,
+                              ),
                             ],
                           ),
                         ),
@@ -529,10 +533,10 @@ class _ProfileState extends State<Profile> {
                                   // );
                                 },
                               ),
-                              // Divider(
-                              //   color: kGrey300,
-                              //   height: 1,
-                              // ),
+                              Divider(
+                                color: kGrey300,
+                                height: 2,
+                              ),
                             ],
                           ),
                         ),
@@ -579,10 +583,10 @@ class _ProfileState extends State<Profile> {
                                   );
                                 },
                               ),
-                              // Divider(
-                              //   color: kGrey300,
-                              //   height: 1,
-                              // ),
+                              Divider(
+                                color: kGrey300,
+                                height: 2,
+                              ),
                             ],
                           ),
                         ),
@@ -627,10 +631,10 @@ class _ProfileState extends State<Profile> {
                                   // );
                                 },
                               ),
-                              // Divider(
-                              //   color: kGrey300,
-                              //   height: 1,
-                              // ),
+                              Divider(
+                                color: kGrey300,
+                                height: 2,
+                              ),
                             ],
                           ),
                         ),

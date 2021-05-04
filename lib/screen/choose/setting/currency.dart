@@ -75,6 +75,9 @@ class _CurrencyState extends State<Currency> {
         ),
       ),
       body: Container(
+        margin: EdgeInsets.only(
+          top: displaySize(context).height * 0.05,
+        ),
         decoration: BoxDecoration(
           color: kGrey100,
           boxShadow: [

@@ -64,6 +64,9 @@ class _Temperature_ScaleState extends State<Temperature_Scale> {
         ),
       ),
       body: Container(
+        margin: EdgeInsets.only(
+          top: displaySize(context).height * 0.05,
+        ),
         decoration: BoxDecoration(
           color: kGrey100,
           boxShadow: [

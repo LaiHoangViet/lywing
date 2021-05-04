@@ -210,5 +210,103 @@
   "DisplayName": "Tên hiển thị",
   "ResetPassword": "Đặt lại mật khẩu",
   "DeleteMyAccount": "Xóa tài khoản",
-  "SignOut": "Đăng xuất"
+  "SignOut": "Đăng xuất",
+
+  "LinkEmailAddress": "Liên kết Địa chỉ Email",
+  "Pleaseenteranewemailaddress.": "Vui lòng nhập một địa chỉ email mới.",
+  "Next": "Tiếp tục",
+
+  "Tosecureyouraccount": "Để bảo mật tài khoản của bạn, chúng tôi vừa gửi mã xác minh đến email@example.com.\nVui lòng nhập mã để xác minh địa chỉ email của bạn.",
+  "EmailVerification": "Email xác thực",
+  "VerificationCode": "Mã xác nhận",
+  "Resend": "Gửi lại",
+  "Youremaillongviet96@gmail.com": "Email longviet96@gmail.com của bạn đã được liên kết với tài khoản của bạn. Bây giờ bạn có thể sử dụng địa chỉ email này để đăng nhập.",
+
+  "Pleaseenteraphonenumber": "Vui lòng nhập số điện thoại",
+
+  "Tohelpprotectyouraccount": "Để giúp bảo vệ tài khoản của bạn, chúng tôi đã gửi mã xác minh tới + 84-123456789. Vui lòng nhập mã xác minh bên dưới.",
+
+  "Youcannowusethisphonnumbertosignin": "Số của bạn + 84-123456789 đã được liên kết với tài khoản của bạn. Bây giờ bạn có thể sử dụng số điện thoại này để đăng nhập.",
+
+  "LoginviaFacebook": "Đăng nhập qua Facebook",
+  "SignInwithApple": "Đăng nhập với Apple",
+  "SignInwithGoogle": "Đăng nhập với Google",
+  "ManageAccounts": "Quản lý tài khoản",
+
+  "Yourdisplayname": "Tên hiển thị của bạn sẽ hiển thị trên Lywing khi bạn thêm đánh giá hoặc nội dung người dùng khác vào trang web. Những người dùng khác sẽ chỉ nhìn thấy tên hiển thị của bạn chứ không phải tên tài khoản hoặc tên thật của bạn.",
+  "Displaynamesmustbeunder50": "Tên hiển thị phải dưới 50 ký tự và không được chứa cảm xúc hoặc ký tự đặc biệt.",
+  "Toverifyyourindentity": "Để xác minh danh tính của bạn, chúng tôi sẽ gửi mã xác minh đến email của bạn.",
+  "Entercurrentpasswordtoverify": "Nhập mật khẩu hiện tại để xác minh",
+
+  "Verifyyourcontentpassword": "Xác minh mật khẩu nội dung của bạn để đặt mật khẩu mới",
+  "Currentpassword": "Mật khẩu hiện tại",
+  "Entercurrentpassword": "Nhập mật khẩu hiện tại",
+  "Newpassword": "Mật khẩu mới",
+  "Enternewpassword": "Nhập mật khẩu mới",
+  "Confirmpassword": "Xác nhận mật khẩu",
+  "Enterconfirmpassword": "Nhập mật khẩu xác nhận",
+  "Submit": "Gửi",
+
+  "Pleaseenteranewpassword": "Vui lòng nhập mật khẩu mới. Nó phải có 8-20 ký tự và bao gồm số và ký hiệu",
+  "Password": "Mật khẩu",
+
+  "PasswordResetSuccess": "Đặt lại mật khẩu thành công",
+  "Yourpasswordresetsuccessfully!": "Đặt lại mật khẩu của bạn thành công!",
+  "Yourpasswordhasbeenresetsuccessfully": "Mật khẩu của bạn đã được đặt lại thành công. Bây giờ bạn có thể sử dụng mật khẩu mới để đăng nhập vào tài khoản của mình.                        ",
+
+  "Justsoyouknowbydeletingyouraccount": "Mong bạn thông cảm, bằng cách xóa tài khoản của bạn:",
+  "Youwontbeabletocheckyourpastbookings": "Bạn sẽ không thể kiểm tra các lượt đặt trước của mình",
+  "Youwontbeable": "Bạn sẽ không thể đăng nhập vào tài khoản của mình",
+  "Youwontreceive": "Bạn sẽ không nhận được thông tin về các chương trình khuyến mãi mới nhất của chúng tôi",
+  "Youllloseall": "Bạn sẽ mất tất cả tiền xu và mã khuyến mãi của mình",
+  "Youllalsoloseany": "Bạn cũng sẽ mất mọi C-money / C-money + trong tài khoản của mình",
+  "Ifyoustillwanttodelete": "Nếu bạn vẫn muốn xóa tài khoản của mình, vui lòng đảm bảo rằng tất cả các đặt phòng của bạn đã được hoàn tất và bạn không có câu hỏi / vấn đề nào còn tồn đọng",
+  "YoullloseanyCoinand": "Bạn sẽ mất bất kỳ Coin và mã khuyến mãi nào khi xóa tài khoản của mình.",
+
+  "YourAccountCouldNotbeDeleted": "Tài khoản của bạn không thể bị xóa",
+  "Sorryyouraccountcouldnotbedeletedbecause": "Xin lỗi, không thể xóa tài khoản của bạn vì:",
+  "PasswordResetYouchangedtheemaillinked": "Bạn đã thay đổi email được liên kết với tài khoản này trong vòng 7 ngày qua",
+
+  "Contactnumbers": "Số liên lạc",
+  "INTERNATIONALNUMBER": "SỐ QUỐC TẾ",
+  "Englishspeackingregions": "Vùng nói tiếng anh",
+  "GlobalAccessNumber": "Số truy cập toàn cầu",
+  "OTHERCOUNTRYANDREGIONS": "CÁC QUỐC GIA VÀ KHU VỰC KHÁC",
+  "Within": "Trong vòng",
+
+  "PopularTopcis": "Những chủ đề phổ biến",
+  "Price&Payment": "Giá cả & Thanh toán",
+  "Change&Cancel": "Thay đổi & Hủy bỏ",
+  "Searching": "Đang tìm kiếm",
+  "AdditionalServices": "Dịch vụ bổ sung",
+  "Check-in&documents": "Đăng ký và tài liệu",
+  "Duringthetrip": "Trong chuyến đi",
+  "Refund": "Hoàn tiền",
+
+  "Departuretime": "Giờ khởi hành",
+  "Arrivaltime": "Thời gian đến",
+  "Returntime": "Quay trở lại thời gian",
+  "Carriers": "Người vận chuyển",
+  "Airports": "Sân bay",
+  "Class": "Loại",
+  "StopoverCity": "Thành phố dừng chân",
+  "Excludecountries": "Loại trừ các quốc gia",
+  "PlanModel": "Mô hình kế hoạch",
+
+  "Clear": "Chắc chắn",
+  "DepartureAirport": "Sân bay khởi hành",
+  "LHRLondonHeathrowAirport": "LHR Sân bay London Heathrow",
+  "LGWGatwickAirport": "Sân bay LGW Gatwick",
+  "STNStanstedAirport": "Sân bay STN Stansted",
+  "ClaArrivalAirportss": "Sân bay đến",
+  "EWRNewarkLibertyInternationalAirport": "Sân bay quốc tế EWR Newark Liberty",
+  "JFKJohnF.KennedyInternationalAirport": "Sân bay quốc tế JFK John F. Kennedy",
+  "LGALaGuardiaAirport": "Sân bay LGA LaGuardia",
+  "SWFStewartAirport": "Sân bay SWF Stewart",
+
+  "PlaneModel": "Mô hình máy bay",
+  "Apply": "Áp dụng",
+  "Excludecountries": "Loại trừ các quốc gia"
+
+
 }

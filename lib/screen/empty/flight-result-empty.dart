@@ -72,12 +72,12 @@ class _Flight_Result_EmptyState extends State<Flight_Result_Empty>
         child: AppBar(
           elevation: 0.0,
           bottomOpacity: 0.0,
-          leading: IconButton(
-            icon: Icon(
+          leading: InkWell(
+            child: Icon(
               Icons.arrow_back_ios_rounded,
               color: kBlack,
             ),
-            onPressed: () {
+            onTap: () {
               Navigator.pop(context);
             },
           ),

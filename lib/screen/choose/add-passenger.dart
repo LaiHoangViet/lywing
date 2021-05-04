@@ -1,13 +1,19 @@
 import 'dart:ui';
 
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:country_list_pick/country_list_pick.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lywing/common/app_localizations.dart';
 import 'package:lywing/common/constants.dart';
+import 'package:lywing/screen/home/SysManager.dart';
 import 'package:lywing/sizes_helpers.dart';
 import 'package:responsive_flutter/responsive_flutter.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:intl/intl.dart';
 
 class Add_Passenger extends StatefulWidget {
   @override
@@ -20,6 +26,103 @@ class _Add_PassengerState extends State<Add_Passenger> {
   int _choose_bag = 0;
   int _tab_package = 0;
 
+  String _datetime;
+
+  // void date(DateTime NewDateTime) {
+  //   setState(() {
+  //     _datetime = DateFormat('dd-MM-yyyy').format(NewDateTime).toString();
+  //   });
+  // }
+
+  // void date_addpassengers() {
+  //   showModalBottomSheet(
+  //       context: context,
+  //       useRootNavigator: true,
+  //       backgroundColor: kWhite,
+  //       builder: (context) {
+  //         return StatefulBuilder(
+  //             builder: (BuildContext context, StateSetter setState) {
+  //           return Container(
+  //             height: 370,
+  //             child: Column(
+  //               children: [
+  //                 Container(
+  //                   margin: EdgeInsets.only(
+  //                     left: displaySize(context).width * 0.04,
+  //                     right: displaySize(context).width * 0.04,
+  //                     top: displaySize(context).height * 0.02,
+  //                   ),
+  //                   child: Row(
+  //                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //                     children: [
+  //                       Container(
+  //                         width: displaySize(context).width * 0.1,
+  //                         child: Ink(
+  //                           decoration: const ShapeDecoration(
+  //                             color: kGrey100,
+  //                             shape: CircleBorder(),
+  //                           ),
+  //                           child: IconButton(
+  //                             alignment: Alignment.center,
+  //                             icon: Icon(
+  //                               MaterialIcons.close,
+  //                               color: kGrey600,
+  //                               size: 16,
+  //                             ),
+  //                             onPressed: () {
+  //                               Navigator.pop(context, true);
+  //                             },
+  //                           ),
+  //                         ),
+  //                       ),
+  //                       Container(
+  //                         child: AutoSizeText(
+  //                           "Birthday",
+  //                           style: TextStyle(
+  //                             color: kBlack,
+  //                           ),
+  //                           presetFontSizes: [17, 14, 11, 8],
+  //                         ),
+  //                       ),
+  //                       Container(
+  //                         child: InkWell(
+  //                           onTap: () {
+  //                             FileSystemManager.instance.date_add_passengers =
+  //                                 true;
+  //                             Navigator.pop(context);
+  //                           },
+  //                           child: AutoSizeText(
+  //                             "Confirm",
+  //                             style: TextStyle(
+  //                               color: kBlue,
+  //                             ),
+  //                             presetFontSizes: [17, 14, 11, 8],
+  //                           ),
+  //                         ),
+  //                       ),
+  //                     ],
+  //                   ),
+  //                 ),
+  //                 Container(
+  //                   height: 300,
+  //                   child: CupertinoDatePicker(
+  //                     mode: CupertinoDatePickerMode.date,
+  //                     initialDateTime: DateTime.now(),
+  //                     onDateTimeChanged: date,
+  //                   ),
+  //                 ),
+  //               ],
+  //             ),
+  //           );
+  //         });
+  //       });
+  // }
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -29,12 +132,12 @@ class _Add_PassengerState extends State<Add_Passenger> {
           preferredSize: Size.fromHeight(50.0),
           child: AppBar(
             elevation: 3.0,
-            leading: IconButton(
-              icon: Icon(
+            leading: InkWell(
+              child: Icon(
                 Icons.arrow_back_ios_rounded,
                 color: kBlack,
               ),
-              onPressed: () {
+              onTap: () {
                 Navigator.pop(context);
               },
             ),
@@ -358,16 +461,58 @@ class _Add_PassengerState extends State<Add_Passenger> {
                               ),
                             ),
                             Container(
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: kGrey500,
-                                    ),
+                              decoration: BoxDecoration(
+                                border: Border(
+                                  bottom: BorderSide(
+                                    width: 1,
+                                    color: kGrey600,
                                   ),
-                                  hintText: AppLocalizations.of(context)
-                                      .translate('Pickyourdateofbirth'),
                                 ),
+                              ),
+                              width: displaySize(context).width,
+                              padding: EdgeInsets.only(
+                                top: 15,
+                                bottom: 15,
+                              ),
+                              child: GestureDetector(
+                                onTap: () {
+                                  // date_addpassengers();
+                                  showDatePicker(
+                                    context: context,
+                                    initialDate: DateTime.now(),
+                                    firstDate: DateTime(1970),
+                                    lastDate: DateTime(2222),
+                                  ).then((date) => {
+                                        setState(() {
+                                          _datetime = DateFormat('dd-MM-yyyy')
+                                              .format(date)
+                                              .toString();
+                                          FileSystemManager.instance
+                                              .date_add_passengers = true;
+                                          // _datetime = date;
+                                          print(_datetime);
+                                        }),
+                                      });
+                                },
+                                child: FileSystemManager
+                                            .instance.date_add_passengers ==
+                                        false
+                                    ? Text(
+                                        AppLocalizations.of(context)
+                                            .translate('Pickyourdateofbirth'),
+                                        style: TextStyle(
+                                          fontSize: 15,
+                                          color: kGrey400,
+                                        ),
+                                      )
+                                    : Text(
+                                        "$_datetime",
+                                        // _datetime.toString(),
+                                        style: TextStyle(
+                                          fontSize: 15,
+                                          color: kGrey400,
+                                        ),
+                                      ),
                               ),
                             ),
                           ],
@@ -509,16 +654,54 @@ class _Add_PassengerState extends State<Add_Passenger> {
                               ),
                             ),
                             Container(
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: kGrey500,
+                              // child: TextField(
+                              //   decoration: InputDecoration(
+                              //     focusedBorder: UnderlineInputBorder(
+                              //       borderSide: BorderSide(
+                              //         color: kGrey500,
+                              //       ),
+                              //     ),
+                              //     hintText: AppLocalizations.of(context)
+                              //         .translate('NumberofPassportorID'),
+                              //   ),
+                              // ),
+                              child: CountryListPick(
+                                appBar: AppBar(
+                                  backgroundColor: kWhite,
+                                  leading: InkWell(
+                                    child: Icon(
+                                      Icons.arrow_back_ios_rounded,
+                                      color: kBlack,
+                                    ),
+                                    onTap: () {
+                                      Navigator.pop(context);
+                                    },
+                                  ),
+                                  centerTitle: true,
+                                  title: Text(
+                                    AppLocalizations.of(context)
+                                        .translate('CountryorRegion'),
+                                    style: TextStyle(
+                                      color: kBlack,
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.normal,
                                     ),
                                   ),
-                                  hintText: AppLocalizations.of(context)
-                                      .translate('NumberofPassportorID'),
                                 ),
+                                theme: CountryTheme(
+                                  isShowFlag: true,
+                                  isShowTitle: true,
+                                  isShowCode: true,
+                                  isDownIcon: true,
+                                  showEnglishName: true,
+                                ),
+                                initialSelection: '+84',
+                                onChanged: (CountryCode code) {
+                                  print(code.name);
+                                  print(code.code);
+                                  print(code.dialCode);
+                                  print(code.flagUri);
+                                },
                               ),
                             ),
                           ],

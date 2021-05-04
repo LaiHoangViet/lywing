@@ -14,7 +14,7 @@ class Overview extends StatefulWidget {
 }
 
 class _OverviewState extends State<Overview> {
-  List name = ["Mr.Phong Van Tran","Mr.Nguyen Nam Long"];
+  List name = ["Mr.Phong Van Tran", "Mr.Nguyen Nam Long"];
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +23,12 @@ class _OverviewState extends State<Overview> {
         preferredSize: Size.fromHeight(50.0),
         child: AppBar(
           elevation: 3.0,
-          leading: IconButton(
-            icon: Icon(
-                    Icons.arrow_back_ios_rounded,
-                  color: kBlack,
-                ),
-            onPressed: () {
+          leading: InkWell(
+            child: Icon(
+              Icons.arrow_back_ios_rounded,
+              color: kBlack,
+            ),
+            onTap: () {
               Navigator.pop(context);
             },
           ),
@@ -88,35 +88,35 @@ class _OverviewState extends State<Overview> {
                           ),
                         ),
                         Container(
-                            child: Row(
-                              children: [
-                                Container(
-                                  width: displaySize(context).width * 0.2,
-                                  height: 1,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(color: kGrey300, width: 1),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: displaySize(context).width * 0.2,
+                                height: 1,
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: kGrey300, width: 1),
+                                ),
+                              ),
+                              Container(
+                                child: Transform.rotate(
+                                  angle: pi / 2,
+                                  child: Icon(
+                                    Icons.flight,
+                                    color: kGrey500,
+                                    size: 20,
                                   ),
                                 ),
-                                Container(
-                                  child: Transform.rotate(
-                                    angle: pi / 2,
-                                    child: Icon(
-                                      Icons.flight,
-                                      color: kGrey500,
-                                      size: 20,
-                                    ),
-                                  ),
+                              ),
+                              Container(
+                                width: displaySize(context).width * 0.2,
+                                height: 1,
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: kGrey300, width: 1),
                                 ),
-                                Container(
-                                  width: displaySize(context).width * 0.2,
-                                  height: 1,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(color: kGrey300, width: 1),
-                                  ),
-                                ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
+                        ),
                         Container(
                           child: Text(
                             'SIN',
@@ -247,11 +247,11 @@ class _OverviewState extends State<Overview> {
                       bottom: 10,
                     ),
                     child: Dash(
-                          length: displaySize(context).width * 0.8,
-                          dashThickness: 1,
-                          dashGap:1,
-                          dashColor: kGrey300,
-                      ),
+                      length: displaySize(context).width * 0.8,
+                      dashThickness: 1,
+                      dashGap: 1,
+                      dashColor: kGrey300,
+                    ),
                   ),
 
                   // Hang bay
@@ -333,35 +333,35 @@ class _OverviewState extends State<Overview> {
                           ),
                         ),
                         Container(
-                            child: Row(
-                              children: [
-                                Container(
-                                  width: displaySize(context).width * 0.2,
-                                  height: 1,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(color: kGrey300, width: 1),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: displaySize(context).width * 0.2,
+                                height: 1,
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: kGrey300, width: 1),
+                                ),
+                              ),
+                              Container(
+                                child: Transform.rotate(
+                                  angle: pi / 2,
+                                  child: Icon(
+                                    Icons.flight,
+                                    color: kGrey500,
+                                    size: 20,
                                   ),
                                 ),
-                                Container(
-                                  child: Transform.rotate(
-                                    angle: pi / 2,
-                                    child: Icon(
-                                      Icons.flight,
-                                      color: kGrey500,
-                                      size: 20,
-                                    ),
-                                  ),
+                              ),
+                              Container(
+                                width: displaySize(context).width * 0.2,
+                                height: 1,
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: kGrey300, width: 1),
                                 ),
-                                Container(
-                                  width: displaySize(context).width * 0.2,
-                                  height: 1,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(color: kGrey300, width: 1),
-                                  ),
-                                ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
+                        ),
                         Container(
                           child: Text(
                             'SIN',
@@ -486,18 +486,17 @@ class _OverviewState extends State<Overview> {
                     ),
                   ),
 
-
                   Container(
                     margin: const EdgeInsets.only(
                       top: 10,
                       bottom: 10,
                     ),
                     child: Dash(
-                          length: displaySize(context).width * 0.8,
-                          dashThickness: 1,
-                          dashGap:1,
-                          dashColor: kGrey300,
-                      ),
+                      length: displaySize(context).width * 0.8,
+                      dashThickness: 1,
+                      dashGap: 1,
+                      dashColor: kGrey300,
+                    ),
                   ),
 
                   // Hang bay
@@ -568,310 +567,336 @@ class _OverviewState extends State<Overview> {
               ),
             ),
 
-
             Container(
               child: Column(
                 children: [
-                  for(var index in name) Card(
-                    margin: const EdgeInsets.only(
-                      left: 15,
-                      right: 15,
-                      bottom: 15,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    child: Container(
-                      child: Column(
-                        children: <Widget>[
-                          Container(
-                            padding: const EdgeInsets.all(15),
-                            width: displaySize(context).width,
-                            height: displaySize(context).height* 0.11,
-                            child: Stack(
-                              children: <Widget>[
-                                Container(
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: <Widget>[
-                                      Container(
-                                        child: Row(
-                                          children: <Widget>[
-                                            Container(
-                                              child: DottedBorder(
-                                                padding: const EdgeInsets.all(15),
-                                                color: kGrey300,
-                                                strokeWidth: 1,
-                                                borderType: BorderType.RRect,
-                                                radius: Radius.circular(12),
-                                                child: Icon(
-                                                  Icons.person,
-                                                  color: kGrey400,
-                                                  size: 30,
+                  for (var index in name)
+                    Card(
+                      margin: const EdgeInsets.only(
+                        left: 15,
+                        right: 15,
+                        bottom: 15,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      child: Container(
+                        child: Column(
+                          children: <Widget>[
+                            Container(
+                              padding: EdgeInsets.only(
+                                top: displaySize(context).height * 0.01,
+                                bottom: displaySize(context).height * 0.02,
+                                left: displaySize(context).width * 0.02,
+                                right: displaySize(context).width * 0.02,
+                              ),
+                              width: displaySize(context).width,
+                              height: displaySize(context).height * 0.11,
+                              child: Stack(
+                                children: <Widget>[
+                                  Container(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: <Widget>[
+                                        Container(
+                                          child: Row(
+                                            children: <Widget>[
+                                              Container(
+                                                child: DottedBorder(
+                                                  padding:
+                                                      const EdgeInsets.all(15),
+                                                  color: kGrey300,
+                                                  strokeWidth: 1,
+                                                  borderType: BorderType.RRect,
+                                                  radius: Radius.circular(12),
+                                                  child: Icon(
+                                                    Icons.person,
+                                                    color: kGrey400,
+                                                    size: 30,
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                            Container(
-                                              margin: const EdgeInsets.only(
-                                                left: 10,
-                                              ),
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                                mainAxisAlignment: MainAxisAlignment.center,
-                                                children: <Widget>[
-                                                  Container(
-                                                    child: Text(
-                                                      AppLocalizations.of(context).translate('FullName'),
-                                                      style: TextStyle(
-                                                        fontSize: 11,
-                                                        color: kGrey400,
+                                              Container(
+                                                margin: const EdgeInsets.only(
+                                                  left: 10,
+                                                ),
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: <Widget>[
+                                                    Container(
+                                                      child: Text(
+                                                        AppLocalizations.of(
+                                                                context)
+                                                            .translate(
+                                                                'FullName'),
+                                                        style: TextStyle(
+                                                          fontSize: 11,
+                                                          color: kGrey400,
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
-                                                  Container(
-                                                    child: Text(
-                                                      '$index',
-                                                      style: TextStyle(
-                                                        fontSize: 17,
-                                                        color: kBlack,
+                                                    Container(
+                                                      child: Text(
+                                                        '$index',
+                                                        style: TextStyle(
+                                                          fontSize: 17,
+                                                          color: kBlack,
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
-                                                ],
+                                                  ],
+                                                ),
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                Positioned(
-                                  bottom: displaySize(context).height * 0.03,
-                                  left: displaySize(context).width * 0.78,
-                                  child: Container(
-                                    // alignment: Alignment.topLeft,
-                                    width: displaySize(context).width * 0.07,
-                                    child: Ink(
-                                      decoration: const ShapeDecoration(
-                                        color: kGrey100,
-                                        shape: CircleBorder(),
-                                      ),
-                                      child: IconButton(
-                                        icon: Image.asset('assets/icons/close.png'),
-                                        onPressed: () {},
+                                  Positioned(
+                                    bottom: displaySize(context).height * 0.03,
+                                    left: displaySize(context).width * 0.78,
+                                    child: Container(
+                                      // alignment: Alignment.topLeft,
+                                      width: displaySize(context).width * 0.07,
+                                      child: Ink(
+                                        decoration: const ShapeDecoration(
+                                          color: kGrey100,
+                                          shape: CircleBorder(),
+                                        ),
+                                        child: IconButton(
+                                          icon: Image.asset(
+                                              'assets/icons/close.png'),
+                                          onPressed: () {},
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                          Container(
-                            padding: const EdgeInsets.only(
-                              // top: 10,
-                              bottom: 15,
+                            Container(
+                              padding: const EdgeInsets.only(
+                                // top: 10,
+                                bottom: 15,
+                              ),
+                              margin:
+                                  const EdgeInsets.only(left: 15, right: 15),
+                              child: Dash(
+                                  length: displaySize(context).width * 0.8,
+                                  dashThickness: 1,
+                                  dashGap: 1,
+                                  dashColor: kGrey400),
                             ),
-                            margin: const EdgeInsets.only(left: 15, right: 15),
-                            child: Dash(
-                                length: displaySize(context).width * 0.8,
-                                dashThickness: 1,
-                                dashGap: 1,
-                                dashColor: kGrey400),
-                          ),
-                          Container(
-                            padding: const EdgeInsets.only(
-                              left: 15,
-                              right: 15,
-                              bottom: 15,
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Container(
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      Container(
-                                        child: Text(
-                                          AppLocalizations.of(context).translate('Nationality'),
-                                          style: TextStyle(
-                                            fontSize: 11,
-                                            color: kGrey400,
+                            Container(
+                              padding: const EdgeInsets.only(
+                                left: 15,
+                                right: 15,
+                                bottom: 15,
+                              ),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  Container(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        Container(
+                                          child: Text(
+                                            AppLocalizations.of(context)
+                                                .translate('Nationality'),
+                                            style: TextStyle(
+                                              fontSize: 11,
+                                              color: kGrey400,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                      Container(
-                                        child: Text(
-                                          'Vietnam',
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                            color: kBlack,
+                                        Container(
+                                          child: Text(
+                                            'Vietnam',
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                              color: kBlack,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                Container(
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      Container(
-                                        child: Text(
-                                          AppLocalizations.of(context).translate('Dateofbirth'),
-                                          style: TextStyle(
-                                            fontSize: 11,
-                                            color: kGrey400,
+                                  Container(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        Container(
+                                          child: Text(
+                                            AppLocalizations.of(context)
+                                                .translate('Dateofbirth'),
+                                            style: TextStyle(
+                                              fontSize: 11,
+                                              color: kGrey400,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                      Container(
-                                        child: Text(
-                                          '15/04/1996',
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                            color: kBlack,
+                                        Container(
+                                          child: Text(
+                                            '15/04/1996',
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                              color: kBlack,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                Container(
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      Container(
-                                        child: Text(
-                                          AppLocalizations.of(context).translate('Passport'),
-                                          style: TextStyle(
-                                            fontSize: 11,
-                                            color: kGrey400,
+                                  Container(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        Container(
+                                          child: Text(
+                                            AppLocalizations.of(context)
+                                                .translate('Passport'),
+                                            style: TextStyle(
+                                              fontSize: 11,
+                                              color: kGrey400,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                      Container(
-                                        child: Text(
-                                          'D9641312',
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                            color: kBlack,
+                                        Container(
+                                          child: Text(
+                                            'D9641312',
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                              color: kBlack,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                          Container(
-                            padding: const EdgeInsets.only(
-                              left: 15,
-                              right: 15,
-                              bottom: 15,
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Container(
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      Container(
-                                        child: Text(
-                                          AppLocalizations.of(context).translate('Travelinsurance'),
-                                          style: TextStyle(
-                                            fontSize: 11,
-                                            color: kGrey400,
+                            Container(
+                              padding: const EdgeInsets.only(
+                                left: 15,
+                                right: 15,
+                                bottom: 15,
+                              ),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  Container(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        Container(
+                                          child: Text(
+                                            AppLocalizations.of(context)
+                                                .translate('Travelinsurance'),
+                                            style: TextStyle(
+                                              fontSize: 11,
+                                              color: kGrey400,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                      Container(
-                                        child: Text(
-                                          'Travel Plus',
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                            color: kBlack,
+                                        Container(
+                                          child: Text(
+                                            'Travel Plus',
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                              color: kBlack,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                Container(
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      Container(
-                                        child: Text(
-                                          AppLocalizations.of(context).translate('Bags'),
-                                          style: TextStyle(
-                                            fontSize: 11,
-                                            color: kGrey400,
+                                  Container(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        Container(
+                                          child: Text(
+                                            AppLocalizations.of(context)
+                                                .translate('Bags'),
+                                            style: TextStyle(
+                                              fontSize: 11,
+                                              color: kGrey400,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                      Container(
-                                        child: Row(
-                                          children: <Widget>[
-                                            Container(
-                                              child: Text(
-                                                '1x',
-                                                style: TextStyle(
-                                                  fontSize: 12,
-                                                  color: kBlack,
+                                        Container(
+                                          child: Row(
+                                            children: <Widget>[
+                                              Container(
+                                                child: Text(
+                                                  '1x',
+                                                  style: TextStyle(
+                                                    fontSize: 12,
+                                                    color: kBlack,
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                            Container(
-                                              child: Row(
-                                                children: <Widget>[
-                                                  Container(
-                                                    margin: const EdgeInsets.only(
-                                                      left: 3,
-                                                      right: 3,
+                                              Container(
+                                                child: Row(
+                                                  children: <Widget>[
+                                                    Container(
+                                                      margin:
+                                                          const EdgeInsets.only(
+                                                        left: 3,
+                                                        right: 3,
+                                                      ),
+                                                      child: Image(
+                                                        image: AssetImage(
+                                                            'assets/icons/bag-2.png'),
+                                                      ),
                                                     ),
-                                                    child: Image(
-                                                      image: AssetImage(
-                                                          'assets/icons/bag-2.png'),
+                                                    Text(
+                                                      '56x32x36cm,',
+                                                      style: TextStyle(
+                                                        fontSize: 12,
+                                                        color: kBlack,
+                                                      ),
                                                     ),
-                                                  ),
-                                                  Text(
-                                                    '56x32x36cm,',
-                                                    style: TextStyle(
-                                                      fontSize: 12,
-                                                      color: kBlack,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            Container(
-                                              child: Text(
-                                                '7kg',
-                                                style: TextStyle(
-                                                  fontSize: 12,
-                                                  color: kBlack,
+                                                  ],
                                                 ),
                                               ),
-                                            ),
-                                          ],
+                                              Container(
+                                                child: Text(
+                                                  '7kg',
+                                                  style: TextStyle(
+                                                    fontSize: 12,
+                                                    color: kBlack,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                Container(),
-                              ],
+                                  Container(),
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
-                  ),
                 ],
               ),
             ),

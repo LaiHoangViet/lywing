@@ -4,10 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:lywing/common/app_localizations.dart';
 import 'package:lywing/common/constants.dart';
+import 'package:lywing/screen/choose/setting/link-phone-number.dart';
+import 'package:lywing/screen/choose/setting/manage-accounts.dart';
+import 'package:lywing/screen/choose/setting/display-name.dart';
+import 'package:lywing/screen/choose/setting/my-email.dart';
+import 'package:lywing/screen/choose/setting/reset-password.dart';
 import 'package:lywing/screen/choose/setting/saved-flights.dart';
 import 'package:lywing/sizes_helpers.dart';
 
 import '../passengers.dart';
+import 'delete-my-account.dart';
 import 'edit-profile.dart';
 import 'my-booking.dart';
 import 'my-cards.dart';
@@ -165,15 +171,14 @@ class _Profile_SettingState extends State<Profile_Setting> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) =>
-                                              Profile_Setting()),
+                                          builder: (context) => My_Email()),
                                     );
                                   },
                                 ),
-                                // Divider(
-                                //   color: kGrey300,
-                                //   height: 1,
-                                // ),
+                                Divider(
+                                  color: kGrey300,
+                                  height: 2,
+                                ),
                               ],
                             ),
                           ),
@@ -216,14 +221,14 @@ class _Profile_SettingState extends State<Profile_Setting> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              Notifications()),
+                                              Link_Phone_Number()),
                                     );
                                   },
                                 ),
-                                // Divider(
-                                //   color: kGrey300,
-                                //   height: 1,
-                                // ),
+                                Divider(
+                                  color: kGrey300,
+                                  height: 2,
+                                ),
                               ],
                             ),
                           ),
@@ -265,14 +270,15 @@ class _Profile_SettingState extends State<Profile_Setting> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => My_Booking()),
+                                          builder: (context) =>
+                                              Manage_Accounts()),
                                     );
                                   },
                                 ),
-                                // Divider(
-                                //   color: kGrey300,
-                                //   height: 1,
-                                // ),
+                                Divider(
+                                  color: kGrey300,
+                                  height: 2,
+                                ),
                               ],
                             ),
                           ),
@@ -314,14 +320,14 @@ class _Profile_SettingState extends State<Profile_Setting> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => Passengers()),
+                                          builder: (context) => Display_Name()),
                                     );
                                   },
                                 ),
-                                // Divider(
-                                //   color: kGrey300,
-                                //   height: 1,
-                                // ),
+                                Divider(
+                                  color: kGrey300,
+                                  height: 2,
+                                ),
                               ],
                             ),
                           ),
@@ -363,14 +369,15 @@ class _Profile_SettingState extends State<Profile_Setting> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => My_Cards()),
+                                          builder: (context) =>
+                                              Reset_Password()),
                                     );
                                   },
                                 ),
-                                // Divider(
-                                //   color: kGrey300,
-                                //   height: 1,
-                                // ),
+                                Divider(
+                                  color: kGrey300,
+                                  height: 2,
+                                ),
                               ],
                             ),
                           ),
@@ -413,7 +420,7 @@ class _Profile_SettingState extends State<Profile_Setting> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              Saved_Flights()),
+                                              Delete_My_Account()),
                                     );
                                   },
                                 ),

@@ -13,7 +13,6 @@ class Passengers extends StatefulWidget {
 }
 
 class _PassengersState extends State<Passengers> {
-
   List<String> name = [
     "Ms.May Thao Nguyen",
     "Mr.Nguyen Nam Long",
@@ -38,12 +37,12 @@ class _PassengersState extends State<Passengers> {
         preferredSize: Size.fromHeight(50.0),
         child: AppBar(
           elevation: 3.0,
-          leading: IconButton(
-            icon: Icon(
+          leading: InkWell(
+            child: Icon(
               Icons.arrow_back_ios_rounded,
               color: kBlack,
             ),
-            onPressed: () {
+            onTap: () {
               Navigator.pop(context);
             },
           ),
@@ -174,7 +173,7 @@ class _PassengersState extends State<Passengers> {
                             ),
                           ],
                         ),
-                      )  ,
+                      ),
                       secondary: IconButton(
                         icon: Icon(
                           MaterialIcons.create,
