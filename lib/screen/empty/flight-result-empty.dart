@@ -32,14 +32,14 @@ class _Flight_Result_EmptyState extends State<Flight_Result_Empty>
 
   @override
   Widget firstChild() {
-    return RaisedButton(
-      color: kWhite,
-      hoverElevation: 0.0,
-      highlightElevation: 0.0,
-      elevation: 0,
-      shape: Border.all(
-        width: 0.0,
-        color: kWhite,
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        primary: kWhite,
+        side: BorderSide(
+          width: 0.0,
+          color: kWhite,
+        ),
+        elevation: 0,
       ),
       child: AnimatedBuilder(
         animation: _arrowAnimation,

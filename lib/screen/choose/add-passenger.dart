@@ -153,13 +153,14 @@ class _Add_PassengerState extends State<Add_Passenger> {
             actions: <Widget>[
               Container(
                   alignment: Alignment.centerRight,
-                  child: RaisedButton(
+                  child: ElevatedButton(
                     onPressed: () {},
-                    elevation: 0,
-                    highlightElevation: 0,
-                    splashColor: kWhite,
-                    color: kWhite,
-                    highlightColor: kWhite,
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0,
+                      primary: kWhite,
+                      shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(10.0)),
+                    ),
                     child: Text(
                       AppLocalizations.of(context).translate('Done'),
                       style: TextStyle(

@@ -28,7 +28,7 @@ class _DestinationState extends State<Destination> {
       context: context,
       expand: false,
       backgroundColor: kWhite,
-      builder: (context, scrollController) => Container(
+      builder: (context) => Container(
         padding: EdgeInsets.only(
           top: displaySize(context).height * 0.06,
           left: 10,
@@ -89,12 +89,13 @@ class _DestinationState extends State<Destination> {
                   this._typeAheadController1.text = suggestion;
                   setState(() {
                     FileSystemManager.instance.chosen1 = true;
-                    FileSystemManager.instance.typeAheadController1 = this._typeAheadController1.text;
+                    FileSystemManager.instance.typeAheadController1 =
+                        this._typeAheadController1.text;
                   });
                   Navigator.pop(context);
                 },
                 validator: (value) =>
-                value.isEmpty ? 'Please select a city?' : null,
+                    value.isEmpty ? 'Please select a city?' : null,
                 onSaved: (value) => FocusScope.of(context).requestFocus(focus),
               ),
             ),
@@ -111,20 +112,21 @@ class _DestinationState extends State<Destination> {
         FileSystemManager.instance.chosen1 = false;
         search_place1();
       },
-      child: FileSystemManager.instance.chosen1 == false ? Text(
-        AppLocalizations.of(context)
-            .translate('whereYouToGo?'),
-        style: TextStyle(
-          fontSize: 15,
-          color: kGrey500,
-        ),
-      ): Text(
-        FileSystemManager.instance.typeAheadController1.toString(),
-        style: TextStyle(
-          fontSize: 15,
-          color: kGrey500,
-        ),
-      ),
+      child: FileSystemManager.instance.chosen1 == false
+          ? Text(
+              AppLocalizations.of(context).translate('whereYouToGo?'),
+              style: TextStyle(
+                fontSize: 15,
+                color: kGrey500,
+              ),
+            )
+          : Text(
+              FileSystemManager.instance.typeAheadController1.toString(),
+              style: TextStyle(
+                fontSize: 15,
+                color: kGrey500,
+              ),
+            ),
     );
   }
 }

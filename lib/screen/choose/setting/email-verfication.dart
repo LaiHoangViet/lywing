@@ -224,36 +224,39 @@ class _Email_VerficationState extends State<Email_Verfication> {
                   ),
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 20),
-                    child: ButtonTheme(
-                      minWidth: 500,
-                      height: displaySize(context).height * 0.05,
-                      child: RaisedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Verify_Success()),
-                          );
-                        },
-                        color: kBlue,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Verify_Success()),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        primary: kBlue,
                         shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(10.0)),
-                        child: Text(
-                          AppLocalizations.of(context)
-                              .translate('Next')
-                              .toUpperCase(),
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white,
-                            //       fontSize: 15,
-                          ),
+                          borderRadius: new BorderRadius.circular(10.0),
+                        ),
+                        minimumSize: Size(
+                          500,
+                          displaySize(context).height * 0.05,
+                        ),
+                      ),
+                      child: Text(
+                        AppLocalizations.of(context)
+                            .translate('Next')
+                            .toUpperCase(),
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.white,
+                          //       fontSize: 15,
                         ),
                       ),
                     ),
                     // ButtonTheme(
                     //   minWidth: 500,
                     //   height: 10,
-                    //   child: FlatButton(
+                    //   child: TextButton(
                     //     onPressed: () {
                     //       Navigator.push(
                     //         context,
@@ -313,14 +316,14 @@ class _Email_VerficationState extends State<Email_Verfication> {
                   //   mainAxisAlignment: MainAxisAlignment.center,
                   //   children: <Widget>[
                   //     Flexible(
-                  //         child: FlatButton(
+                  //         child: TextButton(
                   //       child: Text("Clear"),
                   //       onPressed: () {
                   //         textEditingController.clear();
                   //       },
                   //     )),
                   //     Flexible(
-                  //         child: FlatButton(
+                  //         child: TextButton(
                   //       child: Text("Set Text"),
                   //       onPressed: () {
                   //         textEditingController.text = "123456";

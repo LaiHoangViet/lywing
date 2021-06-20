@@ -140,21 +140,23 @@ class _registerNewAccountState extends State<registerNewAccount> {
                 left: 10,
                 right: 10,
               ),
-              child: ButtonTheme(
-                minWidth: 500,
-                height: 40,
-                child: RaisedButton(
-                  onPressed: () {},
-                  color: Color.fromRGBO(0, 120, 255, 1),
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  primary: Color.fromRGBO(0, 120, 255, 1),
                   shape: new RoundedRectangleBorder(
                       borderRadius: new BorderRadius.circular(10.0)),
-                  child: Text(
-                    AppLocalizations.of(context).translate('register'),
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: kWhite,
-                    ),
+                  minimumSize: Size(
+                    500,
+                    40,
+                  ),
+                ),
+                child: Text(
+                  AppLocalizations.of(context).translate('register'),
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: kWhite,
                   ),
                 ),
               ),
@@ -174,7 +176,7 @@ class _registerNewAccountState extends State<registerNewAccount> {
                       color: kGrey600,
                     ),
                   ),
-                  FlatButton(
+                  TextButton(
                     onPressed: () {
                       Navigator.push(
                         context,

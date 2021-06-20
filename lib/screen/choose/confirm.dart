@@ -973,26 +973,29 @@ class _ConfirmState extends State<Confirm> {
                 top: 40,
                 bottom: 30,
               ),
-              child: ButtonTheme(
-                minWidth: 500,
-                height: displaySize(context).height * 0.05,
-                child: RaisedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Home_Screen()),
-                    );
-                  },
-                  color: kBlue,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Home_Screen()),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: kBlue,
                   shape: new RoundedRectangleBorder(
                       borderRadius: new BorderRadius.circular(10.0)),
-                  child: Text(
-                    AppLocalizations.of(context).translate('Gotohome'),
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: kWhite,
-                    ),
+                  elevation: 0,
+                  minimumSize: Size(
+                    500,
+                    displaySize(context).height * 0.05,
+                  ),
+                ),
+                child: Text(
+                  AppLocalizations.of(context).translate('Gotohome'),
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: kWhite,
                   ),
                 ),
               ),

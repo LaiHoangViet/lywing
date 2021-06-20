@@ -42,7 +42,7 @@ class _Edit_ProfileState extends State<Edit_Profile> {
           ),
           actions: <Widget>[
             Container(
-              child: FlatButton(
+              child: TextButton(
                 child: Text(
                   AppLocalizations.of(context).translate('Save'),
                   style: TextStyle(

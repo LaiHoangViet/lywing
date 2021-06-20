@@ -228,23 +228,28 @@ class _CarriersState extends State<Carriers> {
             ],
           ),
           child: Container(
-            child: ButtonTheme(
-              minWidth: 500,
-              height: displaySize(context).height * 0.05,
-              child: RaisedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                color: kGreenLight,
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              style: ElevatedButton.styleFrom(
+                primary: kGreenLight,
                 shape: new RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(30.0)),
-                child: Text(
-                  AppLocalizations.of(context).translate('Apply'),
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: ResponsiveFlutter.of(context).fontSize(1.8),
-                    color: kWhite,
-                  ),
+                minimumSize: Size(
+                  500,
+                  displaySize(context).height * 0.05,
+                ),
+              ),
+              // color: kGreenLight,
+              // shape: new RoundedRectangleBorder(
+              //     borderRadius: new BorderRadius.circular(30.0)),
+              child: Text(
+                AppLocalizations.of(context).translate('Apply'),
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: ResponsiveFlutter.of(context).fontSize(1.8),
+                  color: kWhite,
                 ),
               ),
             ),

@@ -201,27 +201,30 @@ class _Delete_My_AccountState extends State<Delete_My_Account> {
                 top: displaySize(context).height * 0.04,
                 bottom: displaySize(context).height * 0.04,
               ),
-              child: ButtonTheme(
-                minWidth: 500,
-                height: displaySize(context).height * 0.05,
-                child: RaisedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Delete_My_Account_Not_Delete()),
-                    );
-                  },
-                  color: kBlue,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Delete_My_Account_Not_Delete()),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: kBlue,
                   shape: new RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(7.0)),
-                  child: AutoSizeText(
-                    AppLocalizations.of(context).translate('Next'),
-                    style: TextStyle(
-                      color: kWhite,
-                    ),
-                    presetFontSizes: [15, 12, 9, 6],
+                    borderRadius: new BorderRadius.circular(7.0),
                   ),
+                  minimumSize: Size(
+                    500,
+                    displaySize(context).height * 0.05,
+                  ),
+                ),
+                child: AutoSizeText(
+                  AppLocalizations.of(context).translate('Next'),
+                  style: TextStyle(
+                    color: kWhite,
+                  ),
+                  presetFontSizes: [15, 12, 9, 6],
                 ),
               ),
             ),

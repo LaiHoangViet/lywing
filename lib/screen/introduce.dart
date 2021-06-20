@@ -4,6 +4,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lywing/common/constants.dart';
 import 'package:lywing/sizes_helpers.dart';
 import 'package:responsive_flutter/responsive_flutter.dart';
+// import 'home/home_screen.dart';
+import 'home/home_screen.dart';
 import 'users/login/slash-screen.dart';
 
 class Introduce extends StatefulWidget {
@@ -20,14 +22,6 @@ class _IntroduceState extends State<Introduce> {
     );
   }
 
-  // Widget _buildImage(String assetName) {
-  //   return Align(
-  //     child:
-  //         Image.asset('assets/images/introduce/$assetName.png', width: 350.0),
-  //     alignment: Alignment.bottomCenter,
-  //   );
-  // }
-
   @override
   Widget build(BuildContext context) {
     const bodyStyle = TextStyle(
@@ -35,7 +29,7 @@ class _IntroduceState extends State<Introduce> {
       color: kGrey500,
     );
     var pageDecoration = PageDecoration(
-      contentPadding: EdgeInsets.only(
+      footerPadding: EdgeInsets.only(
         top: displaySize(context).height * 0.05,
       ),
       titleTextStyle: TextStyle(fontSize: 28.0, color: kBlack),
@@ -75,26 +69,28 @@ class _IntroduceState extends State<Introduce> {
         PageViewModel(
           title: "Title of last page",
           body: "Save your search and get notifications when prices change.",
-          footer: ButtonTheme(
-            minWidth: 200,
-            height: displaySize(context).height * 0.05,
-            child: RaisedButton(
-              onPressed: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => Home_Screen()),
-                // );
-              },
-              color: kBlue,
+          footer: ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Home_Screen()),
+              );
+            },
+            style: ElevatedButton.styleFrom(
+              primary: kBlue,
               shape: new RoundedRectangleBorder(
                   borderRadius: new BorderRadius.circular(50.0)),
-              child: Text(
-                "Enable Notification",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: ResponsiveFlutter.of(context).fontSize(1.8),
-                  color: kWhite,
-                ),
+              minimumSize: Size(
+                200,
+                displaySize(context).height * 0.05,
+              ),
+            ),
+            child: Text(
+              "Enable Notification",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: ResponsiveFlutter.of(context).fontSize(1.8),
+                color: kWhite,
               ),
             ),
           ),

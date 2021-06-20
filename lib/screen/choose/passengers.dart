@@ -58,13 +58,21 @@ class _PassengersState extends State<Passengers> {
           actions: <Widget>[
             Container(
                 alignment: Alignment.centerRight,
-                child: RaisedButton(
+                child: ElevatedButton(
                   onPressed: () {},
-                  elevation: 0,
-                  highlightElevation: 0,
-                  splashColor: kWhite,
-                  color: kWhite,
-                  highlightColor: kWhite,
+                  style: ElevatedButton.styleFrom(
+                    primary: kWhite,
+                    elevation: 0,
+                  ).merge(
+                    ButtonStyle(
+                      overlayColor: MaterialStateProperty.resolveWith<Color>(
+                          (Set<MaterialState> states) {
+                        if (states.contains(MaterialState.pressed))
+                          return kWhite;
+                        return null; // Defer to the widget's default.
+                      }),
+                    ),
+                  ),
                   child: Text(
                     AppLocalizations.of(context).translate('Done'),
                     style: TextStyle(
@@ -89,19 +97,19 @@ class _PassengersState extends State<Passengers> {
                 top: 20,
                 bottom: 20,
               ),
-              child: RaisedButton(
+              child: ElevatedButton(
                 onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => Add_Passenger()),
                   );
                 },
-                color: kBlue,
-                hoverElevation: 0.0,
-                highlightElevation: 0.0,
-                elevation: 0,
-                shape: new RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(10.0)),
+                style: ElevatedButton.styleFrom(
+                  primary: kBlue,
+                  shape: new RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(10.0)),
+                  elevation: 0,
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[

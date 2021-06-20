@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:lywing/common/app_localizations.dart';
 import 'package:lywing/common/constants.dart';
@@ -24,9 +26,9 @@ class _TabbarMy_TripState extends State<TabbarMy_Trip> {
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(100.0),
             child: Container(
-              padding:const EdgeInsets.only(
+              padding: const EdgeInsets.only(
                 top: 20,
-              ) ,
+              ),
               width: displaySize(context).width,
               decoration: BoxDecoration(
                 color: kWhite,
@@ -46,15 +48,19 @@ class _TabbarMy_TripState extends State<TabbarMy_Trip> {
                 automaticallyImplyLeading: false,
                 backgroundColor: kWhite,
                 elevation: 0,
-                title: Text(
-                  AppLocalizations.of(context).translate('MyTrip'),
-                  textAlign: TextAlign.end,
-                  style: TextStyle(
-                    fontSize: 34,
-                    color: kBlack,
+                title: Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Text(
+                    AppLocalizations.of(context).translate('MyTrip'),
+                    textAlign: TextAlign.end,
+                    style: TextStyle(
+                      fontSize: 34,
+                      color: kBlack,
+                    ),
                   ),
                 ),
                 bottom: PreferredSize(
+                  preferredSize: Size.fromHeight(30.0),
                   child: Align(
                     alignment: Alignment.bottomLeft,
                     child: TabBar(

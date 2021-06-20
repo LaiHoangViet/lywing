@@ -15,8 +15,6 @@ class _Choose_TypeState extends State<Choose_Type> {
   int typeIcon = 0;
   String selection = "Return";
 
-
-
   Future type_of_flight() async {
     final option = await showModalBottomSheet(
       context: context,
@@ -84,13 +82,17 @@ class _Choose_TypeState extends State<Choose_Type> {
 
   @override
   Widget build(BuildContext context) {
-    return RaisedButton(
+    return ElevatedButton(
       onPressed: () {
         type_of_flight();
       },
-      elevation: 0,
-      shape: new RoundedRectangleBorder(
-          borderRadius: new BorderRadius.circular(10.0)),
+      style: ElevatedButton.styleFrom(
+        shape: new RoundedRectangleBorder(
+          borderRadius: new BorderRadius.circular(10.0),
+        ),
+        primary: kGrey200,
+        elevation: 0,
+      ),
       child: Row(
         children: <Widget>[
           Container(
@@ -98,8 +100,8 @@ class _Choose_TypeState extends State<Choose_Type> {
               FileSystemManager.instance.type == 0
                   ? FontAwesomeIcons.exchangeAlt
                   : FileSystemManager.instance.type == 1
-                  ? FontAwesomeIcons.longArrowAltRight
-                  : MaterialIcons.call_split,
+                      ? FontAwesomeIcons.longArrowAltRight
+                      : MaterialIcons.call_split,
               size: 15,
               color: kGrey600,
             ),
@@ -109,7 +111,9 @@ class _Choose_TypeState extends State<Choose_Type> {
               left: 10,
             ),
             child: Text(
-              FileSystemManager.instance.type == 0 ? "Return" : FileSystemManager.instance.typestring.toString(),
+              FileSystemManager.instance.type == 0
+                  ? "Return"
+                  : FileSystemManager.instance.typestring.toString(),
               style: TextStyle(
                 fontSize: 15,
                 color: kGrey600,
@@ -130,7 +134,6 @@ class Choose_Type1 extends StatefulWidget {
 class _Choose_Type1State extends State<Choose_Type1> {
   int typeIcon = 0;
   String selection = "Return";
-
 
   Future type_of_flight() async {
     final option = await showModalBottomSheet(
@@ -210,8 +213,8 @@ class _Choose_Type1State extends State<Choose_Type1> {
               FileSystemManager.instance.type == 0
                   ? FontAwesomeIcons.exchangeAlt
                   : FileSystemManager.instance.type == 1
-                  ? FontAwesomeIcons.longArrowAltRight
-                  : MaterialIcons.call_split,
+                      ? FontAwesomeIcons.longArrowAltRight
+                      : MaterialIcons.call_split,
               size: 15,
               color: kGrey600,
             ),
@@ -221,7 +224,9 @@ class _Choose_Type1State extends State<Choose_Type1> {
               left: 10,
             ),
             child: Text(
-              FileSystemManager.instance.type == 0 ? "Return" : FileSystemManager.instance.typestring.toString(),
+              FileSystemManager.instance.type == 0
+                  ? "Return"
+                  : FileSystemManager.instance.typestring.toString(),
               style: TextStyle(
                 fontSize: 15,
                 color: kGrey600,
@@ -245,15 +250,15 @@ class TypeTravel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.centerLeft,
-      child: RaisedButton(
+      child: ElevatedButton(
         onPressed: onPress,
-        color: kWhite,
-        hoverElevation: 0.0,
-        highlightElevation: 0.0,
-        elevation: 0,
-        shape: Border.all(
-          width: 0.0,
-          color: kWhite,
+        style: ElevatedButton.styleFrom(
+          primary: kWhite,
+          elevation: 0,
+          side: BorderSide(
+            width: 0.0,
+            color: kWhite,
+          ),
         ),
         child: Row(
           children: <Widget>[
@@ -282,4 +287,3 @@ class TypeTravel extends StatelessWidget {
     );
   }
 }
-

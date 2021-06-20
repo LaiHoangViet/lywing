@@ -29,7 +29,7 @@ class _Place_To_GoState extends State<Place_To_Go> {
       context: context,
       expand: false,
       backgroundColor: kWhite,
-      builder: (context, scrollController) => Container(
+      builder: (context) => Container(
         padding: EdgeInsets.only(
           top: displaySize(context).height * 0.06,
           left: 10,
@@ -70,7 +70,7 @@ class _Place_To_GoState extends State<Place_To_Go> {
                     enabledBorder: InputBorder.none,
                     errorBorder: InputBorder.none,
                     disabledBorder: InputBorder.none,
-                      hintText: "City",
+                    hintText: "City",
                   ),
                   // 2 controller khac nhau
                   controller: this._typeAheadController,

@@ -118,26 +118,28 @@ class _LoginState extends State<Login> {
                 left: 10,
                 right: 10,
               ),
-              child: ButtonTheme(
-                minWidth: 500,
-                height: displaySize(context).height * 0.05,
-                child: RaisedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Home_Screen()),
-                    );
-                  },
-                  color: kBlue,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Home_Screen()),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: kBlue,
                   shape: new RoundedRectangleBorder(
                       borderRadius: new BorderRadius.circular(10.0)),
-                  child: Text(
-                    AppLocalizations.of(context).translate('login'),
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: ResponsiveFlutter.of(context).fontSize(1.8),
-                      color: kWhite,
-                    ),
+                  minimumSize: Size(
+                    500,
+                    displaySize(context).height * 0.05,
+                  ),
+                ),
+                child: Text(
+                  AppLocalizations.of(context).translate('login'),
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: ResponsiveFlutter.of(context).fontSize(1.8),
+                    color: kWhite,
                   ),
                 ),
               ),
@@ -154,80 +156,80 @@ class _LoginState extends State<Login> {
                 children: <Widget>[
                   Container(
                     width: displaySize(context).width * 0.45,
-                    child: ButtonTheme(
-                      child: RaisedButton(
-                        elevation: 0,
-                        onPressed: () {},
-                        color: kWhite,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: kWhite,
                         shape: new RoundedRectangleBorder(
                           borderRadius: new BorderRadius.circular(10.0),
                           side: BorderSide(
                             width: 0.1,
                           ),
                         ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            Container(
-                              padding: EdgeInsets.only(
-                                right: displaySize(context).width * 0.1,
-                              ),
-                              child: SvgPicture.asset(
-                                ('assets/images/google.svg'),
-                                width: 15,
-                                height: 15,
-                              ),
+                        elevation: 0,
+                      ),
+                      onPressed: () {},
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Container(
+                            padding: EdgeInsets.only(
+                              right: displaySize(context).width * 0.1,
                             ),
-                            Text(
-                              'Google',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize:
-                                    ResponsiveFlutter.of(context).fontSize(1.9),
-                                color: kBlack,
-                              ),
+                            child: SvgPicture.asset(
+                              ('assets/images/google.svg'),
+                              width: 15,
+                              height: 15,
                             ),
-                          ],
-                        ),
+                          ),
+                          Text(
+                            'Google',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize:
+                                  ResponsiveFlutter.of(context).fontSize(1.9),
+                              color: kBlack,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
                   Container(
                     width: displaySize(context).width * 0.45,
-                    child: ButtonTheme(
-                      child: RaisedButton(
-                        elevation: 0,
-                        onPressed: () {},
-                        color: kWhite,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        primary: kWhite,
                         shape: new RoundedRectangleBorder(
                           borderRadius: new BorderRadius.circular(10.0),
                           side: BorderSide(
                             width: 0.1,
                           ),
                         ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            Container(
-                              padding: EdgeInsets.only(
-                                right: displaySize(context).width * 0.1,
-                              ),
-                              child: SvgPicture.asset(
-                                ('assets/images/facebook.svg'),
-                                width: 15,
-                                height: 15,
-                              ),
+                        elevation: 0,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Container(
+                            padding: EdgeInsets.only(
+                              right: displaySize(context).width * 0.1,
                             ),
-                            Text(
-                              'Facebook',
-                              style: TextStyle(
-                                fontSize:
-                                    ResponsiveFlutter.of(context).fontSize(1.9),
-                                color: kBlack,
-                              ),
+                            child: SvgPicture.asset(
+                              ('assets/images/facebook.svg'),
+                              width: 15,
+                              height: 15,
                             ),
-                          ],
-                        ),
+                          ),
+                          Text(
+                            'Facebook',
+                            style: TextStyle(
+                              fontSize:
+                                  ResponsiveFlutter.of(context).fontSize(1.9),
+                              color: kBlack,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),

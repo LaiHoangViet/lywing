@@ -160,28 +160,31 @@ class _Form_Reset_PasswordState extends State<Form_Reset_Password> {
             margin: EdgeInsets.only(
               top: displaySize(context).height * 0.04,
             ),
-            child: ButtonTheme(
-              minWidth: 500,
-              height: displaySize(context).height * 0.05,
-              child: RaisedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            Reset_Password_Verification('+0975523056')),
-                  );
-                },
-                color: kBlue,
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          Reset_Password_Verification('+0975523056')),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                primary: kBlue,
                 shape: new RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(7.0)),
-                child: AutoSizeText(
-                  AppLocalizations.of(context).translate('Submit'),
-                  style: TextStyle(
-                    color: kWhite,
-                  ),
-                  presetFontSizes: [15, 12, 9, 6],
+                  borderRadius: new BorderRadius.circular(7.0),
                 ),
+                minimumSize: Size(
+                  500,
+                  displaySize(context).height * 0.05,
+                ),
+              ),
+              child: AutoSizeText(
+                AppLocalizations.of(context).translate('Submit'),
+                style: TextStyle(
+                  color: kWhite,
+                ),
+                presetFontSizes: [15, 12, 9, 6],
               ),
             ),
           ),

@@ -20,6 +20,7 @@ class _Passengers_Bags_ClassesState extends State<Passengers_Bags_Classes> {
   int value2 = 1;
   int value3 = 1;
 
+  int _groupValue = -1;
   int selectedRadio;
   int economy = 1;
   int preEconomy = 2;
@@ -60,20 +61,22 @@ class _Passengers_Bags_ClassesState extends State<Passengers_Bags_Classes> {
       backgroundColor: kWhite,
       isScrollControlled: true,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(10.0)),
+        borderRadius: BorderRadius.circular(10.0),
       ),
       builder: (BuildContext context) {
         return BottomSheet(
           onClosing: () {
             setState(() {});
           },
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
+          ),
           builder: (BuildContext context) {
             return StatefulBuilder(
               builder: (BuildContext context, StateSetter mystate) => Container(
                 height: displaySize(context).height * 0.7,
                 margin: EdgeInsets.only(
                   top: displaySize(context).height * 0.03,
-                  // bottom: displaySize(context).height * 0.03,
                   left: displaySize(context).width * 0.07,
                   right: displaySize(context).width * 0.07,
                 ),
@@ -416,13 +419,17 @@ class _Passengers_Bags_ClassesState extends State<Passengers_Bags_Classes> {
 
   @override
   Widget build(BuildContext context) {
-    return RaisedButton(
+    return ElevatedButton(
       onPressed: () {
         type();
       },
-      elevation: 0,
-      shape: new RoundedRectangleBorder(
-          borderRadius: new BorderRadius.circular(10.0)),
+      style: ElevatedButton.styleFrom(
+        shape: new RoundedRectangleBorder(
+          borderRadius: new BorderRadius.circular(10.0),
+        ),
+        elevation: 0,
+        primary: kGrey200,
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
@@ -604,7 +611,7 @@ class _Passengers_Bags_Classes1State extends State<Passengers_Bags_Classes1> {
                                   .translate('Passengers'),
                               style: TextStyle(
                                 fontSize:
-                                ResponsiveFlutter.of(context).fontSize(2),
+                                    ResponsiveFlutter.of(context).fontSize(2),
                                 color: kBlack,
                               ),
                             ),
@@ -619,7 +626,7 @@ class _Passengers_Bags_Classes1State extends State<Passengers_Bags_Classes1> {
                                 Container(
                                   child: Row(
                                     mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                        MainAxisAlignment.spaceBetween,
                                     children: <Widget>[
                                       Container(
                                         child: Row(
@@ -634,17 +641,17 @@ class _Passengers_Bags_Classes1State extends State<Passengers_Bags_Classes1> {
                                             Container(
                                               padding: EdgeInsets.only(
                                                 left:
-                                                displaySize(context).width *
-                                                    0.01,
+                                                    displaySize(context).width *
+                                                        0.01,
                                               ),
                                               child: Text(
                                                 AppLocalizations.of(context)
                                                     .translate('Adults'),
                                                 style: TextStyle(
                                                   fontSize:
-                                                  ResponsiveFlutter.of(
-                                                      context)
-                                                      .fontSize(1.7),
+                                                      ResponsiveFlutter.of(
+                                                              context)
+                                                          .fontSize(1.7),
                                                   color: kGrey600,
                                                 ),
                                               ),
@@ -677,7 +684,7 @@ class _Passengers_Bags_Classes1State extends State<Passengers_Bags_Classes1> {
                                 Container(
                                   child: Row(
                                     mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                        MainAxisAlignment.spaceBetween,
                                     children: <Widget>[
                                       Container(
                                         child: Row(
@@ -692,17 +699,17 @@ class _Passengers_Bags_Classes1State extends State<Passengers_Bags_Classes1> {
                                             Container(
                                               padding: EdgeInsets.only(
                                                 left:
-                                                displaySize(context).width *
-                                                    0.01,
+                                                    displaySize(context).width *
+                                                        0.01,
                                               ),
                                               child: Text(
                                                 AppLocalizations.of(context)
                                                     .translate('Infants'),
                                                 style: TextStyle(
                                                   fontSize:
-                                                  ResponsiveFlutter.of(
-                                                      context)
-                                                      .fontSize(1.7),
+                                                      ResponsiveFlutter.of(
+                                                              context)
+                                                          .fontSize(1.7),
                                                   color: kGrey600,
                                                 ),
                                               ),
@@ -724,7 +731,7 @@ class _Passengers_Bags_Classes1State extends State<Passengers_Bags_Classes1> {
                                           value: value2.toDouble(),
                                           onChanged: (value) {
                                             mystate(
-                                                  () {
+                                              () {
                                                 value2 = value.toInt();
                                                 FileSystemManager
                                                     .instance.infants = value2;
@@ -753,7 +760,7 @@ class _Passengers_Bags_Classes1State extends State<Passengers_Bags_Classes1> {
                               AppLocalizations.of(context).translate('Bags'),
                               style: TextStyle(
                                 fontSize:
-                                ResponsiveFlutter.of(context).fontSize(2),
+                                    ResponsiveFlutter.of(context).fontSize(2),
                                 color: kBlack,
                               ),
                             ),
@@ -768,7 +775,7 @@ class _Passengers_Bags_Classes1State extends State<Passengers_Bags_Classes1> {
                                 Container(
                                   child: Row(
                                     mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                        MainAxisAlignment.spaceBetween,
                                     children: <Widget>[
                                       Container(
                                         child: Row(
@@ -789,9 +796,9 @@ class _Passengers_Bags_Classes1State extends State<Passengers_Bags_Classes1> {
                                                     .translate('checkedBags'),
                                                 style: TextStyle(
                                                   fontSize:
-                                                  ResponsiveFlutter.of(
-                                                      context)
-                                                      .fontSize(1.7),
+                                                      ResponsiveFlutter.of(
+                                                              context)
+                                                          .fontSize(1.7),
                                                   color: kGrey600,
                                                 ),
                                               ),
@@ -849,7 +856,7 @@ class _Passengers_Bags_Classes1State extends State<Passengers_Bags_Classes1> {
                         children: <Widget>[
                           ListTile(
                             contentPadding:
-                            EdgeInsets.only(left: 0.0, right: 0.0),
+                                EdgeInsets.only(left: 0.0, right: 0.0),
                             onTap: () {
                               setSelectedRadio(economy);
                               FileSystemManager.instance.temp = economy;
@@ -872,7 +879,7 @@ class _Passengers_Bags_Classes1State extends State<Passengers_Bags_Classes1> {
                           ),
                           ListTile(
                             contentPadding:
-                            EdgeInsets.only(left: 0.0, right: 0.0),
+                                EdgeInsets.only(left: 0.0, right: 0.0),
                             onTap: () {
                               setSelectedRadio(preEconomy);
                               FileSystemManager.instance.temp = preEconomy;
@@ -894,7 +901,7 @@ class _Passengers_Bags_Classes1State extends State<Passengers_Bags_Classes1> {
                           ),
                           ListTile(
                             contentPadding:
-                            EdgeInsets.only(left: 0.0, right: 0.0),
+                                EdgeInsets.only(left: 0.0, right: 0.0),
                             onTap: () {
                               setSelectedRadio(business);
                               FileSystemManager.instance.temp = business;

@@ -505,7 +505,7 @@ class _Flight_ResultsState extends State<Flight_Results>
                                   ),
                                 ],
                               ),
-                              child: RaisedButton(
+                              child: ElevatedButton(
                                 onPressed: () {
                                   Navigator.push(
                                     context,
@@ -513,15 +513,14 @@ class _Flight_ResultsState extends State<Flight_Results>
                                         builder: (context) => Flight_Details()),
                                   );
                                 },
-                                elevation: 0,
-                                color: kWhite,
-                                padding: const EdgeInsets.all(20),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  side: BorderSide(
-                                    width: 0,
-                                    color: kWhite,
+                                style: ElevatedButton.styleFrom(
+                                  primary: kWhite,
+                                  shape: new RoundedRectangleBorder(
+                                    borderRadius:
+                                        new BorderRadius.circular(10.0),
                                   ),
+                                  padding: const EdgeInsets.all(20),
+                                  elevation: 0,
                                 ),
                                 child: Column(
                                   children: <Widget>[

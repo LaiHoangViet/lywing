@@ -956,15 +956,15 @@ class _OverviewState extends State<Overview> {
                     ),
                   ),
                   Container(
-                    child: RaisedButton(
-                      hoverElevation: 0.0,
-                      highlightElevation: 0.0,
-                      elevation: 0,
-                      color: kGreenLight,
-                      shape: new RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(30.0),
-                        side: BorderSide(
-                          width: 0.1,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: kGreenLight,
+                        shape: new RoundedRectangleBorder(
+                            borderRadius: new BorderRadius.circular(30.0)),
+                        elevation: 0,
+                        minimumSize: Size(
+                          displaySize(context).width * 0.3,
+                          displaySize(context).height * 0.05,
                         ),
                       ),
                       onPressed: () {

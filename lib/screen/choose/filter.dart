@@ -63,13 +63,21 @@ class _FilterState extends State<Filter> {
             actions: <Widget>[
               Container(
                   alignment: Alignment.centerRight,
-                  child: RaisedButton(
+                  child: ElevatedButton(
                     onPressed: () {},
-                    elevation: 0,
-                    highlightElevation: 0,
-                    splashColor: kWhite,
-                    color: kWhite,
-                    highlightColor: kWhite,
+                    style: ElevatedButton.styleFrom(
+                      primary: kWhite,
+                      elevation: 0,
+                    ).merge(
+                      ButtonStyle(
+                        overlayColor: MaterialStateProperty.resolveWith<Color>(
+                            (Set<MaterialState> states) {
+                          if (states.contains(MaterialState.pressed))
+                            return kWhite;
+                          return null; // Defer to the widget's default.
+                        }),
+                      ),
+                    ),
                     child: Text(
                       AppLocalizations.of(context).translate('Done'),
                       style: TextStyle(
@@ -1425,25 +1433,25 @@ class _FilterState extends State<Filter> {
                 ),
               ],
             ),
-            child: Container(
-              child: ButtonTheme(
-                minWidth: 500,
-                height: displaySize(context).height * 0.05,
-                child: RaisedButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  color: kGreenLight,
-                  shape: new RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(30.0)),
-                  child: Text(
-                    AppLocalizations.of(context).translate('Apply'),
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: ResponsiveFlutter.of(context).fontSize(1.8),
-                      color: kWhite,
-                    ),
-                  ),
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              style: ElevatedButton.styleFrom(
+                primary: kGreenLight,
+                shape: new RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(30.0)),
+                minimumSize: Size(
+                  500,
+                  displaySize(context).height * 0.05,
+                ),
+              ),
+              child: Text(
+                AppLocalizations.of(context).translate('Apply'),
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: ResponsiveFlutter.of(context).fontSize(1.8),
+                  color: kWhite,
                 ),
               ),
             ),

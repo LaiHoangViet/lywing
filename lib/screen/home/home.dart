@@ -36,7 +36,6 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   Animation _arrowAnimation;
   AnimationController _arrowAnimationController;
 
-
   @override
   void initState() {
     super.initState();
@@ -65,14 +64,14 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
             ? _arrowAnimationController.reverse()
             : _arrowAnimationController.forward();
         setState(() {
-          swap = FileSystemManager.instance.typeAheadController ;
-          FileSystemManager.instance.typeAheadController = FileSystemManager.instance.typeAheadController1;
+          swap = FileSystemManager.instance.typeAheadController;
+          FileSystemManager.instance.typeAheadController =
+              FileSystemManager.instance.typeAheadController1;
           FileSystemManager.instance.typeAheadController1 = swap;
         });
       },
     );
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -231,7 +230,6 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                             color: kGrey500,
                                           ),
                                         ),
-
                                         Text(
                                           "-",
                                           style: TextStyle(
@@ -239,7 +237,6 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                             color: kGrey500,
                                           ),
                                         ),
-
                                         Text(
                                           FileSystemManager.instance.secondDate,
                                           style: TextStyle(
@@ -291,20 +288,16 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
               Container(
                 width: displaySize(context).width,
                 alignment: Alignment.center,
-                child: ButtonTheme(
-                  minWidth: 500,
-                  child: RaisedButton(
-                    onPressed: () {
-                      print("TEST: ${FileSystemManager.instance.chosen}");
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => Flight_Results()),
-                      );
-                    },
-                    color: kBlue,
-                    hoverElevation: 0.0,
-                    highlightElevation: 0.0,
+                child: ElevatedButton(
+                  onPressed: () {
+                    print("TEST: ${FileSystemManager.instance.chosen}");
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Flight_Results()),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: kBlue,
                     elevation: 0,
                     shape: new RoundedRectangleBorder(
                       borderRadius: new BorderRadius.circular(10.0),
@@ -313,12 +306,16 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                         color: kBlue,
                       ),
                     ),
-                    child: Text(
-                      AppLocalizations.of(context).translate('Search'),
-                      style: TextStyle(
-                        color: kWhite,
-                        fontSize: 15,
-                      ),
+                    minimumSize: Size(
+                      500,
+                      displaySize(context).height * 0.05,
+                    ),
+                  ),
+                  child: Text(
+                    AppLocalizations.of(context).translate('Search'),
+                    style: TextStyle(
+                      color: kWhite,
+                      fontSize: 15,
                     ),
                   ),
                 ),

@@ -66,17 +66,17 @@ class _Seclect_DateState extends State<Seclect_Date> {
                 renderPostAndPreviousMonthDates: true,
               ),
             ),
-            RaisedButton(
-              color: kBlue,
-              hoverElevation: 0.0,
-              highlightElevation: 0.0,
-              elevation: 0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15.0),
-                side: BorderSide(
-                  width: 0.0,
-                  color: kBlue,
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: kBlue,
+                shape: new RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(15.0),
+                  side: BorderSide(
+                    width: 0.0,
+                    color: kBlue,
+                  ),
                 ),
+                elevation: 0,
               ),
               onPressed: () {
                 Navigator.pop(context);

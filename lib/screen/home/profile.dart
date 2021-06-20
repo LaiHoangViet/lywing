@@ -57,7 +57,7 @@ class _ProfileState extends State<Profile> {
                                 ),
                               ),
                               Container(
-                                child: FlatButton(
+                                child: TextButton(
                                   onPressed: () {
                                     Navigator.push(
                                       context,
@@ -65,9 +65,20 @@ class _ProfileState extends State<Profile> {
                                           builder: (context) => Edit_Profile()),
                                     );
                                   },
-                                  splashColor: kWhite,
-                                  color: kWhite,
-                                  highlightColor: kWhite,
+                                  style: ElevatedButton.styleFrom(
+                                    primary: kWhite,
+                                  ).merge(
+                                    ButtonStyle(
+                                      overlayColor: MaterialStateProperty
+                                          .resolveWith<Color>(
+                                              (Set<MaterialState> states) {
+                                        if (states
+                                            .contains(MaterialState.pressed))
+                                          return kWhite;
+                                        return null; // Defer to the widget's default.
+                                      }),
+                                    ),
+                                  ),
                                   child: Icon(
                                     Icons.navigate_next,
                                     color: kGrey400,

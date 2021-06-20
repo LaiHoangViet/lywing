@@ -107,15 +107,15 @@ class _Booking_1State extends State<Booking_1> {
                 ),
               ),
               Container(
-                child: RaisedButton(
-                  hoverElevation: 0.0,
-                  highlightElevation: 0.0,
-                  elevation: 0,
-                  color: kGreenLight,
-                  shape: new RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(30.0),
-                    side: BorderSide(
-                      width: 0.1,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: kGreenLight,
+                    shape: new RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(30.0)),
+                    elevation: 0,
+                    minimumSize: Size(
+                      displaySize(context).width * 0.3,
+                      displaySize(context).height * 0.05,
                     ),
                   ),
                   onPressed: () {
@@ -1011,21 +1011,21 @@ class _Booking_1State extends State<Booking_1> {
                 radius: Radius.circular(12),
                 child: SizedBox(
                   width: double.infinity,
-                  child: RaisedButton(
-                    color: kGrey100,
-                    hoverElevation: 0.0,
-                    highlightElevation: 0.0,
-                    elevation: 0,
-                    shape: new RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(10.0),
-                      side: BorderSide(
-                        width: 0.0,
-                        color: kGrey100,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: kGrey100,
+                      elevation: 0,
+                      shape: new RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(10.0),
+                        side: BorderSide(
+                          width: 0.0,
+                          color: kGrey100,
+                        ),
                       ),
-                    ),
-                    padding: const EdgeInsets.only(
-                      top: 35,
-                      bottom: 35,
+                      padding: const EdgeInsets.only(
+                        top: 35,
+                        bottom: 35,
+                      ),
                     ),
                     onPressed: () {
                       Navigator.push(
@@ -1347,18 +1347,18 @@ class _Booking_1State extends State<Booking_1> {
                                 ),
                               ),
                               Container(
-                                child: RaisedButton(
+                                child: ElevatedButton(
                                   onPressed: () {},
-                                  color: kBlue,
-                                  hoverElevation: 0.0,
-                                  highlightElevation: 0.0,
-                                  elevation: 0,
-                                  shape: new RoundedRectangleBorder(
-                                    borderRadius:
-                                        new BorderRadius.circular(10.0),
-                                    side: BorderSide(
-                                      width: 0.0,
-                                      color: kBlue,
+                                  style: ElevatedButton.styleFrom(
+                                    primary: kBlue,
+                                    elevation: 0,
+                                    shape: new RoundedRectangleBorder(
+                                      borderRadius:
+                                          new BorderRadius.circular(10.0),
+                                      side: BorderSide(
+                                        width: 0.0,
+                                        color: kBlue,
+                                      ),
                                     ),
                                   ),
                                   child: Text(
