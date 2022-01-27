@@ -56,7 +56,7 @@ class _Seclect_DateState extends State<Seclect_Date> {
                   _secondDate = DateFormat('dd-MM-yyyy').format(secondDate);
                   FileSystemManager.instance.firstDate = _firstDate;
                   FileSystemManager.instance.secondDate = _secondDate;
-                  print(_firstDate);
+                  // print(_firstDate);
                 },
                 locale: 'en',
                 minDate: DateTime.now(),
